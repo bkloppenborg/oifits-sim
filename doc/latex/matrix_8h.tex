@@ -1,0 +1,260 @@
+\hypertarget{matrix_8h}{
+\section{common/matrix.h File Reference}
+\label{matrix_8h}\index{common/matrix.h@{common/matrix.h}}
+}
+{\ttfamily \#include $<$complex$>$}\par
+{\ttfamily \#include $<$cstring$>$}\par
+{\ttfamily \#include $<$assert.h$>$}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classRow}{Row$<$ T $>$}
+\item 
+class \hyperlink{classMatrix}{Matrix$<$ T $>$}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std::complex$<$ double $>$ \hyperlink{matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{matrix_8h_a11ea9246cee33169b48f6fbb902fbbd3}{Interp2d} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&dataIn, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&dataOut, double offsetX, double offsetY, double scale, double rotation)
+\item 
+double \hyperlink{matrix_8h_a420d3853497018247d21b6198a82aace}{norm2} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_a7362b70020612e493975df8c6bd445d3}{total} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_ae93f684c3f4930253b7dbc3d17480f14}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m2)
+\item 
+double \hyperlink{matrix_8h_aa50acb6f817c14f29d8f1e521862bed9}{norm2} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_a856f5697c477eff168b1092bf8b74bff}{mean} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_a01645db541f2fcb9af5869fd5730c200}{variance} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_a88288821631e4f6f153ab307ef68440f}{variance} (\hyperlink{classRow}{Row}$<$ double $>$ \&row)
+\item 
+double \hyperlink{matrix_8h_ac78266ce06999600632bbd43b6648ee1}{mean} (\hyperlink{classRow}{Row}$<$ double $>$ \&m)
+\item 
+double \hyperlink{matrix_8h_af77330521f1883d2d961a996bc4c6cd1}{norm2} (\hyperlink{classRow}{Row}$<$ double $>$ \&r)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{matrix_8h_acf3f7ddf256c2279a823121375483ea3}{total} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{matrix_8h_aa1458c2739883e6cdd34cd17ab09b1a1}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m2)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{matrix_8h_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}{scalconj} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m2)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{matrix_8h_a8f5a82d041c858ce4616a6040d7df4ec}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m2)
+\item 
+void \hyperlink{matrix_8h_ab954a056aece4783897155da1c9928ad}{FFT} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&min, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&mout, int direction, int dccenter)
+\item 
+void \hyperlink{matrix_8h_aea2af94818e0413f0d412c2c2005234d}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, const char $\ast$filename)
+\item 
+void \hyperlink{matrix_8h_aa3eeb14acea79284eabfed858b9842c2}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m, const char $\ast$filename)
+\item 
+void \hyperlink{matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, double \&\hyperlink{variables_8h_ab3ea6f9ab32a5fe066e85fd23b46e496}{pixellation})
+\item 
+void \hyperlink{matrix_8h_a8dd85dfa716d7423d1eb16bc7fd00281}{ZeroPad} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&unpadded, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&padded)
+\item 
+void \hyperlink{matrix_8h_afecc086ab9d528fbc540a9a99ab2ec2e}{ZeroUnPad} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&unpadded, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&padded)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{matrix_8h_a37333e1628babc1863d6963489e5e9ea}{
+\index{matrix.h@{matrix.h}!Complex@{Complex}}
+\index{Complex@{Complex}!matrix.h@{matrix.h}}
+\subsubsection[{Complex}]{\setlength{\rightskip}{0pt plus 5cm}typedef std::complex$<$ double $>$ {\bf Complex}}}
+\label{matrix_8h_a37333e1628babc1863d6963489e5e9ea}
+
+
+Definition at line 20 of file matrix.h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{matrix_8h_ab954a056aece4783897155da1c9928ad}{
+\index{matrix.h@{matrix.h}!FFT@{FFT}}
+\index{FFT@{FFT}!matrix.h@{matrix.h}}
+\subsubsection[{FFT}]{\setlength{\rightskip}{0pt plus 5cm}void FFT ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em min}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em mout}, \/  int {\em direction}, \/  int {\em dccenter})}}
+\label{matrix_8h_ab954a056aece4783897155da1c9928ad}
+
+
+Definition at line 474 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}{
+\index{matrix.h@{matrix.h}!fits2mat@{fits2mat}}
+\index{fits2mat@{fits2mat}!matrix.h@{matrix.h}}
+\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m}, \/  double \& {\em pixellation})}}
+\label{matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}
+
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em runtime\_\-error}]The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header.\item[{\em runtime\_\-error}]The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header. \end{DoxyExceptions}
+
+
+
+
+Definition at line 407 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a11ea9246cee33169b48f6fbb902fbbd3}{
+\index{matrix.h@{matrix.h}!Interp2d@{Interp2d}}
+\index{Interp2d@{Interp2d}!matrix.h@{matrix.h}}
+\subsubsection[{Interp2d}]{\setlength{\rightskip}{0pt plus 5cm}void Interp2d ({\bf Matrix}$<$ double $>$ \& {\em dataIn}, \/  {\bf Matrix}$<$ double $>$ \& {\em dataOut}, \/  double {\em offsetX}, \/  double {\em offsetY}, \/  double {\em scale}, \/  double {\em rotation})}}
+\label{matrix_8h_a11ea9246cee33169b48f6fbb902fbbd3}
+
+
+Definition at line 216 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_aa3eeb14acea79284eabfed858b9842c2}{
+\index{matrix.h@{matrix.h}!mat2fits@{mat2fits}}
+\index{mat2fits@{mat2fits}!matrix.h@{matrix.h}}
+\subsubsection[{mat2fits}]{\setlength{\rightskip}{0pt plus 5cm}void mat2fits ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m}, \/  const char $\ast$ {\em filename})}}
+\label{matrix_8h_aa3eeb14acea79284eabfed858b9842c2}
+\hypertarget{matrix_8h_aea2af94818e0413f0d412c2c2005234d}{
+\index{matrix.h@{matrix.h}!mat2fits@{mat2fits}}
+\index{mat2fits@{mat2fits}!matrix.h@{matrix.h}}
+\subsubsection[{mat2fits}]{\setlength{\rightskip}{0pt plus 5cm}void mat2fits ({\bf Matrix}$<$ double $>$ \& {\em m}, \/  const char $\ast$ {\em filename})}}
+\label{matrix_8h_aea2af94818e0413f0d412c2c2005234d}
+
+
+Definition at line 293 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_ac78266ce06999600632bbd43b6648ee1}{
+\index{matrix.h@{matrix.h}!mean@{mean}}
+\index{mean@{mean}!matrix.h@{matrix.h}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}double mean ({\bf Row}$<$ double $>$ \& {\em m})}}
+\label{matrix_8h_ac78266ce06999600632bbd43b6648ee1}
+
+
+Definition at line 81 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a856f5697c477eff168b1092bf8b74bff}{
+\index{matrix.h@{matrix.h}!mean@{mean}}
+\index{mean@{mean}!matrix.h@{matrix.h}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}double mean ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{matrix_8h_a856f5697c477eff168b1092bf8b74bff}
+
+
+Definition at line 70 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_af77330521f1883d2d961a996bc4c6cd1}{
+\index{matrix.h@{matrix.h}!norm2@{norm2}}
+\index{norm2@{norm2}!matrix.h@{matrix.h}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Row}$<$ double $>$ \& {\em r})}}
+\label{matrix_8h_af77330521f1883d2d961a996bc4c6cd1}
+
+
+Definition at line 22 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_aa50acb6f817c14f29d8f1e521862bed9}{
+\index{matrix.h@{matrix.h}!norm2@{norm2}}
+\index{norm2@{norm2}!matrix.h@{matrix.h}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m})}}
+\label{matrix_8h_aa50acb6f817c14f29d8f1e521862bed9}
+
+
+Definition at line 117 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a420d3853497018247d21b6198a82aace}{
+\index{matrix.h@{matrix.h}!norm2@{norm2}}
+\index{norm2@{norm2}!matrix.h@{matrix.h}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{matrix_8h_a420d3853497018247d21b6198a82aace}
+
+
+Definition at line 33 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}{
+\index{matrix.h@{matrix.h}!scalconj@{scalconj}}
+\index{scalconj@{scalconj}!matrix.h@{matrix.h}}
+\subsubsection[{scalconj}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalconj ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m2})}}
+\label{matrix_8h_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}
+
+
+Definition at line 160 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a8f5a82d041c858ce4616a6040d7df4ec}{
+\index{matrix.h@{matrix.h}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!matrix.h@{matrix.h}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalprod ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ double $>$ \& {\em m2})}}
+\label{matrix_8h_a8f5a82d041c858ce4616a6040d7df4ec}
+
+
+Definition at line 149 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_aa1458c2739883e6cdd34cd17ab09b1a1}{
+\index{matrix.h@{matrix.h}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!matrix.h@{matrix.h}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalprod ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m2})}}
+\label{matrix_8h_aa1458c2739883e6cdd34cd17ab09b1a1}
+
+
+Definition at line 138 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_ae93f684c3f4930253b7dbc3d17480f14}{
+\index{matrix.h@{matrix.h}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!matrix.h@{matrix.h}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}double scalprod ({\bf Matrix}$<$ double $>$ \& {\em m1}, \/  {\bf Matrix}$<$ double $>$ \& {\em m2})}}
+\label{matrix_8h_ae93f684c3f4930253b7dbc3d17480f14}
+
+
+Definition at line 57 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_acf3f7ddf256c2279a823121375483ea3}{
+\index{matrix.h@{matrix.h}!total@{total}}
+\index{total@{total}!matrix.h@{matrix.h}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} total ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m})}}
+\label{matrix_8h_acf3f7ddf256c2279a823121375483ea3}
+
+
+Definition at line 128 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a7362b70020612e493975df8c6bd445d3}{
+\index{matrix.h@{matrix.h}!total@{total}}
+\index{total@{total}!matrix.h@{matrix.h}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}double total ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{matrix_8h_a7362b70020612e493975df8c6bd445d3}
+
+
+Definition at line 45 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a88288821631e4f6f153ab307ef68440f}{
+\index{matrix.h@{matrix.h}!variance@{variance}}
+\index{variance@{variance}!matrix.h@{matrix.h}}
+\subsubsection[{variance}]{\setlength{\rightskip}{0pt plus 5cm}double variance ({\bf Row}$<$ double $>$ \& {\em row})}}
+\label{matrix_8h_a88288821631e4f6f153ab307ef68440f}
+
+
+Definition at line 104 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a01645db541f2fcb9af5869fd5730c200}{
+\index{matrix.h@{matrix.h}!variance@{variance}}
+\index{variance@{variance}!matrix.h@{matrix.h}}
+\subsubsection[{variance}]{\setlength{\rightskip}{0pt plus 5cm}double variance ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{matrix_8h_a01645db541f2fcb9af5869fd5730c200}
+
+
+Definition at line 91 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_a8dd85dfa716d7423d1eb16bc7fd00281}{
+\index{matrix.h@{matrix.h}!ZeroPad@{ZeroPad}}
+\index{ZeroPad@{ZeroPad}!matrix.h@{matrix.h}}
+\subsubsection[{ZeroPad}]{\setlength{\rightskip}{0pt plus 5cm}void ZeroPad ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em unpadded}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em padded})}}
+\label{matrix_8h_a8dd85dfa716d7423d1eb16bc7fd00281}
+
+
+Definition at line 172 of file Matrix.cpp.
+
+\hypertarget{matrix_8h_afecc086ab9d528fbc540a9a99ab2ec2e}{
+\index{matrix.h@{matrix.h}!ZeroUnPad@{ZeroUnPad}}
+\index{ZeroUnPad@{ZeroUnPad}!matrix.h@{matrix.h}}
+\subsubsection[{ZeroUnPad}]{\setlength{\rightskip}{0pt plus 5cm}void ZeroUnPad ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em unpadded}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em padded})}}
+\label{matrix_8h_afecc086ab9d528fbc540a9a99ab2ec2e}
+
+
+Definition at line 191 of file Matrix.cpp.
+

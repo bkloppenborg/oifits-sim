@@ -1,0 +1,8 @@
+# File describing the spectral bands in which the target is observed
+# wavelengths /metre can be given in any order, on different lines
+1.50e-6
+1.55e-6
+1.60e-6
+1.65e-6
+1.70e-6
+1.75e-6

@@ -1,0 +1,34 @@
+BUILD INSTRUCTIONS FOR FRINGE TRACKING SIMULATOR
+
+SUPPORTED PLATFORMS
+
+The fringe tracking simulator has been developed and tested under
+Linux. The Ubuntu distribution is recommended because the required
+libraries are available as packages, but any other distribution should
+work.
+
+It should be straightforward to port the simulator to other unix-like
+operating systems.
+
+
+PREREQUISITES
+
+You will need C and C++ compilers (the simulator has been built
+successfully using gcc/g++ 4.3).
+
+The following libraries must be installed:
+
+- CFITSIO  (Ubuntu package libcfitsio3-dev)
+- FFTW 3.x  (Ubuntu package libfftw3-dev)
+
+
+BUILDING
+
+The supplied Makefile uses pkg-config to locate FFTW. If your system
+does not use pkg-config for FFTW, you may need to edit the top section
+of the Makefile. The paths to the CFITSIO library files are hard-coded
+into the Makefile, and may need to be edited for your system.
+
+After making any necessary adjustments to the Makefile, run make. This
+will generate an executable called 'simulator'.
+

@@ -1,0 +1,13 @@
+Normal Operation (with OIFITS)
+
+./oifits-sim -t ~/Projects/CHARA/simulator_info/Target_EpsAur.txt -s ~/Projects/CHARA/simulator_info/SpectralMode_MIRC_LowH.txt -d ~/Projects/CHARA/simulator_info/2008Dec10-eps_Aur.oifits -i ~/Projects/CHARA/simulator_info/Instrument_MIRC.txt  -a ~/Projects/CHARA/simulator_info/CHARA_S1E1W1W2.txt -o /tmp/test.oifits
+
+Debugging:
+
+gdb ./oifits-sim
+run -t ~/Projects/CHARA/simulator_info/Target_EpsAur.txt -s ~/Projects/CHARA/simulator_info/SpectralMode_MIRC_LowH.txt -d ~/Projects/CHARA/simulator_info/2008Dec10-eps_Aur.oifits -i ~/Projects/CHARA/simulator_info/Instrument_MIRC.txt  -a ~/Projects/CHARA/simulator_info/CHARA_S1E1W1W2.txt -o /tmp/test.oifits
+
+
+Normal Operation (with txt)
+
+./oifits-sim -t ~/Projects/CHARA/simulator_info/Target_EpsAur.txt -s ~/Projects/CHARA/simulator_info/SpectralMode_MIRC_LowH.txt -h ~/Projects/CHARA/simulator_info/HA-Night1.txt -i ~/Projects/CHARA/simulator_info/Instrument_MIRC.txt  -a ~/Projects/CHARA/simulator_info/CHARA_S1E1W1W2.txt -o /tmp/test2.oifits

@@ -1,0 +1,323 @@
+\hypertarget{classMatrix}{
+\section{Matrix$<$ T $>$ Class Template Reference}
+\label{classMatrix}\index{Matrix@{Matrix}}
+}
+
+
+{\ttfamily \#include $<$Matrix.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix_a3ebbc04812668005b87e5c0cf28fa4ac}{Matrix} (int rows=0, int cols=0)
+\item 
+\hyperlink{classMatrix_a3796b4f32dc8e11f908a90fd3dd39c45}{Matrix} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+\hyperlink{classMatrix_a91aa704de674203e96aece9e1955ccd3}{$\sim$Matrix} ()
+\item 
+void \hyperlink{classMatrix_a8be203acf909fbb2050bf37470c88802}{setsize} (int rows, int cols)
+\item 
+int \hyperlink{classMatrix_a3ea3fe8edc613dc1f3ef33f0f0a06c61}{GetCols} ()
+\item 
+int \hyperlink{classMatrix_abc5ab9d53d31566a17dfc8a24fc60aa6}{GetRows} ()
+\item 
+int \hyperlink{classMatrix_af4fd573f5a962ec6c893051785f42480}{type} ()
+\item 
+\hyperlink{classRow}{Row}$<$ T $>$ \& \hyperlink{classMatrix_a5af1a30e7a004b1cefe7b3f5398bcc77}{operator\mbox{[}$\,$\mbox{]}} (int index)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a94508f84ba0d62e81aa8d508aa43f1ec}{operator=} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a311f3649e41cb4a3155f3f71a65829cb}{operator+} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a08e75978ea8288083ef36f53b4ac115d}{operator-\/} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a480a72298ae1fc8443b0edfaa66d7c46}{operator+=} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a0e459fd035b2435ea016dc93c55ccac0}{operator-\/=} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ac4e94b307c56a15fb47a9255855f94a9}{operator$\ast$} (const double s)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a2525c0e0feb231dd01fb6ae96aa53dac}{operator/} (const double s)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a3c70791a9bb45afff8d0ea23601e3203}{operator+} (const double s)
+\item 
+const \hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_a254817e151d338279aec5711b6cdf403}{operator-\/} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a54d2f788e4e209cfe472bbcbbbd6bc2d}{operator+=} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ad513d4073587eab0cee247875b6c860a}{operator-\/=} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a8079792abad8b038cd795a339ce9747b}{operator$\ast$=} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_ad1acebe419756785acef046796fb6060}{operator/=} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a9bea17f8319e2e2064fd85700e46d2fb}{operator=} (const double s)
+\item 
+\hyperlink{classMatrix}{Matrix} \& \hyperlink{classMatrix_a3226c4b1a3ffb1090a7434806ad2ef03}{operator$\ast$=} (const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+\hyperlink{classMatrix}{Matrix} \hyperlink{classMatrix_ae9307b29ba230013f0fce5ebf8e7fecd}{operator$\ast$} (const \hyperlink{classMatrix}{Matrix} \&m)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+ostream \& \hyperlink{classMatrix_a5ed9a90fd6f010e7e9840a17d92d5361}{operator$<$$<$} (ostream \&os, const \hyperlink{classMatrix}{Matrix} \&m)
+\item 
+istream \& \hyperlink{classMatrix_afcea9fa7d9a5052070fe1fda963ef237}{operator$>$$>$} (istream \&is, \hyperlink{classMatrix}{Matrix} \&m)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class T$>$ class Matrix$<$ T $>$}
+
+
+
+Definition at line 124 of file Matrix.h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classMatrix_a3ebbc04812668005b87e5c0cf28fa4ac}{
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}$<$ T $>$::{\bf Matrix} (int {\em rows} = {\ttfamily 0}, \/  int {\em cols} = {\ttfamily 0})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a3ebbc04812668005b87e5c0cf28fa4ac}
+
+
+Definition at line 127 of file Matrix.h.
+
+\hypertarget{classMatrix_a3796b4f32dc8e11f908a90fd3dd39c45}{
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!Matrix@{Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}$<$ T $>$::{\bf Matrix} (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a3796b4f32dc8e11f908a90fd3dd39c45}
+
+
+Definition at line 132 of file Matrix.h.
+
+\hypertarget{classMatrix_a91aa704de674203e96aece9e1955ccd3}{
+\index{Matrix@{Matrix}!$\sim$Matrix@{$\sim$Matrix}}
+\index{$\sim$Matrix@{$\sim$Matrix}!Matrix@{Matrix}}
+\subsubsection[{$\sim$Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}$<$ T $>$::$\sim${\bf Matrix} ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a91aa704de674203e96aece9e1955ccd3}
+
+
+Definition at line 138 of file Matrix.h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classMatrix_a3ea3fe8edc613dc1f3ef33f0f0a06c61}{
+\index{Matrix@{Matrix}!GetCols@{GetCols}}
+\index{GetCols@{GetCols}!Matrix@{Matrix}}
+\subsubsection[{GetCols}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Matrix}$<$ T $>$::GetCols ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a3ea3fe8edc613dc1f3ef33f0f0a06c61}
+
+
+Definition at line 160 of file Matrix.h.
+
+\hypertarget{classMatrix_abc5ab9d53d31566a17dfc8a24fc60aa6}{
+\index{Matrix@{Matrix}!GetRows@{GetRows}}
+\index{GetRows@{GetRows}!Matrix@{Matrix}}
+\subsubsection[{GetRows}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Matrix}$<$ T $>$::GetRows ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_abc5ab9d53d31566a17dfc8a24fc60aa6}
+
+
+Definition at line 164 of file Matrix.h.
+
+\hypertarget{classMatrix_ae9307b29ba230013f0fce5ebf8e7fecd}{
+\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix} {\bf Matrix}$<$ T $>$::operator$\ast$ (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_ae9307b29ba230013f0fce5ebf8e7fecd}
+
+
+Definition at line 322 of file Matrix.h.
+
+\hypertarget{classMatrix_ac4e94b307c56a15fb47a9255855f94a9}{
+\index{Matrix@{Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator$\ast$ (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_ac4e94b307c56a15fb47a9255855f94a9}
+
+
+Definition at line 232 of file Matrix.h.
+
+\hypertarget{classMatrix_a3226c4b1a3ffb1090a7434806ad2ef03}{
+\index{Matrix@{Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator$\ast$= (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a3226c4b1a3ffb1090a7434806ad2ef03}
+
+
+Definition at line 312 of file Matrix.h.
+
+\hypertarget{classMatrix_a8079792abad8b038cd795a339ce9747b}{
+\index{Matrix@{Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix@{Matrix}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator$\ast$= (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a8079792abad8b038cd795a339ce9747b}
+
+
+Definition at line 288 of file Matrix.h.
+
+\hypertarget{classMatrix_a3c70791a9bb45afff8d0ea23601e3203}{
+\index{Matrix@{Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix@{Matrix}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator+ (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a3c70791a9bb45afff8d0ea23601e3203}
+
+
+Definition at line 252 of file Matrix.h.
+
+\hypertarget{classMatrix_a311f3649e41cb4a3155f3f71a65829cb}{
+\index{Matrix@{Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix@{Matrix}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator+ (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a311f3649e41cb4a3155f3f71a65829cb}
+
+
+Definition at line 192 of file Matrix.h.
+
+\hypertarget{classMatrix_a54d2f788e4e209cfe472bbcbbbd6bc2d}{
+\index{Matrix@{Matrix}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Matrix@{Matrix}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator+= (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a54d2f788e4e209cfe472bbcbbbd6bc2d}
+
+
+Definition at line 272 of file Matrix.h.
+
+\hypertarget{classMatrix_a480a72298ae1fc8443b0edfaa66d7c46}{
+\index{Matrix@{Matrix}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Matrix@{Matrix}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator+= (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a480a72298ae1fc8443b0edfaa66d7c46}
+
+
+Definition at line 214 of file Matrix.h.
+
+\hypertarget{classMatrix_a254817e151d338279aec5711b6cdf403}{
+\index{Matrix@{Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator-\/ (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a254817e151d338279aec5711b6cdf403}
+
+
+Definition at line 262 of file Matrix.h.
+
+\hypertarget{classMatrix_a08e75978ea8288083ef36f53b4ac115d}{
+\index{Matrix@{Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix@{Matrix}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator-\/ (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a08e75978ea8288083ef36f53b4ac115d}
+
+
+Definition at line 203 of file Matrix.h.
+
+\hypertarget{classMatrix_ad513d4073587eab0cee247875b6c860a}{
+\index{Matrix@{Matrix}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Matrix@{Matrix}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator-\/= (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_ad513d4073587eab0cee247875b6c860a}
+
+
+Definition at line 280 of file Matrix.h.
+
+\hypertarget{classMatrix_a0e459fd035b2435ea016dc93c55ccac0}{
+\index{Matrix@{Matrix}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Matrix@{Matrix}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator-\/= (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a0e459fd035b2435ea016dc93c55ccac0}
+
+
+Definition at line 223 of file Matrix.h.
+
+\hypertarget{classMatrix_a2525c0e0feb231dd01fb6ae96aa53dac}{
+\index{Matrix@{Matrix}!operator/@{operator/}}
+\index{operator/@{operator/}!Matrix@{Matrix}}
+\subsubsection[{operator/}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ const {\bf Matrix} {\bf Matrix}$<$ T $>$::operator/ (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a2525c0e0feb231dd01fb6ae96aa53dac}
+
+
+Definition at line 242 of file Matrix.h.
+
+\hypertarget{classMatrix_ad1acebe419756785acef046796fb6060}{
+\index{Matrix@{Matrix}!operator/=@{operator/=}}
+\index{operator/=@{operator/=}!Matrix@{Matrix}}
+\subsubsection[{operator/=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator/= (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_ad1acebe419756785acef046796fb6060}
+
+
+Definition at line 296 of file Matrix.h.
+
+\hypertarget{classMatrix_a9bea17f8319e2e2064fd85700e46d2fb}{
+\index{Matrix@{Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix@{Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator= (const double {\em s})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a9bea17f8319e2e2064fd85700e46d2fb}
+
+
+Definition at line 304 of file Matrix.h.
+
+\hypertarget{classMatrix_a94508f84ba0d62e81aa8d508aa43f1ec}{
+\index{Matrix@{Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!Matrix@{Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Matrix}\& {\bf Matrix}$<$ T $>$::operator= (const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a94508f84ba0d62e81aa8d508aa43f1ec}
+
+
+Definition at line 180 of file Matrix.h.
+
+\hypertarget{classMatrix_a5af1a30e7a004b1cefe7b3f5398bcc77}{
+\index{Matrix@{Matrix}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!Matrix@{Matrix}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Row}$<$ T $>$\& {\bf Matrix}$<$ T $>$::operator\mbox{[}$\,$\mbox{]} (int {\em index})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a5af1a30e7a004b1cefe7b3f5398bcc77}
+
+
+Definition at line 173 of file Matrix.h.
+
+\hypertarget{classMatrix_a8be203acf909fbb2050bf37470c88802}{
+\index{Matrix@{Matrix}!setsize@{setsize}}
+\index{setsize@{setsize}!Matrix@{Matrix}}
+\subsubsection[{setsize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Matrix}$<$ T $>$::setsize (int {\em rows}, \/  int {\em cols})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_a8be203acf909fbb2050bf37470c88802}
+
+
+Definition at line 144 of file Matrix.h.
+
+\hypertarget{classMatrix_af4fd573f5a962ec6c893051785f42480}{
+\index{Matrix@{Matrix}!type@{type}}
+\index{type@{type}!Matrix@{Matrix}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Matrix}$<$ T $>$::type ()\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{classMatrix_af4fd573f5a962ec6c893051785f42480}
+
+
+Definition at line 168 of file Matrix.h.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classMatrix_a5ed9a90fd6f010e7e9840a17d92d5361}{
+\index{Matrix@{Matrix}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Matrix@{Matrix}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ ostream\& operator$<$$<$ (ostream \& {\em os}, \/  const {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classMatrix_a5ed9a90fd6f010e7e9840a17d92d5361}
+
+
+Definition at line 333 of file Matrix.h.
+
+\hypertarget{classMatrix_afcea9fa7d9a5052070fe1fda963ef237}{
+\index{Matrix@{Matrix}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!Matrix@{Matrix}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ istream\& operator$>$$>$ (istream \& {\em is}, \/  {\bf Matrix}$<$ T $>$ \& {\em m})\hspace{0.3cm}{\ttfamily  \mbox{[}friend\mbox{]}}}}
+\label{classMatrix_afcea9fa7d9a5052070fe1fda963ef237}
+
+
+Definition at line 348 of file Matrix.h.
+
+
+
+The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+\item 
+common/\hyperlink{Matrix_8h}{Matrix.h}\end{DoxyCompactItemize}

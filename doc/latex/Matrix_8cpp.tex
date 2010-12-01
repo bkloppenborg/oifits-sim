@@ -1,0 +1,245 @@
+\hypertarget{Matrix_8cpp}{
+\section{common/Matrix.cpp File Reference}
+\label{Matrix_8cpp}\index{common/Matrix.cpp@{common/Matrix.cpp}}
+}
+{\ttfamily \#include $<$complex$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$stdexcept$>$}\par
+{\ttfamily \#include $<$vector$>$}\par
+{\ttfamily \#include $<$fftw3.h$>$}\par
+{\ttfamily \#include \char`\"{}Matrix.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Simulator.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}fitsio.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{Matrix_8cpp_af77330521f1883d2d961a996bc4c6cd1}{norm2} (\hyperlink{classRow}{Row}$<$ double $>$ \&r)
+\item 
+double \hyperlink{Matrix_8cpp_a420d3853497018247d21b6198a82aace}{norm2} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{Matrix_8cpp_a7362b70020612e493975df8c6bd445d3}{total} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{Matrix_8cpp_ae93f684c3f4930253b7dbc3d17480f14}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m2)
+\item 
+double \hyperlink{Matrix_8cpp_a856f5697c477eff168b1092bf8b74bff}{mean} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{Matrix_8cpp_ae256c32f09c7247037e8b70414d2acef}{mean} (\hyperlink{classRow}{Row}$<$ double $>$ \&row)
+\item 
+double \hyperlink{Matrix_8cpp_a01645db541f2fcb9af5869fd5730c200}{variance} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
+\item 
+double \hyperlink{Matrix_8cpp_a88288821631e4f6f153ab307ef68440f}{variance} (\hyperlink{classRow}{Row}$<$ double $>$ \&row)
+\item 
+double \hyperlink{Matrix_8cpp_aa50acb6f817c14f29d8f1e521862bed9}{norm2} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{Matrix_8cpp_acf3f7ddf256c2279a823121375483ea3}{total} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{Matrix_8cpp_aa1458c2739883e6cdd34cd17ab09b1a1}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m2)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{Matrix_8cpp_a8f5a82d041c858ce4616a6040d7df4ec}{scalprod} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m2)
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{Matrix_8cpp_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}{scalconj} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m1, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m2)
+\item 
+void \hyperlink{Matrix_8cpp_a8dd85dfa716d7423d1eb16bc7fd00281}{ZeroPad} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&unpadded, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&padded)
+\item 
+void \hyperlink{Matrix_8cpp_afecc086ab9d528fbc540a9a99ab2ec2e}{ZeroUnPad} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&unpadded, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&padded)
+\item 
+void \hyperlink{Matrix_8cpp_a11ea9246cee33169b48f6fbb902fbbd3}{Interp2d} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&dataIn, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&dataOut, double offsetX, double offsetY, double scale, double rotation)
+\item 
+void \hyperlink{Matrix_8cpp_aea2af94818e0413f0d412c2c2005234d}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, const char $\ast$filename)
+\item 
+void \hyperlink{Matrix_8cpp_a712ca07bcd43ff93ce2747fe5c071112}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m, char $\ast$filename)
+\item 
+void \hyperlink{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, double \&pixellation)
+\item 
+void \hyperlink{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}{FFT} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&min, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&mout, int direction, int dccenter)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}{
+\index{Matrix.cpp@{Matrix.cpp}!FFT@{FFT}}
+\index{FFT@{FFT}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{FFT}]{\setlength{\rightskip}{0pt plus 5cm}void FFT ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em min}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em mout}, \/  int {\em direction}, \/  int {\em dccenter})}}
+\label{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}
+
+
+Definition at line 478 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}{
+\index{Matrix.cpp@{Matrix.cpp}!fits2mat@{fits2mat}}
+\index{fits2mat@{fits2mat}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m}, \/  double \& {\em pixellation})}}
+\label{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}
+
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em runtime\_\-error}]The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header. \end{DoxyExceptions}
+
+
+
+
+Definition at line 411 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a11ea9246cee33169b48f6fbb902fbbd3}{
+\index{Matrix.cpp@{Matrix.cpp}!Interp2d@{Interp2d}}
+\index{Interp2d@{Interp2d}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{Interp2d}]{\setlength{\rightskip}{0pt plus 5cm}void Interp2d ({\bf Matrix}$<$ double $>$ \& {\em dataIn}, \/  {\bf Matrix}$<$ double $>$ \& {\em dataOut}, \/  double {\em offsetX}, \/  double {\em offsetY}, \/  double {\em scale}, \/  double {\em rotation})}}
+\label{Matrix_8cpp_a11ea9246cee33169b48f6fbb902fbbd3}
+
+
+Definition at line 220 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a712ca07bcd43ff93ce2747fe5c071112}{
+\index{Matrix.cpp@{Matrix.cpp}!mat2fits@{mat2fits}}
+\index{mat2fits@{mat2fits}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{mat2fits}]{\setlength{\rightskip}{0pt plus 5cm}void mat2fits ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m}, \/  char $\ast$ {\em filename})}}
+\label{Matrix_8cpp_a712ca07bcd43ff93ce2747fe5c071112}
+
+
+Definition at line 337 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_aea2af94818e0413f0d412c2c2005234d}{
+\index{Matrix.cpp@{Matrix.cpp}!mat2fits@{mat2fits}}
+\index{mat2fits@{mat2fits}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{mat2fits}]{\setlength{\rightskip}{0pt plus 5cm}void mat2fits ({\bf Matrix}$<$ double $>$ \& {\em m}, \/  const char $\ast$ {\em filename})}}
+\label{Matrix_8cpp_aea2af94818e0413f0d412c2c2005234d}
+
+
+Definition at line 297 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_ae256c32f09c7247037e8b70414d2acef}{
+\index{Matrix.cpp@{Matrix.cpp}!mean@{mean}}
+\index{mean@{mean}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}double mean ({\bf Row}$<$ double $>$ \& {\em row})}}
+\label{Matrix_8cpp_ae256c32f09c7247037e8b70414d2acef}
+
+
+Definition at line 85 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a856f5697c477eff168b1092bf8b74bff}{
+\index{Matrix.cpp@{Matrix.cpp}!mean@{mean}}
+\index{mean@{mean}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{mean}]{\setlength{\rightskip}{0pt plus 5cm}double mean ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8cpp_a856f5697c477eff168b1092bf8b74bff}
+
+
+Definition at line 74 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_aa50acb6f817c14f29d8f1e521862bed9}{
+\index{Matrix.cpp@{Matrix.cpp}!norm2@{norm2}}
+\index{norm2@{norm2}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m})}}
+\label{Matrix_8cpp_aa50acb6f817c14f29d8f1e521862bed9}
+
+
+Definition at line 121 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a420d3853497018247d21b6198a82aace}{
+\index{Matrix.cpp@{Matrix.cpp}!norm2@{norm2}}
+\index{norm2@{norm2}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8cpp_a420d3853497018247d21b6198a82aace}
+
+
+Definition at line 37 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_af77330521f1883d2d961a996bc4c6cd1}{
+\index{Matrix.cpp@{Matrix.cpp}!norm2@{norm2}}
+\index{norm2@{norm2}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{norm2}]{\setlength{\rightskip}{0pt plus 5cm}double norm2 ({\bf Row}$<$ double $>$ \& {\em r})}}
+\label{Matrix_8cpp_af77330521f1883d2d961a996bc4c6cd1}
+
+
+Definition at line 26 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}{
+\index{Matrix.cpp@{Matrix.cpp}!scalconj@{scalconj}}
+\index{scalconj@{scalconj}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{scalconj}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalconj ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m2})}}
+\label{Matrix_8cpp_aa8d64e4544bbfaa1cbfd89e77dc7ca1d}
+
+
+Definition at line 164 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a8f5a82d041c858ce4616a6040d7df4ec}{
+\index{Matrix.cpp@{Matrix.cpp}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalprod ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ double $>$ \& {\em m2})}}
+\label{Matrix_8cpp_a8f5a82d041c858ce4616a6040d7df4ec}
+
+
+Definition at line 153 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_aa1458c2739883e6cdd34cd17ab09b1a1}{
+\index{Matrix.cpp@{Matrix.cpp}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} scalprod ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m1}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m2})}}
+\label{Matrix_8cpp_aa1458c2739883e6cdd34cd17ab09b1a1}
+
+
+Definition at line 142 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_ae93f684c3f4930253b7dbc3d17480f14}{
+\index{Matrix.cpp@{Matrix.cpp}!scalprod@{scalprod}}
+\index{scalprod@{scalprod}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{scalprod}]{\setlength{\rightskip}{0pt plus 5cm}double scalprod ({\bf Matrix}$<$ double $>$ \& {\em m1}, \/  {\bf Matrix}$<$ double $>$ \& {\em m2})}}
+\label{Matrix_8cpp_ae93f684c3f4930253b7dbc3d17480f14}
+
+
+Definition at line 61 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_acf3f7ddf256c2279a823121375483ea3}{
+\index{Matrix.cpp@{Matrix.cpp}!total@{total}}
+\index{total@{total}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} total ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em m})}}
+\label{Matrix_8cpp_acf3f7ddf256c2279a823121375483ea3}
+
+
+Definition at line 132 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a7362b70020612e493975df8c6bd445d3}{
+\index{Matrix.cpp@{Matrix.cpp}!total@{total}}
+\index{total@{total}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}double total ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8cpp_a7362b70020612e493975df8c6bd445d3}
+
+
+Definition at line 49 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a88288821631e4f6f153ab307ef68440f}{
+\index{Matrix.cpp@{Matrix.cpp}!variance@{variance}}
+\index{variance@{variance}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{variance}]{\setlength{\rightskip}{0pt plus 5cm}double variance ({\bf Row}$<$ double $>$ \& {\em row})}}
+\label{Matrix_8cpp_a88288821631e4f6f153ab307ef68440f}
+
+
+Definition at line 108 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a01645db541f2fcb9af5869fd5730c200}{
+\index{Matrix.cpp@{Matrix.cpp}!variance@{variance}}
+\index{variance@{variance}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{variance}]{\setlength{\rightskip}{0pt plus 5cm}double variance ({\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8cpp_a01645db541f2fcb9af5869fd5730c200}
+
+
+Definition at line 95 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_a8dd85dfa716d7423d1eb16bc7fd00281}{
+\index{Matrix.cpp@{Matrix.cpp}!ZeroPad@{ZeroPad}}
+\index{ZeroPad@{ZeroPad}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{ZeroPad}]{\setlength{\rightskip}{0pt plus 5cm}void ZeroPad ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em unpadded}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em padded})}}
+\label{Matrix_8cpp_a8dd85dfa716d7423d1eb16bc7fd00281}
+
+
+Definition at line 176 of file Matrix.cpp.
+
+\hypertarget{Matrix_8cpp_afecc086ab9d528fbc540a9a99ab2ec2e}{
+\index{Matrix.cpp@{Matrix.cpp}!ZeroUnPad@{ZeroUnPad}}
+\index{ZeroUnPad@{ZeroUnPad}!Matrix.cpp@{Matrix.cpp}}
+\subsubsection[{ZeroUnPad}]{\setlength{\rightskip}{0pt plus 5cm}void ZeroUnPad ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em unpadded}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em padded})}}
+\label{Matrix_8cpp_afecc086ab9d528fbc540a9a99ab2ec2e}
+
+
+Definition at line 195 of file Matrix.cpp.
+

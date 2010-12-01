@@ -1,0 +1,49 @@
+BUILD INSTRUCTIONS FOR VISIBILITY SIMULATOR
+
+SUPPORTED PLATFORMS
+
+The visibility simulator has been developed and tested under
+Linux. The Ubuntu distribution is recommended because the required
+libraries are available as packages, but any other distribution should
+work.
+
+It should be straightforward to port the simulator to other unix-like
+operating systems.
+
+
+PREREQUISITES
+
+You will need C and C++ compilers (the simulator has been built
+successfully using gcc/g++ 4.3).
+
+The following libraries must be installed:
+
+- CFITSIO  (Ubuntu package libcfitsio3-dev)
+- GTK+ 2.12 or newer  (Ubuntu package libgtk2.0-dev)
+- FFTW 3.x  (Ubuntu package libfftw3-dev)
+
+
+BUILDING
+
+The supplied Makefile uses pkg-config to locate GTK+ and FFTW. If
+your system does not use pkg-config for these libraries, you may need
+to edit the top section of the Makefile. The paths to the CFITSIO
+library files are hard-coded into the Makefile, and may need to be
+edited for your system.
+
+After making any necessary adjustments to the Makefile, run make. This
+will generate an executable called 'vsim'. To test the program, run
+'make check'.
+
+
+USAGE
+
+If you run 'vsim' without command-line arguments, a simple GUI is
+displayed. This allows you to specify several text files containing
+the simulation parameters. Alternatively the text filenames may be
+supplied on the vsim command line, followed by the name of the desired
+output OIFITS file.
+
+Example parameter files (*.txt) are supplied. These contain comments
+explaining the meaning of the parameters. Note that currently the
+parameter files should not contain blank lines.

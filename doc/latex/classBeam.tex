@@ -1,0 +1,245 @@
+\hypertarget{classBeam}{
+\section{Beam Class Reference}
+\label{classBeam}\index{Beam@{Beam}}
+}
+
+
+{\ttfamily \#include $<$Beam.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classBeam_a29260e5e50b1d45b32747442ccdd56f7}{Beam} (\hyperlink{classArray}{Array} $\ast$\hyperlink{classBeam_abb5a7f1e41ea63a0e693f6e29e11e16c}{array}, int \hyperlink{classBeam_ae589b08d6d0d638c18a15880efc521d2}{station\_\-index}, \hyperlink{classDelayLine}{DelayLine} $\ast$\hyperlink{classBeam_abb779dd249b5a26502a49106aa8023a4}{delayline}, \hyperlink{classModulator}{Modulator} $\ast$\hyperlink{classBeam_a1ef612af4b85d2e5866d40eec618efcb}{modulator}, \hyperlink{classSpatialFilter}{SpatialFilter} $\ast$\hyperlink{classBeam_a68bc1a7abd201297114cd53af925f83f}{spatialfilter}, int \hyperlink{classBeam_a1c813015bb33a0565e1ee3ea0d570e11}{gridsize}, int \hyperlink{classBeam_a2de78a8bf91493e5c0cf0544613d0289}{AOorder}, \hyperlink{classZernikeLib}{ZernikeLib} $\ast$\hyperlink{classBeam_ad41f9e0d00cfe3ed0e5a22a2f3e7c399}{zernlib})
+\item 
+void \hyperlink{classBeam_a4d94ec1dd570ba7b50614ae39bda51fc}{Update} (double time, double wavenumber)
+\item 
+virtual \hyperlink{classBeam_ae00ca4866a8f1f721da45ce7c26c6d74}{$\sim$Beam} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classBeam_a5b8823412936aee5a88bc657e0ed546c}{diameter}
+\item 
+int \hyperlink{classBeam_a1c813015bb33a0565e1ee3ea0d570e11}{gridsize}
+\item 
+double \hyperlink{classBeam_ac1e58da3860afeb2d8d6e1daf7022cca}{previous\_\-time}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classBeam_ac83b6ebc1b9d745461ba630555636109}{amplitude}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classBeam_aa2ed8956a6aca9da62da12bcb8cebb7b}{phase}
+\item 
+double \hyperlink{classBeam_a342991126e87a3a2aa89d04ff7b2fd0a}{piston}
+\item 
+double \hyperlink{classBeam_affa1c91c24f15b6acbaae1682b19d9a7}{delay}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classBeam_a3b248c45a5630e6e0761b1f2d16350fc}{pupil}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classBeam_af1dc67711c28c260a813088d4afb14e9}{mask}
+\item 
+\hyperlink{classArray}{Array} $\ast$ \hyperlink{classBeam_abb5a7f1e41ea63a0e693f6e29e11e16c}{array}
+\item 
+int \hyperlink{classBeam_ae589b08d6d0d638c18a15880efc521d2}{station\_\-index}
+\item 
+\hyperlink{classDelayLine}{DelayLine} $\ast$ \hyperlink{classBeam_abb779dd249b5a26502a49106aa8023a4}{delayline}
+\item 
+\hyperlink{classModulator}{Modulator} $\ast$ \hyperlink{classBeam_a1ef612af4b85d2e5866d40eec618efcb}{modulator}
+\item 
+\hyperlink{classSpatialFilter}{SpatialFilter} $\ast$ \hyperlink{classBeam_a68bc1a7abd201297114cd53af925f83f}{spatialfilter}
+\item 
+int \hyperlink{classBeam_a2de78a8bf91493e5c0cf0544613d0289}{AOorder}
+\item 
+\hyperlink{classZernikeLib}{ZernikeLib} $\ast$ \hyperlink{classBeam_ad41f9e0d00cfe3ed0e5a22a2f3e7c399}{zernlib}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 13 of file Beam.h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classBeam_a29260e5e50b1d45b32747442ccdd56f7}{
+\index{Beam@{Beam}!Beam@{Beam}}
+\index{Beam@{Beam}!Beam@{Beam}}
+\subsubsection[{Beam}]{\setlength{\rightskip}{0pt plus 5cm}Beam::Beam ({\bf Array} $\ast$ {\em array}, \/  int {\em station\_\-index}, \/  {\bf DelayLine} $\ast$ {\em delayline}, \/  {\bf Modulator} $\ast$ {\em modulator}, \/  {\bf SpatialFilter} $\ast$ {\em spatialfilter}, \/  int {\em gridsize}, \/  int {\em AOorder}, \/  {\bf ZernikeLib} $\ast$ {\em zernlib})}}
+\label{classBeam_a29260e5e50b1d45b32747442ccdd56f7}
+
+
+Definition at line 22 of file Beam.cpp.
+
+\hypertarget{classBeam_ae00ca4866a8f1f721da45ce7c26c6d74}{
+\index{Beam@{Beam}!$\sim$Beam@{$\sim$Beam}}
+\index{$\sim$Beam@{$\sim$Beam}!Beam@{Beam}}
+\subsubsection[{$\sim$Beam}]{\setlength{\rightskip}{0pt plus 5cm}Beam::$\sim$Beam ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classBeam_ae00ca4866a8f1f721da45ce7c26c6d74}
+
+
+Definition at line 109 of file Beam.cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classBeam_a4d94ec1dd570ba7b50614ae39bda51fc}{
+\index{Beam@{Beam}!Update@{Update}}
+\index{Update@{Update}!Beam@{Beam}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}void Beam::Update (double {\em time}, \/  double {\em wavenumber})}}
+\label{classBeam_a4d94ec1dd570ba7b50614ae39bda51fc}
+
+
+Definition at line 94 of file Beam.cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classBeam_ac83b6ebc1b9d745461ba630555636109}{
+\index{Beam@{Beam}!amplitude@{amplitude}}
+\index{amplitude@{amplitude}!Beam@{Beam}}
+\subsubsection[{amplitude}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ {\bf Beam::amplitude}}}
+\label{classBeam_ac83b6ebc1b9d745461ba630555636109}
+
+
+Definition at line 22 of file Beam.h.
+
+\hypertarget{classBeam_a2de78a8bf91493e5c0cf0544613d0289}{
+\index{Beam@{Beam}!AOorder@{AOorder}}
+\index{AOorder@{AOorder}!Beam@{Beam}}
+\subsubsection[{AOorder}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Beam::AOorder}}}
+\label{classBeam_a2de78a8bf91493e5c0cf0544613d0289}
+
+
+Definition at line 48 of file Beam.h.
+
+\hypertarget{classBeam_abb5a7f1e41ea63a0e693f6e29e11e16c}{
+\index{Beam@{Beam}!array@{array}}
+\index{array@{array}!Beam@{Beam}}
+\subsubsection[{array}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Array}$\ast$ {\bf Beam::array}}}
+\label{classBeam_abb5a7f1e41ea63a0e693f6e29e11e16c}
+
+
+Definition at line 33 of file Beam.h.
+
+\hypertarget{classBeam_affa1c91c24f15b6acbaae1682b19d9a7}{
+\index{Beam@{Beam}!delay@{delay}}
+\index{delay@{delay}!Beam@{Beam}}
+\subsubsection[{delay}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Beam::delay}}}
+\label{classBeam_affa1c91c24f15b6acbaae1682b19d9a7}
+
+
+Definition at line 28 of file Beam.h.
+
+\hypertarget{classBeam_abb779dd249b5a26502a49106aa8023a4}{
+\index{Beam@{Beam}!delayline@{delayline}}
+\index{delayline@{delayline}!Beam@{Beam}}
+\subsubsection[{delayline}]{\setlength{\rightskip}{0pt plus 5cm}{\bf DelayLine}$\ast$ {\bf Beam::delayline}}}
+\label{classBeam_abb779dd249b5a26502a49106aa8023a4}
+
+
+Definition at line 37 of file Beam.h.
+
+\hypertarget{classBeam_a5b8823412936aee5a88bc657e0ed546c}{
+\index{Beam@{Beam}!diameter@{diameter}}
+\index{diameter@{diameter}!Beam@{Beam}}
+\subsubsection[{diameter}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Beam::diameter}}}
+\label{classBeam_a5b8823412936aee5a88bc657e0ed546c}
+
+
+Definition at line 16 of file Beam.h.
+
+\hypertarget{classBeam_a1c813015bb33a0565e1ee3ea0d570e11}{
+\index{Beam@{Beam}!gridsize@{gridsize}}
+\index{gridsize@{gridsize}!Beam@{Beam}}
+\subsubsection[{gridsize}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Beam::gridsize}}}
+\label{classBeam_a1c813015bb33a0565e1ee3ea0d570e11}
+
+
+Definition at line 18 of file Beam.h.
+
+\hypertarget{classBeam_af1dc67711c28c260a813088d4afb14e9}{
+\index{Beam@{Beam}!mask@{mask}}
+\index{mask@{mask}!Beam@{Beam}}
+\subsubsection[{mask}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ {\bf Beam::mask}}}
+\label{classBeam_af1dc67711c28c260a813088d4afb14e9}
+
+
+Definition at line 31 of file Beam.h.
+
+\hypertarget{classBeam_a1ef612af4b85d2e5866d40eec618efcb}{
+\index{Beam@{Beam}!modulator@{modulator}}
+\index{modulator@{modulator}!Beam@{Beam}}
+\subsubsection[{modulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modulator}$\ast$ {\bf Beam::modulator}}}
+\label{classBeam_a1ef612af4b85d2e5866d40eec618efcb}
+
+
+Definition at line 39 of file Beam.h.
+
+\hypertarget{classBeam_aa2ed8956a6aca9da62da12bcb8cebb7b}{
+\index{Beam@{Beam}!phase@{phase}}
+\index{phase@{phase}!Beam@{Beam}}
+\subsubsection[{phase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ {\bf Beam::phase}}}
+\label{classBeam_aa2ed8956a6aca9da62da12bcb8cebb7b}
+
+
+Definition at line 24 of file Beam.h.
+
+\hypertarget{classBeam_a342991126e87a3a2aa89d04ff7b2fd0a}{
+\index{Beam@{Beam}!piston@{piston}}
+\index{piston@{piston}!Beam@{Beam}}
+\subsubsection[{piston}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Beam::piston}}}
+\label{classBeam_a342991126e87a3a2aa89d04ff7b2fd0a}
+
+
+Definition at line 26 of file Beam.h.
+
+\hypertarget{classBeam_ac1e58da3860afeb2d8d6e1daf7022cca}{
+\index{Beam@{Beam}!previous\_\-time@{previous\_\-time}}
+\index{previous\_\-time@{previous\_\-time}!Beam@{Beam}}
+\subsubsection[{previous\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Beam::previous\_\-time}}}
+\label{classBeam_ac1e58da3860afeb2d8d6e1daf7022cca}
+
+
+Definition at line 20 of file Beam.h.
+
+\hypertarget{classBeam_a3b248c45a5630e6e0761b1f2d16350fc}{
+\index{Beam@{Beam}!pupil@{pupil}}
+\index{pupil@{pupil}!Beam@{Beam}}
+\subsubsection[{pupil}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ {\bf Complex} $>$ {\bf Beam::pupil}}}
+\label{classBeam_a3b248c45a5630e6e0761b1f2d16350fc}
+
+
+Definition at line 30 of file Beam.h.
+
+\hypertarget{classBeam_a68bc1a7abd201297114cd53af925f83f}{
+\index{Beam@{Beam}!spatialfilter@{spatialfilter}}
+\index{spatialfilter@{spatialfilter}!Beam@{Beam}}
+\subsubsection[{spatialfilter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SpatialFilter}$\ast$ {\bf Beam::spatialfilter}}}
+\label{classBeam_a68bc1a7abd201297114cd53af925f83f}
+
+
+Definition at line 41 of file Beam.h.
+
+\hypertarget{classBeam_ae589b08d6d0d638c18a15880efc521d2}{
+\index{Beam@{Beam}!station\_\-index@{station\_\-index}}
+\index{station\_\-index@{station\_\-index}!Beam@{Beam}}
+\subsubsection[{station\_\-index}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Beam::station\_\-index}}}
+\label{classBeam_ae589b08d6d0d638c18a15880efc521d2}
+
+
+Definition at line 35 of file Beam.h.
+
+\hypertarget{classBeam_ad41f9e0d00cfe3ed0e5a22a2f3e7c399}{
+\index{Beam@{Beam}!zernlib@{zernlib}}
+\index{zernlib@{zernlib}!Beam@{Beam}}
+\subsubsection[{zernlib}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ZernikeLib}$\ast$ {\bf Beam::zernlib}}}
+\label{classBeam_ad41f9e0d00cfe3ed0e5a22a2f3e7c399}
+
+
+Definition at line 50 of file Beam.h.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+common/\hyperlink{Beam_8h}{Beam.h}\item 
+common/\hyperlink{Beam_8cpp}{Beam.cpp}\end{DoxyCompactItemize}

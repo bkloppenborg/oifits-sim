@@ -1,0 +1,80 @@
+\hypertarget{noisemodel_8cpp}{
+\section{vis\_\-sim/noisemodel.cpp File Reference}
+\label{noisemodel_8cpp}\index{vis\_\-sim/noisemodel.cpp@{vis\_\-sim/noisemodel.cpp}}
+}
+{\ttfamily \#include \char`\"{}noisemodel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}matrix.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}simulator.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}instrument.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{noisemodel_8cpp_a98653f1e69081d2a1b6d6583217b20f1}{Strehl} (double wl, double \hyperlink{variables_8h_a420d762a4c9a7e7cfcc408b887db811a}{r0}, double D)
+\item 
+double \hyperlink{noisemodel_8cpp_a96b38ac87e9bf9fd1b7592d30ae92073}{TimeInt} (double median\_\-wl, double \hyperlink{variables_8h_a420d762a4c9a7e7cfcc408b887db811a}{r0}, double v)
+\item 
+double \hyperlink{noisemodel_8cpp_a6477a34f9615a47a92ed93eff65836d6}{PhCount} (\hyperlink{classSource}{Source} \&\hyperlink{structtarget}{target}, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, double median\_\-wl, double wl, double Dlambda)
+\item 
+double \hyperlink{noisemodel_8cpp_ad8a09c9afa459b81e6fd28424f8ca8dd}{VarPow1} (double Pow, \hyperlink{classSpectralMode}{SpectralMode} \&spec, int specIndex, \hyperlink{classSource}{Source} \&\hyperlink{structtarget}{target}, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst)
+\item 
+double \hyperlink{noisemodel_8cpp_aa21f91c926e5f561f80a1e3bca598b91}{VarUnbiasedPow1} (double Pow, \hyperlink{classSpectralMode}{SpectralMode} \&spec, int specIndex, \hyperlink{classSource}{Source} \&\hyperlink{structtarget}{target}, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst)
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{noisemodel_8cpp_a9dd4cf7ca75e44a06df5ba71d5997a94}{VarCloPhase} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&\hyperlink{structtarget}{target}, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Nbs, int Nha)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{noisemodel_8cpp_a6477a34f9615a47a92ed93eff65836d6}{
+\index{noisemodel.cpp@{noisemodel.cpp}!PhCount@{PhCount}}
+\index{PhCount@{PhCount}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{PhCount}]{\setlength{\rightskip}{0pt plus 5cm}double PhCount ({\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  double {\em median\_\-wl}, \/  double {\em wl}, \/  double {\em Dlambda})}}
+\label{noisemodel_8cpp_a6477a34f9615a47a92ed93eff65836d6}
+
+
+Definition at line 51 of file noisemodel.cpp.
+
+\hypertarget{noisemodel_8cpp_a98653f1e69081d2a1b6d6583217b20f1}{
+\index{noisemodel.cpp@{noisemodel.cpp}!Strehl@{Strehl}}
+\index{Strehl@{Strehl}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{Strehl}]{\setlength{\rightskip}{0pt plus 5cm}double Strehl (double {\em wl}, \/  double {\em r0}, \/  double {\em D})}}
+\label{noisemodel_8cpp_a98653f1e69081d2a1b6d6583217b20f1}
+
+
+Definition at line 15 of file noisemodel.cpp.
+
+\hypertarget{noisemodel_8cpp_a96b38ac87e9bf9fd1b7592d30ae92073}{
+\index{noisemodel.cpp@{noisemodel.cpp}!TimeInt@{TimeInt}}
+\index{TimeInt@{TimeInt}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{TimeInt}]{\setlength{\rightskip}{0pt plus 5cm}double TimeInt (double {\em median\_\-wl}, \/  double {\em r0}, \/  double {\em v})}}
+\label{noisemodel_8cpp_a96b38ac87e9bf9fd1b7592d30ae92073}
+
+
+Definition at line 33 of file noisemodel.cpp.
+
+\hypertarget{noisemodel_8cpp_a9dd4cf7ca75e44a06df5ba71d5997a94}{
+\index{noisemodel.cpp@{noisemodel.cpp}!VarCloPhase@{VarCloPhase}}
+\index{VarCloPhase@{VarCloPhase}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{VarCloPhase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ VarCloPhase ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Nbs}, \/  int {\em Nha})}}
+\label{noisemodel_8cpp_a9dd4cf7ca75e44a06df5ba71d5997a94}
+
+
+Definition at line 159 of file noisemodel.cpp.
+
+\hypertarget{noisemodel_8cpp_ad8a09c9afa459b81e6fd28424f8ca8dd}{
+\index{noisemodel.cpp@{noisemodel.cpp}!VarPow1@{VarPow1}}
+\index{VarPow1@{VarPow1}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{VarPow1}]{\setlength{\rightskip}{0pt plus 5cm}double VarPow1 (double {\em Pow}, \/  {\bf SpectralMode} \& {\em spec}, \/  int {\em specIndex}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst})}}
+\label{noisemodel_8cpp_ad8a09c9afa459b81e6fd28424f8ca8dd}
+
+
+Definition at line 105 of file noisemodel.cpp.
+
+\hypertarget{noisemodel_8cpp_aa21f91c926e5f561f80a1e3bca598b91}{
+\index{noisemodel.cpp@{noisemodel.cpp}!VarUnbiasedPow1@{VarUnbiasedPow1}}
+\index{VarUnbiasedPow1@{VarUnbiasedPow1}!noisemodel.cpp@{noisemodel.cpp}}
+\subsubsection[{VarUnbiasedPow1}]{\setlength{\rightskip}{0pt plus 5cm}double VarUnbiasedPow1 (double {\em Pow}, \/  {\bf SpectralMode} \& {\em spec}, \/  int {\em specIndex}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst})}}
+\label{noisemodel_8cpp_aa21f91c926e5f561f80a1e3bca598b91}
+
+
+Definition at line 130 of file noisemodel.cpp.
+

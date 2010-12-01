@@ -1,0 +1,270 @@
+\hypertarget{classArray}{
+\section{Array Class Reference}
+\label{classArray}\index{Array@{Array}}
+}
+
+
+A class to represent the array (i.e. the interferometer).  
+
+
+
+
+{\ttfamily \#include $<$Array.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classArray_ab28022bcc92a1ae0f5676f0dcd22eb1b}{Array} (const char $\ast$Array\_\-file)
+\item 
+\hyperlink{classArray_af9101fdd8b76720362cc5aa867580c24}{Array} (double \hyperlink{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}{latitude}, \hyperlink{classRow}{Row}$<$ double $>$ \&\hyperlink{classArray_a378cb85324a4809cd3028668991044ae}{x}, \hyperlink{classRow}{Row}$<$ double $>$ \&\hyperlink{classArray_a2e59fb2a839ee2f10d5264e9624d9239}{y}, \hyperlink{classRow}{Row}$<$ double $>$ \&\hyperlink{classArray_a4aa89a5ce6246c1b79c2c5c9c7bdc398}{diameter}, \hyperlink{classRow}{Row}$<$ double $>$\hyperlink{classArray_ace0fa383a1da1684b91e268beaf41ece}{gain}, \hyperlink{classRow}{Row}$<$ \hyperlink{classAtmosphereLayer}{AtmosphereLayer} $\ast$ $>$\hyperlink{classArray_a8b777c1aa4eac3ce7687da64da7cc958}{layer})
+\item 
+\hyperlink{classArray_a63701bee30e516b38e6acb3449f6ce7f}{Array} (std::string \hyperlink{classArray_a12eb22fefdce3d4ae71d0340717c293a}{arrayname}, double \hyperlink{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}{latitude}, double \hyperlink{classArray_a7b0af12d6151bd9bb25e91145b79fb74}{longitude}, double \hyperlink{classArray_a07662f84d93f59a30c9312b6b546ee39}{altitude}, int \hyperlink{classArray_a972b05d3cedaf0c1997548c9dc573cd3}{nstations}, \hyperlink{classStation}{Station} $\ast$station,...)
+\item 
+void \hyperlink{classArray_a3fee2819664f2165c8e92e74bb7067fd}{Update} (double current\_\-time)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::string \hyperlink{classArray_a12eb22fefdce3d4ae71d0340717c293a}{arrayname}
+\begin{DoxyCompactList}\small\item\em The name of the array. \item\end{DoxyCompactList}\item 
+int \hyperlink{classArray_a972b05d3cedaf0c1997548c9dc573cd3}{nstations}
+\begin{DoxyCompactList}\small\item\em The number of stations in the array. \item\end{DoxyCompactList}\item 
+std::vector$<$ std::string $>$ \hyperlink{classArray_a3b7da90274d9406db7fa04960594bb11}{staname}
+\begin{DoxyCompactList}\small\item\em vector containing the station names \item\end{DoxyCompactList}\item 
+double \hyperlink{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}{latitude}
+\begin{DoxyCompactList}\small\item\em latitude of the array \item\end{DoxyCompactList}\item 
+double \hyperlink{classArray_a7b0af12d6151bd9bb25e91145b79fb74}{longitude}
+\begin{DoxyCompactList}\small\item\em longitude of the array \item\end{DoxyCompactList}\item 
+double \hyperlink{classArray_a07662f84d93f59a30c9312b6b546ee39}{altitude}
+\begin{DoxyCompactList}\small\item\em altitude of the array \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classArray_a378cb85324a4809cd3028668991044ae}{x}
+\begin{DoxyCompactList}\small\item\em Onfloor station coordinates in meters. \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classArray_a2e59fb2a839ee2f10d5264e9624d9239}{y}
+\begin{DoxyCompactList}\small\item\em Onfloor station coordinates in meters. \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classArray_a88520c63d208d8c2531d06ee26d8dddf}{z}
+\begin{DoxyCompactList}\small\item\em Above/below floor station coordinates in meters. \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classArray_a4aa89a5ce6246c1b79c2c5c9c7bdc398}{diameter}
+\begin{DoxyCompactList}\small\item\em Effective diameter of the primary mirror of the stations. \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classArray_ace0fa383a1da1684b91e268beaf41ece}{gain}
+\begin{DoxyCompactList}\small\item\em \hyperlink{classStation}{Station} Gains. \item\end{DoxyCompactList}\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{classAtmosphereLayer}{AtmosphereLayer} $\ast$ $>$ \hyperlink{classArray_a8b777c1aa4eac3ce7687da64da7cc958}{layer}
+\begin{DoxyCompactList}\small\item\em Atmosphere layers. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class to represent the array (i.e. the interferometer). 
+
+Definition at line 13 of file Array.h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classArray_ab28022bcc92a1ae0f5676f0dcd22eb1b}{
+\index{Array@{Array}!Array@{Array}}
+\index{Array@{Array}!Array@{Array}}
+\subsubsection[{Array}]{\setlength{\rightskip}{0pt plus 5cm}Array::Array (const char $\ast$ {\em Array\_\-file})}}
+\label{classArray_ab28022bcc92a1ae0f5676f0dcd22eb1b}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000001}{Todo}]It would be wise to parse these values from the file in key-\/$>$value pairs \end{Desc}
+
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em runtime\_\-error}]Error opening array file The array file could not be located. It is likely that the user just specified an invalid path. \end{DoxyExceptions}
+
+
+
+
+Definition at line 58 of file Array.cpp.
+
+\hypertarget{classArray_af9101fdd8b76720362cc5aa867580c24}{
+\index{Array@{Array}!Array@{Array}}
+\index{Array@{Array}!Array@{Array}}
+\subsubsection[{Array}]{\setlength{\rightskip}{0pt plus 5cm}Array::Array (double {\em latitude}, \/  {\bf Row}$<$ double $>$ \& {\em x}, \/  {\bf Row}$<$ double $>$ \& {\em y}, \/  {\bf Row}$<$ double $>$ \& {\em diameter}, \/  {\bf Row}$<$ double $>$ {\em gain}, \/  {\bf Row}$<$ {\bf AtmosphereLayer} $\ast$ $>$ {\em layer})}}
+\label{classArray_af9101fdd8b76720362cc5aa867580c24}
+\begin{Desc}
+\item[\hyperlink{deprecated__deprecated000001}{Deprecated}]An old constructor for the array that is not used anymore \end{Desc}
+\hypertarget{classArray_a63701bee30e516b38e6acb3449f6ce7f}{
+\index{Array@{Array}!Array@{Array}}
+\index{Array@{Array}!Array@{Array}}
+\subsubsection[{Array}]{\setlength{\rightskip}{0pt plus 5cm}Array::Array (std::string {\em arrayname}, \/  double {\em latitude}, \/  double {\em longitude}, \/  double {\em altitude}, \/  int {\em nstations}, \/  {\bf Station} $\ast$ {\em station}, \/   {\em ...})}}
+\label{classArray_a63701bee30e516b38e6acb3449f6ce7f}
+
+
+Definition at line 19 of file Array.cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classArray_a3fee2819664f2165c8e92e74bb7067fd}{
+\index{Array@{Array}!Update@{Update}}
+\index{Update@{Update}!Array@{Array}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}void Array::Update (double {\em current\_\-time})}}
+\label{classArray_a3fee2819664f2165c8e92e74bb7067fd}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classArray_a07662f84d93f59a30c9312b6b546ee39}{
+\index{Array@{Array}!altitude@{altitude}}
+\index{altitude@{altitude}!Array@{Array}}
+\subsubsection[{altitude}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Array::altitude}}}
+\label{classArray_a07662f84d93f59a30c9312b6b546ee39}
+
+
+altitude of the array 
+
+
+
+Definition at line 31 of file Array.h.
+
+\hypertarget{classArray_a12eb22fefdce3d4ae71d0340717c293a}{
+\index{Array@{Array}!arrayname@{arrayname}}
+\index{arrayname@{arrayname}!Array@{Array}}
+\subsubsection[{arrayname}]{\setlength{\rightskip}{0pt plus 5cm}std::string {\bf Array::arrayname}}}
+\label{classArray_a12eb22fefdce3d4ae71d0340717c293a}
+
+
+The name of the array. 
+
+
+
+Definition at line 21 of file Array.h.
+
+\hypertarget{classArray_a4aa89a5ce6246c1b79c2c5c9c7bdc398}{
+\index{Array@{Array}!diameter@{diameter}}
+\index{diameter@{diameter}!Array@{Array}}
+\subsubsection[{diameter}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Array::diameter}}}
+\label{classArray_a4aa89a5ce6246c1b79c2c5c9c7bdc398}
+
+
+Effective diameter of the primary mirror of the stations. 
+
+
+
+Definition at line 40 of file Array.h.
+
+\hypertarget{classArray_ace0fa383a1da1684b91e268beaf41ece}{
+\index{Array@{Array}!gain@{gain}}
+\index{gain@{gain}!Array@{Array}}
+\subsubsection[{gain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Array::gain}}}
+\label{classArray_ace0fa383a1da1684b91e268beaf41ece}
+
+
+\hyperlink{classStation}{Station} Gains. 
+
+Set to 1.0 by default, 0.0 to shut down a station. 
+
+Definition at line 45 of file Array.h.
+
+\hypertarget{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}{
+\index{Array@{Array}!latitude@{latitude}}
+\index{latitude@{latitude}!Array@{Array}}
+\subsubsection[{latitude}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Array::latitude}}}
+\label{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}
+
+
+latitude of the array 
+
+
+
+Definition at line 27 of file Array.h.
+
+\hypertarget{classArray_a8b777c1aa4eac3ce7687da64da7cc958}{
+\index{Array@{Array}!layer@{layer}}
+\index{layer@{layer}!Array@{Array}}
+\subsubsection[{layer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf AtmosphereLayer} $\ast$ $>$ {\bf Array::layer}}}
+\label{classArray_a8b777c1aa4eac3ce7687da64da7cc958}
+
+
+Atmosphere layers. 
+
+
+
+Definition at line 47 of file Array.h.
+
+\hypertarget{classArray_a7b0af12d6151bd9bb25e91145b79fb74}{
+\index{Array@{Array}!longitude@{longitude}}
+\index{longitude@{longitude}!Array@{Array}}
+\subsubsection[{longitude}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Array::longitude}}}
+\label{classArray_a7b0af12d6151bd9bb25e91145b79fb74}
+
+
+longitude of the array 
+
+
+
+Definition at line 29 of file Array.h.
+
+\hypertarget{classArray_a972b05d3cedaf0c1997548c9dc573cd3}{
+\index{Array@{Array}!nstations@{nstations}}
+\index{nstations@{nstations}!Array@{Array}}
+\subsubsection[{nstations}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Array::nstations}}}
+\label{classArray_a972b05d3cedaf0c1997548c9dc573cd3}
+
+
+The number of stations in the array. 
+
+
+
+Definition at line 23 of file Array.h.
+
+\hypertarget{classArray_a3b7da90274d9406db7fa04960594bb11}{
+\index{Array@{Array}!staname@{staname}}
+\index{staname@{staname}!Array@{Array}}
+\subsubsection[{staname}]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ std::string $>$ {\bf Array::staname}}}
+\label{classArray_a3b7da90274d9406db7fa04960594bb11}
+
+
+vector containing the station names 
+
+
+
+Definition at line 25 of file Array.h.
+
+\hypertarget{classArray_a378cb85324a4809cd3028668991044ae}{
+\index{Array@{Array}!x@{x}}
+\index{x@{x}!Array@{Array}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Array::x}}}
+\label{classArray_a378cb85324a4809cd3028668991044ae}
+
+
+Onfloor station coordinates in meters. 
+
+
+
+Definition at line 33 of file Array.h.
+
+\hypertarget{classArray_a2e59fb2a839ee2f10d5264e9624d9239}{
+\index{Array@{Array}!y@{y}}
+\index{y@{y}!Array@{Array}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Array::y}}}
+\label{classArray_a2e59fb2a839ee2f10d5264e9624d9239}
+
+
+Onfloor station coordinates in meters. 
+
+
+
+Definition at line 35 of file Array.h.
+
+\hypertarget{classArray_a88520c63d208d8c2531d06ee26d8dddf}{
+\index{Array@{Array}!z@{z}}
+\index{z@{z}!Array@{Array}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Array::z}}}
+\label{classArray_a88520c63d208d8c2531d06ee26d8dddf}
+
+
+Above/below floor station coordinates in meters. 
+
+
+
+Definition at line 37 of file Array.h.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+common/\hyperlink{Array_8h}{Array.h}\item 
+common/\hyperlink{Array_8cpp}{Array.cpp}\end{DoxyCompactItemize}

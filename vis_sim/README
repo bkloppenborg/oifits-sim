@@ -1,0 +1,2 @@
+// AS 2010-06-18
+Version 8.1 of the MROI simulator package assumes that the name of the array is given in the respective text file, on the first line. As well information about the longitude and altitude is given. This only works when the GUI is employed. Otherwise refer to version 8.0. Not copatible with version 8.0 in terms of configuration files.

@@ -1,0 +1,104 @@
+\hypertarget{exchange_8h}{
+\section{vis\_\-sim/exchange.h File Reference}
+\label{exchange_8h}\index{vis\_\-sim/exchange.h@{vis\_\-sim/exchange.h}}
+}
+{\ttfamily \#include \char`\"{}fitsio.h\char`\"{}}\par
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structelement}{element}
+\item 
+struct \hyperlink{structoi__array}{oi\_\-array}
+\item 
+struct \hyperlink{structtarget}{target}
+\item 
+struct \hyperlink{structoi__target}{oi\_\-target}
+\item 
+struct \hyperlink{structoi__wavelength}{oi\_\-wavelength}
+\item 
+struct \hyperlink{structoi__vis__record}{oi\_\-vis\_\-record}
+\item 
+struct \hyperlink{structoi__vis}{oi\_\-vis}
+\item 
+struct \hyperlink{structoi__vis2__record}{oi\_\-vis2\_\-record}
+\item 
+struct \hyperlink{structoi__vis2}{oi\_\-vis2}
+\item 
+struct \hyperlink{structoi__t3__record}{oi\_\-t3\_\-record}
+\item 
+struct \hyperlink{structoi__t3}{oi\_\-t3}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef char \hyperlink{group__oitable_gaf492d2bddcb2befacb3aa03dcdf9aafd}{BOOL}
+\item 
+typedef double \hyperlink{group__oitable_gaad99e8bad1a589e9f406f33403d42ca7}{DATA}
+\item 
+typedef int \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga971d883c751f790058b7beaf901bb40f}{write\_\-oi\_\-array} (fitsfile $\ast$fptr, \hyperlink{structoi__array}{oi\_\-array} array, int extver, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga57a8c8d6c20938a330d4830ac014d19e}{write\_\-oi\_\-target} (fitsfile $\ast$fptr, \hyperlink{structoi__target}{oi\_\-target} targets, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga1e71eee95f16623bb031916e4ec7da23}{write\_\-oi\_\-wavelength} (fitsfile $\ast$fptr, \hyperlink{structoi__wavelength}{oi\_\-wavelength} wave, int extver, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga06589bd77fa01b43a8e36acf2103de76}{write\_\-oi\_\-vis} (fitsfile $\ast$fptr, \hyperlink{structoi__vis}{oi\_\-vis} vis, int extver, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga5f69a00849108909a3cdd4923cc02028}{write\_\-oi\_\-vis2} (fitsfile $\ast$fptr, \hyperlink{structoi__vis2}{oi\_\-vis2} vis2, int extver, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_gadd1d53e7ff4d0b5b64ffbd2b364ca31a}{write\_\-oi\_\-t3} (fitsfile $\ast$fptr, \hyperlink{structoi__t3}{oi\_\-t3} t3, int extver, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga661f4bdb8557b4a72f4f022db686fd19}{read\_\-oi\_\-target} (fitsfile $\ast$fptr, \hyperlink{structoi__target}{oi\_\-target} $\ast$pTargets, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga5dcb2c1f0b5945c505312bf7d74a0406}{read\_\-oi\_\-array} (fitsfile $\ast$fptr, char $\ast$arrname, \hyperlink{structoi__array}{oi\_\-array} $\ast$pArray, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_gab54477593012c35dd5330f6a4001d3f1}{read\_\-next\_\-oi\_\-array} (fitsfile $\ast$fptr, \hyperlink{structoi__array}{oi\_\-array} $\ast$pArray, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_gabd408e019a9889c75d3791b682ec9a37}{read\_\-oi\_\-wavelength} (fitsfile $\ast$fptr, char $\ast$insname, \hyperlink{structoi__wavelength}{oi\_\-wavelength} $\ast$pWave, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga3dce8694156456cdebb077eaa7a9cce2}{read\_\-next\_\-oi\_\-wavelength} (fitsfile $\ast$fptr, \hyperlink{structoi__wavelength}{oi\_\-wavelength} $\ast$pWave, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_gaaf96668094b9b3c353a700e700f6d13e}{read\_\-next\_\-oi\_\-vis} (fitsfile $\ast$fptr, \hyperlink{structoi__vis}{oi\_\-vis} $\ast$pVis, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga28b44f612e1d227e021ce07279956375}{read\_\-next\_\-oi\_\-vis2} (fitsfile $\ast$fptr, \hyperlink{structoi__vis2}{oi\_\-vis2} $\ast$pVis2, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+\hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} \hyperlink{group__oitable_ga09a99c8cfaefda026cbaafb8ff1cf6da}{read\_\-next\_\-oi\_\-t3} (fitsfile $\ast$fptr, \hyperlink{structoi__t3}{oi\_\-t3} $\ast$pT3, \hyperlink{group__oitable_ga0cb9c7fae5afe4237eb4d5d43318fa18}{STATUS} $\ast$pStatus)
+\item 
+void \hyperlink{group__oitable_gaa4b06f2b9fc01b4fe3115457554d43fa}{free\_\-oi\_\-array} (\hyperlink{structoi__array}{oi\_\-array} $\ast$pArray)
+\item 
+void \hyperlink{group__oitable_gadc9eebf0079ab77f472f2577da42c591}{free\_\-oi\_\-target} (\hyperlink{structoi__target}{oi\_\-target} $\ast$pTargets)
+\item 
+void \hyperlink{group__oitable_gad7c24eb342d88ad5f22178426f69fa56}{free\_\-oi\_\-wavelength} (\hyperlink{structoi__wavelength}{oi\_\-wavelength} $\ast$pWave)
+\item 
+void \hyperlink{group__oitable_ga244851af58b93c4445a3eeddb9f794b7}{free\_\-oi\_\-vis} (\hyperlink{structoi__vis}{oi\_\-vis} $\ast$pVis)
+\item 
+void \hyperlink{group__oitable_ga109b89eb6ed055562f7c207de9d316a3}{free\_\-oi\_\-vis2} (\hyperlink{structoi__vis2}{oi\_\-vis2} $\ast$pVis2)
+\item 
+void \hyperlink{group__oitable_ga4a228cff5256bffc18536c8d657a94bb}{free\_\-oi\_\-t3} (\hyperlink{structoi__t3}{oi\_\-t3} $\ast$pT3)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{group__oitable_gac7d4f8c8c2af780602abafd4e44d59f8}{oi\_\-hush\_\-errors}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data structure definitions and function prototypes for table-\/level operations on OIFITS data.
+
+Copyright (C) 2007 John Young
+
+This file is part of OIFITSlib.
+
+OIFITSlib is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+OIFITSlib is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along with OIFITSlib. If not, see \href{http://www.gnu.org/licenses/}{\tt http://www.gnu.org/licenses/} 
+
+Definition in file \hyperlink{exchange_8h_source}{exchange.h}.
+

@@ -1,0 +1,110 @@
+\hypertarget{vis__sim_2simulator_8cpp}{
+\section{vis\_\-sim/simulator.cpp File Reference}
+\label{vis__sim_2simulator_8cpp}\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+}
+{\ttfamily \#include $<$cstdlib$>$}\par
+{\ttfamily \#include $<$string$>$}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include \char`\"{}exchange.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Array.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Baseline.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Bispectrum.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}HourAngle.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Instrument.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}NoiseModel.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}PowerSpectrum.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}random.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Simulator.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Source.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}SpectralMode.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}UVPoint.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{vis__sim_2simulator_8cpp_a9c99622adbe6cfcb37111a50422826e3}{Vis2Pow} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, int Nwav, int Npow)
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{vis__sim_2simulator_8cpp_ae964626ec80ff322718c79dbbf0e843e}{Vis2Bis} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, int N, int Nwav, int Nbs, int Nha)
+\item 
+\hyperlink{classPowerSpectrum}{PowerSpectrum} \hyperlink{vis__sim_2simulator_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}{GenPower} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Npow, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
+\item 
+\hyperlink{classBispectrum}{Bispectrum} \hyperlink{vis__sim_2simulator_8cpp_a86331f146700f899da51ece6b750b059}{GenBispec} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Nbs, int Nha, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
+\item 
+void \hyperlink{vis__sim_2simulator_8cpp_abc8d1aa870a53f018b7e1e79a7968041}{wgs84\_\-to\_\-geoc} (double lat, double height, double $\ast$GeocLat, double $\ast$GeocRadius)
+\item 
+void \hyperlink{vis__sim_2simulator_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}{write\_\-oifits\_\-file} (float \hyperlink{variables_8h_aa06b5b16f7eefd1a7cf906dbfbd1a7e0}{declination}, string datafile, \hyperlink{classArray}{Array} s, \hyperlink{classSpectralMode}{SpectralMode} spec, \hyperlink{classPowerSpectrum}{PowerSpectrum} Power, int Npow, \hyperlink{classBispectrum}{Bispectrum} $\ast$pBispec, int Nbs, \hyperlink{classRow}{Row}$<$ double $>$time)
+\item 
+void \hyperlink{vis__sim_2simulator_8cpp_a610c2160fd98956573bf947a8a97ec56}{generate\_\-oifits} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classHourAngle}{HourAngle} \&ha, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, string oifits\_\-filename)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{vis__sim_2simulator_8cpp_a86331f146700f899da51ece6b750b059}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!GenBispec@{GenBispec}}
+\index{GenBispec@{GenBispec}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{GenBispec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bispectrum} GenBispec ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Nbs}, \/  int {\em Nha}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
+\label{vis__sim_2simulator_8cpp_a86331f146700f899da51ece6b750b059}
+
+
+Definition at line 159 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_a610c2160fd98956573bf947a8a97ec56}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!generate\_\-oifits@{generate\_\-oifits}}
+\index{generate\_\-oifits@{generate\_\-oifits}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{generate\_\-oifits}]{\setlength{\rightskip}{0pt plus 5cm}void generate\_\-oifits ({\bf SpectralMode} \& {\em spec}, \/  {\bf HourAngle} \& {\em ha}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  string {\em oifits\_\-filename})}}
+\label{vis__sim_2simulator_8cpp_a610c2160fd98956573bf947a8a97ec56}
+
+
+Definition at line 564 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!GenPower@{GenPower}}
+\index{GenPower@{GenPower}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{GenPower}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PowerSpectrum} GenPower ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Npow}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
+\label{vis__sim_2simulator_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}
+
+
+Definition at line 106 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_ae964626ec80ff322718c79dbbf0e843e}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!Vis2Bis@{Vis2Bis}}
+\index{Vis2Bis@{Vis2Bis}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{Vis2Bis}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ {\bf Complex} $>$ Vis2Bis ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  int {\em N}, \/  int {\em Nwav}, \/  int {\em Nbs}, \/  int {\em Nha})}}
+\label{vis__sim_2simulator_8cpp_ae964626ec80ff322718c79dbbf0e843e}
+
+
+Definition at line 68 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_a9c99622adbe6cfcb37111a50422826e3}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!Vis2Pow@{Vis2Pow}}
+\index{Vis2Pow@{Vis2Pow}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{Vis2Pow}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ Vis2Pow ({\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  int {\em Nwav}, \/  int {\em Npow})}}
+\label{vis__sim_2simulator_8cpp_a9c99622adbe6cfcb37111a50422826e3}
+
+
+Definition at line 49 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_abc8d1aa870a53f018b7e1e79a7968041}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!wgs84\_\-to\_\-geoc@{wgs84\_\-to\_\-geoc}}
+\index{wgs84\_\-to\_\-geoc@{wgs84\_\-to\_\-geoc}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{wgs84\_\-to\_\-geoc}]{\setlength{\rightskip}{0pt plus 5cm}void wgs84\_\-to\_\-geoc (double {\em lat}, \/  double {\em height}, \/  double $\ast$ {\em GeocLat}, \/  double $\ast$ {\em GeocRadius})}}
+\label{vis__sim_2simulator_8cpp_abc8d1aa870a53f018b7e1e79a7968041}
+Convert position on Earth's surface from geodetic to geocentric coordinates.
+
+Uses WGS84 geoid parameters.
+
+
+\begin{DoxyParams}{Parameters}
+\item[{\em lat}]Geodetic latitude /radians. \item[{\em height}]Height above geoid /metres. \item[{\em GeocLat}]Return location for geocentric latitude /radians. \item[{\em GeocRadius}]Return location for geocentric radius /metres. \end{DoxyParams}
+
+
+Definition at line 311 of file simulator.cpp.
+
+\hypertarget{vis__sim_2simulator_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}{
+\index{vis\_\-sim/simulator.cpp@{vis\_\-sim/simulator.cpp}!write\_\-oifits\_\-file@{write\_\-oifits\_\-file}}
+\index{write\_\-oifits\_\-file@{write\_\-oifits\_\-file}!vis_sim/simulator.cpp@{vis\_\-sim/simulator.cpp}}
+\subsubsection[{write\_\-oifits\_\-file}]{\setlength{\rightskip}{0pt plus 5cm}void write\_\-oifits\_\-file (float {\em declination}, \/  string {\em datafile}, \/  {\bf Array} {\em s}, \/  {\bf SpectralMode} {\em spec}, \/  {\bf PowerSpectrum} {\em Power}, \/  int {\em Npow}, \/  {\bf Bispectrum} $\ast$ {\em pBispec}, \/  int {\em Nbs}, \/  {\bf Row}$<$ double $>$ {\em time})}}
+\label{vis__sim_2simulator_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}
+
+
+Definition at line 341 of file simulator.cpp.
+

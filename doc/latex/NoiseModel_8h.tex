@@ -1,0 +1,85 @@
+\hypertarget{NoiseModel_8h}{
+\section{vis\_\-sim/NoiseModel.h File Reference}
+\label{NoiseModel_8h}\index{vis\_\-sim/NoiseModel.h@{vis\_\-sim/NoiseModel.h}}
+}
+{\ttfamily \#include \char`\"{}Matrix.h\char`\"{}}\par
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{NoiseModel_8h_a98653f1e69081d2a1b6d6583217b20f1}{Strehl} (double wl, double r0, double D)
+\item 
+double \hyperlink{NoiseModel_8h_a74a2de485ae317082d77a1eac1d5c6f7}{TimeInt} (double wl, double r0, double v)
+\item 
+double \hyperlink{NoiseModel_8h_a6477a34f9615a47a92ed93eff65836d6}{PhCount} (\hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, double median\_\-wl, double wl, double Dlambda)
+\item 
+double \hyperlink{NoiseModel_8h_ad8a09c9afa459b81e6fd28424f8ca8dd}{VarPow1} (double Pow, \hyperlink{classSpectralMode}{SpectralMode} \&spec, int specIndex, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst)
+\begin{DoxyCompactList}\small\item\em compute the variance of a power spectrum point \item\end{DoxyCompactList}\item 
+double \hyperlink{NoiseModel_8h_aa21f91c926e5f561f80a1e3bca598b91}{VarUnbiasedPow1} (double Pow, \hyperlink{classSpectralMode}{SpectralMode} \&spec, int specIndex, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst)
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{NoiseModel_8h_a9dd4cf7ca75e44a06df5ba71d5997a94}{VarCloPhase} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Nbs, int Nha)
+\begin{DoxyCompactList}\small\item\em : VarCloPhase1() etc. \item\end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{NoiseModel_8h_a6477a34f9615a47a92ed93eff65836d6}{
+\index{NoiseModel.h@{NoiseModel.h}!PhCount@{PhCount}}
+\index{PhCount@{PhCount}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{PhCount}]{\setlength{\rightskip}{0pt plus 5cm}double PhCount ({\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  double {\em median\_\-wl}, \/  double {\em wl}, \/  double {\em Dlambda})}}
+\label{NoiseModel_8h_a6477a34f9615a47a92ed93eff65836d6}
+function that computes the photon count per coherent integration depends on the target, the array, the instrument and the waveband 
+
+Definition at line 56 of file NoiseModel.cpp.
+
+\hypertarget{NoiseModel_8h_a98653f1e69081d2a1b6d6583217b20f1}{
+\index{NoiseModel.h@{NoiseModel.h}!Strehl@{Strehl}}
+\index{Strehl@{Strehl}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{Strehl}]{\setlength{\rightskip}{0pt plus 5cm}double Strehl (double {\em wl}, \/  double {\em r0}, \/  double {\em D})}}
+\label{NoiseModel_8h_a98653f1e69081d2a1b6d6583217b20f1}
+function for setting the correct values of the Strehl ratio according to the wavelenght, the astronomical seeing at 500 nm and the station diameter Assumes 1.4m telescopes and 1 arcsec seeing AS 2010-\/06-\/22 modified the function to match equation given in the error budget spreadsheet 
+
+Definition at line 21 of file NoiseModel.cpp.
+
+\hypertarget{NoiseModel_8h_a74a2de485ae317082d77a1eac1d5c6f7}{
+\index{NoiseModel.h@{NoiseModel.h}!TimeInt@{TimeInt}}
+\index{TimeInt@{TimeInt}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{TimeInt}]{\setlength{\rightskip}{0pt plus 5cm}double TimeInt (double {\em median\_\-wl}, \/  double {\em r0}, \/  double {\em v})}}
+\label{NoiseModel_8h_a74a2de485ae317082d77a1eac1d5c6f7}
+function for setting the correct values of the integration time according to the mean wavelength, the Fried parameter at 500 nm and the seeing wind speed 
+
+Definition at line 39 of file NoiseModel.cpp.
+
+\hypertarget{NoiseModel_8h_a9dd4cf7ca75e44a06df5ba71d5997a94}{
+\index{NoiseModel.h@{NoiseModel.h}!VarCloPhase@{VarCloPhase}}
+\index{VarCloPhase@{VarCloPhase}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{VarCloPhase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ VarCloPhase ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Nbs}, \/  int {\em Nha})}}
+\label{NoiseModel_8h_a9dd4cf7ca75e44a06df5ba71d5997a94}
+
+
+: VarCloPhase1() etc. 
+
+
+
+Definition at line 156 of file NoiseModel.cpp.
+
+\hypertarget{NoiseModel_8h_ad8a09c9afa459b81e6fd28424f8ca8dd}{
+\index{NoiseModel.h@{NoiseModel.h}!VarPow1@{VarPow1}}
+\index{VarPow1@{VarPow1}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{VarPow1}]{\setlength{\rightskip}{0pt plus 5cm}double VarPow1 (double {\em Pow}, \/  {\bf SpectralMode} \& {\em spec}, \/  int {\em specIndex}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst})}}
+\label{NoiseModel_8h_ad8a09c9afa459b81e6fd28424f8ca8dd}
+
+
+compute the variance of a power spectrum point 
+
+
+
+Definition at line 104 of file NoiseModel.cpp.
+
+\hypertarget{NoiseModel_8h_aa21f91c926e5f561f80a1e3bca598b91}{
+\index{NoiseModel.h@{NoiseModel.h}!VarUnbiasedPow1@{VarUnbiasedPow1}}
+\index{VarUnbiasedPow1@{VarUnbiasedPow1}!NoiseModel.h@{NoiseModel.h}}
+\subsubsection[{VarUnbiasedPow1}]{\setlength{\rightskip}{0pt plus 5cm}double VarUnbiasedPow1 (double {\em Pow}, \/  {\bf SpectralMode} \& {\em spec}, \/  int {\em specIndex}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst})}}
+\label{NoiseModel_8h_aa21f91c926e5f561f80a1e3bca598b91}
+compute the variance of a power spectrum point, assuming unbiased estimator 
+
+Definition at line 128 of file NoiseModel.cpp.
+

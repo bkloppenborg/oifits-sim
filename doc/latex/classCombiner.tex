@@ -1,0 +1,168 @@
+\hypertarget{classCombiner}{
+\section{Combiner Class Reference}
+\label{classCombiner}\index{Combiner@{Combiner}}
+}
+
+
+{\ttfamily \#include $<$Combiner.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classCombiner_acb929ab3e336121021ae790108280f8d}{Combiner} (double \hyperlink{classCombiner_acd026e8b726df8c49812ee99a4a2c94b}{delay\_\-offset}, int \hyperlink{classCombiner_a4e7f1498813ae735a155eee97da2a7e5}{Nbeams}, \hyperlink{classBeam}{Beam} $\ast$beam,...)
+\item 
+void \hyperlink{classCombiner_ac2f8f2ab1dba11aa15c29776d78229a5}{Update} (double time, double wavenumber)
+\item 
+virtual \hyperlink{classCombiner_a9df9f0ea0076115ceb11eea79b3d0b55}{$\sim$Combiner} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classCombiner_a4e7f1498813ae735a155eee97da2a7e5}{Nbeams}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classCombiner_a408d595f014d41fd6b31eda9916067bb}{flux}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classCombiner_ad60574dad3bc9de3c4c317ebdcdedaf1}{fringe}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classCombiner_ae0a2d5921b449ebe0c96f5ca9b817ce4}{OPD}
+\item 
+\hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classCombiner_ab5bcedbadbe41f1887953228fd1df77d}{fringephase}
+\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{classBeam}{Beam} $\ast$ $>$ \hyperlink{classCombiner_ae36808805deccd22a33012b67783d7f6}{beamlist}
+\item 
+double \hyperlink{classCombiner_acd026e8b726df8c49812ee99a4a2c94b}{delay\_\-offset}
+\item 
+double \hyperlink{classCombiner_a7e44ac6556a4b96f1f3f52986970df33}{diagnostic\_\-atm}
+\item 
+double \hyperlink{classCombiner_a7e51816d5a254fab875a6d25198fc322}{diagnostic\_\-DL}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 9 of file Combiner.h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classCombiner_acb929ab3e336121021ae790108280f8d}{
+\index{Combiner@{Combiner}!Combiner@{Combiner}}
+\index{Combiner@{Combiner}!Combiner@{Combiner}}
+\subsubsection[{Combiner}]{\setlength{\rightskip}{0pt plus 5cm}Combiner::Combiner (double {\em delay\_\-offset}, \/  int {\em Nbeams}, \/  {\bf Beam} $\ast$ {\em beam}, \/   {\em ...})}}
+\label{classCombiner_acb929ab3e336121021ae790108280f8d}
+
+
+Definition at line 20 of file Combiner.cpp.
+
+\hypertarget{classCombiner_a9df9f0ea0076115ceb11eea79b3d0b55}{
+\index{Combiner@{Combiner}!$\sim$Combiner@{$\sim$Combiner}}
+\index{$\sim$Combiner@{$\sim$Combiner}!Combiner@{Combiner}}
+\subsubsection[{$\sim$Combiner}]{\setlength{\rightskip}{0pt plus 5cm}Combiner::$\sim$Combiner ()\hspace{0.3cm}{\ttfamily  \mbox{[}virtual\mbox{]}}}}
+\label{classCombiner_a9df9f0ea0076115ceb11eea79b3d0b55}
+
+
+Definition at line 77 of file Combiner.cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classCombiner_ac2f8f2ab1dba11aa15c29776d78229a5}{
+\index{Combiner@{Combiner}!Update@{Update}}
+\index{Update@{Update}!Combiner@{Combiner}}
+\subsubsection[{Update}]{\setlength{\rightskip}{0pt plus 5cm}void Combiner::Update (double {\em time}, \/  double {\em wavenumber})}}
+\label{classCombiner_ac2f8f2ab1dba11aa15c29776d78229a5}
+
+
+Definition at line 43 of file Combiner.cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classCombiner_ae36808805deccd22a33012b67783d7f6}{
+\index{Combiner@{Combiner}!beamlist@{beamlist}}
+\index{beamlist@{beamlist}!Combiner@{Combiner}}
+\subsubsection[{beamlist}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf Beam} $\ast$ $>$ {\bf Combiner::beamlist}}}
+\label{classCombiner_ae36808805deccd22a33012b67783d7f6}
+
+
+Definition at line 24 of file Combiner.h.
+
+\hypertarget{classCombiner_acd026e8b726df8c49812ee99a4a2c94b}{
+\index{Combiner@{Combiner}!delay\_\-offset@{delay\_\-offset}}
+\index{delay\_\-offset@{delay\_\-offset}!Combiner@{Combiner}}
+\subsubsection[{delay\_\-offset}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Combiner::delay\_\-offset}}}
+\label{classCombiner_acd026e8b726df8c49812ee99a4a2c94b}
+
+
+Definition at line 25 of file Combiner.h.
+
+\hypertarget{classCombiner_a7e44ac6556a4b96f1f3f52986970df33}{
+\index{Combiner@{Combiner}!diagnostic\_\-atm@{diagnostic\_\-atm}}
+\index{diagnostic\_\-atm@{diagnostic\_\-atm}!Combiner@{Combiner}}
+\subsubsection[{diagnostic\_\-atm}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Combiner::diagnostic\_\-atm}}}
+\label{classCombiner_a7e44ac6556a4b96f1f3f52986970df33}
+
+
+Definition at line 27 of file Combiner.h.
+
+\hypertarget{classCombiner_a7e51816d5a254fab875a6d25198fc322}{
+\index{Combiner@{Combiner}!diagnostic\_\-DL@{diagnostic\_\-DL}}
+\index{diagnostic\_\-DL@{diagnostic\_\-DL}!Combiner@{Combiner}}
+\subsubsection[{diagnostic\_\-DL}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Combiner::diagnostic\_\-DL}}}
+\label{classCombiner_a7e51816d5a254fab875a6d25198fc322}
+
+
+Definition at line 29 of file Combiner.h.
+
+\hypertarget{classCombiner_a408d595f014d41fd6b31eda9916067bb}{
+\index{Combiner@{Combiner}!flux@{flux}}
+\index{flux@{flux}!Combiner@{Combiner}}
+\subsubsection[{flux}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf Combiner::flux}}}
+\label{classCombiner_a408d595f014d41fd6b31eda9916067bb}
+
+
+Definition at line 14 of file Combiner.h.
+
+\hypertarget{classCombiner_ad60574dad3bc9de3c4c317ebdcdedaf1}{
+\index{Combiner@{Combiner}!fringe@{fringe}}
+\index{fringe@{fringe}!Combiner@{Combiner}}
+\subsubsection[{fringe}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ {\bf Complex} $>$ {\bf Combiner::fringe}}}
+\label{classCombiner_ad60574dad3bc9de3c4c317ebdcdedaf1}
+
+
+Definition at line 16 of file Combiner.h.
+
+\hypertarget{classCombiner_ab5bcedbadbe41f1887953228fd1df77d}{
+\index{Combiner@{Combiner}!fringephase@{fringephase}}
+\index{fringephase@{fringephase}!Combiner@{Combiner}}
+\subsubsection[{fringephase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ {\bf Combiner::fringephase}}}
+\label{classCombiner_ab5bcedbadbe41f1887953228fd1df77d}
+
+
+Definition at line 20 of file Combiner.h.
+
+\hypertarget{classCombiner_a4e7f1498813ae735a155eee97da2a7e5}{
+\index{Combiner@{Combiner}!Nbeams@{Nbeams}}
+\index{Nbeams@{Nbeams}!Combiner@{Combiner}}
+\subsubsection[{Nbeams}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf Combiner::Nbeams}}}
+\label{classCombiner_a4e7f1498813ae735a155eee97da2a7e5}
+
+
+Definition at line 12 of file Combiner.h.
+
+\hypertarget{classCombiner_ae0a2d5921b449ebe0c96f5ca9b817ce4}{
+\index{Combiner@{Combiner}!OPD@{OPD}}
+\index{OPD@{OPD}!Combiner@{Combiner}}
+\subsubsection[{OPD}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$ double $>$ {\bf Combiner::OPD}}}
+\label{classCombiner_ae0a2d5921b449ebe0c96f5ca9b817ce4}
+
+
+Definition at line 17 of file Combiner.h.
+
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+common/\hyperlink{Combiner_8h}{Combiner.h}\item 
+common/\hyperlink{Combiner_8cpp}{Combiner.cpp}\end{DoxyCompactItemize}
