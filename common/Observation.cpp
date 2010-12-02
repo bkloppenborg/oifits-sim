@@ -7,52 +7,117 @@
 #include <cstdio>
 
 /// The minimum timespan
-const double DAYINSECONDS = 24 * 60 * 60;
-const double SAMEOBS = 5 * 60 / DAYINSECONDS; // 5 minutes in seconds.
+const double SAMEOBS = 5 / (60 * 24); // 5 minutes in days.
 
-bool SameObservation(Observation & A, Observation & B)
+bool Observation::SameObservation(Observation & A, Observation & B)
 {
-    double aJD = A.GetJD();
-    double bJD = B.GetJD();
+    // Because observations can be specified by either JDs or hour angles, we need to allow for both cases here.
+    if(A.mComputeHA && B.mComputeHA)
+    {
+        // Both use Julain Dates
+        if(fabs(A.mJD - B.mJD) < SAMEOBS))
+            return true;
+    }
+    else if(!A.mComputeHA && !B.mComputeHA)
+    {
+        // Both use hour angles:
+        if(fabs(A.mHA - B.mHA) < SAMEOBS))
+            return true;
+    }
     
-    //printf("time difference: %f", fabs(aJD - bJD));
+    // Uh oh, mixed observation types... this is bad.   
+    throw std::runtime_error("Warning: Mixed Observation Types (JD and Hour Angles) Detected!");
     
-    if(fabs(aJD - bJD) < SAMEOBS)
-        return true;
-        
     return false;
 }
 
 Observation::Observation()
 {
-    this->mMJD = 0;
-    this->mTime = 0;
+    this->mJD = 0;
 }
 
-Observation::Observation(double mjd, double time)
+/// Construct an Observation object from the MJD, time, and included/excluded telescopes.
+Observation::Observation(Array & array, double MJD, double time, string telescopes, string exclude_baselines)
 {
-    this->mMJD = mjd;
-    this->mTime = time;
-}
-
-Observation::Observation(double mjd)
-{
-    this->mMJD = mjd;
-    this->mTime = 0;
-}
-
-double Observation::GetJD()
-{
-    double jd = this->mMJD + 2400000.5; // + this->mTime / DAYINSECONDS;
-    //printf("%f %f %f \n", this->mMJD, this->mTime/DAYINSECONDS, jd);
-    return jd;
-}
-
-double Observation::GetHA(double targ_ra, double targ_dec, double array_lat, double array_long)
-{
-    double jd = this->GetJD();
-    double lst = this->GetLocalSiderealTime(jd, 0, 0, array_long);
+    this->mHA = 0;
+    // Compute the (full) Julian date from the Modified Julian Date (MJD)
+    this->mJD = MJD + time / 24 + 2400000.5;
+    this->mComputeHA = true;
     
+    // Now Make the baselines
+    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);    
+}
+
+// Construct an Observation object from the hour angle, and included/excluded telescopes.
+Observation::Observation(vdouble hour_angle, string telescopes, string exclude_baselines)
+{
+    this->mHA = hour_angle;
+    this->mComputeHA = false;
+    
+    // Now Make the baselines
+    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);
+}
+
+// Finds the baselines specified in the Array object.
+vector<Baseline> Observation::FindBaselines(string telescopes, string exclude_baselines)
+{
+    vector<Baseline> baselines;
+    vector<string> station_names;
+    vector<string> excluded_baselines;
+    string str;
+    string sta1_name;
+    string sta2_name;
+    string bl_name;
+    
+    BLNameHash bl_names;
+    
+    // First extract the names of the telescopes from the CSV string, "telescopes"
+    StringSplit(telescopes, ",", station_names);
+    StripWhitespace(station_names);
+    
+    // Now compute all of the baselines and make a hash table for each baseline value
+    int num_stations = station_names.size();
+    for(int i = 0; i < num_stations; i++)
+    {
+        sta1_name = station_names[i];
+        
+        for(int j = i; j < num_stations; j++)
+        {
+            string sta2_name = station_names[j];
+            bl_name = sta1_name + "-" + sta2_name;
+            
+            bl_names.insert( BLNameHash::value_type(bl_name, bl_name) );
+        }   
+    }
+    
+    // Now parse out the baselines that should be excluded.
+    StringSplit(exclude_baselines, ",", excluded_baselines);
+    StripWhitespace(excluded_baselines);
+    
+    // Remove the excluded baseline names from the hash
+    int num_excluded = excluded_baselines.size()
+    for(int i = 0; i < num_excluded; i++)
+    {
+        bl_names.erase(bl_names[excluded_baselines[i]);
+    }
+    
+    // Now query for all of the remaining baselines and add them to the output "baselines"
+    int num_baselines = bl_names.size();
+    for(int i = 0; i < num_baselines; i++)
+    {
+        baselines.push_back( this->array.GetBaseline(bl_names[i]) );
+    }
+    
+    return baselines;
+}
+
+double Observation::GetHA(double targ_ra, double array_lat, double array_long)
+{
+    // If the hour angle is already specified, just reutrn it directly.
+    if(!this->mComputeHA)
+        return this->mHA;
+    
+    double lst = this->GetLocalSiderealTime(this->mJD, 0, 0, array_long);
     return lst - targ_ra * 24.0/360;
 }
 

@@ -62,4 +62,6 @@ double simplyfringes(double magnitude);
 
 double sinc(double number);
 
+void StringSplit(string str, string delim, vector<string> results);
+
 #endif // #ifndef SIMULATOR_H

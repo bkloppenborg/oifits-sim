@@ -8,15 +8,13 @@ class AtmosphereLayer;
 // interferometer
 class Station
 {
-  public:
-    Station(double coordx, double coordy, double coordz, AtmosphereLayer * atm, double gain, double diameter);
 
   public:
     // AS 2010-06-18
     std::string staname;        // Name of the station
-    double x;                   // Onfloor coordinate in meters
-    double y;                   // Onfloor coordinate in meters
-    double z;                   // Above/below floor coordinate in meters
+    double north;               // Onfloor coordinate in meters
+    double east;                // Onfloor coordinate in meters
+    double up;                  // Above/below floor coordinate in meters
 
     AtmosphereLayer *layer;
 
@@ -27,5 +25,10 @@ class Station
     // Removed JSY 2009-10-05 as it introduces an unwanted dependency on the
     // AtmosphereLayer implementation
     // void Update( double current_time );
+  public:
+    Station(string station_name, double North, double East, double Up, double gain, double diameter);
+    
     virtual ~ Station();
+    
+    string GetName();
 };

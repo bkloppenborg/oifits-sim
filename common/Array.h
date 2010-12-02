@@ -3,58 +3,58 @@
 
 #include <string>
 #include <vector>
+// Include headers for the unordered map.  Note, this may need to be just <unordered_map> if compiled in MSVS.
+#include <tr1/unordered_map>
 
 #include "Matrix.h"
+#include "Baseline.h"
 
 // Forward declarations
 class Station;
-class AtmosphereLayer;
+class Baseline;
+
+typedef std::tr1::unordered_map<std::string, Baseline> BaselineHash;
+
+// A quick struct for the hash_map below.
+struct eqstr
+{
+  bool operator()(const char* s1, const char* s2) const
+  {
+    return strcmp(s1, s2) == 0;
+  }
+};
 
 class Array
 {
-  public:
-    // AS 2010-06-18 
-    // added parameters to the array class (array name, longitude, altitude
-    // and names of the #include <cstdarg>stations)
+    /// \todo Make all datamembers private unless absolutely necessary.
+  private:
+    /// latitude of the array in radians
+    double latitude;
+    /// longitude of the array in radians
+    double longitude;
+    /// altitude of the array in meters
+    double altitude;
     
     /// The name of the array
     std::string arrayname;
-    /// The number of stations in the array.
-    int nstations;
-    /// vector containing the station names
-    std::vector < std::string > staname;
-    /// latitude of the array
-    double latitude;
-    /// longitude of the array
-    double longitude;
-    /// altitude of the array
-    double altitude;
-    /// Onfloor station coordinates in meters
-    Row < double >x;
-    /// Onfloor station coordinates in meters
-    Row < double >y;
-    /// Above/below floor station coordinates in meters
-    Row < double >z;
+    
+    // Vector types to store the stations and baselines for this array.
+    vector<Station> stations;
+    vector<Baseline> baselines;
+    
+  private:
+    BaselineHash bl_hash;
 
-    /// Effective diameter of the primary mirror of the stations.
-    Row < double >diameter;
 
-    /// \brief Station Gains
-    ///
-    /// Set to 1.0 by default, 0.0 to shut down a station.  
-    Row < double >gain;
-    /// Atmosphere layers
-    Row < AtmosphereLayer * >layer;
-    Array(const char *Array_file);
+  public:
+    // Constructor
+    Array(const char * Array_file);
+    Array(std::string arrayname, double latitude, double longitude, double altitude, int nstations, Station * stations);
+    
+  private:
+    void        ComputeBaselines(void);
 
-    /// \deprecated An old constructor for the array that is not used anymore 
-    // 
-    // (AS 2010-06-22)
-    Array(double latitude, Row < double >&x, Row < double >&y, Row < double >&z,
-          Row < double >&diameter, Row < double >gain,
-          Row < AtmosphereLayer * >layer);
-    // 
-    Array(std::string arrayname, double latitude, double longitude, double altitude, int nstations, Station * station, ...);    // 
-    void Update(double current_time);
+  public:
+    Baseline & GetBaseline(string baseline_name);
 };
 

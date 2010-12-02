@@ -15,57 +15,66 @@
 // Now custom includes
 #include "Array.h"
 #include "Station.h"
+#include "Simulator.h"  // Required for constants, like PI.
 
-Array::Array(std::string arrayname, double center_latitude,
-             double center_longitude, double altitude, int nstations,
-             Station * station, ...)
-{                               // create an Array from a number of stations
-    assert(nstations > 1);
-    this->arrayname = arrayname;
-    this->nstations = nstations;
-    this->latitude = center_latitude;
-    this->longitude = center_longitude;
-    this->altitude = altitude;
-    this->x.setsize(nstations);
-    this->y.setsize(nstations);
-    this->z.setsize(nstations);
-    this->diameter.setsize(nstations);
-    this->gain.setsize(nstations);
-    this->layer.setsize(nstations);
-    Station *pstation = NULL;
+/// \todo fix this function to comply with the class definition.
+//Array::Array(std::string arrayname, double center_latitude,
+//             double center_longitude, double altitude, int nstations,
+//             Station * station, ...)
+//{                               // create an Array from a number of stations
+//    assert(nstations > 1);
+//    this->arrayname = arrayname;
+//    this->nstations = nstations;
+//    this->latitude = center_latitude;
+//    this->longitude = center_longitude;
+//    this->altitude = altitude;
+//    this->x.setsize(nstations);
+//    this->y.setsize(nstations);
+//    this->z.setsize(nstations);
+//    this->diameter.setsize(nstations);
+//    this->gain.setsize(nstations);
+//    this->layer.setsize(nstations);
+//    Station *pstation = NULL;
 
-    va_list stationpointer;
+//    va_list stationpointer;
 
-    for (int ii = 0; ii < nstations; ii++)
-    {
-        if (ii == 0)
-        {
-            va_start(stationpointer, station);
-            pstation = station;
-        }
-        else
-        {
-            pstation = va_arg(stationpointer, Station *);
-        }
-        x[ii] = pstation->x;
-        y[ii] = pstation->y;
-        z[ii] = pstation->z;
-        layer[ii] = pstation->layer;
-        diameter[ii] = pstation->diameter;
-        gain[ii] = pstation->gain;
-    }
-    va_end(stationpointer);
-}
+//    for (int ii = 0; ii < nstations; ii++)
+//    {
+//        if (ii == 0)
+//        {
+//            va_start(stationpointer, station);
+//            pstation = station;
+//        }
+//        else
+//        {
+//            pstation = va_arg(stationpointer, Station *);
+//        }
+//        x[ii] = pstation->x;
+//        y[ii] = pstation->y;
+//        z[ii] = pstation->z;
+//        layer[ii] = pstation->layer;
+//        diameter[ii] = pstation->diameter;
+//        gain[ii] = pstation->gain;
+//    }
+//    va_end(stationpointer);
+//}
 
+// Create and initialize an array from data given in a text file.
 Array::Array(const char *Array_file)
 {                               
     /// \todo It would be wise to parse these values from the file in key->value pairs
-// create an Array from data read from txt
-                                // file
     const string comments("\\/#~$&??%");
+    
+    // Local varaibles for creating Station objects.
+    string staname;
+    double North;
+    double East;
+    double Up;
+    double gain;
+    double diameter;
 
-    vector < string > lines;    // stores non-blank, non-comment lines
-
+    // stores non-blank, non-comment lines
+    vector < string > lines;    
     ifstream fil(Array_file);
 
     if (fil.is_open())
@@ -92,12 +101,7 @@ Array::Array(const char *Array_file)
         throw std::runtime_error("Error opening array file");
     }
 
-    nstations = lines.size() - 4;       // NB line count is now correct
-    x.setsize(nstations);
-    y.setsize(nstations);
-    z.setsize(nstations);
-    gain.setsize(nstations);
-    diameter.setsize(nstations);
+    // Before we start parsing the input, allocate the array and baseline vectors:
 
     // read in the name of the telescope array
     if (!isalpha(lines[0][0]))
@@ -117,8 +121,11 @@ Array::Array(const char *Array_file)
     }
     else
     {
-        latitude = atof(lines[1].c_str());
-        cout << "Array latitude: " << latitude << endl;
+        double lat = atof(lines[1].c_str());
+        cout << "Array latitude (deg): " << lat << endl;
+        
+        // Convert to radians
+        this->latitude = lat * PI / 180;
     }
 
     // read in the longitude of the telescope array
@@ -128,8 +135,10 @@ Array::Array(const char *Array_file)
     }
     else
     {
-        longitude = atof(lines[2].c_str());
-        cout << "Array longitude: " << longitude << endl;
+        double lon = atof(lines[2].c_str());
+        cout << "Array longitude (deg): " << longitude << endl;
+        
+        this->longitude = lon * PI / 180;
     }
 
     // read in the altitude of the telescope array
@@ -140,10 +149,10 @@ Array::Array(const char *Array_file)
     else
     {
         altitude = atof(lines[3].c_str());
-        cout << "Array altitude: " << altitude << endl;
+        cout << "Array altitude (m): " << altitude << endl;
     }
 
-    for (int i = 0; i < nstations; i++)
+    for (int i = 0; i < lines.size(); i++)
     {
 
         istringstream lineStream(lines[i + 4]);
@@ -157,12 +166,51 @@ Array::Array(const char *Array_file)
             tokens.push_back(item);
         }
 
-        staname.push_back(tokens[0]);
-        x[i] = atof(tokens[1].c_str());
-        y[i] = atof(tokens[2].c_str());
-        z[i] = atof(tokens[3].c_str());
-        gain[i] = atof(tokens[4].c_str());
-        diameter[i] = atof(tokens[5].c_str());
+        staname = tokens[0];
+        North = atof(tokens[1].c_str());
+        East = atof(tokens[2].c_str());
+        Up = atof(tokens[3].c_str());
+        gain = atof(tokens[4].c_str());
+        diameter = atof(tokens[5].c_str());
+        
+        // Push this station on to the list of stations for this array.
+        this->stations.push_back(Station(staname, North, East, Up, gain, diameter));
     }
+    
+    // Now compute all possible baselines from these stations.
+    this->ComputeBaselines();
+}
 
+void Array::ComputeBaselines(void)
+{
+    int num_stations = this->stations.size();
+    string sta1_name;
+    string sta2_name;
+    string bl_name;
+    
+    // Now compute all of the baselines and make a hash table for each baseline value
+    for(int i = 0; i < num_stations; i++)
+    {
+        sta1_name = this->stations[i].GetName();
+        
+        for(int j = i; j < num_stations; j++)
+        {
+            sta2_name = this->stations[j].GetName();
+            
+            // Create a name for the baseline in the form STATION1-STATION2
+            bl_name = sta1_name + "-" + sta2_name;
+            
+            // Create a new baseline, append it to the list of baselines
+            this->baselines.push_back(Baseline(this->latitude, this->stations[i], this->stations[j]));
+            
+            // Create a new hash entry for this baseline.  We use this to look things up later.
+            this->bl_hash.insert( BaselineHash::value_type(bl_name, this->baselines.back()) );
+        }
+    }
+}
+
+// Returns a reference to a baseline object.
+Baseline & Array::GetBaseline(string baseline_name)
+{
+    return this->bl_hash[baseline_name.c_str()];
 }
