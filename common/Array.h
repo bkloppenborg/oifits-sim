@@ -55,6 +55,10 @@ class Array
     void        ComputeBaselines(void);
 
   public:
-    Baseline & GetBaseline(string baseline_name);
+    Baseline &  GetBaseline(string baseline_name);
+    Station &   GetStation(int station_index);
+    double      GetLatitude(void);
+    double      GetLongitude(void);
+    double      GetAltitude(void);
 };
 

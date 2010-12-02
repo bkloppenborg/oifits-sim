@@ -214,3 +214,24 @@ Baseline & Array::GetBaseline(string baseline_name)
 {
     return this->bl_hash[baseline_name.c_str()];
 }
+
+Station & Array::GetStation(int station_index)
+{
+    return this->stations[station_index];
+}
+
+double  Array::GetLatitude(void)
+{
+    return this->latitude;
+}
+
+double  Array::GetLongitude(void)
+{
+    return this->longitude;
+}
+
+double  Array::GetAltitude(void)
+{
+    return this->altitude;
+}
+

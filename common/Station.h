@@ -16,15 +16,11 @@ class Station
     double east;                // Onfloor coordinate in meters
     double up;                  // Above/below floor coordinate in meters
 
-    AtmosphereLayer *layer;
+    AtmosphereLayer * layer;
 
     double diameter;            // effective diameter of the station
-    double gain;                // telescope gain (=1.0 by default, 0.0 to
-    // shut down a station)
+    double gain;                // telescope gain (=1.0 by default, 0.0 to shut down a station)
 
-    // Removed JSY 2009-10-05 as it introduces an unwanted dependency on the
-    // AtmosphereLayer implementation
-    // void Update( double current_time );
   public:
     Station(string station_name, double North, double East, double Up, double gain, double diameter);
     

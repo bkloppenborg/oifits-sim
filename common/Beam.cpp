@@ -14,6 +14,7 @@
 #include "DelayLine.h"
 #include "Modulator.h"
 #include "Array.h"
+#include "Station.h"
 #include "SpatialFilter.h"
 #include "AtmosphereLayer.h"
 
@@ -51,7 +52,7 @@ void Beam::ComputePhase(double time)
 // Add the modulator and delaylines delays
 {
   // Apply the mask to the phase screen
-  phase = this->array->layer[station_index]->phase_screen * mask ;
+  phase = this->array->GetStation(station_index).layer->phase_screen * mask ;
 
   // computes the AO + tip/tilt correction
   if (AOorder > 0)
@@ -74,35 +75,38 @@ void Beam::ComputePhase(double time)
 
 void Beam::ComputeAmplitude(double time)
 {
-  // TODO : add strehl if wanted
-  // Apply normalized mask (= zernlib->modes[0] ) to the amplitude, as well as station gain
-  // Wavelength dependency could be introduced
-  if ( array->layer[station_index]->scintillation_diameter > 0 )
-    amplitude = this->array->layer[station_index]->amplitude_screen * zernlib->modes[ 0 ] * this->array->gain[station_index];
-  else
-    amplitude = zernlib->modes[ 0 ] * this->array->gain[station_index];
+    // TODO : add strehl if wanted
+    // Apply normalized mask (= zernlib->modes[0] ) to the amplitude, as well as station gain
+    // Wavelength dependency could be introduced
+
+    Station sta = this->array->GetStation(station_index);
+      
+    if ( sta.layer->scintillation_diameter > 0 )
+        amplitude = sta.layer->amplitude_screen * zernlib->modes[ 0 ] * sta.gain;
+    else
+        amplitude = zernlib->modes[ 0 ] * sta.gain;
 
 }
 
 void Beam::ComputePhasor(double wavenumber) // compute the complex high-order pupil at a given wavelength
 {
-  for (int ix = 0; ix < gridsize; ix++)
-    for (int iy = 0; iy < gridsize; iy++)
-      pupil[ ix ][ iy ] = polar(amplitude[ ix ][ iy ], this->array->layer[station_index]->lambda0 * wavenumber * phase[ ix ][ iy ]);
+    for (int ix = 0; ix < gridsize; ix++)
+        for (int iy = 0; iy < gridsize; iy++)
+            pupil[ ix ][ iy ] = polar(amplitude[ ix ][ iy ], this->array->GetStation(station_index).layer->lambda0 * wavenumber * phase[ ix ][ iy ]);
 }
 
 void Beam::Update(double time, double wavenumber)
 {
-  if (time != previous_time)
-  {
-    // Update the atmosphere
-    this->array->layer[station_index]->Update(time);
-    ComputePhase(time);
-    ComputeAmplitude(time);
-    previous_time = time;
-  }
-  ComputePhasor(wavenumber);
-  FilterBeam(wavenumber);
+    if (time != previous_time)
+    {
+        // Update the atmosphere
+        this->array->GetStation(station_index).layer->Update(time);
+        ComputePhase(time);
+        ComputeAmplitude(time);
+        previous_time = time;
+    }
+    ComputePhasor(wavenumber);
+    FilterBeam(wavenumber);
 }
 
 

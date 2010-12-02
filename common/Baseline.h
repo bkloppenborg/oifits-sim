@@ -1,6 +1,9 @@
 /// \file Baseline.h
 /// Header file for the Baseline class.
 
+#ifndef BASELINE_H
+#define BASELINE_H
+
 // Forward class declarations:
 class UVPoint;
 class Array;
@@ -23,3 +26,6 @@ class Baseline
     
     UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
 };
+
+
+#endif // #ifndef BASELINE_H

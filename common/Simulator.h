@@ -16,27 +16,8 @@
 #ifndef SIMULATOR_H
 #define SIMULATOR_H
 
-//#include <cstdio>
-//#include <cstdlib>
-//#include <cassert>
-//#include <iostream>
-//#include <fstream>
-//#include <string>
-//#include <cmath>
-
-//#include <cstdarg>
-//#include <vector>
-//#include <fftw3.h>
-//#include "random.h"
-//#include "matrix.h"
-
-//using std::cin;
-
-//using std::cout;
-
-//using std::endl;
-
 #include <complex>
+#include <vector>
 using namespace std;
 
 /// Global throughput.  Does not include the quantum efficiencey.
@@ -62,6 +43,8 @@ double simplyfringes(double magnitude);
 
 double sinc(double number);
 
-void StringSplit(string str, string delim, vector<string> results);
+void    StringSplit(string str, string delim, vector<string> results);
+string  StripWhitespace(string str);
+void    StripWhitespace(vector<string> strings);
 
 #endif // #ifndef SIMULATOR_H

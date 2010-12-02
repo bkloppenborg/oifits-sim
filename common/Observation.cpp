@@ -2,43 +2,52 @@
 /// \file Observation.cpp
 
 #include <cmath>
+#include <cstdio>
 
 #include "Observation.h"
-#include <cstdio>
+#include "Simulator.h"
 
 /// The minimum timespan
 const double SAMEOBS = 5 / (60 * 24); // 5 minutes in days.
 
-bool Observation::SameObservation(Observation & A, Observation & B)
+inline bool SameObservation(Observation & A, Observation & B)
 {
     // Because observations can be specified by either JDs or hour angles, we need to allow for both cases here.
     if(A.mComputeHA && B.mComputeHA)
     {
         // Both use Julain Dates
-        if(fabs(A.mJD - B.mJD) < SAMEOBS))
+        if(fabs(A.mJD - B.mJD) < SAMEOBS)
             return true;
     }
     else if(!A.mComputeHA && !B.mComputeHA)
     {
         // Both use hour angles:
-        if(fabs(A.mHA - B.mHA) < SAMEOBS))
+        if(fabs(A.mHA - B.mHA) < SAMEOBS)
             return true;
     }
     
     // Uh oh, mixed observation types... this is bad.   
-    throw std::runtime_error("Warning: Mixed Observation Types (JD and Hour Angles) Detected!");
+    /// \todo Re-enable this exception.
+    //throw std::runtime_error("Warning: Mixed Observation Types (JD and Hour Angles) Detected!");
     
     return false;
 }
 
-Observation::Observation()
+// Construct an Observation object from the hour angle, and included/excluded telescopes.
+Observation::Observation(Array * array, double hour_angle, string telescopes, string exclude_baselines)
 {
-    this->mJD = 0;
+    this->mArray = array;
+    this->mHA = hour_angle;
+    this->mComputeHA = false;
+    
+    // Now Make the baselines
+    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);
 }
 
 /// Construct an Observation object from the MJD, time, and included/excluded telescopes.
-Observation::Observation(Array & array, double MJD, double time, string telescopes, string exclude_baselines)
+Observation::Observation(Array * array, double MJD, double time, string telescopes, string exclude_baselines)
 {
+    this->mArray = array;
     this->mHA = 0;
     // Compute the (full) Julian date from the Modified Julian Date (MJD)
     this->mJD = MJD + time / 24 + 2400000.5;
@@ -46,16 +55,6 @@ Observation::Observation(Array & array, double MJD, double time, string telescop
     
     // Now Make the baselines
     this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);    
-}
-
-// Construct an Observation object from the hour angle, and included/excluded telescopes.
-Observation::Observation(vdouble hour_angle, string telescopes, string exclude_baselines)
-{
-    this->mHA = hour_angle;
-    this->mComputeHA = false;
-    
-    // Now Make the baselines
-    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);
 }
 
 // Finds the baselines specified in the Array object.
@@ -95,29 +94,29 @@ vector<Baseline> Observation::FindBaselines(string telescopes, string exclude_ba
     StripWhitespace(excluded_baselines);
     
     // Remove the excluded baseline names from the hash
-    int num_excluded = excluded_baselines.size()
+    int num_excluded = excluded_baselines.size();
     for(int i = 0; i < num_excluded; i++)
     {
-        bl_names.erase(bl_names[excluded_baselines[i]);
+        bl_names.erase(bl_names[excluded_baselines[i]]);
     }
     
     // Now query for all of the remaining baselines and add them to the output "baselines"
-    int num_baselines = bl_names.size();
-    for(int i = 0; i < num_baselines; i++)
+    for (BLNameHash::iterator it = bl_names.begin(); it != bl_names.end(); ++it)
     {
-        baselines.push_back( this->array.GetBaseline(bl_names[i]) );
+        bl_name = it->second;
+        baselines.push_back( this->mArray->GetBaseline(bl_name) );
     }
     
     return baselines;
 }
 
-double Observation::GetHA(double targ_ra, double array_lat, double array_long)
+double Observation::GetHA(double targ_ra)
 {
     // If the hour angle is already specified, just reutrn it directly.
     if(!this->mComputeHA)
         return this->mHA;
     
-    double lst = this->GetLocalSiderealTime(this->mJD, 0, 0, array_long);
+    double lst = this->GetLocalSiderealTime(this->mJD, 0, 0, this->mArray->GetLongitude());
     return lst - targ_ra * 24.0/360;
 }
 

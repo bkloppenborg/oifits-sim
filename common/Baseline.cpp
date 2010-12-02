@@ -33,7 +33,6 @@ Baseline::Baseline(double array_lat, Station & station1, Station & station2)
 UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
 {
     // First convert all values into radians (they should be degrees or decimal hours (of time) before now.
-    double phi = array_latitude;
     double h = hour_angle * PI;
     double delta = source_declination;
 

@@ -12,6 +12,7 @@
 #include "Combiner.h"
 #include "SpectralMode.h"
 #include "Source.h"
+#include "Station.h"
 #include "Beam.h"
 #include "random.h"
 #include "Array.h"
@@ -52,7 +53,7 @@ void Detector::FastOneReadP( double current_time , Combiner* combiner , Spectral
   // spatial_coherence_atmosphere = ... see Brummelaar eq ( 44 )
   // coherence_transfer_factor =  strehl ratio, see Brummelaar, include into OA ?
 
-  double collecting_area = PI * pow(combiner->beamlist[ 0 ]->array->diameter[0] / 2., 2); // surface of the primary mirror - can insert this into the loop if variable
+  double collecting_area = PI * pow(combiner->beamlist[ 0 ]->array->GetStation(0).diameter / 2., 2); // surface of the primary mirror - can insert this into the loop if variable
   double instrument_throughput = 0.1324 / 0.65; // global throughput, does not include quantum efficiency
   //double instrumental_visibility = 0.3; // global factor for the moment, would depend on wavelength
   double instrumental_visibility = 1.0;
@@ -138,7 +139,7 @@ void Detector::OneReadP( double current_time , Combiner* combiner , SpectralMode
   // spatial_coherence_atmosphere = ... see Brummelaar eq ( 44 )
   // coherence_transfer_factor =  strehl ratio, see Brummelaar, include into OA ?
 
-  double collecting_area = PI * pow(combiner->beamlist[ 0 ]->array->diameter[0] / 2., 2); // surface of the primary mirror - can insert this into the loop if variable
+  double collecting_area = PI * pow(combiner->beamlist[ 0 ]->array->GetStation(0).diameter / 2., 2); // surface of the primary mirror - can insert this into the loop if variable
   double instrument_throughput = 0.204; // global throughput, does not include quantum efficiency
   //double instrumental_visibility = 0.3; // global factor for the moment, would depend on wavelength
   double instrumental_visibility = 1.0; // 0.3 default global factor for the moment, would depend on wavelength

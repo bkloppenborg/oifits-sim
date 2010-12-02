@@ -1,5 +1,15 @@
 #include "Simulator.h"
 
+template<typename T, typename P>
+T remove_if(T beg, T end, P pred)
+{
+    T dest = beg;
+    for (T itr = beg;itr != end; ++itr)
+        if (!pred(*itr))
+            *(dest++) = *itr;
+    return dest;
+}
+
 double sinc( double number )
 {
   if (abs(number) < 1.0e-10)
@@ -24,11 +34,12 @@ void StringSplit(string str, string delim, vector<string> results)
         results.push_back(str);
 }
 
-void StripWhitespace(string str)
+string StripWhitespace(string str)
 {
-    str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+    str.erase(remove_if(str.begin(), str.end(), ::isspace), str.end());
     return str;
 }
+
 
 void StripWhitespace(vector<string> strings)
 {
