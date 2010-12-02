@@ -48,13 +48,13 @@ class Source
     double source_pixellation;
 
     Complex GetVis(UVPoint uv);
-    Complex GetVis(double wavenumber, double time, Array & array,
-               int index_station1, int index_station2);
+    
+    /// \todo Rewrite this function to be compliant with the new Observation class.
+//    Complex GetVis(double wavenumber, double time, Array & array, int index_station1, int index_station2);
     double Spectrum(double wavenumber);
 
     double BackgroundSpectrum(double wavenumber);
 
   private:
-    void InitFluxes(char band, double background_magnitude,
-                    double sky_background_aperture);
+    void InitFluxes(char band, double background_magnitude, double sky_background_aperture);
 };

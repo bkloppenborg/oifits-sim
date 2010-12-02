@@ -10,12 +10,11 @@
 #include <tr1/unordered_map>
 
 #include "Array.h"
+#include "Baseline.h"
+#include "Station.h"
 
 using namespace std;
 typedef std::tr1::unordered_map<string, string> BLNameHash;
-
-class Array;
-class Baseline;
 
 class Observation
 {
@@ -26,12 +25,14 @@ class Observation
     double mHA;         // The hour angle of the observation
     bool   mComputeHA;  // A boolean flag to indicate that the hour angle has not been computed.
     
-    vector<Baseline> mBaselines;
+    vector<Baseline>    mBaselines;
+    vector<Station>     mStations;
 
   private:
-    vector<Baseline> FindBaselines(string telescopes, string exclude_baselines);
-    double GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long);
-    double GetSiderealTime(double jd_high, double jd_low, double ee);
+    vector<Baseline> FindBaselines(vector<Station> stations, string exclude_baselines);
+    vector<Station> FindStations(string telescopes);
+    double  GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long);
+    double  GetSiderealTime(double jd_high, double jd_low, double ee);
     
   public:
   // Constructors
@@ -39,7 +40,10 @@ class Observation
     Observation(Array * array, double mjd, double time, string telescopes, string exclude_baselines);
     
   // Other Methods
-    double GetHA(double targ_ra);
-    friend bool SameObservation(Observation & A, Observation & B);
+    double  GetHA(double targ_ra);
+    friend  bool SameObservation(Observation & A, Observation & B);
+    
+    int         GetNumStations(void);
+    Station &   GetStation(int sta_index);
     
 };

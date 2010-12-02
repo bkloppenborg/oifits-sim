@@ -1,6 +1,8 @@
 /// \class Array array.h
 /// \brief A class to represent the array (i.e. the interferometer).
 
+#ifndef ARRAY_H
+#define ARRAY_H
 #include <string>
 #include <vector>
 // Include headers for the unordered map.  Note, this may need to be just <unordered_map> if compiled in MSVS.
@@ -8,11 +10,14 @@
 
 #include "Matrix.h"
 #include "Baseline.h"
+#include "Station.h"
+
 
 // Forward declarations
 class Station;
 class Baseline;
 
+typedef std::tr1::unordered_map<std::string, Station> StationHash;
 typedef std::tr1::unordered_map<std::string, Baseline> BaselineHash;
 
 // A quick struct for the hash_map below.
@@ -43,7 +48,8 @@ class Array
     vector<Baseline> baselines;
     
   private:
-    BaselineHash bl_hash;
+    BaselineHash    bl_hash;
+    StationHash     station_name_hash;
 
 
   public:
@@ -57,8 +63,10 @@ class Array
   public:
     Baseline &  GetBaseline(string baseline_name);
     Station &   GetStation(int station_index);
+    Station &   GetStation(string station_name);
     double      GetLatitude(void);
     double      GetLongitude(void);
     double      GetAltitude(void);
 };
 
+#endif // #ifndef ARRAY_H

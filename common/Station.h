@@ -1,6 +1,12 @@
 /// \file Station.h
 /// Header file for the Station Class
 
+#ifndef STATION_H
+#define STATION_H
+
+#include <string>
+using namespace std;
+
 class AtmosphereLayer;
 
 /// \class Station Station.h
@@ -22,9 +28,13 @@ class Station
     double gain;                // telescope gain (=1.0 by default, 0.0 to shut down a station)
 
   public:
+    Station();
     Station(string station_name, double North, double East, double Up, double gain, double diameter);
+    Station(string station_name, double North, double East, double Up, AtmosphereLayer * atm, double gain, double diameter);
     
     virtual ~ Station();
     
     string GetName();
 };
+
+#endif // STATION_H

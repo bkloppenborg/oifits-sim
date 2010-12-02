@@ -41,7 +41,8 @@ Observation::Observation(Array * array, double hour_angle, string telescopes, st
     this->mComputeHA = false;
     
     // Now Make the baselines
-    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);
+    this->mStations = this->FindStations(telescopes);
+    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);  
 }
 
 /// Construct an Observation object from the MJD, time, and included/excluded telescopes.
@@ -54,14 +55,34 @@ Observation::Observation(Array * array, double MJD, double time, string telescop
     this->mComputeHA = true;
     
     // Now Make the baselines
-    this->mBaselines = this->FindBaselines(telescopes, exclude_baselines);    
+    this->mStations = this->FindStations(telescopes);
+    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);    
+}
+
+/// Queries the Array object for the scopes found in the comma separated string "telescopes"
+vector<Station> Observation::FindStations(string telescopes)
+{
+    vector<Station> stations;
+    vector<string> station_names;
+
+    // First extract the names of the telescopes from the CSV string, "telescopes"
+    StringSplit(telescopes, ",", station_names);
+    StripWhitespace(station_names);
+    
+    // Now query the array for the station objects.
+    int num_stations = station_names.size();
+    for(int i = 0; i < num_stations; i++)
+    {
+        stations.push_back( this->mArray->GetStation(station_names[i]) );
+    }
+    
+    return stations;
 }
 
 // Finds the baselines specified in the Array object.
-vector<Baseline> Observation::FindBaselines(string telescopes, string exclude_baselines)
+vector<Baseline> Observation::FindBaselines(vector <Station> stations, string exclude_baselines)
 {
     vector<Baseline> baselines;
-    vector<string> station_names;
     vector<string> excluded_baselines;
     string str;
     string sta1_name;
@@ -70,19 +91,15 @@ vector<Baseline> Observation::FindBaselines(string telescopes, string exclude_ba
     
     BLNameHash bl_names;
     
-    // First extract the names of the telescopes from the CSV string, "telescopes"
-    StringSplit(telescopes, ",", station_names);
-    StripWhitespace(station_names);
-    
     // Now compute all of the baselines and make a hash table for each baseline value
-    int num_stations = station_names.size();
+    int num_stations = stations.size();
     for(int i = 0; i < num_stations; i++)
     {
-        sta1_name = station_names[i];
+        sta1_name = stations[i].staname;
         
         for(int j = i; j < num_stations; j++)
         {
-            string sta2_name = station_names[j];
+            string sta2_name = stations[j].staname;
             bl_name = sta1_name + "-" + sta2_name;
             
             bl_names.insert( BLNameHash::value_type(bl_name, bl_name) );
@@ -158,4 +175,14 @@ double  Observation::GetSiderealTime(double jd_high, double jd_low, double ee)
 		gst += 24.0;
 
 	return gst;
+}
+
+
+int Observation::GetNumStations(void)
+{
+    return this->mStations.size();
+}
+Station & Observation::GetStation(int sta_index)
+{
+    return this->mStations[sta_index];
 }

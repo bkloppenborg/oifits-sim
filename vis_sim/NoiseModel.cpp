@@ -5,6 +5,7 @@
 #include "Instrument.h"
 #include "Array.h"
 #include "Source.h"
+#include "Observation.h"
 
 // AS 2010-06-24
 // removed redundant function Flux0 and the limits of the channels as they 
@@ -49,40 +50,38 @@ double TimeInt(double median_wl, double r0, double v)
 	return (ti);
 }
 
-/// function that computes the photon count per coherent integration
-/// depends on the target, the array, the instrument and the waveband
-// AS 2010-06-24
-// inserted median_wl as dependency
-double PhCount(Source & target, Array & s, Instrument & inst, double median_wl, double wl, double Dlambda)
+
+double PhCount(Source & target, Observation & obs, Instrument & inst, double median_wl, double wl, double Dlambda)
 {
 	double Ni;
 
 	Ni = target.flux * pow(wl, -2.0) * TimeInt(median_wl, inst.ast_seeing, inst.wind_speed) *
-	   s.nstations * PI * pow((s.diameter[0]), 2.0) * 
-	   Dlambda * inst.GlobalThroughput() * Strehl(wl, inst.ast_seeing, s.diameter[0]) / 4;
+	   obs.GetNumStations() * PI * pow((obs.GetStation(0).diameter), 2.0) * 
+	   Dlambda * inst.GlobalThroughput() * Strehl(wl, inst.ast_seeing, obs.GetStation(0).diameter) / 4;
 	return (Ni);
 }
 
-/// compute the squared coherent flux
-static double CoherentFlux1(double Ni, double Pow, Array & s, Instrument & inst)
+
+double CoherentFlux1(double Ni, double Pow, Observation & obs, Instrument & inst)
 {
 	double Vsq = Pow * inst.visibility * inst.visibility;
-	double CFlux = pow(Ni, 2.0) * Vsq / pow(s.nstations,
+	double CFlux = pow(Ni, 2.0) * Vsq / pow(obs.GetNumStations(),
 	   2.0) + Ni + inst.Npix * pow(inst.read_noise, 2.0);
 	return CFlux;
 }
 
 /// compute the variance of the squared coherent flux
-static double VarCoherentFlux1(double Ni, double Pow, Array & s, Instrument & inst)
+double VarCoherentFlux1(double Ni, double Pow, Observation & obs, Instrument & inst)
 {
 	double Vsq = Pow * inst.visibility * inst.visibility;
+    int nstations = obs.GetNumStations();
 
 	// the components are computed separately for readability
 
 	// photon noise term
 	double VarCFlux_ph =
-	   2 * pow(Ni, 3.0) * Vsq / pow(s.nstations, 2.0) + 4 * pow(Ni,
-	   2.0) * Vsq / pow(s.nstations, 2.0) + pow(Ni, 2.0) + Ni;
+	   2 * pow(Ni, 3.0) * Vsq / pow(nstations, 2.0) + 4 * pow(Ni,
+	   2.0) * Vsq / pow(nstations, 2.0) + pow(Ni, 2.0) + Ni;
 
 	// detector noise terms
 	double VarCFlux_det = pow(inst.Npix, 2.0) * pow(inst.read_noise,
@@ -91,7 +90,7 @@ static double VarCoherentFlux1(double Ni, double Pow, Array & s, Instrument & in
 	// coupled terms
 	double VarCFlux_coupled = 2 * inst.Npix * pow(inst.read_noise,
 	   2.0) * Ni + 2 * inst.Npix * pow(inst.read_noise, 2.0) * pow(Ni,
-	   2.0) * Vsq / pow(s.nstations, 2.0);
+	   2.0) * Vsq / pow(nstations, 2.0);
 
 	// the total variance
 	return VarCFlux_ph + VarCFlux_det + VarCFlux_coupled;
@@ -101,17 +100,15 @@ static double VarCoherentFlux1(double Ni, double Pow, Array & s, Instrument & in
 // AS 2010-06-22
 // eliminated the incoherent integration time which is now contained in
 // the instrument class
-double VarPow1(double Pow, SpectralMode & spec, int specIndex, Source & target,
-   Array & s, Instrument & inst)
+double VarPow1(double Pow, SpectralMode & spec, int specIndex, Source & target, Observation & obs, Instrument & inst)
 {
 	int n_coh = inst.incoh_time / TimeInt(spec.median_wavelength,
 	   inst.ast_seeing,
 	   inst.wind_speed);
-	double Ni = PhCount(target, s, inst, spec.median_wavelength,
-	   spec.mean_wavelength[specIndex],
-	   spec.delta_wavelength[specIndex]);
-	double Flux = CoherentFlux1(Ni, Pow, s, inst);
-	double VarC = VarCoherentFlux1(Ni, Pow, s, inst);
+	double Ni = PhCount(target, obs, inst, spec.median_wavelength, spec.mean_wavelength[specIndex], 
+	    spec.delta_wavelength[specIndex]);
+	double Flux = CoherentFlux1(Ni, Pow, obs, inst);
+	double VarC = VarCoherentFlux1(Ni, Pow, obs, inst);
 
 	// JSY 2009-10-21: prev expression for VarPow_coh was:
 	// pow(Pow * inst.Vinst * inst.Vinst, 2.0) * VarC / pow(Flux, 2.0);
@@ -125,20 +122,37 @@ double VarPow1(double Pow, SpectralMode & spec, int specIndex, Source & target,
 // AS 2010-06-22
 // eliminated the incoherent integration time which is now contained in
 // the instrument class
-double VarUnbiasedPow1(double Pow, SpectralMode & spec, int specIndex,
-   Source & target, Array & s, Instrument & inst)
+//double VarUnbiasedPow1(double Pow, SpectralMode & spec, int specIndex, Source & target, Array & s, Instrument & inst)
+//{
+//	int n_coh = inst.incoh_time / TimeInt(spec.median_wavelength,
+//	   inst.ast_seeing,
+//	   inst.wind_speed);
+//	double Ni = PhCount(target, s, inst, spec.median_wavelength,
+//	   spec.mean_wavelength[specIndex],
+//	   spec.delta_wavelength[specIndex]);
+//	double VarPow_coh =
+//	   (pow(Ni, 2.0) +
+//	   2.0 * pow(Ni, 3.0) * pow(inst.visibility, 2.0) / pow(s.nstations,
+//		  2.0) + 2.0 * pow(inst.Npix, 2.0) * pow(inst.read_noise,
+//		  4.0)) / (pow(inst.visibility * Ni / s.nstations, 4.0));
+//	return VarPow_coh / n_coh + pow(Pow * inst.vsq_frac_cal_err, 2.0);
+//}
+
+double VarUnbiasedPow1(double Pow, SpectralMode & spec, int specIndex, Source & target, Observation & obs, Instrument & inst)
 {
+    int nstations = obs.GetNumStations();
+
 	int n_coh = inst.incoh_time / TimeInt(spec.median_wavelength,
 	   inst.ast_seeing,
 	   inst.wind_speed);
-	double Ni = PhCount(target, s, inst, spec.median_wavelength,
+	double Ni = PhCount(target, obs, inst, spec.median_wavelength,
 	   spec.mean_wavelength[specIndex],
 	   spec.delta_wavelength[specIndex]);
 	double VarPow_coh =
 	   (pow(Ni, 2.0) +
-	   2.0 * pow(Ni, 3.0) * pow(inst.visibility, 2.0) / pow(s.nstations,
+	   2.0 * pow(Ni, 3.0) * pow(inst.visibility, 2.0) / pow(nstations,
 		  2.0) + 2.0 * pow(inst.Npix, 2.0) * pow(inst.read_noise,
-		  4.0)) / (pow(inst.visibility * Ni / s.nstations, 4.0));
+		  4.0)) / (pow(inst.visibility * Ni / nstations, 4.0));
 	return VarPow_coh / n_coh + pow(Pow * inst.vsq_frac_cal_err, 2.0);
 }
 
@@ -154,7 +168,7 @@ double VarUnbiasedPow1(double Pow, SpectralMode & spec, int specIndex,
 // eliminated the incoherent integration time which is now contained in
 // the instrument class
 Matrix < double > VarCloPhase(SpectralMode & spec, Matrix < Complex > &visibility,
-   Source & target, Array & s, Instrument & inst, int Nbs, int Nha)
+   Source & target, Observation & obs, Instrument & inst, int Nbs, int Nha)
 {
 	int i, n_coh;
 	double Ni;					// variable containing the photon count
@@ -176,7 +190,7 @@ Matrix < double > VarCloPhase(SpectralMode & spec, Matrix < Complex > &visibilit
 	// some local variables to hold the values of the matrices
 	// employed to make the code more readable
 	double b = 0, q = 0, p, x = 0, y = 0, z = 0;
-	int N = s.nstations;
+	int N = obs.GetNumStations();
 	double SigDet = inst.read_noise;
 	int Npix = inst.Npix;
 
@@ -184,10 +198,8 @@ Matrix < double > VarCloPhase(SpectralMode & spec, Matrix < Complex > &visibilit
 	for (int ii = 0; ii < spec.nchannels; ii++)
 	{
 		i = 0;
-		n_coh = inst.incoh_time / TimeInt(spec.median_wavelength,
-		   inst.ast_seeing, inst.wind_speed);
-		Ni = PhCount(target, s, inst, spec.median_wavelength,
-		   spec.mean_wavelength[ii], spec.delta_wavelength[ii]);
+		n_coh = inst.incoh_time / TimeInt(spec.median_wavelength, inst.ast_seeing, inst.wind_speed);
+		Ni = PhCount(target, obs, inst, spec.median_wavelength, spec.mean_wavelength[ii], spec.delta_wavelength[ii]);
 		p = N / Ni;
 		for (int jj = 0; jj < Nha; jj++)
 		{

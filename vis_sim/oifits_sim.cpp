@@ -23,7 +23,6 @@ extern "C" {
 #include "Array.h"
 #include "Baseline.h"
 #include "Bispectrum.h"
-#include "HourAngle.h"
 #include "Instrument.h"
 #include "NoiseModel.h"
 #include "PowerSpectrum.h"
@@ -31,7 +30,6 @@ extern "C" {
 #include "Simulator.h"
 #include "Source.h"
 #include "SpectralMode.h"
-
 #include "UVPoint.h"
 #include "VisSimParams.h"
 #include "Observation.h"
@@ -59,8 +57,7 @@ Matrix < double > Vis2Pow(Matrix < Complex > &visibility, int Nwav, int Npow)
 // the values depend on: the visibility, the number of telescopes, the
 // number of
 // wavelengths, the number of bispectra and the number of hour angles
-Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav,
-   int Nbs, int Nha)
+Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav, int Nbs, int Nha)
 {
 	int i = 0;					// just a counter
 	// declaring the bispectrum under the variable name bis; it is a
@@ -98,7 +95,7 @@ Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav,
 // telescope indexes defining the baselines and the u and v coordinates of
 // the baselines
 PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
-   Source & target, Array & s, Instrument & inst, int Npow,
+   Source & target, Observation & obs, Instrument & inst, int Npow,
    Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
    Matrix < double >&v)
 {
@@ -114,7 +111,7 @@ PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
 		for (int j = 0; j < Npow; j++)
 		{
 			Err[i][j] =
-			   sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, s, inst));
+			   sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, obs, inst));
 			noisyPow[i][j] = Pow[i][j] + Err[i][j] * Rangauss(random_seed);
 		}
 	}
@@ -151,12 +148,14 @@ PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
 // the number of triangles and sampled hour angles,
 // the telescope indexes and the UV coordinates
 Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
-   Source & target, Array & s, Instrument & inst, int Nbs, int Nha,
+   Source & target, Observation & obs, Instrument & inst, int Nbs, int Nha,
    Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
    Matrix < double >&v)
 {
 	Bispectrum bispec;
 	int i = 0;
+
+    int nstations = obs.GetNumStations();
 
 	// matrix containing the U coordinate of the 1st baseline of the
 	// triangle
@@ -196,7 +195,7 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
 	// matrix containing the closure phase with added noise
 	Matrix < double >PhiErr(spec.nchannels, Nbs);
 
-	bis = Vis2Bis(visibility, s.nstations, spec.nchannels, Nbs, Nha);
+	bis = Vis2Bis(visibility, nstations, spec.nchannels, Nbs, Nha);
 
 	// separate bispectrum into amplitude and phase
 	for (int i = 0; i < spec.nchannels; i++)
@@ -209,7 +208,7 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
 	}
 
 	// add noise
-	VarPhi = VarCloPhase(spec, visibility, target, s, inst, Nbs, Nha);
+	VarPhi = VarCloPhase(spec, visibility, target, obs, inst, Nbs, Nha);
 	for (int i = 0; i < spec.nchannels; i++)
 	{
 		for (int j = 0; j < Nbs; j++)
@@ -228,24 +227,24 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
 		i = 0;
 		for (int jj = 0; jj < Nha; jj++)
 		{
-			for (int j = 0; j < s.nstations - 2; j++)
+			for (int j = 0; j < nstations - 2; j++)
 			{
-				for (int k = j + 1; k < s.nstations - 1; k++)
+				for (int k = j + 1; k < nstations - 1; k++)
 				{
 					u1[ii][i] =
-					   u[ii][j + jj * s.nstations * (s.nstations - 1) / 2];
+					   u[ii][j + jj * nstations * (nstations - 1) / 2];
 					v1[ii][i] =
-					   v[ii][j + jj * s.nstations * (s.nstations - 1) / 2];
-					u2[ii][i] = u[ii][i + (jj + 1) * (s.nstations - 1)];
-					v2[ii][i] = v[ii][i + (jj + 1) * (s.nstations - 1)];
+					   v[ii][j + jj * nstations * (nstations - 1) / 2];
+					u2[ii][i] = u[ii][i + (jj + 1) * (nstations - 1)];
+					v2[ii][i] = v[ii][i + (jj + 1) * (nstations - 1)];
 					tel1[ii][i] =
-					   t1[ii][j + jj * s.nstations * (s.nstations -
+					   t1[ii][j + jj * nstations * (nstations -
 						  1) / 2];
 					tel2[ii][i] =
-					   t2[ii][j + jj * s.nstations * (s.nstations -
+					   t2[ii][j + jj * nstations * (nstations -
 						  1) / 2];
 					tel3[ii][i] =
-					   t2[ii][k + jj * s.nstations * (s.nstations -
+					   t2[ii][k + jj * nstations * (nstations -
 						  1) / 2];
 					i++;
 				}
@@ -302,8 +301,7 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
  * @param GeocLat     Return location for geocentric latitude /radians.
  * @param GeocRadius  Return location for geocentric radius /metres.
  */
-void wgs84_to_geoc(double lat, double height, double *GeocLat,
-   double *GeocRadius)
+void wgs84_to_geoc(double lat, double height, double *GeocLat, double *GeocRadius)
 {
 	double cosLat, sinLat, c, c0, s0, one_f_sq;
 
@@ -315,8 +313,7 @@ void wgs84_to_geoc(double lat, double height, double *GeocLat,
 	s0 = WGS_A0 * one_f_sq * c + height;
 
 	*GeocLat = atan2(s0 * sinLat, c0 * cosLat);
-	*GeocRadius =
-	   pow(c0 * c0 * cosLat * cosLat + s0 * s0 * sinLat * sinLat, 0.5);
+	*GeocRadius = pow(c0 * c0 * cosLat * cosLat + s0 * s0 * sinLat * sinLat, 0.5);
 }
 
 // AS 2010-06-21 

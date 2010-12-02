@@ -174,7 +174,8 @@ Array::Array(const char *Array_file)
         diameter = atof(tokens[5].c_str());
         
         // Push this station on to the list of stations for this array.
-        this->stations.push_back(Station(staname, North, East, Up, gain, diameter));
+        this->stations.push_back( Station(staname, North, East, Up, gain, diameter) );
+        this->station_name_hash.insert( StationHash::value_type(staname, this->stations.back()) );
     }
     
     // Now compute all possible baselines from these stations.
@@ -210,22 +211,27 @@ void Array::ComputeBaselines(void)
 }
 
 // Returns a reference to a baseline object.
-Baseline & Array::GetBaseline(string baseline_name)
+Baseline &  Array::GetBaseline(string baseline_name)
 {
     return this->bl_hash[baseline_name.c_str()];
 }
 
-Station & Array::GetStation(int station_index)
+Station &   Array::GetStation(int station_index)
 {
     return this->stations[station_index];
 }
 
-double  Array::GetLatitude(void)
+Station &   Array::GetStation(string station_name)
+{
+    return this->station_name_hash[station_name];
+}
+
+double      Array::GetLatitude(void)
 {
     return this->latitude;
 }
 
-double  Array::GetLongitude(void)
+double      Array::GetLongitude(void)
 {
     return this->longitude;
 }
