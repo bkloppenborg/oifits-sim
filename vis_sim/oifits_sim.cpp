@@ -110,8 +110,7 @@ PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
 	{
 		for (int j = 0; j < Npow; j++)
 		{
-			Err[i][j] =
-			   sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, obs, inst));
+			Err[i][j] = sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, obs, inst));
 			noisyPow[i][j] = Pow[i][j] + Err[i][j] * Rangauss(random_seed);
 		}
 	}
@@ -387,33 +386,38 @@ void write_oifits_file(float declination, string datafile, Array s,
 	// ARRAY
 	// AS 2010-06-17
 	// added the array table in the OIFITS file
-	array.elem = (element *) malloc(s.nstations * sizeof(element));
+	double nstations = s.GetNumStations();
+	double longitude = s.GetLongitude();
+	double latitude = s.GetLatitude();
+	double altitude = s.GetAltitude();
+	string arrayname = s.GetArrayName();
+	
+	array.elem = (element *) malloc(nstations * sizeof(element));
 	array.revision = 1;
-	strncpy(array.arrname, s.arrayname.c_str(), FLEN_VALUE);
+	strncpy(array.arrname, arrayname.c_str(), FLEN_VALUE);
 	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
 	double GeocLat, GeocRadius;
 	// AS 2010-06-22
 	// adapting the coordinates of the array using JSY's routine
 	// wgs84_to_geoc
-	wgs84_to_geoc(s.latitude * PI / 180, s.altitude, &GeocLat,
-	   &GeocRadius);
-	array.arrayx = GeocRadius * cos(GeocLat) * cos(s.longitude * PI / 180);
-	array.arrayy = GeocRadius * cos(GeocLat) * sin(s.longitude * PI / 180);
+	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
+	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
+	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
 	array.arrayz = GeocRadius * sin(GeocLat);
 
-	array.nelement = s.nstations;
-	j = 0;
-	for (i = 0; i < s.nstations; i++)
+	array.nelement = nstations;
+	Station station;
+	for (i = 0; i < nstations; i++)
 	{
-		strncpy(array.elem[i].tel_name, s.staname[i].c_str(), 16);
-		strncpy(array.elem[i].sta_name, "Fake Station", 16);
-		array.elem[i].sta_index = j + 1;
-		array.elem[i].diameter = s.diameter[i];
-		// :BUG: wrong coordinate system
-		array.elem[i].staxyz[0] = s.x[i];
-		array.elem[i].staxyz[1] = s.y[i];
-		array.elem[i].staxyz[2] = nulval;
-		j++;
+	    station = s.GetStation(i);
+		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
+		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
+		/// \todo Pull the station index from the station object
+		array.elem[i].sta_index = i + 1;
+		array.elem[i].diameter = station.diameter;
+		array.elem[i].staxyz[0] = station.xyz[0];
+		array.elem[i].staxyz[1] = station.xyz[1];
+		array.elem[i].staxyz[2] = station.xyz[2];
 	}
 
 	// WAVE
@@ -432,10 +436,8 @@ void write_oifits_file(float declination, string datafile, Array s,
 	vis2.record = (oi_vis2_record *) malloc(Npow * sizeof(oi_vis2_record));
 	for (j = 0; j < Npow; j++)
 	{
-		vis2.record[j].vis2data =
-		   (double *) malloc(wave.nwave * sizeof(double));
-		vis2.record[j].vis2err =
-		   (double *) malloc(wave.nwave * sizeof(double));
+		vis2.record[j].vis2data = (double *) malloc(wave.nwave * sizeof(double));
+		vis2.record[j].vis2err = (double *) malloc(wave.nwave * sizeof(double));
 		vis2.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
 	}
 	vis2.revision = 1;
@@ -468,16 +470,11 @@ void write_oifits_file(float declination, string datafile, Array s,
 		t3.record = (oi_t3_record *) malloc(Nbs * sizeof(oi_t3_record));
 		for (j = 0; j < Nbs; j++)
 		{
-			t3.record[j].t3amp =
-			   (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3amperr =
-			   (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3phi =
-			   (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3phierr =
-			   (double *) malloc(wave.nwave * sizeof(double));
+			t3.record[j].t3amp = (double *) malloc(wave.nwave * sizeof(double));
+			t3.record[j].t3amperr = (double *) malloc(wave.nwave * sizeof(double));
+			t3.record[j].t3phi = (double *) malloc(wave.nwave * sizeof(double));
+			t3.record[j].t3phierr = (double *) malloc(wave.nwave * sizeof(double));
 			t3.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
-
 		}
 		t3.revision = 1;
 		strncpy(t3.date_obs, "2009-04-15", FLEN_VALUE);
@@ -552,209 +549,206 @@ void write_oifits_file(float declination, string datafile, Array s,
 // function that computes the visibilities
 // as arguments: the wavelengths, the hour angles, the source, the array
 // configuration, and the instrument
-void generate_oifits(SpectralMode & spec, HourAngle & ha, Source & target,
-   Array & s, Instrument & inst, string oifits_filename)
-{
-	int Npow;					// number of sampled hour angles
-	int Nbs;					// number of bispectra
+//void generate_oifits(SpectralMode & spec, HourAngle & ha, Source & target, Array & s, Instrument & inst, string oifits_filename)
+//{
+//	int Npow;					// number of sampled hour angles
+//	int Nbs;					// number of bispectra
+//    int nstations = s.GetNumStations();
 
-	// number of columns in the power spectra matrix
-	Npow = ha.Nha * s.nstations * (s.nstations - 1) / 2;
-	// number of columns in the bispectrum matrix
-	Nbs = ha.Nha * (s.nstations - 1) * (s.nstations - 2) / 2;
+//	// number of columns in the power spectra matrix
+//	Npow = ha.Nha * nstations * (nstations - 1) / 2;
+//	// number of columns in the bispectrum matrix
+//	Nbs = ha.Nha * (nstations - 1) * (nstations - 2) / 2;
 
-	// matrix recording the visibilities at each time step
-	Matrix < Complex > visibility(spec.nchannels, Npow);
-	// matrix recording the u coordinate
-	Matrix < double >u(spec.nchannels, Npow);
-	// matrix recording the v coordinate
-	Matrix < double >v(spec.nchannels, Npow);
-	// matrix recording the index of the 1st telescope
-	Matrix < int >t1(spec.nchannels, Npow);
-	// matrix recording the index of the 2nd telescope
-	Matrix < int >t2(spec.nchannels, Npow);
-	// row vector recording the hour angles
-	Row < double >time(Npow);
+//	// matrix recording the visibilities at each time step
+//	Matrix < Complex > visibility(spec.nchannels, Npow);
+//	// matrix recording the u coordinate
+//	Matrix < double >u(spec.nchannels, Npow);
+//	// matrix recording the v coordinate
+//	Matrix < double >v(spec.nchannels, Npow);
+//	// matrix recording the index of the 1st telescope
+//	Matrix < int >t1(spec.nchannels, Npow);
+//	// matrix recording the index of the 2nd telescope
+//	Matrix < int >t2(spec.nchannels, Npow);
+//	// row vector recording the hour angles
+//	Row < double >time(Npow);
 
-	int ii = 0;					// counter running through all the
-	// wavelengths
-	int jj = 0;					// counter running through all the HA
+//	int ii = 0;					// counter running through all the
+//	// wavelengths
+//	int jj = 0;					// counter running through all the HA
 
-	double wl = 0;				// temporary variable storing the current
-	// wavelength
-	double wn = 0;				// temporary variable storing the current
-	// wavenumber
-	double h = 0;				// temporary variable storing the current
-	// hour angle
+//	double wl = 0;				// temporary variable storing the current
+//	// wavelength
+//	double wn = 0;				// temporary variable storing the current
+//	// wavenumber
+//	double h = 0;				// temporary variable storing the current
+//	// hour angle
 
-	UVPoint uv;
+//	UVPoint uv;
 
-	cout << "Integration time = " << 1e3 * TimeInt(spec.median_wavelength,
-	   inst.ast_seeing, inst.wind_speed) << "ms" << endl;
-	for (int l = 0; l < spec.nchannels; l++)	// loop over the
-		// wavelengths
-	{
-		wl = spec.mean_wavelength[l];
-		wn = spec.mean_wavenumber[l];
-		jj = 0;
+//	cout << "Integration time = " << 1e3 * TimeInt(spec.median_wavelength,
+//	   inst.ast_seeing, inst.wind_speed) << "ms" << endl;
+//	for (int l = 0; l < spec.nchannels; l++)	// loop over the
+//		// wavelengths
+//	{
+//		wl = spec.mean_wavelength[l];
+//		wn = spec.mean_wavenumber[l];
+//		jj = 0;
 
-		// print photon count for this spectral channel for user to check
-		double Ni = PhCount(target, s, inst, spec.median_wavelength, wl,
-		   spec.delta_wavelength[l]);
+//		// print photon count for this spectral channel for user to check
+//		double Ni = PhCount(target, s, inst, spec.median_wavelength, wl, spec.delta_wavelength[l]);
 
-		cout << "Channel " << l << "  Wavelength " << wl <<
-		   " photons = " << Ni << "  (assumed Strehl " << Strehl(wl,
-		   inst.ast_seeing, s.diameter[0]) << ")" << endl;
+//		cout << "Channel " << l << "  Wavelength " << wl <<
+//		   " photons = " << Ni << "  (assumed Strehl " << Strehl(wl,
+//		   inst.ast_seeing, s.diameter[0]) << ")" << endl;
 
-		// 
-		double snr = pow(inst.visibility * Ni / s.nstations,
-		   2.0) / pow((pow(Ni, 2.0) + 2.0 * pow(Ni,
-				 3.0) * pow(inst.visibility,
-				 2.0) / pow(s.nstations,
-				 2.0) + 2.0 * pow(inst.Npix,
-				 2.0) * pow(inst.read_noise,
-				 4.0)), 0.5);
-		cout << "  point source unbiased V^2 SNR = " << snr << endl;
-		// AS 2010-06-22
-		// modified the VarUnbiasedPow1 function by eliminating the
-		// incoherent integration time
-		cout << "  point source unbiased V^2 SNR = " <<
-		   pow(VarUnbiasedPow1(1.0, spec, l, target, s, inst),
-		   -0.50) << endl;
-		// AS 2010-06-22
-		// modified the VarPow1 function by eliminating the incoherent
-		// integration time
-		cout << "  point source biased   V^2 SNR = " <<
-		   pow(VarPow1(1.0, spec, l, target, s, inst), -0.50) << endl;
-		// 
+//		// 
+//		double snr = pow(inst.visibility * Ni / nstations,
+//		   2.0) / pow((pow(Ni, 2.0) + 2.0 * pow(Ni,
+//				 3.0) * pow(inst.visibility,
+//				 2.0) / pow(nstations,
+//				 2.0) + 2.0 * pow(inst.Npix,
+//				 2.0) * pow(inst.read_noise,
+//				 4.0)), 0.5);
+//		cout << "  point source unbiased V^2 SNR = " << snr << endl;
+//		// AS 2010-06-22
+//		// modified the VarUnbiasedPow1 function by eliminating the
+//		// incoherent integration time
+//		cout << "  point source unbiased V^2 SNR = " <<
+//		   pow(VarUnbiasedPow1(1.0, spec, l, target, s, inst),
+//		   -0.50) << endl;
+//		// AS 2010-06-22
+//		// modified the VarPow1 function by eliminating the incoherent
+//		// integration time
+//		cout << "  point source biased   V^2 SNR = " <<
+//		   pow(VarPow1(1.0, spec, l, target, s, inst), -0.50) << endl;
+//		// 
 
-		for (int k = 0; k < ha.HA.size(); k++)	// for loop over all the
-			// hour angles
-		{
-			h = ha.HA[k];
-			// for loop over the 1st telescope defining the baseline
-			for (int i = 0; i < (s.nstations - 1); i++)
-			{
-				// for loop over the 2nd telescope defining the baseline
-				for (int j = i + 1; j < s.nstations; j++)
-				{
-					Baseline B(s, i, j);
-					uv = B.UVcoords(h, target.declination, s.latitude, wn);
-					visibility[ii][jj] = target.GetVis(uv);
-					u[ii][jj] = uv.u * wl;	// want u, v in meters
-					v[ii][jj] = uv.v * wl;
-					t1[ii][jj] = i;
-					t2[ii][jj] = j;
-					time[jj] = h;
-					jj++;		// counter running through all the columns
-				}
-			}
-		}
-		ii++;					// counter running through all the rows
-	}
+//		for (int k = 0; k < ha.HA.size(); k++)	// for loop over all the
+//			// hour angles
+//		{
+//			h = ha.HA[k];
+//			// for loop over the 1st telescope defining the baseline
+//			for (int i = 0; i < (s.nstations - 1); i++)
+//			{
+//				// for loop over the 2nd telescope defining the baseline
+//				for (int j = i + 1; j < s.nstations; j++)
+//				{
+//					Baseline B(s, i, j);
+//					uv = B.UVcoords(h, target.declination, wn);
+//					visibility[ii][jj] = target.GetVis(uv);
+//					u[ii][jj] = uv.u * wl;	// want u, v in meters
+//					v[ii][jj] = uv.v * wl;
+//					t1[ii][jj] = i;
+//					t2[ii][jj] = j;
+//					time[jj] = h;
+//					jj++;		// counter running through all the columns
+//				}
+//			}
+//		}
+//		ii++;					// counter running through all the rows
+//	}
 
-	cout << "Npow is:" << Npow << endl;
-	cout << "Nbs is:" << Nbs << endl;
-	PowerSpectrum Power =
-	   GenPower(spec, visibility, target, s, inst, Npow, t1,
-	   t2, u, v);
+//	cout << "Npow is:" << Npow << endl;
+//	cout << "Nbs is:" << Nbs << endl;
+//	PowerSpectrum Power = GenPower(spec, visibility, target, s, inst, Npow, t1, t2, u, v);
 
-	// AS 2010-06-21
-	// fixed :Bug: segfault if Nbs zero
-	if (Nbs == 0)
-	{
-		cout << "Only 2 telescopes, no bispectra computed." << endl;
-		write_oifits_file(target.declination, oifits_filename, s, spec,
-		   Power, Npow, NULL, Nbs, time);
-	}
-	else
-	{
-		Bispectrum Bispectrum =
-		   GenBispec(spec, visibility, target, s, inst,
-		   Nbs, ha.Nha, t1, t2, u, v);
-		write_oifits_file(target.declination, oifits_filename, s, spec,
-		   Power, Npow, &Bispectrum, Nbs, time);
-	}
-}
+//	// AS 2010-06-21
+//	// fixed :Bug: segfault if Nbs zero
+//	if (Nbs == 0)
+//	{
+//		cout << "Only 2 telescopes, no bispectra computed." << endl;
+//		write_oifits_file(target.declination, oifits_filename, s, spec,
+//		   Power, Npow, NULL, Nbs, time);
+//	}
+//	else
+//	{
+//		Bispectrum Bispectrum =
+//		   GenBispec(spec, visibility, target, s, inst,
+//		   Nbs, ha.Nha, t1, t2, u, v);
+//		write_oifits_file(target.declination, oifits_filename, s, spec,
+//		   Power, Npow, &Bispectrum, Nbs, time);
+//	}
+//}
 
 void run_sim(const VisSimParams * p)
 {
     /// \todo Check that all parameters are specified here instead of in the gui_main and main functions.
-
+    /// \todo Pass comment_chars to file reading functions rather than have it be specified differently everywhere.
     const string comment_chars("\\#~$&£%");
 
     // Now pull out the information that must be in a file:
     // We use pointers in this function for consistency across all variables.
-    Instrument * inst = new Instrument(p->instrument_filename.c_str());
-	SpectralMode * spec = new SpectralMode(p->SpectralMode_filename.c_str(), comment_chars);
-	Source * target = new Source(p->target_filename.c_str());
+    Instrument * inst = new Instrument(p->instrument_filename, comment_chars);
+	SpectralMode * spec = new SpectralMode(p->SpectralMode_filename, comment_chars);
+	Source * target = new Source(p->target_filename, comment_chars);
 	
 	// Allocate pointers for the array and hour angle information:
-	Array * s = NULL;
-	HourAngle * ha = NULL;
+	Array * array = new Array(p->array_filename, comment_chars);
+
+    // Read in the observations.  For now we only take hour angle files.
+    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 0);
+        
 	
-	// Now get the array information
-    s = new Array(p->array_filename.c_str());
-	
-	// If we are using an OIFITS file as input, we need to call different constructors (hence the need for pointers here)
-	if(p->bFromOIFITSFile)
-    {
-        oi_fits input_oifits;
-        GList * entry;
-        oi_vis2 * pVis2 = NULL;
-        int status = 0;
-        list<Observation> observations;
-        
-        // Read in the OIFITS file using the library routine.
-        read_oi_fits(p->input_oifits_filename.c_str(), &input_oifits, &status);
-        
-        // Get some information about the data file
-        //print_oi_fits_summary(&input_oifits);
-        
-        // Read out the UV coordinates:
-        // First iterate over the vis2 tables:
-        entry = g_list_first(input_oifits.vis2List);
-        while(entry)
-        {
-            pVis2 = (oi_vis2*) entry->data;
-            oi_vis2_record* records = pVis2->record;
-              
-            // Now iterate over the records in the table
-            for(int j = 0; j < pVis2->numrec; j++)
-            {                                          
-                observations.push_back(Observation(records[j].mjd));
-            }
-            
-            entry = g_list_next(entry);
-        }
-        
-        // Now find the unique mjd,times in the data
-        //printf("List size: %i \n", observations.size());
-        observations.unique(SameObservation);
-        //printf("List size: %i \n", observations.size());
-        
-        // Now generate all list of hour angles from the specified observations:
-        ha = new HourAngle((*target), (*s), observations);
-        
-        // Now that we have what we need, free the memory used by the OIFITS file:
-        free_oi_fits(&input_oifits);
-        
-        //exit(0);
-    }
-    else
-    {
-	    // Now get the information that could come from an OIFITS file
-	    ha = new HourAngle(p->HourAngles_filename.c_str());
-	}
-	
-	
-	// Now call the generator.  We de-reference the pointers here to avoid rewriting subsequent functions.
-    generate_oifits((*spec), (*ha), (*target), (*s), (*inst), p->oifits_filename);
+//	// If we are using an OIFITS file as input, we need to call different constructors (hence the need for pointers here)
+//	if(p->bFromOIFITSFile)
+//    {
+//        oi_fits input_oifits;
+//        GList * entry;
+//        oi_vis2 * pVis2 = NULL;
+//        int status = 0;
+//        list<Observation> observations;
+//        
+//        // Read in the OIFITS file using the library routine.
+//        read_oi_fits(p->input_oifits_filename.c_str(), &input_oifits, &status);
+//        
+//        // Get some information about the data file
+//        //print_oi_fits_summary(&input_oifits);
+//        
+//        // Read out the UV coordinates:
+//        // First iterate over the vis2 tables:
+//        entry = g_list_first(input_oifits.vis2List);
+//        while(entry)
+//        {
+//            pVis2 = (oi_vis2*) entry->data;
+//            oi_vis2_record* records = pVis2->record;
+//              
+//            // Now iterate over the records in the table
+//            for(int j = 0; j < pVis2->numrec; j++)
+//            {                                          
+//                observations.push_back(Observation(records[j].mjd));
+//            }
+//            
+//            entry = g_list_next(entry);
+//        }
+//        
+//        // Now find the unique mjd,times in the data
+//        //printf("List size: %i \n", observations.size());
+//        observations.unique(SameObservation);
+//        //printf("List size: %i \n", observations.size());
+//        
+//        // Now generate all list of hour angles from the specified observations:
+//        ha = new HourAngle((*target), (*s), observations);
+//        
+//        // Now that we have what we need, free the memory used by the OIFITS file:
+//        free_oi_fits(&input_oifits);
+//        
+//        //exit(0);
+//    }
+//    else
+//    {
+//	    // Now get the information that could come from an OIFITS file
+//	    ha = new HourAngle(p->HourAngles_filename.c_str());
+//	}
+//	
+//	
+//	// Now call the generator.  We de-reference the pointers here to avoid rewriting subsequent functions.
+//    generate_oifits((*spec), (*ha), (*target), (*s), (*inst), p->oifits_filename);
     
     // Free up memory
     delete inst;
     delete spec;
     delete target;
-    delete s;
-    delete ha;
+    delete array;
+//    delete ha;
 }

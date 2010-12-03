@@ -8,7 +8,7 @@
 class SpectralMode
 {
   public:
-    SpectralMode(const char* SpectralMode_file, const string comment_chars);
+    SpectralMode(string filename, string comment_chars);
 
     SpectralMode(double minvalue, double maxvalue, int spectralchannels);
     SpectralMode(Row < double >wav);

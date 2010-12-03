@@ -14,7 +14,7 @@ class VisSimParams
 	string array_filename;
 	string instrument_filename;
 	string SpectralMode_filename;
-	string HourAngles_filename;
+	string observation_filename;
 	string oifits_filename; // The output OIFITS filename
 	
 	string input_oifits_filename;

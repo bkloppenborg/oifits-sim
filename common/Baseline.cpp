@@ -1,6 +1,8 @@
 /// \file Baseline.cpp
 /// Implements the required functions for the baseline class.
 
+#include <cmath>
+
 #include "Baseline.h"
 #include "UVPoint.h"
 #include "Array.h"
@@ -9,25 +11,23 @@
 
 Baseline::Baseline()
 {
-    this->NEU[0] = this->NEU[1] = this->NEU[2] = 0;
     this->xyz[0] = this->xyz[1] = this->xyz[2] = 0;
+    this->name = "";
+    this->indicies[0] = 0;
+    this->indicies[1] = 0;
 }
 
-Baseline::Baseline(double array_lat, Station & station1, Station & station2)
+/// \todo Stop using NEU coordinates here, switch to station.x, station.y, and station.z.
+Baseline::Baseline(Station & station1, Station & station2)
 {
-    // First calculate the vector offsets between the scopes in (North, East, Up) coordinates
-    this->NEU[0] = station1.north - station2.north;
-    this->NEU[1] = station1.east - station2.east;
-    this->NEU[2] = station1.up - station2.up;
-    
-    double phi = array_lat * PI / 180.0;
-    // Convert (North, East, Up) to (x,y,z) as defined by the APIS++ standards
-    // see:    http://aips2.nrao.edu/docs/glossary
-    // for more information.
-    // the xyz array is ordered (x, y, z)
-    this->xyz[0] = -sin(phi) * NEU[0] + cos(phi) * NEU[2];
-    this->xyz[1] = NEU[1];
-    this->xyz[2] = cos(phi) * NEU[0] + sin(phi) * NEU[2];
+    // Now calculate the xyz coordinates:
+    this->xyz[0] = station1.xyz[0] - station2.xyz[0];
+    this->xyz[1] = station1.xyz[1] - station2.xyz[1];
+    this->xyz[2] = station1.xyz[2] - station2.xyz[2];
+        
+    this->name = station1.GetName() + "-" + station2.GetName();
+    this->indicies[0] = station1.GetIndex();
+    this->indicies[1] = station2.GetIndex();
 }
 
 UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
@@ -51,6 +51,49 @@ UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double 
     
     return uv;
 }
+
+string Baseline::GetName(void)
+{
+    return this->name;
+}
+
+////////////////////////////////////////////////////////////////////
+// Non Class Functions Below
+////////////////////////////////////////////////////////////////////
+
+/// Computes all possible baselines formed by the specified stations.
+vector<Baseline> ComputeBaselines(vector<Station> stations)
+{
+    int num_stations = stations.size();
+    
+    vector<Baseline> baselines;
+    
+    // Now compute all of the baselines and make a hash table for each baseline value
+    for(int i = 0; i < num_stations; i++)
+    {
+        for(int j = i+1; j < num_stations; j++)
+        {
+            // Create a new baseline, append it to the list of baselines
+            baselines.push_back(Baseline(stations[i], stations[j]));
+        }
+    }
+    
+    return baselines;
+}
+
+/// Computes a (baseline_name, baseline_object) hash table.
+BaselineHash ComputeBaselineHash(vector<Baseline> baselines)
+{
+    BaselineHash hash;
+    
+    for(int i = 0; i < baselines.size(); i++)
+    {
+        hash.insert(BaselineHash::value_type(baselines[i].GetName(), baselines[i]) );
+    }
+    
+    return hash;
+}
+
 
 /// \todo Rewrite this function to work with the new class definition.
 //double Baseline::Geometric_OPD(double hour_angle, double source_declination,

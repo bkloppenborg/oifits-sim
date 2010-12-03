@@ -29,15 +29,22 @@ class Observation
     vector<Station>     mStations;
 
   private:
-    vector<Baseline> FindBaselines(vector<Station> stations, string exclude_baselines);
-    vector<Station> FindStations(string telescopes);
+    vector<Baseline>    FindBaselines(vector<Station> stations, string exclude_baselines);
+    vector<Station>     FindStations(string telescopes);
     double  GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long);
     double  GetSiderealTime(double jd_high, double jd_low, double ee);
     
   public:
   // Constructors
+    Observation(Array * array, vector<Station> stations, string exclude_baselines);
     Observation(Array * array, double hour_angle, string telescopes, string exclude_baselines);
     Observation(Array * array, double mjd, double time, string telescopes, string exclude_baselines);
+    
+  public:
+  // Methods for reading in data files with observations
+    static vector <Observation> ReadObservations(Array * array, string filename, string comment_chars, int file_type);
+    static vector <Observation> ReadObservation_HA(Array * array, string filename, string comment_chars);
+    static vector <Observation> ReadObservation_Descriptive(Array * array, string filename, string comment_chars);
     
   // Other Methods
     double  GetHA(double targ_ra);
@@ -45,5 +52,5 @@ class Observation
     
     int         GetNumStations(void);
     Station &   GetStation(int sta_index);
-    
 };
+

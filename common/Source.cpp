@@ -43,9 +43,9 @@ Complex Source::GetVis(UVPoint uv)
         // resolved object
         visibility = 0.0;
         int nx = source_image.GetCols();
-
         int ny = source_image.GetRows();
 
+        /// \todo This calculation could be farmed out to a GPU very easily.
         for (int ii = 0; ii < nx; ii++)
             for (int jj = 0; jj < ny; jj++)
                 visibility += source_image[ii][jj] * polar(1., -2.0 * PI * source_pixellation * milliarcsec * (uv.u * (double)ii + uv.v * (double)jj));
@@ -54,49 +54,47 @@ Complex Source::GetVis(UVPoint uv)
     return visibility;
 }
 
-//Complex Source::GetVis(double wavenumber, double time, Array & array, int index_station1, int index_station2)
-//{
-//    Complex visibility;
+Complex Source::GetVis(double wavenumber, double hour_angle, Array & array, int index_station1, int index_station2)
+{
+    Complex visibility;
 
-//    if (source_image.GetCols() == 0)
-//    {
-//        // point source, no need to calculate uv coords
-//        visibility = 1.0;
-//    }
-//    else
-//    {
-//        // resolved object
-//        // according to time and wavenumber, get the uv points, then the
-//        // corresponding visibility
-//        // to implement - update the visibility only if enough time elapsed
-//        // between measurements
-//        Baseline B = Baseline::Baseline(array, index_station1, index_station2);   // function 
-//                                                                        // defined 
-//                                                                        // in
-//                                                                        // stations.cpp
-//        UVPoint uv = B.UVcoords(time, declination, array.latitude, wavenumber); // from 
-//                                                                                // UVPoint 
-//                                                                                // uv 
-//                                                                                // is 
-//                                                                                // now 
-//                                                                                // = 
-//                                                                                // B.UVcoords. 
-//                                                                                // function 
-//                                                                                // defined 
-//                                                                                // in 
-//                                                                                // stations.cpp
-//        visibility = GetVis(uv);        // source visibility is equal to the
-//                                        // equation above: visibility +=
-//                                        // source_image[ ii ][ jj ] *
-//                                        // polar(1., -2.0 * PI *
-//                                        // source_pixellation * milliarcsec *
-//                                        // (uv.u * (double) ii + uv.v *
-//                                        // (double) jj));
+    if (source_image.GetCols() == 0)
+    {
+        // point source, no need to calculate uv coords
+        visibility = 1.0;
+    }
+    else
+    {
 
-//    }
+        // resolved object
+        // according to time and wavenumber, get the uv points, then the
+        // corresponding visibility
+        // to implement - update the visibility only if enough time elapsed
+        // between measurements
+        Baseline B = Baseline(array.GetStation(index_station1), array.GetStation(index_station2));
+        UVPoint uv = B.UVcoords(hour_angle, declination, wavenumber); // from 
+                                                                                // UVPoint 
+                                                                                // uv 
+                                                                                // is 
+                                                                                // now 
+                                                                                // = 
+                                                                                // B.UVcoords. 
+                                                                                // function 
+                                                                                // defined 
+                                                                                // in 
+                                                                                // stations.cpp
+        visibility = GetVis(uv);        // source visibility is equal to the
+                                        // equation above: visibility +=
+                                        // source_image[ ii ][ jj ] *
+                                        // polar(1., -2.0 * PI *
+                                        // source_pixellation * milliarcsec *
+                                        // (uv.u * (double) ii + uv.v *
+                                        // (double) jj));
 
-//    return visibility;
-//}
+    }
+
+    return visibility;
+}
 
 double Source::Spectrum(double wavenumber)
 {
@@ -126,6 +124,7 @@ void Source::InitFluxes(char band, double background_magnitude,
     // 1590, 1080, 667 for J, H , K
     double flux_m0 = 0.0;
 
+    /// \todo Implement more than just JHK bands here.  Needs to work at optical wavelengths too.
     if (band == 'J')
         flux_m0 = 1.59e-23 / 6.626068e-34 * 1.235e-6;   // J band
     if (band == 'H')
@@ -199,44 +198,15 @@ Source::Source(const char *filename, char band, double magnitude,
 // class, ie target file name, band, background_magnitude 
 // and sky_background_aperture
 // Input values into class passed via source file
-Source::Source(const char *Source_file)
+Source::Source(string filename, string comment_chars)
 {
-    /// \todo Perhaps we could parse the source file in key->value pairs?
-    const string comments("\\#~$&£%");
-
-    vector < string > lines;    // stores non-blank, non-comment lines
-
-    ifstream fil(Source_file);
-
-    if (fil.is_open())
-    {
-        string line;
-
-        while (!fil.eof())
-        {
-            getline(fil, line);
-            while ((line.size() == 0 || comments.find(line[0]) != string::npos)
-                   && !fil.eof())
-            {
-                getline(fil, line);
-            }
-            if (!fil.eof())
-                lines.push_back(line);
-        }
-        fil.close();
-    }
-    else
-    {
-        /// \exception runtime_error Error opening source file.
-        /// The Source file could not be opened.
-        throw std::runtime_error("Error opening source file");
-    }
+    vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
 
     if (lines.size() != 9)
         throw std::
             runtime_error("Invalid number of parameters in the source file");
 
-    const char *filename = lines[0].c_str();
+    string fits_filename = lines[0];
 
     // AS 2010-06-24
     // added forced exit of the programme if the parameters are of the wrong
@@ -345,12 +315,12 @@ Source::Source(const char *Source_file)
                                                                         // flux 
                                                                         // equation
 
-    if (filename != NULL)
+    if (filename.size() > 0)
     {
         // extended source
         // Get the image and pixellation (keyword PIXEL should be in the FITS
         // file)
-        fits2mat(filename, source_image);
+        fits2mat(fits_filename.c_str(), source_image);
 
         // Normalize it
         source_image /= total(source_image);

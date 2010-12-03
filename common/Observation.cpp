@@ -3,6 +3,11 @@
 
 #include <cmath>
 #include <cstdio>
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+#include <cstdio>
+#include <cstdlib>
 
 #include "Observation.h"
 #include "Simulator.h"
@@ -31,6 +36,13 @@ inline bool SameObservation(Observation & A, Observation & B)
     //throw std::runtime_error("Warning: Mixed Observation Types (JD and Hour Angles) Detected!");
     
     return false;
+}
+
+Observation::Observation(Array * array, vector<Station> stations, string exclude_baselines)
+{
+    this->mArray = array;
+    this->mStations = stations;
+    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);
 }
 
 // Construct an Observation object from the hour angle, and included/excluded telescopes.
@@ -95,11 +107,11 @@ vector<Baseline> Observation::FindBaselines(vector <Station> stations, string ex
     int num_stations = stations.size();
     for(int i = 0; i < num_stations; i++)
     {
-        sta1_name = stations[i].staname;
+        sta1_name = stations[i].GetName();
         
         for(int j = i; j < num_stations; j++)
         {
-            string sta2_name = stations[j].staname;
+            string sta2_name = stations[j].GetName();
             bl_name = sta1_name + "-" + sta2_name;
             
             bl_names.insert( BLNameHash::value_type(bl_name, bl_name) );
@@ -185,4 +197,66 @@ int Observation::GetNumStations(void)
 Station & Observation::GetStation(int sta_index)
 {
     return this->mStations[sta_index];
+}
+
+/// Reads in an properly formatted observation file in a formats defined by file_type:
+///     0: A list of hour angles (in decimal hours)
+///     1: A descriptive list of the observation (see ReadObservation_Descriptive() for more info)
+vector<Observation> Observation::ReadObservations(Array * array, string filename, string comment_chars, int file_type)
+{
+    if(file_type == 0)
+        return ReadObservation_HA(array, filename, comment_chars);
+    else if (file_type == 1)
+        return ReadObservation_Descriptive(array, filename, comment_chars);
+    else
+    {
+        /// \exception runtime_error Invalid Observation File format Specifier
+        throw std::runtime_error("Invalid Observation File format Specifier.");
+    }
+}
+
+/// Reads in a file that consists of lines of hour angles with or without comments.
+vector <Observation> Observation::ReadObservation_HA(Array * array, string filename, string comment_chars)
+{
+    vector<Observation> observations;
+    vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
+    
+    // Now parse the file, make the observations
+    double ha;
+    for(int i = 0; i < lines.size(); i++)
+    {
+        if (!isdigit(lines[i][0]))
+        {
+            throw std::runtime_error("Non numeric character found in observation entry " + i);
+        }
+
+        ha = atof(lines[i].c_str());
+        
+        // Make a new observation with all of the stations included.
+        observations.push_back( Observation(array, array->GetAllStations(), "") );
+    }
+    
+}
+
+/// Reads in a series of formatted lines that consist of keywords:
+///     hour_angle = DECIMAL NUMBER
+///     telescopes = STATION_NAMES
+///     exclude = EXCLUDED_BASELINES
+/// DECIMAL NUMBER is a decimal number denoting the hour angle of the observation.
+/// STATION_NAMES is a CSV list of stations included in this observation in the following format:
+///     S1, S2, ... , E1
+/// white space is automatically stripped between commas.
+/// EXCLUDED_BASELINES is a CSV list of excluded baselines consisting of two station names separated
+/// by a hyphen, e.g.:
+///     S1-S2, S2-E2
+/// with the lower station index (as defined in the array definition file) always appearing first.
+/// white space is automatically stripped between commas.  EXCLUDED_BASELINES may be blank.
+vector <Observation> Observation::ReadObservation_Descriptive(Array * array, string filename, string comment_chars)
+{
+    vector <Observation> observations;
+
+    vector < string > lines = ReadFile(comment_chars, filename, "Cannot Open Observation Definition File");
+    
+    
+    return observations;
 }

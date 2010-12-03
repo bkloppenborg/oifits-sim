@@ -46,5 +46,6 @@ double sinc(double number);
 void    StringSplit(string str, string delim, vector<string> results);
 string  StripWhitespace(string str);
 void    StripWhitespace(vector<string> strings);
+vector<string> ReadFile(string filename, string comment_chars, string error_message);
 
 #endif // #ifndef SIMULATOR_H

@@ -4,6 +4,8 @@
 #ifndef STATION_H
 #define STATION_H
 
+// Include headers for the unordered map.  Note, this may need to be just <unordered_map> if compiled in MSVS.
+#include <tr1/unordered_map>
 #include <string>
 using namespace std;
 
@@ -14,27 +16,35 @@ class AtmosphereLayer;
 // interferometer
 class Station
 {
+  private:
+    string  sta_name;
+    int     sta_index;
 
   public:
     // AS 2010-06-18
-    std::string staname;        // Name of the station
-    double north;               // Onfloor coordinate in meters
-    double east;                // Onfloor coordinate in meters
-    double up;                  // Above/below floor coordinate in meters
+    double NEU[3];
+    double xyz[3];
 
     AtmosphereLayer * layer;
 
     double diameter;            // effective diameter of the station
     double gain;                // telescope gain (=1.0 by default, 0.0 to shut down a station)
-
+    
   public:
     Station();
-    Station(string station_name, double North, double East, double Up, double gain, double diameter);
-    Station(string station_name, double North, double East, double Up, AtmosphereLayer * atm, double gain, double diameter);
+    Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, double gain, double diameter);
+    Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, AtmosphereLayer * atm, double gain, double diameter);
+
+  private:
+    void    ComputeXYZ(double phi);
     
-    virtual ~ Station();
-    
-    string GetName();
+  public:
+    string  GetName(void);
+    int     GetIndex(void);
 };
+
+// Hash data type
+typedef std::tr1::unordered_map<std::string, Station> StationHash;
+StationHash ComputeStationHash(vector<Station> stations);
 
 #endif // STATION_H

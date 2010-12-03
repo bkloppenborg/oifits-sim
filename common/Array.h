@@ -5,20 +5,17 @@
 #define ARRAY_H
 #include <string>
 #include <vector>
-// Include headers for the unordered map.  Note, this may need to be just <unordered_map> if compiled in MSVS.
-#include <tr1/unordered_map>
+
 
 #include "Matrix.h"
 #include "Baseline.h"
 #include "Station.h"
+using namespace std;
 
 
 // Forward declarations
 class Station;
 class Baseline;
-
-typedef std::tr1::unordered_map<std::string, Station> StationHash;
-typedef std::tr1::unordered_map<std::string, Baseline> BaselineHash;
 
 // A quick struct for the hash_map below.
 struct eqstr
@@ -32,6 +29,7 @@ struct eqstr
 class Array
 {
     /// \todo Make all datamembers private unless absolutely necessary.
+    /// \todo Compute Station indicies as stations are read in.
   private:
     /// latitude of the array in radians
     double latitude;
@@ -49,24 +47,24 @@ class Array
     
   private:
     BaselineHash    bl_hash;
-    StationHash     station_name_hash;
-
+    StationHash     sta_hash;
 
   public:
     // Constructor
-    Array(const char * Array_file);
+    Array(string filename, string comment_chars);
     Array(std::string arrayname, double latitude, double longitude, double altitude, int nstations, Station * stations);
-    
-  private:
-    void        ComputeBaselines(void);
 
   public:
     Baseline &  GetBaseline(string baseline_name);
     Station &   GetStation(int station_index);
-    Station &   GetStation(string station_name);
+    Station &   GetStation(string sta_name);
     double      GetLatitude(void);
     double      GetLongitude(void);
     double      GetAltitude(void);
+    int         GetNumStations(void);
+    string      GetArrayName(void);
+    
+    vector<Station> GetAllStations(void);
 };
 
 #endif // #ifndef ARRAY_H

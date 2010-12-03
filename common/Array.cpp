@@ -12,9 +12,11 @@
 #include <fstream>
 #include <stdexcept>
 
+
 // Now custom includes
 #include "Array.h"
 #include "Station.h"
+#include "Baseline.h"
 #include "Simulator.h"  // Required for constants, like PI.
 
 /// \todo fix this function to comply with the class definition.
@@ -60,13 +62,11 @@
 //}
 
 // Create and initialize an array from data given in a text file.
-Array::Array(const char *Array_file)
-{                               
-    /// \todo It would be wise to parse these values from the file in key->value pairs
-    const string comments("\\/#~$&??%");
-    
+Array::Array(string filename, string comment_chars)
+{                                  
     // Local varaibles for creating Station objects.
     string staname;
+    int sta_index;
     double North;
     double East;
     double Up;
@@ -74,32 +74,7 @@ Array::Array(const char *Array_file)
     double diameter;
 
     // stores non-blank, non-comment lines
-    vector < string > lines;    
-    ifstream fil(Array_file);
-
-    if (fil.is_open())
-    {
-        string line;
-
-        while (!fil.eof())
-        {
-            getline(fil, line);
-            while ((line.size() == 0 || comments.find(line[0]) != string::npos)
-                   && !fil.eof())
-            {
-                getline(fil, line);
-            }
-            if (!fil.eof())
-                lines.push_back(line);
-        }
-        fil.close();
-    }
-    else
-    {
-        /// \exception runtime_error Error opening array file
-        /// The array file could not be located.  It is likely that the user just specified an invalid path.
-        throw std::runtime_error("Error opening array file");
-    }
+    vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Array Definition File");
 
     // Before we start parsing the input, allocate the array and baseline vectors:
 
@@ -152,10 +127,12 @@ Array::Array(const char *Array_file)
         cout << "Array altitude (m): " << altitude << endl;
     }
 
-    for (int i = 0; i < lines.size(); i++)
+    // Now iterate through the telescope definitions.  There are four entries above
+    // this point in the data file so we start at 4.
+    for (unsigned int i = 4; i < lines.size(); i++)
     {
 
-        istringstream lineStream(lines[i + 4]);
+        istringstream lineStream(lines[i]);
 
         vector < string > tokens;
         while (lineStream)
@@ -167,47 +144,22 @@ Array::Array(const char *Array_file)
         }
 
         staname = tokens[0];
-        North = atof(tokens[1].c_str());
-        East = atof(tokens[2].c_str());
-        Up = atof(tokens[3].c_str());
-        gain = atof(tokens[4].c_str());
-        diameter = atof(tokens[5].c_str());
+        sta_index = atoi(tokens[1].c_str());
+        North = atof(tokens[2].c_str());
+        East = atof(tokens[3].c_str());
+        Up = atof(tokens[4].c_str());
+        gain = atof(tokens[5].c_str());
+        diameter = atof(tokens[6].c_str());
         
         // Push this station on to the list of stations for this array.
-        this->stations.push_back( Station(staname, North, East, Up, gain, diameter) );
-        this->station_name_hash.insert( StationHash::value_type(staname, this->stations.back()) );
+        this->stations.push_back( Station(this->latitude, staname, sta_index, North, East, Up, gain, diameter) );
     }
+    
+    this->sta_hash = ComputeStationHash(stations);
     
     // Now compute all possible baselines from these stations.
-    this->ComputeBaselines();
-}
-
-void Array::ComputeBaselines(void)
-{
-    int num_stations = this->stations.size();
-    string sta1_name;
-    string sta2_name;
-    string bl_name;
-    
-    // Now compute all of the baselines and make a hash table for each baseline value
-    for(int i = 0; i < num_stations; i++)
-    {
-        sta1_name = this->stations[i].GetName();
-        
-        for(int j = i; j < num_stations; j++)
-        {
-            sta2_name = this->stations[j].GetName();
-            
-            // Create a name for the baseline in the form STATION1-STATION2
-            bl_name = sta1_name + "-" + sta2_name;
-            
-            // Create a new baseline, append it to the list of baselines
-            this->baselines.push_back(Baseline(this->latitude, this->stations[i], this->stations[j]));
-            
-            // Create a new hash entry for this baseline.  We use this to look things up later.
-            this->bl_hash.insert( BaselineHash::value_type(bl_name, this->baselines.back()) );
-        }
-    }
+    this->baselines = ComputeBaselines(stations);
+    this->bl_hash = ComputeBaselineHash(this->baselines);
 }
 
 // Returns a reference to a baseline object.
@@ -221,9 +173,9 @@ Station &   Array::GetStation(int station_index)
     return this->stations[station_index];
 }
 
-Station &   Array::GetStation(string station_name)
+Station &   Array::GetStation(string sta_name)
 {
-    return this->station_name_hash[station_name];
+    return this->sta_hash[sta_name];
 }
 
 double      Array::GetLatitude(void)
@@ -241,3 +193,17 @@ double  Array::GetAltitude(void)
     return this->altitude;
 }
 
+int     Array::GetNumStations(void)
+{
+    return this->stations.size();
+}
+
+string  Array::GetArrayName(void)
+{
+    return this->arrayname;
+}
+
+vector<Station> Array::GetAllStations(void)
+{
+    return this->stations;
+}

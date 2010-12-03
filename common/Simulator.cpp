@@ -1,5 +1,9 @@
 #include "Simulator.h"
 
+#include <iostream>
+#include <fstream>
+#include <stdexcept>
+
 template<typename T, typename P>
 T remove_if(T beg, T end, P pred)
 {
@@ -48,4 +52,38 @@ void StripWhitespace(vector<string> strings)
     {
         strings[i] = StripWhitespace(strings[i]);
     }
+}
+
+/// Reads in a file, returns non-comment lines as a vector of strings
+/// If the file cannot be opened, an exception is thrown with the message contained in error_message
+vector<string> ReadFile(string filename, string comment_chars, string error_message)
+{
+    ifstream fil(filename.c_str());
+    vector < string > lines;   
+    
+    if (fil.is_open())
+    {
+        string line;
+
+        while (!fil.eof())
+        {
+            getline(fil, line);
+            while ((line.size() == 0 || comment_chars.find(line[0]) != string::npos)
+                   && !fil.eof())
+            {
+                getline(fil, line);
+            }
+            if (!fil.eof())
+                lines.push_back(line);
+        }
+        fil.close();
+    }
+    else
+    {
+        /// \exception runtime_error Error opening array file
+        /// The array file could not be located.  It is likely that the user just specified an invalid path.
+        throw std::runtime_error(error_message);
+    }
+    
+    return lines;
 }

@@ -1,3 +1,5 @@
+#include "Instrument.h"
+
 #include <cstdio>
 #include <cstdlib>
 #include <iostream>
@@ -5,7 +7,9 @@
 #include <vector>
 #include <string>
 #include <stdexcept>
-#include "Instrument.h"
+
+
+#include "Simulator.h"
 
 using std::vector;
 using std::string;
@@ -30,31 +34,11 @@ Instrument::Instrument(double throughput, double visibility, int Npix,
 	this->incoh_time = incoh_time;
 }
 
-Instrument::Instrument(const char *Inst_file)
+Instrument::Instrument(string filename, string comment_chars)
 {
-	const string comments("\\/#~$&£%");
-	vector < string > lines;	// stores non-blank, non-comment lines
+	vector < string > lines = ReadFile(comment_chars, filename, "Cannot Open Instrument Definition File");
 
-	ifstream fil(Inst_file);
-	if (fil.is_open())
-	{
-		string line;
-		while (!fil.eof())
-		{
-			getline(fil, line);
-			while ((line.size() == 0
-				  || comments.find(line[0]) != string::npos) && !fil.eof())
-				getline(fil, line);
-			if (!fil.eof())
-				lines.push_back(line);
-		}
-		fil.close();
-	}
-	else
-	{
-	    /// \except runtime_error "Error Opening Instrument File"
-		throw std::runtime_error("Error opening instrument file");
-	}
+	
 
 	if (lines.size() != 10)
 		throw

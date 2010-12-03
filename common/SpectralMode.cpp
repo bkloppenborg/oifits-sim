@@ -8,6 +8,7 @@
 #include <cstdlib>
 
 #include "SpectralMode.h"
+#include "Simulator.h"
 
 using std::cout;
 using std::string;
@@ -16,33 +17,10 @@ using std::string;
 /// Reads in space delineated text file of one or more lines in the following format:
 ///     mean_wavelength effective_bandwidth
 /// Comment characters are specified by comment_chars
-SpectralMode::SpectralMode(const char* SpectralMode_file, string comment_chars) 
+SpectralMode::SpectralMode(string filename, string comment_chars) 
 {
 
-    vector < string > lines;    // stores non-blank, non-comment lines
-
-    ifstream fil(SpectralMode_file);
-    if (fil.is_open()) 
-    {
-        string line;
-        while (!fil.eof()) 
-        {
-            getline(fil, line);
-            while ((line.size() == 0 || comment_chars.find(line[0]) != string::npos) && !fil.eof()) 
-            {
-                getline(fil, line);
-            }
-            
-            if (!fil.eof())
-                lines.push_back(line);
-        
-        }
-        fil.close();
-    }
-    else
-    {
-        throw std::runtime_error("Error opening spectral mode file");
-    }
+    vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Spectral Mode Definition File");
     
     // Now, set the number of channels
     this->nchannels = lines.size();

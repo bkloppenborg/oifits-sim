@@ -7,7 +7,7 @@ VisSimParams::VisSimParams()
 	this->array_filename = "";
 	this->instrument_filename = "";
 	this->SpectralMode_filename = "";
-	this->HourAngles_filename = "";
+	this->observation_filename = "";
 	this->oifits_filename = "";
 	
 	this->input_oifits_filename = "";
@@ -38,7 +38,7 @@ bool VisSimParams::have_all_params()
     {
         if ((this->target_filename != "") && (this->array_filename != "") 
             && (this->instrument_filename != "") && (this->SpectralMode_filename != "") 
-            && (this->HourAngles_filename != ""))
+            && (this->observation_filename != ""))
         {
             return true;
         }

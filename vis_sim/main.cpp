@@ -50,10 +50,10 @@ int main(int argc, char *argv[])
 				cout << "SpectralMode is " << p.
 				   SpectralMode_filename << endl;
 			}
-			if ((strcmp(argv[i], "-h") == 0) && (i < argc - 1))
+			if ((strcmp(argv[i], "-obs") == 0) && (i < argc - 1))
 			{
-				p.HourAngles_filename = argv[i + 1];
-				cout << "HourAngle is " << p.HourAngles_filename << endl;
+				p.observation_filename = argv[i + 1];
+				cout << "Observations are found in " << p.observation_filename << endl;
 			}
 			if ((strcmp(argv[i], "-o") == 0) && (i < argc - 1))
 			{

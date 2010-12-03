@@ -23,7 +23,7 @@ class Source
            double temperature, double background_magnitude,
            double sky_background_aperture, double declination, 
            double right_ascension, double pixellation);
-    Source(const char *Source_file);
+    Source(string filename, string comment_chars);
 
     double flux;                // integrated flux over lambda (should be
     // Jansky)
@@ -50,7 +50,7 @@ class Source
     Complex GetVis(UVPoint uv);
     
     /// \todo Rewrite this function to be compliant with the new Observation class.
-//    Complex GetVis(double wavenumber, double time, Array & array, int index_station1, int index_station2);
+    Complex GetVis(double wavenumber, double time, Array & array, int index_station1, int index_station2);
     double Spectrum(double wavenumber);
 
     double BackgroundSpectrum(double wavenumber);
