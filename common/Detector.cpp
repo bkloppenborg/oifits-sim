@@ -97,8 +97,7 @@ void Detector::FastOneReadP( double current_time , Combiner* combiner , Spectral
                 for (int mbeam = 0; mbeam < nbeam; mbeam++)
                 {
                     // Get source visibility for the current baseline
-                    source_vis = Source->GetVis(Wav->mean_wavenumber[ iwavenumber ], time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index,
-                      combiner->beamlist[ mbeam ]->station_index );
+                    source_vis = Source->GetVis(Wav->mean_wavenumber[ iwavenumber ], time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index, combiner->beamlist[ mbeam ]->station_index );
 
                     // phase[ iwavenumber ] = combiner->fringephase[ nbeam ][ mbeam ] + arg( source_vis ) ;
 

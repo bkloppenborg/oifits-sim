@@ -42,6 +42,22 @@ string Triplet::GetName(void)
     return this->name;
 }
 
+complex<double> Triplet::ComputeBisError(Source & source, double hour_angle, double wavenumber)
+{
+    return complex <double> (0.0, 0.0);
+}
+
+complex<double> Triplet::ComputeBispectra(Source & source, double hour_angle, double wavenumber)
+{
+    // Get the visibilities on the baselines AB, BC, and CA.
+    complex<double> AB = mBaselines[0].GetVisibility(source, hour_angle, wavenumber);
+    complex<double> BC = mBaselines[1].GetVisibility(source, hour_angle, wavenumber);
+    complex<double> AC = mBaselines[2].GetVisibility(source, hour_angle, wavenumber);   // Note, this is AC NOT CA
+    
+    // Now compute the bispectrum.  We take the conjugate of AC to form CA.
+    return AB * BC * conj(AC);
+}
+
 /// Returns a boolean to indicate if the baseline specified by bl_name is involved in this triplet.
 bool    Triplet::ContainsBaseline(string bl_name)
 {
@@ -59,13 +75,56 @@ bool    Triplet::ContainsBaseline(string bl_name)
 // Computes the bispectra from the three baselines in this triplet.
 complex<double> Triplet::GetBispectra(Source & source, double hour_angle, double wavenumber)
 {
-    // Get the visibilities on the baselines AB, BC, and CA.
-    complex<double> AB = mBaselines[0].GetVisibility(source, hour_angle, wavenumber);
-    complex<double> BC = mBaselines[1].GetVisibility(source, hour_angle, wavenumber);
-    complex<double> AC = mBaselines[2].GetVisibility(source, hour_angle, wavenumber);   // Note, this is AC NOT CA
+    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    complex <double> bis(0.0, 0.0);
     
-    // Now compute the bispectrum.  We take the conjugate of AC to form CA.
-    return AB * BC * conj(AC);
+    // First try looking up the value in the hash table
+    if(mBisValues.find(hash_key) != mBisValues.end())
+    {
+        bis = mBisValues[hash_key];
+    }
+    else
+    {
+        // The value did not exist in the hash table, we need to compute and store it.
+        bis = ComputeBispectra(source, hour_angle, wavenumber);
+        mBisValues[hash_key] = bis;
+    }
+    
+    return bis_err;
+}
+
+complex<double> Triplet::GetBisError(Source & source, double hour_angle, double wavenumber)
+{
+    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    complex <double> bis_err(0.0, 0.0);
+    
+    // First try looking up the value in the hash table
+    if(mBisErrors.find(hash_key) != mBisErrors.end())
+    {
+        bis_err = mBisErrors[hash_key];
+    }
+    else
+    {
+        // The value did not exist in the hash table, we need to compute and store it.
+        bis_err = ComputeBisError(source, hour_angle, wavenumber);
+        mBisErrors[hash_key] = bis_err;
+    }
+    
+    return bis_err;
+}
+
+// Computes a hash key from the source, hour angle, and wavenumber.
+string  Triplet::GetHashKey(Source & source, double hour_angle, double wavenumber)
+{
+    /// \todo It may be necessary for the doubles coming into this function to be cast into some 
+    /// finite floating point format.
+    
+    /// \todo This function is in common with the Baseline class, need to factor this code.
+    
+    std::ostringstream sstream;
+    sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
+    std::string str = sstream.str();
+    return str;
 }
 
 ////////////////////////////////////////////////////////////////////

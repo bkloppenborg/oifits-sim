@@ -88,6 +88,8 @@ string  Baseline::GetHashKey(Source & source, double hour_angle, double wavenumb
     /// \todo It may be necessary for the doubles coming into this function to be cast into some 
     /// finite floating point format.
     
+    /// \todo This function is in common with the Triplet class, need to factor this code.
+    
     std::ostringstream sstream;
     sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
     std::string str = sstream.str();

@@ -12,9 +12,12 @@
 
 using namespace std;
 
+typedef std::tr1::unordered_map<std::string, complex<double> > BisHash;
 
 class Station;
 class Array;
+
+/// \todo The hash lookup code in this class is in common with the Baseline code, factor this.
 
 class Triplet
 {
@@ -22,15 +25,27 @@ class Triplet
     Station     mStations[3];
     Baseline    mBaselines[3]; 
     string name;
+    
+    BisHash mVisValues; // Stores computed bispectrum values
+    BisHash mVisErrors; // Stores computed/stored bispectrum error values.
 
   public:
     Triplet();
     Triplet(Array * array, Station & station1, Station & station2, Station & station3);
+
+  private:    
+    complex<double> ComputeBisError(Source & source, double hour_angle, double wavenumber);
+    complex<double> ComputeBispectra(Source & source, double hour_angle, double wavenumber);
+    
+    string  GetHashKey(Source & source, double hour_angle, double wavenumber);
     
   public:
     string  GetName(void);
     bool    ContainsBaseline(string bl_name);
     complex<double> GetBispectra(Source & source, double hour_angle, double wavenumber);
+    
+    complex<double> GetBisError(Source & source, double hour_angle, double wavenumber);
+    void    SetBisError(Source & source, double hour_angle, double wavenumber);
 };
 
 // Hash data type
