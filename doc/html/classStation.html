@@ -54,23 +54,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classStation-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#ac9951896c7d68a95787c50e1d5ac94d6">Station</a> (double coordx, double coordy, <a class="el" href="classAtmosphereLayer.html">AtmosphereLayer</a> *atm, double <a class="el" href="classStation.html#a132660da885c826d92750aee2e469cfe">gain</a>, double <a class="el" href="classStation.html#aa7b65ca1b24be6b9b071097d5581054c">diameter</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a00434e79e8ee7f4ebd6d3b631dde5ac0">~Station</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a73d335726aad1d844d81cda6d9fd74e6">Station</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a47edc3b9cf60324e4b1146c94a2cbaf5">Station</a> (double array_lat, string station_name, int <a class="el" href="classStation.html#a1d576c7627ce27b72d78cbfe26c29d60">sta_index</a>, double North, double East, double Up, double <a class="el" href="classStation.html#a132660da885c826d92750aee2e469cfe">gain</a>, double <a class="el" href="classStation.html#aa7b65ca1b24be6b9b071097d5581054c">diameter</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a23e85488389f1f084e5d149564e72e17">Station</a> (double array_lat, string station_name, int <a class="el" href="classStation.html#a1d576c7627ce27b72d78cbfe26c29d60">sta_index</a>, double North, double East, double Up, <a class="el" href="classAtmosphereLayer.html">AtmosphereLayer</a> *atm, double <a class="el" href="classStation.html#a132660da885c826d92750aee2e469cfe">gain</a>, double <a class="el" href="classStation.html#aa7b65ca1b24be6b9b071097d5581054c">diameter</a>)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#aad118a81a8498e1196c85b7a16e3be91">GetName</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#afd50ce755b324127b1f1e8929bff31aa">GetIndex</a> (void)</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a0522258bd22862151977578f38f6afb0">staname</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#ac1d5d46d39015ec4522003bef2aec3b9">x</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a2ecc6909273662f773e27c7c56c1f658">y</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a4e9ba13f4bdfd32b9c8cfac08a4bf24a">z</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a49b5c4024685c59892989eb78167c0a2">NEU</a> [3]</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#af5b031756ab9e16e3f35bfd9ca0f0d70">xyz</a> [3]</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAtmosphereLayer.html">AtmosphereLayer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#aad67aa8d99ed867ff834ef644ef4f511">layer</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#aa7b65ca1b24be6b9b071097d5581054c">diameter</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a132660da885c826d92750aee2e469cfe">gain</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a9ac5daebf0b5e54276a6afed7b5a61c0">ComputeXYZ</a> (double phi)</td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#ad06effdce23c36b4281297e636f852c2">sta_name</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a1d576c7627ce27b72d78cbfe26c29d60">sta_index</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A class to represent a station (i.e. telescope) in an. </p>
 
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00009">9</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00017">17</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ac9951896c7d68a95787c50e1d5ac94d6"></a><!-- doxytag: member="Station::Station" ref="ac9951896c7d68a95787c50e1d5ac94d6" args="(double coordx, double coordy, AtmosphereLayer *atm, double gain, double diameter)" -->
+<a class="anchor" id="a73d335726aad1d844d81cda6d9fd74e6"></a><!-- doxytag: member="Station::Station" ref="a73d335726aad1d844d81cda6d9fd74e6" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Station::Station </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00012">12</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a47edc3b9cf60324e4b1146c94a2cbaf5"></a><!-- doxytag: member="Station::Station" ref="a47edc3b9cf60324e4b1146c94a2cbaf5" args="(double array_lat, string station_name, int sta_index, double North, double East, double Up, double gain, double diameter)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -78,13 +103,102 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
           <td class="memname">Station::Station </td>
           <td>(</td>
           <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>coordx</em>, </td>
+          <td class="paramname"> <em>array_lat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>station_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sta_index</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>coordy</em>, </td>
+          <td class="paramname"> <em>North</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>East</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Up</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>gain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>diameter</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00023">23</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a23e85488389f1f084e5d149564e72e17"></a><!-- doxytag: member="Station::Station" ref="a23e85488389f1f084e5d149564e72e17" args="(double array_lat, string station_name, int sta_index, double North, double East, double Up, AtmosphereLayer *atm, double gain, double diameter)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Station::Station </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>array_lat</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>station_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>sta_index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>North</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>East</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Up</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -113,26 +227,68 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00011">11</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00037">37</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a00434e79e8ee7f4ebd6d3b631dde5ac0"></a><!-- doxytag: member="Station::~Station" ref="a00434e79e8ee7f4ebd6d3b631dde5ac0" args="()" -->
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a9ac5daebf0b5e54276a6afed7b5a61c0"></a><!-- doxytag: member="Station::ComputeXYZ" ref="a9ac5daebf0b5e54276a6afed7b5a61c0" args="(double phi)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">Station::~Station </td>
+          <td class="memname">void Station::ComputeXYZ </td>
           <td>(</td>
-          <td class="paramname"></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>phi</em></td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [virtual]</code></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00027">27</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00051">51</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afd50ce755b324127b1f1e8929bff31aa"></a><!-- doxytag: member="Station::GetIndex" ref="afd50ce755b324127b1f1e8929bff31aa" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Station::GetIndex </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00067">67</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aad118a81a8498e1196c85b7a16e3be91"></a><!-- doxytag: member="Station::GetName" ref="aad118a81a8498e1196c85b7a16e3be91" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Station::GetName </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00062">62</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
 
 </div>
 </div>
@@ -148,7 +304,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00022">22</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00030">30</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
 
 </div>
 </div>
@@ -163,7 +319,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00024">24</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00031">31</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
 
 </div>
 </div>
@@ -178,67 +334,67 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00028">28</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a49b5c4024685c59892989eb78167c0a2"></a><!-- doxytag: member="Station::NEU" ref="a49b5c4024685c59892989eb78167c0a2" args="[3]" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classStation.html#a49b5c4024685c59892989eb78167c0a2">Station::NEU</a>[3]</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00025">25</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1d576c7627ce27b72d78cbfe26c29d60"></a><!-- doxytag: member="Station::sta_index" ref="a1d576c7627ce27b72d78cbfe26c29d60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classStation.html#a1d576c7627ce27b72d78cbfe26c29d60">Station::sta_index</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00021">21</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad06effdce23c36b4281297e636f852c2"></a><!-- doxytag: member="Station::sta_name" ref="ad06effdce23c36b4281297e636f852c2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string <a class="el" href="classStation.html#ad06effdce23c36b4281297e636f852c2">Station::sta_name</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>Definition at line <a class="el" href="Station_8h_source.html#l00020">20</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0522258bd22862151977578f38f6afb0"></a><!-- doxytag: member="Station::staname" ref="a0522258bd22862151977578f38f6afb0" args="" -->
+<a class="anchor" id="af5b031756ab9e16e3f35bfd9ca0f0d70"></a><!-- doxytag: member="Station::xyz" ref="af5b031756ab9e16e3f35bfd9ca0f0d70" args="[3]" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::string <a class="el" href="classStation.html#a0522258bd22862151977578f38f6afb0">Station::staname</a></td>
+          <td class="memname">double <a class="el" href="classStation.html#af5b031756ab9e16e3f35bfd9ca0f0d70">Station::xyz</a>[3]</td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00013">13</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac1d5d46d39015ec4522003bef2aec3b9"></a><!-- doxytag: member="Station::x" ref="ac1d5d46d39015ec4522003bef2aec3b9" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double <a class="el" href="classStation.html#ac1d5d46d39015ec4522003bef2aec3b9">Station::x</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00014">14</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2ecc6909273662f773e27c7c56c1f658"></a><!-- doxytag: member="Station::y" ref="a2ecc6909273662f773e27c7c56c1f658" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double <a class="el" href="classStation.html#a2ecc6909273662f773e27c7c56c1f658">Station::y</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00016">16</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a4e9ba13f4bdfd32b9c8cfac08a4bf24a"></a><!-- doxytag: member="Station::z" ref="a4e9ba13f4bdfd32b9c8cfac08a4bf24a" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double <a class="el" href="classStation.html#a4e9ba13f4bdfd32b9c8cfac08a4bf24a">Station::z</a></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="Station_8h_source.html#l00018">18</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00026">26</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
 
 </div>
 </div>
@@ -261,7 +417,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a11ea9246cee33169b48f6fbb902fbbd3">Interp2d</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;dataIn, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;dataOut, double offsetX, double offsetY, double scale, double rotation)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#aea2af94818e0413f0d412c2c2005234d">mat2fits</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;m, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a712ca07bcd43ff93ce2747fe5c071112">mat2fits</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;m, char *filename)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ad26b16e86c4d845e9f89d3c1db575302">fits2mat</a> (const char *fname, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;m, double &amp;pixellation)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#a994237060a1761f522640a0f552acb77">fits2mat</a> (const char *fname, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;m)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Matrix_8cpp.html#ab954a056aece4783897155da1c9928ad">FFT</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;min, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;mout, int direction, int dccenter)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
@@ -118,11 +118,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Matrix_8cpp_source.html#l00478">478</a> of file <a class="el" href="Matrix_8cpp_source.html">Matrix.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Matrix_8cpp_source.html#l00479">479</a> of file <a class="el" href="Matrix_8cpp_source.html">Matrix.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad26b16e86c4d845e9f89d3c1db575302"></a><!-- doxytag: member="Matrix.cpp::fits2mat" ref="ad26b16e86c4d845e9f89d3c1db575302" args="(const char *fname, Matrix&lt; double &gt; &amp;m, double &amp;pixellation)" -->
+<a class="anchor" id="a994237060a1761f522640a0f552acb77"></a><!-- doxytag: member="Matrix.cpp::fits2mat" ref="a994237060a1761f522640a0f552acb77" args="(const char *fname, Matrix&lt; double &gt; &amp;m)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -136,13 +136,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double &amp;&nbsp;</td>
-          <td class="paramname"> <em>pixellation</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>m</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -152,14 +146,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
-
-<p><dl><dt><b>Exceptions:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header. </td></tr>
-  </table>
-  </dd>
-</dl>
-</p>
 
 <p>Definition at line <a class="el" href="Matrix_8cpp_source.html#l00411">411</a> of file <a class="el" href="Matrix_8cpp_source.html">Matrix.cpp</a>.</p>
 
@@ -645,7 +631,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

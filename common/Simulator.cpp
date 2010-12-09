@@ -22,7 +22,7 @@ double sinc( double number )
 }
 
 // A simple string splitting function for use with delimiters
-void StringSplit(string str, string delim, vector<string> results)
+void StringSplit(string str, string delim, vector<string> & results)
 {
     int cutAt;
     while( (cutAt = str.find_first_of(delim)) != str.npos )
@@ -45,10 +45,10 @@ string StripWhitespace(string str)
 }
 
 
-void StripWhitespace(vector<string> strings)
+void StripWhitespace(vector<string> & strings)
 {
     // Remove any remaining white space.
-    for(int i = 0; i < strings.size(); i++)
+    for(unsigned int i = 0; i < strings.size(); i++)
     {
         strings[i] = StripWhitespace(strings[i]);
     }
@@ -58,25 +58,26 @@ void StripWhitespace(vector<string> strings)
 /// If the file cannot be opened, an exception is thrown with the message contained in error_message
 vector<string> ReadFile(string filename, string comment_chars, string error_message)
 {
-    ifstream fil(filename.c_str());
+    ifstream infile;
+    infile.open(filename.c_str());
     vector < string > lines;   
     
-    if (fil.is_open())
+    if (infile.is_open())
     {
         string line;
 
-        while (!fil.eof())
+        while (!infile.eof())
         {
-            getline(fil, line);
+            getline(infile, line);
             while ((line.size() == 0 || comment_chars.find(line[0]) != string::npos)
-                   && !fil.eof())
+                   && !infile.eof())
             {
-                getline(fil, line);
+                getline(infile, line);
             }
-            if (!fil.eof())
+            if (!infile.eof())
                 lines.push_back(line);
         }
-        fil.close();
+        infile.close();
     }
     else
     {

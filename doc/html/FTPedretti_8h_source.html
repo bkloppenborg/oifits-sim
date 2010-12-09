@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
@@ -59,48 +59,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00010"></a>00010   <span class="keyword">public</span>:
 <a name="l00011"></a>00011     <span class="keywordtype">void</span> <a class="code" href="classFTPedretti.html#aa5840df9985ff246fc42318c94c7779a">GDEstimate</a>();
 <a name="l00012"></a>00012 
-<a name="l00013"></a>00013     <a class="code" href="classFTPedretti.html#a8aa7bb8087a0e003f495e0ca98393867">FTPedretti</a>(<span class="keywordtype">int</span> n_coh, <span class="keywordtype">int</span> ndelta_coh, <span class="keywordtype">int</span> n_incoh, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> * spectr,
-<a name="l00014"></a>00014                <a class="code" href="classModulator.html">Modulator</a> * modulator);
+<a name="l00013"></a>00013     <a class="code" href="classFTPedretti.html#a8aa7bb8087a0e003f495e0ca98393867">FTPedretti</a>(<span class="keywordtype">int</span> <a class="code" href="classFTPedretti.html#ad60e472d0ef298c0ccd9255662d2e92e">n_coh</a>, <span class="keywordtype">int</span> <a class="code" href="classFTPedretti.html#a62797d32a2a9efb508a6a50e37537bca">ndelta_coh</a>, <span class="keywordtype">int</span> <a class="code" href="classFTPedretti.html#a80d65a4169e0885939736694bc76f4a8">n_incoh</a>, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> * <a class="code" href="classFTPedretti.html#a154536c2195506b9c254e417cf752cb6">spectr</a>,
+<a name="l00014"></a>00014                <a class="code" href="classModulator.html">Modulator</a> * <a class="code" href="classFTPedretti.html#ac366c4d6cd99a518c673d3636ab97245">modulator</a>);
 <a name="l00015"></a>00015     <span class="keywordtype">void</span> <a class="code" href="classFTPedretti.html#a8d57325be576602b6f3eb56c2b4ef19d">StoreOneFrame</a>(<a class="code" href="classRow.html">Row &lt; int &gt;</a>&amp;detectorframe, <span class="keywordtype">double</span> time);
 <a name="l00016"></a>00016 
 <a name="l00017"></a><a class="code" href="classFTPedretti.html#ae3c6c05c945c59fb8b3df83876faeab2">00017</a>     <a class="code" href="classMatrix.html">Matrix &lt; double &gt;</a><a class="code" href="classFTPedretti.html#ae3c6c05c945c59fb8b3df83876faeab2">frames</a>;
 <a name="l00018"></a>00018 
 <a name="l00019"></a>00019   <span class="keyword">private</span>:
-<a name="l00020"></a>00020     <span class="keywordtype">int</span> framecounter;
+<a name="l00020"></a><a class="code" href="classFTPedretti.html#a6aab8bf34752e2003fd24429b5deabf0">00020</a>     <span class="keywordtype">int</span> <a class="code" href="classFTPedretti.html#a6aab8bf34752e2003fd24429b5deabf0">framecounter</a>;
 <a name="l00021"></a>00021 
-<a name="l00022"></a>00022     <span class="keywordtype">int</span> nchannels;              <span class="comment">// number of channels</span>
+<a name="l00022"></a><a class="code" href="classFTPedretti.html#a617b319f056add9357e59becefdf629f">00022</a>     <span class="keywordtype">int</span> <a class="code" href="classFTPedretti.html#a617b319f056add9357e59becefdf629f">nchannels</a>;              <span class="comment">// number of channels</span>
 <a name="l00023"></a>00023 
-<a name="l00024"></a>00024     <span class="keywordtype">int</span> n_coh;                  <span class="comment">// number of frames for coherent integration</span>
+<a name="l00024"></a><a class="code" href="classFTPedretti.html#ad60e472d0ef298c0ccd9255662d2e92e">00024</a>     <span class="keywordtype">int</span> n_coh;                  <span class="comment">// number of frames for coherent integration</span>
 <a name="l00025"></a>00025 
-<a name="l00026"></a>00026     <span class="keywordtype">int</span> ndelta_coh;             <span class="comment">// number of frames between two sucessive</span>
+<a name="l00026"></a><a class="code" href="classFTPedretti.html#a62797d32a2a9efb508a6a50e37537bca">00026</a>     <span class="keywordtype">int</span> ndelta_coh;             <span class="comment">// number of frames between two sucessive</span>
 <a name="l00027"></a>00027     <span class="comment">// coherent integrations</span>
-<a name="l00028"></a>00028     <span class="keywordtype">int</span> n_incoh;                <span class="comment">// number of frames for incoherent integration</span>
+<a name="l00028"></a><a class="code" href="classFTPedretti.html#a80d65a4169e0885939736694bc76f4a8">00028</a>     <span class="keywordtype">int</span> n_incoh;                <span class="comment">// number of frames for incoherent integration</span>
 <a name="l00029"></a>00029 
-<a name="l00030"></a>00030     <span class="keywordtype">double</span> previous_time;       <span class="comment">// used in frame acquisition routine</span>
+<a name="l00030"></a><a class="code" href="classFTPedretti.html#a363822135e76101433c55c8556da68e5">00030</a>     <span class="keywordtype">double</span> <a class="code" href="classFTPedretti.html#a363822135e76101433c55c8556da68e5">previous_time</a>;       <span class="comment">// used in frame acquisition routine</span>
 <a name="l00031"></a>00031 
-<a name="l00032"></a>00032     <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> *spectr;
+<a name="l00032"></a><a class="code" href="classFTPedretti.html#a154536c2195506b9c254e417cf752cb6">00032</a>     <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> *spectr;
 <a name="l00033"></a>00033 
-<a name="l00034"></a>00034     <a class="code" href="classModulator.html">Modulator</a> *modulator;
+<a name="l00034"></a><a class="code" href="classFTPedretti.html#ac366c4d6cd99a518c673d3636ab97245">00034</a>     <a class="code" href="classModulator.html">Modulator</a> *modulator;
 <a name="l00035"></a>00035 
-<a name="l00036"></a>00036     <a class="code" href="classRow.html">Row &lt; double &gt;</a>modulator_position;   <span class="comment">// [ framenumber ]</span>
+<a name="l00036"></a><a class="code" href="classFTPedretti.html#aeb6720656e824ab24b4f70d31cd7b40d">00036</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPedretti.html#aeb6720656e824ab24b4f70d31cd7b40d">modulator_position</a>;   <span class="comment">// [ framenumber ]</span>
 <a name="l00037"></a>00037 
-<a name="l00038"></a>00038     <a class="code" href="classRow.html">Row &lt; double &gt;</a>deltamod;     <span class="comment">// [ framenumber ]</span>
+<a name="l00038"></a><a class="code" href="classFTPedretti.html#a576b58f03f27f35cdf75aa1e988b2982">00038</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPedretti.html#a576b58f03f27f35cdf75aa1e988b2982">deltamod</a>;     <span class="comment">// [ framenumber ]</span>
 <a name="l00039"></a>00039 
-<a name="l00040"></a>00040     <a class="code" href="classRow.html">Row &lt; double &gt;</a>frametime;    <span class="comment">// [ framenumber ]</span>
+<a name="l00040"></a><a class="code" href="classFTPedretti.html#a3100d1c07aa75cee3c5c81814f92f8c3">00040</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPedretti.html#a3100d1c07aa75cee3c5c81814f92f8c3">frametime</a>;    <span class="comment">// [ framenumber ]</span>
 <a name="l00041"></a>00041 
-<a name="l00042"></a>00042     <a class="code" href="classRow.html">Row &lt; double &gt;</a>frameduration;
+<a name="l00042"></a><a class="code" href="classFTPedretti.html#a760d972f67ceec4fbfb8defb7b44db8e">00042</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPedretti.html#a760d972f67ceec4fbfb8defb7b44db8e">frameduration</a>;
 <a name="l00043"></a>00043 
 <a name="l00044"></a>00044     <span class="comment">// Specific to Pedretti&#39;s algorithm</span>
-<a name="l00045"></a>00045     <a class="code" href="classRow.html">Row &lt; Complex &gt;</a> ntilde;
-<a name="l00046"></a>00046     <a class="code" href="classRow.html">Row &lt; Complex &gt;</a> X;
-<a name="l00047"></a>00047     <a class="code" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> X_avg;
-<a name="l00048"></a>00048     <span class="keywordtype">double</span> delta_m12;
+<a name="l00045"></a><a class="code" href="classFTPedretti.html#a974818e3a26fcb5bff164d3b6af61e50">00045</a>     <a class="code" href="classRow.html">Row &lt; Complex &gt;</a> <a class="code" href="classFTPedretti.html#a974818e3a26fcb5bff164d3b6af61e50">ntilde</a>;
+<a name="l00046"></a><a class="code" href="classFTPedretti.html#a3b9e230976542d982323faaae89341bf">00046</a>     <a class="code" href="classRow.html">Row &lt; Complex &gt;</a> <a class="code" href="classFTPedretti.html#a3b9e230976542d982323faaae89341bf">X</a>;
+<a name="l00047"></a><a class="code" href="classFTPedretti.html#a900b82719031d79c46298d544eb1d313">00047</a>     <a class="code" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> <a class="code" href="classFTPedretti.html#a900b82719031d79c46298d544eb1d313">X_avg</a>;
+<a name="l00048"></a><a class="code" href="classFTPedretti.html#aa195ccba303a9bbf0e87de722e4e29c3">00048</a>     <span class="keywordtype">double</span> <a class="code" href="classFTPedretti.html#aa195ccba303a9bbf0e87de722e4e29c3">delta_m12</a>;
 <a name="l00049"></a>00049 
-<a name="l00050"></a>00050     <span class="keywordtype">void</span> DFT();
+<a name="l00050"></a>00050     <span class="keywordtype">void</span> <a class="code" href="classFTPedretti.html#abbda83f3da7fc03afc92af8a9197b71e">DFT</a>();
 <a name="l00051"></a>00051 
-<a name="l00052"></a>00052     <span class="keywordtype">void</span> ComputeCrossSpectra();
+<a name="l00052"></a>00052     <span class="keywordtype">void</span> <a class="code" href="classFTPedretti.html#a12bed5efb6c39dd3bf07e696c04a215b">ComputeCrossSpectra</a>();
 <a name="l00053"></a>00053 
-<a name="l00054"></a>00054     <span class="keywordtype">void</span> AverageSpectrum();
+<a name="l00054"></a>00054     <span class="keywordtype">void</span> <a class="code" href="classFTPedretti.html#ac229ccfe757c2b890fe465ef7367aebe">AverageSpectrum</a>();
 <a name="l00055"></a>00055 
 <a name="l00056"></a>00056 };
 </pre></div></div>
@@ -118,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:57 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

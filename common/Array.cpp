@@ -18,6 +18,7 @@
 #include "Station.h"
 #include "Baseline.h"
 #include "Simulator.h"  // Required for constants, like PI.
+#include "Triplet.h"
 
 /// \todo fix this function to comply with the class definition.
 //Array::Array(std::string arrayname, double center_latitude,
@@ -160,6 +161,8 @@ Array::Array(string filename, string comment_chars)
     // Now compute all possible baselines from these stations.
     this->baselines = ComputeBaselines(stations);
     this->bl_hash = ComputeBaselineHash(this->baselines);
+    this->triplets = ComputeTriplets(this, stations);
+    this->tri_hash = ComputeTripletHash(this->triplets);
 }
 
 // Returns a reference to a baseline object.
@@ -206,4 +209,9 @@ string  Array::GetArrayName(void)
 vector<Station> Array::GetAllStations(void)
 {
     return this->stations;
+}
+
+Triplet &   Array::GetTriplet(string triplet_name)
+{
+    return this->tri_hash[triplet_name];
 }

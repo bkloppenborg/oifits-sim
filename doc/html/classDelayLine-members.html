@@ -48,14 +48,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h1>DelayLine Member List</h1>This is the complete list of members for <a class="el" href="classDelayLine.html">DelayLine</a>, including all inherited members.<table>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a55d069a045ac765d5783f41a2348fdd4">coeffs</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#aa11d93779cebcc3a57b920a5fcbda891">ComputePinhole</a>(int size, int padded_size)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a138684e1f275e87508a1f71c6599f6f9">delay_equation_1st</a>(double t, double x)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a49bab775499a10b2cae182b7706275bc">delay_equation_2nd</a>(double t, double x, double v)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#aae3ff3e21f8887d0df1948e13c093b90">DelayLine</a>(int type, double valueinit[3], double filtercoeffs[3], double time_resolution)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a4086dcba3b4835c3a1f2072768e6b8c2">dt</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a86b4adda2792d346ee78b59a3e26992a">filter_type</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a230dfa049c8b66e41e028c15b63d23fa">GetCurrentPosition</a>(double time)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#af03fce4b30c09428624fcf27bb6d8476">GetDelay</a>(double time)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a998ede89f80499652d8f1da052fc90de">init</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a76e51812021b57490411c932f607d82b">previous_calltime</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a38f0fbf9f3090542153f5d6428edb20b">previous_position</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a0e814cb4b3e6fdfbbbf6157f02a938df">previous_speed</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a1565f8501d8baba454f5d7743b90bf97">previous_targetposition</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#aaea9efb6c8a6e791ac75f9bac6c4fe8e">SetTargetPosition</a>(double target_position)</td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#ae46cf8249f9040270c5ffb1289e5f760">t_current</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classDelayLine.html#a27fb66446caf539997819c3600e5299e">target_position</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a4d51575ded15097f1a837d3ceeaf6bec">v_current</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classDelayLine.html#a36cd2a92c561630bbaa6646f23a00626">x_current</a></td><td><a class="el" href="classDelayLine.html">DelayLine</a></td><td></td></tr>
 </table></div>
@@ -73,7 +80,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

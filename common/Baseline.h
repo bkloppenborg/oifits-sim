@@ -8,12 +8,17 @@
 #include <tr1/unordered_map>
 #include <string>
 #include <vector>
+#include <complex>
+
 using namespace std;
+
+typedef std::tr1::unordered_map<std::string, complex<double> > VisHash;
 
 // Forward class declarations:
 class UVPoint;
 class Array;
 class Station;
+class Source;
 
 /// \class Baseline simulator.h
 /// \brief A class representing a baseline.
@@ -24,6 +29,8 @@ class Baseline
     
     string name;
     int indicies[2];
+    VisHash mVisValues; // Stores computed visibility values
+    VisHash mVisErrors; // Stores computed/stored visibility error values.
 
   public:
     Baseline(void);
@@ -33,8 +40,19 @@ class Baseline
     /// \todo Rewrite this function to work with the new class definition.
     //double Geometric_OPD(double hour_angle, double source_declination);
     
-    UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
+  private:
+    complex<double> ComputeVisibility(Source & source, double hour_angle, double wavenumber);
+    complex<double> ComputeVisError(Source & source, double hour_angle, double wavenumber);
+    string  GetHashKey(Source & source, double hour_angle, double wavenumber);
+    
+  public:
     string  GetName(void);
+    complex<double> GetVisibility(Source & source, double hour_angle, double wavenumber);
+    complex<double> GetVisError(Source & source, double hour_angle, double wavenumber);
+    
+    void SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error);
+    
+    UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
 };
 
 // Hash data type

@@ -9,7 +9,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFTPhaseABCD1_a5cbce7f05ad5e81f40f3ab40ddb3faf0}{FTPhaseABCD1} (int nbins, int frames\_\-per\_\-bin, \hyperlink{classSpectralMode}{SpectralMode} $\ast$spectr, \hyperlink{classModulator}{Modulator} $\ast$modulator)
+\hyperlink{classFTPhaseABCD1_a5cbce7f05ad5e81f40f3ab40ddb3faf0}{FTPhaseABCD1} (int \hyperlink{classFTPhaseABCD1_a6346350122f18739641a583fa6bb6480}{nbins}, int \hyperlink{classFTPhaseABCD1_a5f8098aa51b878962500a3bae1eac959}{frames\_\-per\_\-bin}, \hyperlink{classSpectralMode}{SpectralMode} $\ast$\hyperlink{classFTPhaseABCD1_ab56ac2436c8084fb4601d64686338519}{spectr}, \hyperlink{classModulator}{Modulator} $\ast$\hyperlink{classFTPhaseABCD1_adc5fbcfc33764d9ccf0ab886e2d1899c}{modulator})
 \item 
 virtual \hyperlink{classFTPhaseABCD1_adca39b254b058fc6ebc624354bec5255}{$\sim$FTPhaseABCD1} ()
 \item 
@@ -59,6 +59,33 @@ int \hyperlink{classFTPhaseABCD1_a41c864e9da51314cabe1f724a81f3d68}{search\_\-di
 double \hyperlink{classFTPhaseABCD1_a7a04057b036f5caa88ea6d6e3661e309}{search\_\-OPD\_\-max}
 \item 
 double \hyperlink{classFTPhaseABCD1_a96dfa4270b568d344a29313dcf36874f}{search\_\-OPD\_\-steplength}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classFTPhaseABCD1_a6346350122f18739641a583fa6bb6480}{nbins}
+\item 
+int \hyperlink{classFTPhaseABCD1_a5f8098aa51b878962500a3bae1eac959}{frames\_\-per\_\-bin}
+\item 
+int \hyperlink{classFTPhaseABCD1_a2db315608806d1b281341482fd8123e7}{framecounter}
+\item 
+int \hyperlink{classFTPhaseABCD1_adc6d698b02a5ac590368df1c94ef1f9c}{nchannels}
+\item 
+double \hyperlink{classFTPhaseABCD1_a42f5c115652dfc81584d2784f129f714}{previous\_\-time}
+\item 
+double \hyperlink{classFTPhaseABCD1_a4775273ef7115bdb72e25501d0c948f3}{previous\_\-opd}
+\item 
+\hyperlink{classSpectralMode}{SpectralMode} $\ast$ \hyperlink{classFTPhaseABCD1_ab56ac2436c8084fb4601d64686338519}{spectr}
+\item 
+\hyperlink{classModulator}{Modulator} $\ast$ \hyperlink{classFTPhaseABCD1_adc5fbcfc33764d9ccf0ab886e2d1899c}{modulator}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD1_ab5f6042aa8eee4a574fbfd72279f81ca}{modulator\_\-position}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD1_aeb7776acda071f75923ff5ffe51b8d1e}{deltamod}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD1_a7dacaa305568f8fc4d0a59f4df383142}{frametime}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD1_a21916a5951e6c54a7aa568642769b614}{frameduration}
 \end{DoxyCompactItemize}
 
 
@@ -148,6 +175,33 @@ Definition at line 33 of file FTPhaseABCD1.h.
 
 Definition at line 30 of file FTPhaseABCD1.h.
 
+\hypertarget{classFTPhaseABCD1_aeb7776acda071f75923ff5ffe51b8d1e}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!deltamod@{deltamod}}
+\index{deltamod@{deltamod}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{deltamod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD1::deltamod}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_aeb7776acda071f75923ff5ffe51b8d1e}
+
+
+Definition at line 82 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a2db315608806d1b281341482fd8123e7}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!framecounter@{framecounter}}
+\index{framecounter@{framecounter}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{framecounter}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD1::framecounter}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a2db315608806d1b281341482fd8123e7}
+
+
+Definition at line 68 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a21916a5951e6c54a7aa568642769b614}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!frameduration@{frameduration}}
+\index{frameduration@{frameduration}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{frameduration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD1::frameduration}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a21916a5951e6c54a7aa568642769b614}
+
+
+Definition at line 86 of file FTPhaseABCD1.h.
+
 \hypertarget{classFTPhaseABCD1_a1891f6e4f2a92991da6a1a3a0fc99fd4}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!frames@{frames}}
 \index{frames@{frames}!FTPhaseABCD1@{FTPhaseABCD1}}
@@ -156,6 +210,24 @@ Definition at line 30 of file FTPhaseABCD1.h.
 
 
 Definition at line 24 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a5f8098aa51b878962500a3bae1eac959}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!frames\_\-per\_\-bin@{frames\_\-per\_\-bin}}
+\index{frames\_\-per\_\-bin@{frames\_\-per\_\-bin}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{frames\_\-per\_\-bin}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD1::frames\_\-per\_\-bin}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a5f8098aa51b878962500a3bae1eac959}
+
+
+Definition at line 66 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a7dacaa305568f8fc4d0a59f4df383142}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!frametime@{frametime}}
+\index{frametime@{frametime}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{frametime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD1::frametime}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a7dacaa305568f8fc4d0a59f4df383142}
+
+
+Definition at line 84 of file FTPhaseABCD1.h.
 
 \hypertarget{classFTPhaseABCD1_a7dcc8c733abc1e883df9f2e781b2fc93}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!last\_\-locked\_\-position@{last\_\-locked\_\-position}}
@@ -175,6 +247,42 @@ Definition at line 35 of file FTPhaseABCD1.h.
 
 Definition at line 45 of file FTPhaseABCD1.h.
 
+\hypertarget{classFTPhaseABCD1_adc5fbcfc33764d9ccf0ab886e2d1899c}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!modulator@{modulator}}
+\index{modulator@{modulator}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{modulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modulator}$\ast$ {\bf FTPhaseABCD1::modulator}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_adc5fbcfc33764d9ccf0ab886e2d1899c}
+
+
+Definition at line 78 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_ab5f6042aa8eee4a574fbfd72279f81ca}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!modulator\_\-position@{modulator\_\-position}}
+\index{modulator\_\-position@{modulator\_\-position}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{modulator\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD1::modulator\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_ab5f6042aa8eee4a574fbfd72279f81ca}
+
+
+Definition at line 80 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a6346350122f18739641a583fa6bb6480}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!nbins@{nbins}}
+\index{nbins@{nbins}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{nbins}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD1::nbins}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a6346350122f18739641a583fa6bb6480}
+
+
+Definition at line 64 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_adc6d698b02a5ac590368df1c94ef1f9c}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!nchannels@{nchannels}}
+\index{nchannels@{nchannels}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{nchannels}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD1::nchannels}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_adc6d698b02a5ac590368df1c94ef1f9c}
+
+
+Definition at line 70 of file FTPhaseABCD1.h.
+
 \hypertarget{classFTPhaseABCD1_acc233644e0b0bfd0efdf31fda757fcce}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!opd\_\-estimate@{opd\_\-estimate}}
 \index{opd\_\-estimate@{opd\_\-estimate}!FTPhaseABCD1@{FTPhaseABCD1}}
@@ -184,6 +292,15 @@ Definition at line 45 of file FTPhaseABCD1.h.
 
 Definition at line 28 of file FTPhaseABCD1.h.
 
+\hypertarget{classFTPhaseABCD1_a4775273ef7115bdb72e25501d0c948f3}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!previous\_\-opd@{previous\_\-opd}}
+\index{previous\_\-opd@{previous\_\-opd}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{previous\_\-opd}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPhaseABCD1::previous\_\-opd}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a4775273ef7115bdb72e25501d0c948f3}
+
+
+Definition at line 74 of file FTPhaseABCD1.h.
+
 \hypertarget{classFTPhaseABCD1_ac673e4c9a6b8139316509541e1044828}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!previous\_\-phases@{previous\_\-phases}}
 \index{previous\_\-phases@{previous\_\-phases}!FTPhaseABCD1@{FTPhaseABCD1}}
@@ -192,6 +309,15 @@ Definition at line 28 of file FTPhaseABCD1.h.
 
 
 Definition at line 26 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_a42f5c115652dfc81584d2784f129f714}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!previous\_\-time@{previous\_\-time}}
+\index{previous\_\-time@{previous\_\-time}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{previous\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPhaseABCD1::previous\_\-time}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_a42f5c115652dfc81584d2784f129f714}
+
+
+Definition at line 72 of file FTPhaseABCD1.h.
 
 \hypertarget{classFTPhaseABCD1_a41c864e9da51314cabe1f724a81f3d68}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!search\_\-direction@{search\_\-direction}}
@@ -282,6 +408,15 @@ Definition at line 53 of file FTPhaseABCD1.h.
 
 
 Definition at line 51 of file FTPhaseABCD1.h.
+
+\hypertarget{classFTPhaseABCD1_ab56ac2436c8084fb4601d64686338519}{
+\index{FTPhaseABCD1@{FTPhaseABCD1}!spectr@{spectr}}
+\index{spectr@{spectr}!FTPhaseABCD1@{FTPhaseABCD1}}
+\subsubsection[{spectr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SpectralMode}$\ast$ {\bf FTPhaseABCD1::spectr}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD1_ab56ac2436c8084fb4601d64686338519}
+
+
+Definition at line 76 of file FTPhaseABCD1.h.
 
 \hypertarget{classFTPhaseABCD1_a5ad155e1d7ac3ad4c60f3c0768ae8e56}{
 \index{FTPhaseABCD1@{FTPhaseABCD1}!timethreshold\_\-locking@{timethreshold\_\-locking}}

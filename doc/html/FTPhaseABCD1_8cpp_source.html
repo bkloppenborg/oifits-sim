@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
@@ -71,17 +71,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00022"></a>00022   this-&gt;modulator = modulator;
 <a name="l00023"></a>00023   this-&gt;nbins = nbins;
 <a name="l00024"></a>00024   this-&gt;frames_per_bin = frames_per_bin;
-<a name="l00025"></a>00025   nchannels = spectr-&gt;<a class="code" href="classSpectralMode.html#a7c68010a64d612a452df276003689eca">nchannels</a>;
+<a name="l00025"></a>00025   <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a> = spectr-&gt;<a class="code" href="classSpectralMode.html#a7c68010a64d612a452df276003689eca">nchannels</a>;
 <a name="l00026"></a>00026 
 <a name="l00027"></a>00027   <span class="comment">// Init acquisition variables</span>
-<a name="l00028"></a>00028   framecounter = 0;
-<a name="l00029"></a>00029   previous_time = 0.0; <span class="comment">// assumes simulation starts a t(0)=0</span>
-<a name="l00030"></a>00030   frametime.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
-<a name="l00031"></a>00031   frameduration.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
-<a name="l00032"></a>00032   modulator_position.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
-<a name="l00033"></a>00033   deltamod.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
-<a name="l00034"></a>00034   <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>.<a class="code" href="classMatrix.html#a8be203acf909fbb2050bf37470c88802">setsize</a>(nchannels, nbins * frames_per_bin);
-<a name="l00035"></a>00035   <a class="code" href="classFTPhaseABCD1.html#ac673e4c9a6b8139316509541e1044828">previous_phases</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nchannels); <span class="comment">// unwrapper initialization</span>
+<a name="l00028"></a>00028   <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> = 0;
+<a name="l00029"></a>00029   <a class="code" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">previous_time</a> = 0.0; <span class="comment">// assumes simulation starts a t(0)=0</span>
+<a name="l00030"></a>00030   <a class="code" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">frametime</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
+<a name="l00031"></a>00031   <a class="code" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">frameduration</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
+<a name="l00032"></a>00032   <a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
+<a name="l00033"></a>00033   <a class="code" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">deltamod</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(nbins * frames_per_bin);
+<a name="l00034"></a>00034   <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>.<a class="code" href="classMatrix.html#a8be203acf909fbb2050bf37470c88802">setsize</a>(<a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a>, nbins * frames_per_bin);
+<a name="l00035"></a>00035   <a class="code" href="classFTPhaseABCD1.html#ac673e4c9a6b8139316509541e1044828">previous_phases</a>.<a class="code" href="classRow.html#aebdf0fa4ce1946b8d9ef3c6f266edb7d">setsize</a>(<a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a>); <span class="comment">// unwrapper initialization</span>
 <a name="l00036"></a>00036 
 <a name="l00037"></a>00037   <span class="comment">// initialization of variables for the search, locking and locked modes</span>
 <a name="l00038"></a>00038   <span class="comment">//current_mode = 0; // start in search mode</span>
@@ -97,23 +97,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00048"></a>00048   <a class="code" href="classFTPhaseABCD1.html#ade2b7bc75653e7c0f11c2ceea1a483e9">snrthreshold_locking</a> = 36.; <span class="comment">// (squared) SNR over which we attempt locking mode</span>
 <a name="l00049"></a>00049   <a class="code" href="classFTPhaseABCD1.html#ab15e502bb15bcb083a719c9e9a10135c">snrthreshold_locked</a> = 20; <span class="comment">// (squared) SNR over which we switch to locked mode, after timethreshold_locking elapsed in locking mode</span>
 <a name="l00050"></a>00050   <a class="code" href="classFTPhaseABCD1.html#a41c864e9da51314cabe1f724a81f3d68">search_direction</a> = 1;
-<a name="l00051"></a>00051   <a class="code" href="classFTPhaseABCD1.html#a7a04057b036f5caa88ea6d6e3661e309">search_OPD_max</a> = 20. / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ nchannels - 1 ];
-<a name="l00052"></a>00052   <a class="code" href="classFTPhaseABCD1.html#a96dfa4270b568d344a29313dcf36874f">search_OPD_steplength</a> = 1. / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ nchannels - 1 ];
+<a name="l00051"></a>00051   <a class="code" href="classFTPhaseABCD1.html#a7a04057b036f5caa88ea6d6e3661e309">search_OPD_max</a> = 20. / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a> - 1 ];
+<a name="l00052"></a>00052   <a class="code" href="classFTPhaseABCD1.html#a96dfa4270b568d344a29313dcf36874f">search_OPD_steplength</a> = 1. / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a> - 1 ];
 <a name="l00053"></a>00053 }
 <a name="l00054"></a>00054 
 <a name="l00055"></a><a class="code" href="classFTPhaseABCD1.html#a3af0de42c400aeed38d77b2edf0e77e7">00055</a> <span class="keywordtype">void</span> <a class="code" href="classFTPhaseABCD1.html#a3af0de42c400aeed38d77b2edf0e77e7">FTPhaseABCD1::StoreOneFrame</a>( <a class="code" href="classRow.html">Row&lt;int&gt;</a>&amp; detectorframe , <span class="keywordtype">double</span> time )
 <a name="l00056"></a>00056 {
 <a name="l00057"></a>00057   <span class="comment">// acquire fringes, detect potential problems (bad frames), convert to double precision</span>
-<a name="l00058"></a>00058   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> channel = 0; channel &lt; nchannels; channel++)
-<a name="l00059"></a>00059     <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>[ channel ][ framecounter ] = <span class="keywordtype">double</span>(detectorframe[ channel ]);
+<a name="l00058"></a>00058   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> channel = 0; channel &lt; <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a>; channel++)
+<a name="l00059"></a>00059     <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>[ channel ][ <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> ] = <span class="keywordtype">double</span>(detectorframe[ channel ]);
 <a name="l00060"></a>00060   <span class="comment">// Storing data about the current frame</span>
-<a name="l00061"></a>00061   frametime[ framecounter ] = (time + previous_time) / 2.; <span class="comment">// mean time in this frame</span>
-<a name="l00062"></a>00062   frameduration[ framecounter ] = time - previous_time;
-<a name="l00063"></a>00063   modulator_position[ framecounter ] = modulator-&gt;<a class="code" href="classModulator.html#a10584ade4c8b9e10aaa78a8eed83261b">GetDelay</a>(frametime[ framecounter ]);
-<a name="l00064"></a>00064   deltamod[ framecounter ] = modulator_position[ framecounter ] - modulator-&gt;<a class="code" href="classModulator.html#a10584ade4c8b9e10aaa78a8eed83261b">GetDelay</a>(previous_time);
+<a name="l00061"></a>00061   <a class="code" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">frametime</a>[ <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> ] = (time + <a class="code" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">previous_time</a>) / 2.; <span class="comment">// mean time in this frame</span>
+<a name="l00062"></a>00062   <a class="code" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">frameduration</a>[ <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> ] = time - <a class="code" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">previous_time</a>;
+<a name="l00063"></a>00063   <a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>[ <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> ] = <a class="code" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">modulator</a>-&gt;<a class="code" href="classModulator.html#a10584ade4c8b9e10aaa78a8eed83261b">GetDelay</a>(<a class="code" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">frametime</a>[ <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a> ]);
+<a name="l00064"></a>00064   <a class="code" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">deltamod</a>[ framecounter ] = <a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>[ framecounter ] - <a class="code" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">modulator</a>-&gt;<a class="code" href="classModulator.html#a10584ade4c8b9e10aaa78a8eed83261b">GetDelay</a>(previous_time);
 <a name="l00065"></a>00065   previous_time = time;
 <a name="l00066"></a>00066 
-<a name="l00067"></a>00067   <span class="keywordflow">if</span> (framecounter == (nbins * frames_per_bin - 1))
+<a name="l00067"></a>00067   <span class="keywordflow">if</span> (framecounter == (<a class="code" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">nbins</a> * <a class="code" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">frames_per_bin</a> - 1))
 <a name="l00068"></a>00068   {
 <a name="l00069"></a>00069     framecounter = 0; <span class="comment">// reset frame counter for the next batch of ABCD1</span>
 <a name="l00070"></a>00070 
@@ -131,7 +131,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00082"></a>00082         <span class="keywordflow">if</span> (<a class="code" href="classFTPhaseABCD1.html#a52ef3a131cb9f9122dc5c620a18d7a35">SNR</a>[ <a class="code" href="classFTPhaseABCD1.html#add40ff7b5cc72bbda9b9e2963c27971b">SNR_index</a> ] &gt; <a class="code" href="classFTPhaseABCD1.html#ade2b7bc75653e7c0f11c2ceea1a483e9">snrthreshold_locking</a>) <span class="comment">// latest SNR sufficient to attempt locking</span>
 <a name="l00083"></a>00083         {
 <a name="l00084"></a>00084           <span class="comment">//reinitialize search engine</span>
-<a name="l00085"></a>00085           <a class="code" href="classFTPhaseABCD1.html#a7a04057b036f5caa88ea6d6e3661e309">search_OPD_max</a> = 20. / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ nchannels - 1 ];
+<a name="l00085"></a>00085           <a class="code" href="classFTPhaseABCD1.html#a7a04057b036f5caa88ea6d6e3661e309">search_OPD_max</a> = 20. / <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ nchannels - 1 ];
 <a name="l00086"></a>00086           <a class="code" href="classFTPhaseABCD1.html#a41c864e9da51314cabe1f724a81f3d68">search_direction</a> = 1;
 <a name="l00087"></a>00087 
 <a name="l00088"></a>00088           <span class="comment">// change into locking mode</span>
@@ -218,15 +218,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00169"></a>00169   <span class="keywordtype">double</span> N, Vsq;
 <a name="l00170"></a>00170   <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> = 0.;
 <a name="l00171"></a>00171 
-<a name="l00172"></a>00172   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ichannel = 0; ichannel &lt; nchannels; ichannel++)
+<a name="l00172"></a>00172   <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ichannel = 0; ichannel &lt; <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a>; ichannel++)
 <a name="l00173"></a>00173   {
-<a name="l00174"></a>00174     R = <a class="code" href="Simulator_8h.html#a952eac791b596a61bba0a133a3bb439f">PI</a> / 2. * spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ ichannel ] / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ];
+<a name="l00174"></a>00174     R = <a class="code" href="Simulator_8h.html#a952eac791b596a61bba0a133a3bb439f">PI</a> / 2. * <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ ichannel ] / <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ];
 <a name="l00175"></a>00175     E = sin(R) / (cos(R) + 1.); <span class="comment">// Note: R = PI does not happen inside J, H, K</span>
-<a name="l00176"></a>00176     <span class="keywordflow">if</span> (modulator_position[ 3 ] &lt; modulator_position[ 0 ]) <span class="comment">// Descending slope</span>
+<a name="l00176"></a>00176     <span class="keywordflow">if</span> (<a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>[ 3 ] &lt; <a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>[ 0 ]) <span class="comment">// Descending slope</span>
 <a name="l00177"></a>00177       E = -E;
 <a name="l00178"></a>00178 
 <a name="l00179"></a>00179     A = B = C = D = 0.;
-<a name="l00180"></a>00180     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; frames_per_bin; ii++)
+<a name="l00180"></a>00180     <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; <a class="code" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">frames_per_bin</a>; ii++)
 <a name="l00181"></a>00181     {
 <a name="l00182"></a>00182       A += <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>[ ichannel ][ ii ];
 <a name="l00183"></a>00183       B += <a class="code" href="classFTPhaseABCD1.html#a1891f6e4f2a92991da6a1a3a0fc99fd4">frames</a>[ ichannel ][ frames_per_bin + ii ];
@@ -254,7 +254,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00205"></a>00205       <a class="code" href="classFTPhaseABCD1.html#add40ff7b5cc72bbda9b9e2963c27971b">SNR_index</a> = 0;
 <a name="l00206"></a>00206 
 <a name="l00207"></a>00207     phi_monochannel = <a class="code" href="classFTPhaseABCD1.html#ad0d37735d29375d33bf1f9e5f349a706">Unwrap</a>(phi_monochannel, ichannel);
-<a name="l00208"></a>00208     opd_monochannel = phi_monochannel / (2. * <a class="code" href="Simulator_8h.html#a952eac791b596a61bba0a133a3bb439f">PI</a> * spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ ichannel ]);
+<a name="l00208"></a>00208     opd_monochannel = phi_monochannel / (2. * <a class="code" href="Simulator_8h.html#a952eac791b596a61bba0a133a3bb439f">PI</a> * <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ ichannel ]);
 <a name="l00209"></a>00209 
 <a name="l00210"></a>00210 <span class="comment">//    cout &lt;&lt; &quot; N: &quot; &lt;&lt; N &lt;&lt; &quot; V2: &quot; &lt;&lt; sqrt(Vsq) &lt;&lt; &quot; OPD: &quot; &lt;&lt; opd_monochannel &lt;&lt; &quot;\n&quot;;</span>
 <a name="l00211"></a>00211 
@@ -264,8 +264,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00215"></a>00215   <span class="comment">// Unwrapper/filter using previous estimates - insert Kalman here</span>
 <a name="l00216"></a>00216   <span class="comment">//opd_estimate =  Unwrap( opd_estimate );</span>
 <a name="l00217"></a>00217 
-<a name="l00218"></a>00218   cout &lt;&lt; <span class="stringliteral">&quot; OPD estimate &quot;</span> &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> &lt;&lt; <span class="stringliteral">&quot; and other possibilities: &quot;</span> &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> - 0.5 / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
-<a name="l00219"></a>00219       &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> + 0.5 / spectr-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
+<a name="l00218"></a>00218   cout &lt;&lt; <span class="stringliteral">&quot; OPD estimate &quot;</span> &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> &lt;&lt; <span class="stringliteral">&quot; and other possibilities: &quot;</span> &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> - 0.5 / <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ] &lt;&lt; <span class="stringliteral">&quot; &quot;</span>
+<a name="l00219"></a>00219       &lt;&lt; <a class="code" href="classFTPhaseABCD1.html#acc233644e0b0bfd0efdf31fda757fcce">opd_estimate</a> + 0.5 / <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>-&gt;<a class="code" href="classSpectralMode.html#ad32246c8a4ebe1bfdc7879849fa6fd6f">mean_wavenumber</a>[ 0 ] &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;
 <a name="l00220"></a>00220 }
 <a name="l00221"></a>00221 
 <a name="l00222"></a><a class="code" href="classFTPhaseABCD1.html#ad0d37735d29375d33bf1f9e5f349a706">00222</a> <span class="keywordtype">double</span> <a class="code" href="classFTPhaseABCD1.html#ad0d37735d29375d33bf1f9e5f349a706">FTPhaseABCD1::Unwrap</a>( <span class="keywordtype">double</span> wrapped_phase , <span class="keywordtype">int</span> channel )
@@ -302,7 +302,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:57 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

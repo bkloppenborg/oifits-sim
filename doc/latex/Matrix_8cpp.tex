@@ -49,7 +49,7 @@ void \hyperlink{Matrix_8cpp_aea2af94818e0413f0d412c2c2005234d}{mat2fits} (\hyper
 \item 
 void \hyperlink{Matrix_8cpp_a712ca07bcd43ff93ce2747fe5c071112}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m, char $\ast$filename)
 \item 
-void \hyperlink{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, double \&pixellation)
+void \hyperlink{Matrix_8cpp_a994237060a1761f522640a0f552acb77}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
 \item 
 void \hyperlink{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}{FFT} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&min, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&mout, int direction, int dccenter)
 \end{DoxyCompactItemize}
@@ -63,20 +63,13 @@ void \hyperlink{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}{FFT} (\hyperlink{
 \label{Matrix_8cpp_ab954a056aece4783897155da1c9928ad}
 
 
-Definition at line 478 of file Matrix.cpp.
+Definition at line 479 of file Matrix.cpp.
 
-\hypertarget{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}{
+\hypertarget{Matrix_8cpp_a994237060a1761f522640a0f552acb77}{
 \index{Matrix.cpp@{Matrix.cpp}!fits2mat@{fits2mat}}
 \index{fits2mat@{fits2mat}!Matrix.cpp@{Matrix.cpp}}
-\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m}, \/  double \& {\em pixellation})}}
-\label{Matrix_8cpp_ad26b16e86c4d845e9f89d3c1db575302}
-
-
-
-\begin{DoxyExceptions}{Exceptions}
-\item[{\em runtime\_\-error}]The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header. \end{DoxyExceptions}
-
-
+\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8cpp_a994237060a1761f522640a0f552acb77}
 
 
 Definition at line 411 of file Matrix.cpp.

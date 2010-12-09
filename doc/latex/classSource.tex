@@ -14,13 +14,9 @@ A class to represent the source object.
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classSource_aba8cb9f6fa274c8079bd5715850bf967}{Source} (const char $\ast$filename, char \hyperlink{classSource_a380447fc2b80c1b6bc5c2a8b31ed6b98}{band}, double \hyperlink{classSource_a6a63845ae2495f7d0b9758e969ae34a5}{magnitude}, double \hyperlink{classSource_a01ad608788eb4c0e4a7b2a6228398394}{temperature}, double \hyperlink{classSource_af8077dd4bf90295d11680d6dbd0baea9}{background\_\-magnitude}, double \hyperlink{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}{sky\_\-background\_\-aperture}, double \hyperlink{classSource_acd65dbd79034b6bd27ce7bea9cddf80b}{declination})
+\hyperlink{classSource_ac22e28a4b81a37fddf86ca720e93ec08}{Source} (const char $\ast$filename, char \hyperlink{classSource_a380447fc2b80c1b6bc5c2a8b31ed6b98}{band}, double \hyperlink{classSource_a6a63845ae2495f7d0b9758e969ae34a5}{magnitude}, double \hyperlink{classSource_a01ad608788eb4c0e4a7b2a6228398394}{temperature}, double \hyperlink{classSource_af8077dd4bf90295d11680d6dbd0baea9}{background\_\-magnitude}, double \hyperlink{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}{sky\_\-background\_\-aperture}, double \hyperlink{classSource_acd65dbd79034b6bd27ce7bea9cddf80b}{declination}, double \hyperlink{classSource_a3378987660510b2ab4f02db5aa81791e}{right\_\-ascension}, double pixellation)
 \item 
-\hyperlink{classSource_a7a7af8ba36f94e74bf2d780f6636cfe4}{Source} (const char $\ast$Source\_\-file)
-\item 
-\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{classSource_ad87c09b8cc1ee838435de12a93495e1e}{GetVis} (\hyperlink{classUVPoint}{UVPoint} uv)
-\begin{DoxyCompactList}\small\item\em Computes the Complex visibility of the source at the specified UV point. \item\end{DoxyCompactList}\item 
-\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{classSource_ad802ea02880525552b1feea0bde38244}{GetVis} (double wavenumber, double time, \hyperlink{classArray}{Array} \&array, int index\_\-station1, int index\_\-station2)
+\hyperlink{classSource_a62904da7bc93de0418c16bc3243adc3f}{Source} (string filename, string comment\_\-chars)
 \item 
 double \hyperlink{classSource_a1b9f408aa6c5dcd5550e9cb28922e3af}{Spectrum} (double wavenumber)
 \item 
@@ -43,6 +39,8 @@ double \hyperlink{classSource_a01ad608788eb4c0e4a7b2a6228398394}{temperature}
 \item 
 double \hyperlink{classSource_acd65dbd79034b6bd27ce7bea9cddf80b}{declination}
 \item 
+double \hyperlink{classSource_a3378987660510b2ab4f02db5aa81791e}{right\_\-ascension}
+\item 
 double \hyperlink{classSource_af8077dd4bf90295d11680d6dbd0baea9}{background\_\-magnitude}
 \item 
 double \hyperlink{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}{sky\_\-background\_\-aperture}
@@ -51,44 +49,45 @@ double \hyperlink{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}{sky\_\-backgrou
 \item 
 double \hyperlink{classSource_ad8a9910f6a3d807ac0e1b42195ba4147}{source\_\-pixellation}
 \end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classSource_a6ddbe3353cd4d57bcad7010c70a1b06c}{InitFluxes} (char \hyperlink{classSource_a380447fc2b80c1b6bc5c2a8b31ed6b98}{band}, double \hyperlink{classSource_af8077dd4bf90295d11680d6dbd0baea9}{background\_\-magnitude}, double \hyperlink{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}{sky\_\-background\_\-aperture})
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 A class to represent the source object. 
 
-Definition at line 19 of file Source.h.
+Definition at line 13 of file Source.h.
 
 
 
 \subsection{Constructor \& Destructor Documentation}
-\hypertarget{classSource_aba8cb9f6fa274c8079bd5715850bf967}{
+\hypertarget{classSource_ac22e28a4b81a37fddf86ca720e93ec08}{
 \index{Source@{Source}!Source@{Source}}
 \index{Source@{Source}!Source@{Source}}
-\subsubsection[{Source}]{\setlength{\rightskip}{0pt plus 5cm}Source::Source (const char $\ast$ {\em filename}, \/  char {\em band}, \/  double {\em magnitude}, \/  double {\em temperature}, \/  double {\em background\_\-magnitude}, \/  double {\em sky\_\-background\_\-aperture}, \/  double {\em declination})}}
-\label{classSource_aba8cb9f6fa274c8079bd5715850bf967}
+\subsubsection[{Source}]{\setlength{\rightskip}{0pt plus 5cm}Source::Source (const char $\ast$ {\em filename}, \/  char {\em band}, \/  double {\em magnitude}, \/  double {\em temperature}, \/  double {\em background\_\-magnitude}, \/  double {\em sky\_\-background\_\-aperture}, \/  double {\em declination}, \/  double {\em right\_\-ascension}, \/  double {\em pixellation})}}
+\label{classSource_ac22e28a4b81a37fddf86ca720e93ec08}
 
 
-Definition at line 158 of file Source.cpp.
+Definition at line 121 of file Source.cpp.
 
-\hypertarget{classSource_a7a7af8ba36f94e74bf2d780f6636cfe4}{
+\hypertarget{classSource_a62904da7bc93de0418c16bc3243adc3f}{
 \index{Source@{Source}!Source@{Source}}
 \index{Source@{Source}!Source@{Source}}
-\subsubsection[{Source}]{\setlength{\rightskip}{0pt plus 5cm}Source::Source (const char $\ast$ {\em Source\_\-file})}}
-\label{classSource_a7a7af8ba36f94e74bf2d780f6636cfe4}
-
-
-\begin{Desc}
-\item[\hyperlink{todo__todo000002}{Todo}]Perhaps we could parse the source file in key-\/$>$value pairs? \end{Desc}
+\subsubsection[{Source}]{\setlength{\rightskip}{0pt plus 5cm}Source::Source (string {\em filename}, \/  string {\em comment\_\-chars})}}
+\label{classSource_a62904da7bc93de0418c16bc3243adc3f}
 
 
 
 \begin{DoxyExceptions}{Exceptions}
-\item[{\em runtime\_\-error}]Error opening source file. The \hyperlink{classSource}{Source} file could not be opened.\item[{\em runtime\_\-error}]Invalid FITS image filename The file specified by the user evidently does not exist.\item[{\em runtime\_\-error}]Invalid source band The source band specified bythe user is not valid.\item[{\em runtime\_\-error}]Invalid source magnitude The source magnitude was not defined\item[{\em runtime\_\-error}]Invalid source temperature\item[{\em runtime\_\-error}]Invalid sky background magnitude\item[{\em runtime\_\-error}]Invalid sky background aperture\item[{\em runtime\_\-error}]Invalid source declination\end{DoxyExceptions}
+\item[{\em runtime\_\-error}]Invalid FITS image filename The file specified by the user evidently does not exist.\item[{\em runtime\_\-error}]Invalid source band The source band specified bythe user is not valid.\item[{\em runtime\_\-error}]Invalid source magnitude The source magnitude was not defined\item[{\em runtime\_\-error}]Invalid source temperature\item[{\em runtime\_\-error}]Invalid sky background magnitude\item[{\em runtime\_\-error}]Invalid sky background aperture\item[{\em runtime\_\-error}]Invalid source declination\item[{\em runtime\_\-error}]Invalid source declination\end{DoxyExceptions}
 
 
 
 
-Definition at line 200 of file Source.cpp.
+Definition at line 166 of file Source.cpp.
 
 
 
@@ -100,38 +99,33 @@ Definition at line 200 of file Source.cpp.
 \label{classSource_a29c1541293674ddb2b9e7aa4cb130306}
 
 
-Definition at line 115 of file Source.cpp.
+Definition at line 77 of file Source.cpp.
 
-\hypertarget{classSource_ad802ea02880525552b1feea0bde38244}{
-\index{Source@{Source}!GetVis@{GetVis}}
-\index{GetVis@{GetVis}!Source@{Source}}
-\subsubsection[{GetVis}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} Source::GetVis (double {\em wavenumber}, \/  double {\em time}, \/  {\bf Array} \& {\em array}, \/  int {\em index\_\-station1}, \/  int {\em index\_\-station2})}}
-\label{classSource_ad802ea02880525552b1feea0bde38244}
-
-
-Definition at line 57 of file Source.cpp.
-
-\hypertarget{classSource_ad87c09b8cc1ee838435de12a93495e1e}{
-\index{Source@{Source}!GetVis@{GetVis}}
-\index{GetVis@{GetVis}!Source@{Source}}
-\subsubsection[{GetVis}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} Source::GetVis ({\bf UVPoint} {\em uv})}}
-\label{classSource_ad87c09b8cc1ee838435de12a93495e1e}
+\hypertarget{classSource_a6ddbe3353cd4d57bcad7010c70a1b06c}{
+\index{Source@{Source}!InitFluxes@{InitFluxes}}
+\index{InitFluxes@{InitFluxes}!Source@{Source}}
+\subsubsection[{InitFluxes}]{\setlength{\rightskip}{0pt plus 5cm}void Source::InitFluxes (char {\em band}, \/  double {\em background\_\-magnitude}, \/  double {\em sky\_\-background\_\-aperture})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classSource_a6ddbe3353cd4d57bcad7010c70a1b06c}
 
 
-Computes the Complex visibility of the source at the specified UV point. 
+\begin{Desc}
+\item[\hyperlink{todo__todo000012}{Todo}]Implement more than just JHK bands here. Needs to work at optical wavelengths too. \end{Desc}
 
 
 
-Definition at line 32 of file Source.cpp.
+
+Definition at line 82 of file Source.cpp.
 
 \hypertarget{classSource_a1b9f408aa6c5dcd5550e9cb28922e3af}{
 \index{Source@{Source}!Spectrum@{Spectrum}}
 \index{Spectrum@{Spectrum}!Source@{Source}}
 \subsubsection[{Spectrum}]{\setlength{\rightskip}{0pt plus 5cm}double Source::Spectrum (double {\em wavenumber})}}
 \label{classSource_a1b9f408aa6c5dcd5550e9cb28922e3af}
+\begin{Desc}
+\item[\hyperlink{todo__todo000013}{Todo}]Remove this function, sources shouldn't calculate their visibilities, that is the baseline's job. \end{Desc}
 
 
-Definition at line 102 of file Source.cpp.
+Definition at line 64 of file Source.cpp.
 
 
 
@@ -143,7 +137,7 @@ Definition at line 102 of file Source.cpp.
 \label{classSource_af8077dd4bf90295d11680d6dbd0baea9}
 
 
-Definition at line 40 of file Source.h.
+Definition at line 36 of file Source.h.
 
 \hypertarget{classSource_ac6515686d4bbb766ae14e1360fdf1c97}{
 \index{Source@{Source}!backgroundflux@{backgroundflux}}
@@ -152,7 +146,7 @@ Definition at line 40 of file Source.h.
 \label{classSource_ac6515686d4bbb766ae14e1360fdf1c97}
 
 
-Definition at line 29 of file Source.h.
+Definition at line 24 of file Source.h.
 
 \hypertarget{classSource_a380447fc2b80c1b6bc5c2a8b31ed6b98}{
 \index{Source@{Source}!band@{band}}
@@ -161,7 +155,7 @@ Definition at line 29 of file Source.h.
 \label{classSource_a380447fc2b80c1b6bc5c2a8b31ed6b98}
 
 
-Definition at line 32 of file Source.h.
+Definition at line 27 of file Source.h.
 
 \hypertarget{classSource_acd65dbd79034b6bd27ce7bea9cddf80b}{
 \index{Source@{Source}!declination@{declination}}
@@ -170,7 +164,7 @@ Definition at line 32 of file Source.h.
 \label{classSource_acd65dbd79034b6bd27ce7bea9cddf80b}
 
 
-Definition at line 38 of file Source.h.
+Definition at line 33 of file Source.h.
 
 \hypertarget{classSource_a8888be0016028aa59006fa6d9fc7c575}{
 \index{Source@{Source}!flux@{flux}}
@@ -179,13 +173,22 @@ Definition at line 38 of file Source.h.
 \label{classSource_a8888be0016028aa59006fa6d9fc7c575}
 
 
-Definition at line 27 of file Source.h.
+Definition at line 22 of file Source.h.
 
 \hypertarget{classSource_a6a63845ae2495f7d0b9758e969ae34a5}{
 \index{Source@{Source}!magnitude@{magnitude}}
 \index{magnitude@{magnitude}!Source@{Source}}
 \subsubsection[{magnitude}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Source::magnitude}}}
 \label{classSource_a6a63845ae2495f7d0b9758e969ae34a5}
+
+
+Definition at line 29 of file Source.h.
+
+\hypertarget{classSource_a3378987660510b2ab4f02db5aa81791e}{
+\index{Source@{Source}!right\_\-ascension@{right\_\-ascension}}
+\index{right\_\-ascension@{right\_\-ascension}!Source@{Source}}
+\subsubsection[{right\_\-ascension}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf Source::right\_\-ascension}}}
+\label{classSource_a3378987660510b2ab4f02db5aa81791e}
 
 
 Definition at line 34 of file Source.h.
@@ -197,7 +200,7 @@ Definition at line 34 of file Source.h.
 \label{classSource_aa21a6313f7ab7c41bb206ed05f0909cc}
 
 
-Definition at line 42 of file Source.h.
+Definition at line 38 of file Source.h.
 
 \hypertarget{classSource_ae39e6de7004f8f12968f38352c6c0f5e}{
 \index{Source@{Source}!source\_\-image@{source\_\-image}}
@@ -206,7 +209,7 @@ Definition at line 42 of file Source.h.
 \label{classSource_ae39e6de7004f8f12968f38352c6c0f5e}
 
 
-Definition at line 44 of file Source.h.
+Definition at line 40 of file Source.h.
 
 \hypertarget{classSource_aca080db4a19c5a8c149b6362aedcb0cd}{
 \index{Source@{Source}!source\_\-name@{source\_\-name}}
@@ -215,7 +218,7 @@ Definition at line 44 of file Source.h.
 \label{classSource_aca080db4a19c5a8c149b6362aedcb0cd}
 
 
-Definition at line 31 of file Source.h.
+Definition at line 26 of file Source.h.
 
 \hypertarget{classSource_ad8a9910f6a3d807ac0e1b42195ba4147}{
 \index{Source@{Source}!source\_\-pixellation@{source\_\-pixellation}}
@@ -224,7 +227,7 @@ Definition at line 31 of file Source.h.
 \label{classSource_ad8a9910f6a3d807ac0e1b42195ba4147}
 
 
-Definition at line 46 of file Source.h.
+Definition at line 42 of file Source.h.
 
 \hypertarget{classSource_a01ad608788eb4c0e4a7b2a6228398394}{
 \index{Source@{Source}!temperature@{temperature}}
@@ -233,7 +236,7 @@ Definition at line 46 of file Source.h.
 \label{classSource_a01ad608788eb4c0e4a7b2a6228398394}
 
 
-Definition at line 36 of file Source.h.
+Definition at line 31 of file Source.h.
 
 
 

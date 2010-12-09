@@ -43,21 +43,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
-<h1>Station.h File Reference</h1>
+<h1>Station.h File Reference</h1><code>#include &lt;tr1/unordered_map&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+
 <p><a href="Station_8h_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Classes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html">Station</a></td></tr>
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">A class to represent a station (i.e. telescope) in an.  <a href="classStation.html#_details">More...</a><br/></td></tr>
+<tr><td colspan="2"><h2>Typedefs</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">typedef <br class="typebreak"/>
+std::tr1::unordered_map<br class="typebreak"/>
+&lt; std::string, <a class="el" href="classStation.html">Station</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Station_8h.html#a079731e89ec4300689029a9276f15ef4">StationHash</a></td></tr>
+<tr><td colspan="2"><h2>Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="Station_8h.html#a079731e89ec4300689029a9276f15ef4">StationHash</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Station_8h.html#a76944c79af3883d1973412155df96884">ComputeStationHash</a> (vector&lt; <a class="el" href="classStation.html">Station</a> &gt; stations)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>Header file for the <a class="el" href="classStation.html" title="A class to represent a station (i.e. telescope) in an.">Station</a> Class </p>
 
 <p>Definition in file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+<hr/><h2>Typedef Documentation</h2>
+<a class="anchor" id="a079731e89ec4300689029a9276f15ef4"></a><!-- doxytag: member="Station.h::StationHash" ref="a079731e89ec4300689029a9276f15ef4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::tr1::unordered_map&lt;std::string, <a class="el" href="classStation.html">Station</a>&gt; <a class="el" href="Station_8h.html#a079731e89ec4300689029a9276f15ef4">StationHash</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8h_source.html#l00047">47</a> of file <a class="el" href="Station_8h_source.html">Station.h</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a76944c79af3883d1973412155df96884"></a><!-- doxytag: member="Station.h::ComputeStationHash" ref="a76944c79af3883d1973412155df96884" args="(vector&lt; Station &gt; stations)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Station_8h.html#a079731e89ec4300689029a9276f15ef4">StationHash</a> ComputeStationHash </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; <a class="el" href="classStation.html">Station</a> &gt;&nbsp;</td>
+          <td class="paramname"> <em>stations</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Station_8cpp_source.html#l00076">76</a> of file <a class="el" href="Station_8cpp_source.html">Station.cpp</a>.</p>
+
+</div>
+</div>
 </div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -73,7 +118,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

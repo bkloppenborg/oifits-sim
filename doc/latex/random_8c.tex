@@ -21,6 +21,32 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+static void \hyperlink{random_8c_a9c78ec10d9333dd74e988701568a8383}{Positive2} (\hyperlink{random_8h_ae57a86abf717a4897af81ffc0d84d923}{Rand\_\-t}, double, double, double, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a56b1206b66bea3c76cc4c5d88d0d1605}{Positive2A} (double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a700140c9747480d45eafe14266d6c672}{Positive2B} (double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a2d35287109d49b55390f36d6c31a3bf3}{Positive2C} (double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_af5aa2a909d667e1e25841846c4f1cde7}{Positive2D} (double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_af4f933abc4cc087252e259210fac932c}{Posneg2} (\hyperlink{random_8h_ae57a86abf717a4897af81ffc0d84d923}{Rand\_\-t}, double, double, double, double, double, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a4bc23e3ec9ff500379b84fbf42b1d5d8}{Posneg2A} (double, double, double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a5a9690c3d258b105413c15a999961d08}{Posneg2B} (double, double, double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a0e9fee1941b7a5f6994b357e6076fda0}{Posneg2C} (double, double, double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static void \hyperlink{random_8c_a28bdeabfcb2900fab86c8f4a8e0e2f36}{Posneg2D} (double, double, double, double, double, double, double $\ast$, double $\ast$, double $\ast$)
+\item 
+static double \hyperlink{random_8c_a07f0efeb9e60997c2c9ee96c10c03055}{eigenerf2} (double, double, double, double, double)
+\item 
+static double \hyperlink{random_8c_a3a1ceb2d99bde1cac4cf07168600105b}{erfint2} (double, double)
+\item 
+static double \hyperlink{random_8c_a5d2df06818d48ca50b0cb6b7c9362a20}{wedge} (double, double, double)
+\item 
 int \hyperlink{random_8c_ac67f9947e0031257bc16138dab0c527b}{RanInit} (\hyperlink{random_8h_ae57a86abf717a4897af81ffc0d84d923}{Rand\_\-t} Rand, int seed)
 \item 
 int \hyperlink{random_8c_a7e8bb4d517f2df0e61e341411c32d6a2}{Ranint} (\hyperlink{random_8h_ae57a86abf717a4897af81ffc0d84d923}{Rand\_\-t} Rand)
@@ -73,6 +99,21 @@ double \hyperlink{random_8c_a377c874232bd071f688015a497bf19b6}{logGamma} (double
 \item 
 double \hyperlink{random_8c_a88631d25f6c47878d2e720a03a9f60fa}{InvNorm} (double y)
 \end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static const double \hyperlink{random_8c_a4f75a875aac7d6f08e771914cfb88bce}{SHIFT32} = 1.0 / 4294967296.0
+\item 
+static const double \hyperlink{random_8c_a4d06b643e836bb71eb608ec3cd420941}{HalfPi} = 1.57079632679489661922
+\item 
+static const double \hyperlink{random_8c_a38e35028a7042305527f0f7a20872507}{TwoxPi} = 6.28318530717958647688
+\item 
+static const double \hyperlink{random_8c_af860771dfec7c5f0338323f0849e7cd7}{SqrPi2} = 1.25331413731550025120
+\item 
+static const double \hyperlink{random_8c_a4b02612421122d60c45efeec1d5fc3bb}{Sqr2Pi} = 2.50662827463100050240
+\item 
+static const double \hyperlink{random_8c_a4b0a877fe7f6875304b09aa10471c70a}{LogSqr2Pi} = 0.91893853320467274177
+\end{DoxyCompactItemize}
 
 
 \subsection{Define Documentation}
@@ -99,6 +140,24 @@ double \hyperlink{random_8c_a88631d25f6c47878d2e720a03a9f60fa}{InvNorm} (double 
 
 
 \subsection{Function Documentation}
+\hypertarget{random_8c_a07f0efeb9e60997c2c9ee96c10c03055}{
+\index{random.c@{random.c}!eigenerf2@{eigenerf2}}
+\index{eigenerf2@{eigenerf2}!random.c@{random.c}}
+\subsubsection[{eigenerf2}]{\setlength{\rightskip}{0pt plus 5cm}static double eigenerf2 (double {\em a}, \/  double {\em xcos}, \/  double {\em xsin}, \/  double {\em ycos}, \/  double {\em ysin})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a07f0efeb9e60997c2c9ee96c10c03055}
+
+
+Definition at line 2223 of file random.c.
+
+\hypertarget{random_8c_a3a1ceb2d99bde1cac4cf07168600105b}{
+\index{random.c@{random.c}!erfint2@{erfint2}}
+\index{erfint2@{erfint2}!random.c@{random.c}}
+\subsubsection[{erfint2}]{\setlength{\rightskip}{0pt plus 5cm}static double erfint2 (double {\em a}, \/  double {\em b})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a3a1ceb2d99bde1cac4cf07168600105b}
+
+
+Definition at line 2355 of file random.c.
+
 \hypertarget{random_8c_a88631d25f6c47878d2e720a03a9f60fa}{
 \index{random.c@{random.c}!InvNorm@{InvNorm}}
 \index{InvNorm@{InvNorm}!random.c@{random.c}}
@@ -143,6 +202,96 @@ Definition at line 2507 of file random.c.
 
 
 Definition at line 2569 of file random.c.
+
+\hypertarget{random_8c_a9c78ec10d9333dd74e988701568a8383}{
+\index{random.c@{random.c}!Positive2@{Positive2}}
+\index{Positive2@{Positive2}!random.c@{random.c}}
+\subsubsection[{Positive2}]{\setlength{\rightskip}{0pt plus 5cm}static void Positive2 ({\bf Rand\_\-t} {\em Rand}, \/  double {\em u}, \/  double {\em v}, \/  double {\em a}, \/  double $\ast$ {\em x0}, \/  double $\ast$ {\em y0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a9c78ec10d9333dd74e988701568a8383}
+
+
+Definition at line 893 of file random.c.
+
+\hypertarget{random_8c_a56b1206b66bea3c76cc4c5d88d0d1605}{
+\index{random.c@{random.c}!Positive2A@{Positive2A}}
+\index{Positive2A@{Positive2A}!random.c@{random.c}}
+\subsubsection[{Positive2A}]{\setlength{\rightskip}{0pt plus 5cm}static void Positive2A (double {\em u}, \/  double {\em v}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a56b1206b66bea3c76cc4c5d88d0d1605}
+
+
+Definition at line 983 of file random.c.
+
+\hypertarget{random_8c_a700140c9747480d45eafe14266d6c672}{
+\index{random.c@{random.c}!Positive2B@{Positive2B}}
+\index{Positive2B@{Positive2B}!random.c@{random.c}}
+\subsubsection[{Positive2B}]{\setlength{\rightskip}{0pt plus 5cm}static void Positive2B (double {\em u}, \/  double {\em v}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a700140c9747480d45eafe14266d6c672}
+
+
+Definition at line 1042 of file random.c.
+
+\hypertarget{random_8c_a2d35287109d49b55390f36d6c31a3bf3}{
+\index{random.c@{random.c}!Positive2C@{Positive2C}}
+\index{Positive2C@{Positive2C}!random.c@{random.c}}
+\subsubsection[{Positive2C}]{\setlength{\rightskip}{0pt plus 5cm}static void Positive2C (double {\em u}, \/  double {\em v}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a2d35287109d49b55390f36d6c31a3bf3}
+
+
+Definition at line 1088 of file random.c.
+
+\hypertarget{random_8c_af5aa2a909d667e1e25841846c4f1cde7}{
+\index{random.c@{random.c}!Positive2D@{Positive2D}}
+\index{Positive2D@{Positive2D}!random.c@{random.c}}
+\subsubsection[{Positive2D}]{\setlength{\rightskip}{0pt plus 5cm}static void Positive2D (double {\em u}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_af5aa2a909d667e1e25841846c4f1cde7}
+
+
+Definition at line 1158 of file random.c.
+
+\hypertarget{random_8c_af4f933abc4cc087252e259210fac932c}{
+\index{random.c@{random.c}!Posneg2@{Posneg2}}
+\index{Posneg2@{Posneg2}!random.c@{random.c}}
+\subsubsection[{Posneg2}]{\setlength{\rightskip}{0pt plus 5cm}static void Posneg2 ({\bf Rand\_\-t} {\em Rand}, \/  double {\em f}, \/  double {\em g}, \/  double {\em u}, \/  double {\em v}, \/  double {\em a}, \/  double $\ast$ {\em x0}, \/  double $\ast$ {\em y0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_af4f933abc4cc087252e259210fac932c}
+
+
+Definition at line 1404 of file random.c.
+
+\hypertarget{random_8c_a4bc23e3ec9ff500379b84fbf42b1d5d8}{
+\index{random.c@{random.c}!Posneg2A@{Posneg2A}}
+\index{Posneg2A@{Posneg2A}!random.c@{random.c}}
+\subsubsection[{Posneg2A}]{\setlength{\rightskip}{0pt plus 5cm}static void Posneg2A (double {\em fpu}, \/  double {\em fmu}, \/  double {\em gpv}, \/  double {\em gmv}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a4bc23e3ec9ff500379b84fbf42b1d5d8}
+
+
+Definition at line 1510 of file random.c.
+
+\hypertarget{random_8c_a5a9690c3d258b105413c15a999961d08}{
+\index{random.c@{random.c}!Posneg2B@{Posneg2B}}
+\index{Posneg2B@{Posneg2B}!random.c@{random.c}}
+\subsubsection[{Posneg2B}]{\setlength{\rightskip}{0pt plus 5cm}static void Posneg2B (double {\em fpu}, \/  double {\em fmu}, \/  double {\em gpv}, \/  double {\em gmv}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a5a9690c3d258b105413c15a999961d08}
+
+
+Definition at line 1617 of file random.c.
+
+\hypertarget{random_8c_a0e9fee1941b7a5f6994b357e6076fda0}{
+\index{random.c@{random.c}!Posneg2C@{Posneg2C}}
+\index{Posneg2C@{Posneg2C}!random.c@{random.c}}
+\subsubsection[{Posneg2C}]{\setlength{\rightskip}{0pt plus 5cm}static void Posneg2C (double {\em fpu}, \/  double {\em fmu}, \/  double {\em gpv}, \/  double {\em gmv}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a0e9fee1941b7a5f6994b357e6076fda0}
+
+
+Definition at line 1678 of file random.c.
+
+\hypertarget{random_8c_a28bdeabfcb2900fab86c8f4a8e0e2f36}{
+\index{random.c@{random.c}!Posneg2D@{Posneg2D}}
+\index{Posneg2D@{Posneg2D}!random.c@{random.c}}
+\subsubsection[{Posneg2D}]{\setlength{\rightskip}{0pt plus 5cm}static void Posneg2D (double {\em fpu}, \/  double {\em fmu}, \/  double {\em gpv}, \/  double {\em gmv}, \/  double {\em a}, \/  double {\em height}, \/  double $\ast$ {\em xc}, \/  double $\ast$ {\em p0}, \/  double $\ast$ {\em q0})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a28bdeabfcb2900fab86c8f4a8e0e2f36}
+
+
+Definition at line 1824 of file random.c.
 
 \hypertarget{random_8c_a2672fc29967e054bb29846c394a6dd44}{
 \index{random.c@{random.c}!Ran1pos@{Ran1pos}}
@@ -332,4 +481,70 @@ Definition at line 1935 of file random.c.
 
 
 Definition at line 1884 of file random.c.
+
+\hypertarget{random_8c_a5d2df06818d48ca50b0cb6b7c9362a20}{
+\index{random.c@{random.c}!wedge@{wedge}}
+\index{wedge@{wedge}!random.c@{random.c}}
+\subsubsection[{wedge}]{\setlength{\rightskip}{0pt plus 5cm}static double wedge (double {\em a}, \/  double {\em s}, \/  double {\em t})\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a5d2df06818d48ca50b0cb6b7c9362a20}
+
+
+Definition at line 2398 of file random.c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{random_8c_a4d06b643e836bb71eb608ec3cd420941}{
+\index{random.c@{random.c}!HalfPi@{HalfPi}}
+\index{HalfPi@{HalfPi}!random.c@{random.c}}
+\subsubsection[{HalfPi}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf HalfPi} = 1.57079632679489661922\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a4d06b643e836bb71eb608ec3cd420941}
+
+
+Definition at line 40 of file random.c.
+
+\hypertarget{random_8c_a4b0a877fe7f6875304b09aa10471c70a}{
+\index{random.c@{random.c}!LogSqr2Pi@{LogSqr2Pi}}
+\index{LogSqr2Pi@{LogSqr2Pi}!random.c@{random.c}}
+\subsubsection[{LogSqr2Pi}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf LogSqr2Pi} = 0.91893853320467274177\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a4b0a877fe7f6875304b09aa10471c70a}
+
+
+Definition at line 44 of file random.c.
+
+\hypertarget{random_8c_a4f75a875aac7d6f08e771914cfb88bce}{
+\index{random.c@{random.c}!SHIFT32@{SHIFT32}}
+\index{SHIFT32@{SHIFT32}!random.c@{random.c}}
+\subsubsection[{SHIFT32}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf SHIFT32} = 1.0 / 4294967296.0\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a4f75a875aac7d6f08e771914cfb88bce}
+
+
+Definition at line 39 of file random.c.
+
+\hypertarget{random_8c_a4b02612421122d60c45efeec1d5fc3bb}{
+\index{random.c@{random.c}!Sqr2Pi@{Sqr2Pi}}
+\index{Sqr2Pi@{Sqr2Pi}!random.c@{random.c}}
+\subsubsection[{Sqr2Pi}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf Sqr2Pi} = 2.50662827463100050240\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a4b02612421122d60c45efeec1d5fc3bb}
+
+
+Definition at line 43 of file random.c.
+
+\hypertarget{random_8c_af860771dfec7c5f0338323f0849e7cd7}{
+\index{random.c@{random.c}!SqrPi2@{SqrPi2}}
+\index{SqrPi2@{SqrPi2}!random.c@{random.c}}
+\subsubsection[{SqrPi2}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf SqrPi2} = 1.25331413731550025120\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_af860771dfec7c5f0338323f0849e7cd7}
+
+
+Definition at line 42 of file random.c.
+
+\hypertarget{random_8c_a38e35028a7042305527f0f7a20872507}{
+\index{random.c@{random.c}!TwoxPi@{TwoxPi}}
+\index{TwoxPi@{TwoxPi}!random.c@{random.c}}
+\subsubsection[{TwoxPi}]{\setlength{\rightskip}{0pt plus 5cm}const double {\bf TwoxPi} = 6.28318530717958647688\hspace{0.3cm}{\ttfamily  \mbox{[}static\mbox{]}}}}
+\label{random_8c_a38e35028a7042305527f0f7a20872507}
+
+
+Definition at line 41 of file random.c.
 

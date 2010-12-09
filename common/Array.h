@@ -3,13 +3,13 @@
 
 #ifndef ARRAY_H
 #define ARRAY_H
-#include <string>
+#include <cstring>
 #include <vector>
 
-
-#include "Matrix.h"
-#include "Baseline.h"
+//#include "Matrix.h"
 #include "Station.h"
+#include "Baseline.h"
+#include "Triplet.h"
 using namespace std;
 
 
@@ -42,12 +42,14 @@ class Array
     std::string arrayname;
     
     // Vector types to store the stations and baselines for this array.
-    vector<Station> stations;
-    vector<Baseline> baselines;
+    vector<Station>     stations;
+    vector<Baseline>    baselines;
+    vector<Triplet>     triplets;
     
   private:
     BaselineHash    bl_hash;
     StationHash     sta_hash;
+    TripletHash     tri_hash;
 
   public:
     // Constructor
@@ -55,9 +57,13 @@ class Array
     Array(std::string arrayname, double latitude, double longitude, double altitude, int nstations, Station * stations);
 
   public:
-    Baseline &  GetBaseline(string baseline_name);
+    /// \todo The Get* functions that deal with hashes should throw an exception if the key is not found.
     Station &   GetStation(int station_index);
     Station &   GetStation(string sta_name);
+    Baseline &  GetBaseline(string baseline_name);
+    Triplet &   GetTriplet(string triplet_name);
+    
+    
     double      GetLatitude(void);
     double      GetLongitude(void);
     double      GetAltitude(void);

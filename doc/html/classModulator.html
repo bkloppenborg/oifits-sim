@@ -59,6 +59,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#a4c384ef6fe79785c8750710ae2dc5be6">amplitude</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#af9a5cbb6681a9493f97ad0a2104b883f">period</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#aa24a21030bcf630c28a63506e07e3f3a">dephasing</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#ab9afc76dd8c1d81fd00124f3c67c84de">Square</a> (double <a class="el" href="classModulator.html#af9a5cbb6681a9493f97ad0a2104b883f">period</a>, double <a class="el" href="classModulator.html#a4c384ef6fe79785c8750710ae2dc5be6">amplitude</a>, double <a class="el" href="classModulator.html#aa24a21030bcf630c28a63506e07e3f3a">dephasing</a>, double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#ae4aad8a94064186640f143bc2c0826ac">NoModulation</a> (double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#a748c0bcd662d36b89544960401e24f72">Triangle</a> (double <a class="el" href="classModulator.html#af9a5cbb6681a9493f97ad0a2104b883f">period</a>, double <a class="el" href="classModulator.html#a4c384ef6fe79785c8750710ae2dc5be6">amplitude</a>, double <a class="el" href="classModulator.html#aa24a21030bcf630c28a63506e07e3f3a">dephasing</a>, double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#a710b4f4fdd09c17dd017783e3b4ac9d7">Sawtooth</a> (double <a class="el" href="classModulator.html#af9a5cbb6681a9493f97ad0a2104b883f">period</a>, double <a class="el" href="classModulator.html#a4c384ef6fe79785c8750710ae2dc5be6">amplitude</a>, double <a class="el" href="classModulator.html#aa24a21030bcf630c28a63506e07e3f3a">dephasing</a>, double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classModulator.html#ab043a19a9057fec4a0b6199ad82bf20b">Ramp</a> (double <a class="el" href="classModulator.html#a4c384ef6fe79785c8750710ae2dc5be6">amplitude</a>, double <a class="el" href="classModulator.html#aa24a21030bcf630c28a63506e07e3f3a">dephasing</a>, double time)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 
@@ -146,6 +152,184 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="ae4aad8a94064186640f143bc2c0826ac"></a><!-- doxytag: member="Modulator::NoModulation" ref="ae4aad8a94064186640f143bc2c0826ac" args="(double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Modulator::NoModulation </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Modulator_8cpp_source.html#l00058">58</a> of file <a class="el" href="Modulator_8cpp_source.html">Modulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab043a19a9057fec4a0b6199ad82bf20b"></a><!-- doxytag: member="Modulator::Ramp" ref="ab043a19a9057fec4a0b6199ad82bf20b" args="(double amplitude, double dephasing, double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Modulator::Ramp </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>amplitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dephasing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Modulator_8cpp_source.html#l00036">36</a> of file <a class="el" href="Modulator_8cpp_source.html">Modulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a710b4f4fdd09c17dd017783e3b4ac9d7"></a><!-- doxytag: member="Modulator::Sawtooth" ref="a710b4f4fdd09c17dd017783e3b4ac9d7" args="(double period, double amplitude, double dephasing, double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Modulator::Sawtooth </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>period</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>amplitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dephasing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Modulator_8cpp_source.html#l00050">50</a> of file <a class="el" href="Modulator_8cpp_source.html">Modulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab9afc76dd8c1d81fd00124f3c67c84de"></a><!-- doxytag: member="Modulator::Square" ref="ab9afc76dd8c1d81fd00124f3c67c84de" args="(double period, double amplitude, double dephasing, double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Modulator::Square </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>period</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>amplitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dephasing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Modulator_8cpp_source.html#l00030">30</a> of file <a class="el" href="Modulator_8cpp_source.html">Modulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a748c0bcd662d36b89544960401e24f72"></a><!-- doxytag: member="Modulator::Triangle" ref="a748c0bcd662d36b89544960401e24f72" args="(double period, double amplitude, double dephasing, double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Modulator::Triangle </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>period</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>amplitude</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>dephasing</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Modulator_8cpp_source.html#l00042">42</a> of file <a class="el" href="Modulator_8cpp_source.html">Modulator.cpp</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
 <a class="anchor" id="a4c384ef6fe79785c8750710ae2dc5be6"></a><!-- doxytag: member="Modulator::amplitude" ref="a4c384ef6fe79785c8750710ae2dc5be6" args="" -->
 <div class="memitem">
@@ -226,7 +410,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

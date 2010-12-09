@@ -54,7 +54,7 @@ void \hyperlink{Matrix_8h_aea2af94818e0413f0d412c2c2005234d}{mat2fits} (\hyperli
 \item 
 void \hyperlink{Matrix_8h_aa3eeb14acea79284eabfed858b9842c2}{mat2fits} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&m, const char $\ast$filename)
 \item 
-void \hyperlink{Matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m, double \&pixellation)
+void \hyperlink{Matrix_8h_a994237060a1761f522640a0f552acb77}{fits2mat} (const char $\ast$fname, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&m)
 \item 
 void \hyperlink{Matrix_8h_a8dd85dfa716d7423d1eb16bc7fd00281}{ZeroPad} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&unpadded, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&padded)
 \item 
@@ -82,20 +82,13 @@ Definition at line 20 of file Matrix.h.
 \label{Matrix_8h_ab954a056aece4783897155da1c9928ad}
 
 
-Definition at line 478 of file Matrix.cpp.
+Definition at line 479 of file Matrix.cpp.
 
-\hypertarget{Matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}{
+\hypertarget{Matrix_8h_a994237060a1761f522640a0f552acb77}{
 \index{Matrix.h@{Matrix.h}!fits2mat@{fits2mat}}
 \index{fits2mat@{fits2mat}!Matrix.h@{Matrix.h}}
-\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m}, \/  double \& {\em pixellation})}}
-\label{Matrix_8h_ad26b16e86c4d845e9f89d3c1db575302}
-
-
-
-\begin{DoxyExceptions}{Exceptions}
-\item[{\em runtime\_\-error}]The Target FITS file is missing PIXEL keyword! This means that the input FITS file is missing the PIXEL(lation) parameter which should be defined somewhere in the FITS header. \end{DoxyExceptions}
-
-
+\subsubsection[{fits2mat}]{\setlength{\rightskip}{0pt plus 5cm}void fits2mat (const char $\ast$ {\em fname}, \/  {\bf Matrix}$<$ double $>$ \& {\em m})}}
+\label{Matrix_8h_a994237060a1761f522640a0f552acb77}
 
 
 Definition at line 411 of file Matrix.cpp.

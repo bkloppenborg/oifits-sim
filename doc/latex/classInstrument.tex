@@ -11,7 +11,7 @@
 \item 
 \hyperlink{classInstrument_af68972d40961b639787c594e3d62857e}{Instrument} (double \hyperlink{classInstrument_a24c5a78025ce2474443eb34b8828df08}{throughput}, double \hyperlink{classInstrument_a8a79a07bd650ab75118beff9f46886a6}{visibility}, int \hyperlink{classInstrument_a349e2122c222f16ed712b5fb8660adb4}{Npix}, double \hyperlink{classInstrument_accb5f463e89c0c73d4c0e5b6b80397af}{read\_\-noise}, double \hyperlink{classInstrument_af352575aa1a6bb255db663a53fbb2b8b}{quantum\_\-efficiency}, double vsqFracCalErr, double cloPhaseCalErrDeg, double \hyperlink{classInstrument_a7e18ced4e4e556e5203c046c2ebb3c63}{wind\_\-speed}, double \hyperlink{classInstrument_a508dcac890549428696372a66ed5d3bc}{ast\_\-seeing}, double \hyperlink{classInstrument_ab431265cc3192bfcc9ceeafd1d30605b}{incoh\_\-time})
 \item 
-\hyperlink{classInstrument_a1842ca96cd3d19a634121fd5cafc6ff4}{Instrument} (const char $\ast$Inst\_\-file)
+\hyperlink{classInstrument_a44911c880ba30eaf211f3905fc7ae7b5}{Instrument} (string filename, string comment\_\-chars)
 \item 
 double \hyperlink{classInstrument_aa43fea34962ffe530cc5cfb0dbaa67c2}{GlobalThroughput} ()
 \end{DoxyCompactItemize}
@@ -43,7 +43,7 @@ double \hyperlink{classInstrument_ab431265cc3192bfcc9ceeafd1d30605b}{incoh\_\-ti
 \subsection{Detailed Description}
 
 
-Definition at line 7 of file Instrument.h.
+Definition at line 10 of file Instrument.h.
 
 
 
@@ -55,20 +55,16 @@ Definition at line 7 of file Instrument.h.
 \label{classInstrument_af68972d40961b639787c594e3d62857e}
 
 
-Definition at line 16 of file Instrument.cpp.
+Definition at line 20 of file Instrument.cpp.
 
-\hypertarget{classInstrument_a1842ca96cd3d19a634121fd5cafc6ff4}{
+\hypertarget{classInstrument_a44911c880ba30eaf211f3905fc7ae7b5}{
 \index{Instrument@{Instrument}!Instrument@{Instrument}}
 \index{Instrument@{Instrument}!Instrument@{Instrument}}
-\subsubsection[{Instrument}]{\setlength{\rightskip}{0pt plus 5cm}Instrument::Instrument (const char $\ast$ {\em Inst\_\-file})}}
-\label{classInstrument_a1842ca96cd3d19a634121fd5cafc6ff4}
+\subsubsection[{Instrument}]{\setlength{\rightskip}{0pt plus 5cm}Instrument::Instrument (string {\em filename}, \/  string {\em comment\_\-chars})}}
+\label{classInstrument_a44911c880ba30eaf211f3905fc7ae7b5}
 
 
-runtime\_\-error \char`\"{}Error Opening Instrument File\char`\"{} 
-
-
-
-Definition at line 33 of file Instrument.cpp.
+Definition at line 37 of file Instrument.cpp.
 
 
 
@@ -80,7 +76,7 @@ Definition at line 33 of file Instrument.cpp.
 \label{classInstrument_aa43fea34962ffe530cc5cfb0dbaa67c2}
 Return total interferometer throughput, including detector QE. 
 
-Definition at line 84 of file Instrument.cpp.
+Definition at line 68 of file Instrument.cpp.
 
 
 
@@ -92,7 +88,7 @@ Definition at line 84 of file Instrument.cpp.
 \label{classInstrument_a508dcac890549428696372a66ed5d3bc}
 
 
-Definition at line 31 of file Instrument.h.
+Definition at line 36 of file Instrument.h.
 
 \hypertarget{classInstrument_a755a26a3b1c7ea48fdcf213371254068}{
 \index{Instrument@{Instrument}!clo\_\-cal\_\-err\_\-deg@{clo\_\-cal\_\-err\_\-deg}}
@@ -101,7 +97,7 @@ Definition at line 31 of file Instrument.h.
 \label{classInstrument_a755a26a3b1c7ea48fdcf213371254068}
 
 
-Definition at line 27 of file Instrument.h.
+Definition at line 32 of file Instrument.h.
 
 \hypertarget{classInstrument_ab431265cc3192bfcc9ceeafd1d30605b}{
 \index{Instrument@{Instrument}!incoh\_\-time@{incoh\_\-time}}
@@ -110,7 +106,7 @@ Definition at line 27 of file Instrument.h.
 \label{classInstrument_ab431265cc3192bfcc9ceeafd1d30605b}
 
 
-Definition at line 32 of file Instrument.h.
+Definition at line 37 of file Instrument.h.
 
 \hypertarget{classInstrument_a349e2122c222f16ed712b5fb8660adb4}{
 \index{Instrument@{Instrument}!Npix@{Npix}}
@@ -119,7 +115,7 @@ Definition at line 32 of file Instrument.h.
 \label{classInstrument_a349e2122c222f16ed712b5fb8660adb4}
 
 
-Definition at line 23 of file Instrument.h.
+Definition at line 28 of file Instrument.h.
 
 \hypertarget{classInstrument_af352575aa1a6bb255db663a53fbb2b8b}{
 \index{Instrument@{Instrument}!quantum\_\-efficiency@{quantum\_\-efficiency}}
@@ -128,7 +124,7 @@ Definition at line 23 of file Instrument.h.
 \label{classInstrument_af352575aa1a6bb255db663a53fbb2b8b}
 
 
-Definition at line 25 of file Instrument.h.
+Definition at line 30 of file Instrument.h.
 
 \hypertarget{classInstrument_accb5f463e89c0c73d4c0e5b6b80397af}{
 \index{Instrument@{Instrument}!read\_\-noise@{read\_\-noise}}
@@ -137,7 +133,7 @@ Definition at line 25 of file Instrument.h.
 \label{classInstrument_accb5f463e89c0c73d4c0e5b6b80397af}
 
 
-Definition at line 24 of file Instrument.h.
+Definition at line 29 of file Instrument.h.
 
 \hypertarget{classInstrument_a24c5a78025ce2474443eb34b8828df08}{
 \index{Instrument@{Instrument}!throughput@{throughput}}
@@ -146,7 +142,7 @@ Definition at line 24 of file Instrument.h.
 \label{classInstrument_a24c5a78025ce2474443eb34b8828df08}
 
 
-Definition at line 21 of file Instrument.h.
+Definition at line 26 of file Instrument.h.
 
 \hypertarget{classInstrument_a8a79a07bd650ab75118beff9f46886a6}{
 \index{Instrument@{Instrument}!visibility@{visibility}}
@@ -155,7 +151,7 @@ Definition at line 21 of file Instrument.h.
 \label{classInstrument_a8a79a07bd650ab75118beff9f46886a6}
 
 
-Definition at line 22 of file Instrument.h.
+Definition at line 27 of file Instrument.h.
 
 \hypertarget{classInstrument_ad51820f02768c7632da7d9136ace806f}{
 \index{Instrument@{Instrument}!vsq\_\-frac\_\-cal\_\-err@{vsq\_\-frac\_\-cal\_\-err}}
@@ -164,7 +160,7 @@ Definition at line 22 of file Instrument.h.
 \label{classInstrument_ad51820f02768c7632da7d9136ace806f}
 
 
-Definition at line 26 of file Instrument.h.
+Definition at line 31 of file Instrument.h.
 
 \hypertarget{classInstrument_a7e18ced4e4e556e5203c046c2ebb3c63}{
 \index{Instrument@{Instrument}!wind\_\-speed@{wind\_\-speed}}
@@ -173,7 +169,7 @@ Definition at line 26 of file Instrument.h.
 \label{classInstrument_a7e18ced4e4e556e5203c046c2ebb3c63}
 
 
-Definition at line 30 of file Instrument.h.
+Definition at line 35 of file Instrument.h.
 
 
 

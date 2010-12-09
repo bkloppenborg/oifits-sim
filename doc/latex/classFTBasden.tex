@@ -11,7 +11,7 @@
 \item 
 void \hyperlink{classFTBasden_acd78f51a4e9289f0baa700911a8d57e8}{GDEstimate} ()
 \item 
-\hyperlink{classFTBasden_a5f5d73040e778dbf7115ab23f6bb9c9d}{FTBasden} (int n\_\-coh, int ndelta\_\-coh, int n\_\-incoh, \hyperlink{classSpectralMode}{SpectralMode} $\ast$spectr, \hyperlink{classModulator}{Modulator} $\ast$modulator, int w1type, int w2type)
+\hyperlink{classFTBasden_a5f5d73040e778dbf7115ab23f6bb9c9d}{FTBasden} (int \hyperlink{classFTBasden_a73eaee344474c1a9684092fc153c276a}{n\_\-coh}, int \hyperlink{classFTBasden_ad4f3178302c51d384fd6982291b1c013}{ndelta\_\-coh}, int \hyperlink{classFTBasden_a08a54e66d27db92948d214db32a271d4}{n\_\-incoh}, \hyperlink{classSpectralMode}{SpectralMode} $\ast$\hyperlink{classFTBasden_aed5e060486471328c4b0cb30b828d242}{spectr}, \hyperlink{classModulator}{Modulator} $\ast$\hyperlink{classFTBasden_a1042a3192c3eeedb17421dea33637fc2}{modulator}, int \hyperlink{classFTBasden_abebf10bcdc72528f9c98459e91524545}{w1type}, int \hyperlink{classFTBasden_ac2f9b89d66840aba0f7ce01e5d3d0386}{w2type})
 \item 
 void \hyperlink{classFTBasden_a76fe6fade8b81a074ea5e1724dbe4d6c}{StoreOneFrame} (\hyperlink{classRow}{Row}$<$ int $>$ \&detectorframe, double time)
 \end{DoxyCompactItemize}
@@ -21,6 +21,64 @@ void \hyperlink{classFTBasden_a76fe6fade8b81a074ea5e1724dbe4d6c}{StoreOneFrame} 
 \hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classFTBasden_a4dcdeaee548ee6378d126b348c943f39}{frames}
 \item 
 double \hyperlink{classFTBasden_a306a1bc5d8932b9eb3ba98d670ea631b}{OPD\_\-estimate}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classFTBasden_a8d1e981f8af57e71a569f026b8ab9980}{W1} (int pixel)
+\item 
+double \hyperlink{classFTBasden_abe46b656653caaabd727215148634ff8}{W2} (int pixel)
+\item 
+void \hyperlink{classFTBasden_a8ccb1870a2b2676f9c8b89a79b80deef}{ComputeF1} ()
+\item 
+void \hyperlink{classFTBasden_a1a78fe9de40c29a7379ff938e5f87cb3}{ComputeF2} ()
+\item 
+void \hyperlink{classFTBasden_afb9ff4ea4467ec2245c72dbda5dd55a1}{ComputeF3} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classFTBasden_ae346f291d45f1d1d99a4f7663c13c2f6}{framecounter}
+\item 
+int \hyperlink{classFTBasden_a5f79935ce61595d637dc6c05071dbc9c}{nchannels}
+\item 
+int \hyperlink{classFTBasden_a427aed6fcb0f1e47aa7c3f074e135881}{ntrials}
+\item 
+double \hyperlink{classFTBasden_a0ce6d1dfd48295970fae36c2fd66c7c0}{scalefactor}
+\item 
+int \hyperlink{classFTBasden_a73eaee344474c1a9684092fc153c276a}{n\_\-coh}
+\item 
+int \hyperlink{classFTBasden_ad4f3178302c51d384fd6982291b1c013}{ndelta\_\-coh}
+\item 
+int \hyperlink{classFTBasden_a08a54e66d27db92948d214db32a271d4}{n\_\-incoh}
+\item 
+double \hyperlink{classFTBasden_a991d9edce4679a24a08b23de51e070cb}{a}
+\item 
+double \hyperlink{classFTBasden_ab76d8343edad3ec52f4677b4b0444027}{previous\_\-time}
+\item 
+\hyperlink{classSpectralMode}{SpectralMode} $\ast$ \hyperlink{classFTBasden_aed5e060486471328c4b0cb30b828d242}{spectr}
+\item 
+\hyperlink{classModulator}{Modulator} $\ast$ \hyperlink{classFTBasden_a1042a3192c3eeedb17421dea33637fc2}{modulator}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_a3c5201a3b733632396c088c037dfb452}{modulator\_\-position}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_a8613c1a7437bdd9f42b8bd4565a3c625}{deltamod}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_a185b651a1ce01fbe60e51ce748b07899}{meantime}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_a5ccd0ee80c5cb01a9538bd72e6079af4}{frameduration}
+\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classFTBasden_aabfa0e2dc66143dfdf26316c1b545eef}{F1}
+\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classFTBasden_a41536d290b26183806301f7601bbeb27}{F2}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_ad7ec1f815688a42e02211d7fa98b6a60}{F3}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTBasden_aecafc948a0316d86977907073b6a6603}{gd}
+\item 
+int \hyperlink{classFTBasden_abebf10bcdc72528f9c98459e91524545}{w1type}
+\item 
+int \hyperlink{classFTBasden_ac2f9b89d66840aba0f7ce01e5d3d0386}{w2type}
 \end{DoxyCompactItemize}
 
 
@@ -44,6 +102,33 @@ Definition at line 79 of file FTBasden.cpp.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classFTBasden_a8ccb1870a2b2676f9c8b89a79b80deef}{
+\index{FTBasden@{FTBasden}!ComputeF1@{ComputeF1}}
+\index{ComputeF1@{ComputeF1}!FTBasden@{FTBasden}}
+\subsubsection[{ComputeF1}]{\setlength{\rightskip}{0pt plus 5cm}void FTBasden::ComputeF1 ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a8ccb1870a2b2676f9c8b89a79b80deef}
+
+
+Definition at line 150 of file FTBasden.cpp.
+
+\hypertarget{classFTBasden_a1a78fe9de40c29a7379ff938e5f87cb3}{
+\index{FTBasden@{FTBasden}!ComputeF2@{ComputeF2}}
+\index{ComputeF2@{ComputeF2}!FTBasden@{FTBasden}}
+\subsubsection[{ComputeF2}]{\setlength{\rightskip}{0pt plus 5cm}void FTBasden::ComputeF2 ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a1a78fe9de40c29a7379ff938e5f87cb3}
+
+
+Definition at line 172 of file FTBasden.cpp.
+
+\hypertarget{classFTBasden_afb9ff4ea4467ec2245c72dbda5dd55a1}{
+\index{FTBasden@{FTBasden}!ComputeF3@{ComputeF3}}
+\index{ComputeF3@{ComputeF3}!FTBasden@{FTBasden}}
+\subsubsection[{ComputeF3}]{\setlength{\rightskip}{0pt plus 5cm}void FTBasden::ComputeF3 ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_afb9ff4ea4467ec2245c72dbda5dd55a1}
+
+
+Definition at line 195 of file FTBasden.cpp.
+
 \hypertarget{classFTBasden_acd78f51a4e9289f0baa700911a8d57e8}{
 \index{FTBasden@{FTBasden}!GDEstimate@{GDEstimate}}
 \index{GDEstimate@{GDEstimate}!FTBasden@{FTBasden}}
@@ -62,9 +147,90 @@ Definition at line 206 of file FTBasden.cpp.
 
 Definition at line 123 of file FTBasden.cpp.
 
+\hypertarget{classFTBasden_a8d1e981f8af57e71a569f026b8ab9980}{
+\index{FTBasden@{FTBasden}!W1@{W1}}
+\index{W1@{W1}!FTBasden@{FTBasden}}
+\subsubsection[{W1}]{\setlength{\rightskip}{0pt plus 5cm}double FTBasden::W1 (int {\em pixel})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a8d1e981f8af57e71a569f026b8ab9980}
+
+
+Definition at line 24 of file FTBasden.cpp.
+
+\hypertarget{classFTBasden_abe46b656653caaabd727215148634ff8}{
+\index{FTBasden@{FTBasden}!W2@{W2}}
+\index{W2@{W2}!FTBasden@{FTBasden}}
+\subsubsection[{W2}]{\setlength{\rightskip}{0pt plus 5cm}double FTBasden::W2 (int {\em pixel})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_abe46b656653caaabd727215148634ff8}
+
+
+Definition at line 52 of file FTBasden.cpp.
+
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classFTBasden_a991d9edce4679a24a08b23de51e070cb}{
+\index{FTBasden@{FTBasden}!a@{a}}
+\index{a@{a}!FTBasden@{FTBasden}}
+\subsubsection[{a}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTBasden::a}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a991d9edce4679a24a08b23de51e070cb}
+
+
+Definition at line 37 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a8613c1a7437bdd9f42b8bd4565a3c625}{
+\index{FTBasden@{FTBasden}!deltamod@{deltamod}}
+\index{deltamod@{deltamod}!FTBasden@{FTBasden}}
+\subsubsection[{deltamod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::deltamod}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a8613c1a7437bdd9f42b8bd4565a3c625}
+
+
+Definition at line 47 of file FTBasden.h.
+
+\hypertarget{classFTBasden_aabfa0e2dc66143dfdf26316c1b545eef}{
+\index{FTBasden@{FTBasden}!F1@{F1}}
+\index{F1@{F1}!FTBasden@{FTBasden}}
+\subsubsection[{F1}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf Complex} $>$ {\bf FTBasden::F1}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_aabfa0e2dc66143dfdf26316c1b545eef}
+
+
+Definition at line 54 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a41536d290b26183806301f7601bbeb27}{
+\index{FTBasden@{FTBasden}!F2@{F2}}
+\index{F2@{F2}!FTBasden@{FTBasden}}
+\subsubsection[{F2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf Complex} $>$ {\bf FTBasden::F2}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a41536d290b26183806301f7601bbeb27}
+
+
+Definition at line 56 of file FTBasden.h.
+
+\hypertarget{classFTBasden_ad7ec1f815688a42e02211d7fa98b6a60}{
+\index{FTBasden@{FTBasden}!F3@{F3}}
+\index{F3@{F3}!FTBasden@{FTBasden}}
+\subsubsection[{F3}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::F3}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_ad7ec1f815688a42e02211d7fa98b6a60}
+
+
+Definition at line 58 of file FTBasden.h.
+
+\hypertarget{classFTBasden_ae346f291d45f1d1d99a4f7663c13c2f6}{
+\index{FTBasden@{FTBasden}!framecounter@{framecounter}}
+\index{framecounter@{framecounter}!FTBasden@{FTBasden}}
+\subsubsection[{framecounter}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::framecounter}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_ae346f291d45f1d1d99a4f7663c13c2f6}
+
+
+Definition at line 23 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a5ccd0ee80c5cb01a9538bd72e6079af4}{
+\index{FTBasden@{FTBasden}!frameduration@{frameduration}}
+\index{frameduration@{frameduration}!FTBasden@{FTBasden}}
+\subsubsection[{frameduration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::frameduration}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a5ccd0ee80c5cb01a9538bd72e6079af4}
+
+
+Definition at line 51 of file FTBasden.h.
+
 \hypertarget{classFTBasden_a4dcdeaee548ee6378d126b348c943f39}{
 \index{FTBasden@{FTBasden}!frames@{frames}}
 \index{frames@{frames}!FTBasden@{FTBasden}}
@@ -74,6 +240,87 @@ Definition at line 123 of file FTBasden.cpp.
 
 Definition at line 18 of file FTBasden.h.
 
+\hypertarget{classFTBasden_aecafc948a0316d86977907073b6a6603}{
+\index{FTBasden@{FTBasden}!gd@{gd}}
+\index{gd@{gd}!FTBasden@{FTBasden}}
+\subsubsection[{gd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::gd}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_aecafc948a0316d86977907073b6a6603}
+
+
+Definition at line 60 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a185b651a1ce01fbe60e51ce748b07899}{
+\index{FTBasden@{FTBasden}!meantime@{meantime}}
+\index{meantime@{meantime}!FTBasden@{FTBasden}}
+\subsubsection[{meantime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::meantime}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a185b651a1ce01fbe60e51ce748b07899}
+
+
+Definition at line 49 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a1042a3192c3eeedb17421dea33637fc2}{
+\index{FTBasden@{FTBasden}!modulator@{modulator}}
+\index{modulator@{modulator}!FTBasden@{FTBasden}}
+\subsubsection[{modulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modulator}$\ast$ {\bf FTBasden::modulator}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a1042a3192c3eeedb17421dea33637fc2}
+
+
+Definition at line 43 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a3c5201a3b733632396c088c037dfb452}{
+\index{FTBasden@{FTBasden}!modulator\_\-position@{modulator\_\-position}}
+\index{modulator\_\-position@{modulator\_\-position}!FTBasden@{FTBasden}}
+\subsubsection[{modulator\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTBasden::modulator\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a3c5201a3b733632396c088c037dfb452}
+
+
+Definition at line 45 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a73eaee344474c1a9684092fc153c276a}{
+\index{FTBasden@{FTBasden}!n\_\-coh@{n\_\-coh}}
+\index{n\_\-coh@{n\_\-coh}!FTBasden@{FTBasden}}
+\subsubsection[{n\_\-coh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::n\_\-coh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a73eaee344474c1a9684092fc153c276a}
+
+
+Definition at line 31 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a08a54e66d27db92948d214db32a271d4}{
+\index{FTBasden@{FTBasden}!n\_\-incoh@{n\_\-incoh}}
+\index{n\_\-incoh@{n\_\-incoh}!FTBasden@{FTBasden}}
+\subsubsection[{n\_\-incoh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::n\_\-incoh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a08a54e66d27db92948d214db32a271d4}
+
+
+Definition at line 35 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a5f79935ce61595d637dc6c05071dbc9c}{
+\index{FTBasden@{FTBasden}!nchannels@{nchannels}}
+\index{nchannels@{nchannels}!FTBasden@{FTBasden}}
+\subsubsection[{nchannels}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::nchannels}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a5f79935ce61595d637dc6c05071dbc9c}
+
+
+Definition at line 25 of file FTBasden.h.
+
+\hypertarget{classFTBasden_ad4f3178302c51d384fd6982291b1c013}{
+\index{FTBasden@{FTBasden}!ndelta\_\-coh@{ndelta\_\-coh}}
+\index{ndelta\_\-coh@{ndelta\_\-coh}!FTBasden@{FTBasden}}
+\subsubsection[{ndelta\_\-coh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::ndelta\_\-coh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_ad4f3178302c51d384fd6982291b1c013}
+
+
+Definition at line 33 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a427aed6fcb0f1e47aa7c3f074e135881}{
+\index{FTBasden@{FTBasden}!ntrials@{ntrials}}
+\index{ntrials@{ntrials}!FTBasden@{FTBasden}}
+\subsubsection[{ntrials}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::ntrials}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a427aed6fcb0f1e47aa7c3f074e135881}
+
+
+Definition at line 27 of file FTBasden.h.
+
 \hypertarget{classFTBasden_a306a1bc5d8932b9eb3ba98d670ea631b}{
 \index{FTBasden@{FTBasden}!OPD\_\-estimate@{OPD\_\-estimate}}
 \index{OPD\_\-estimate@{OPD\_\-estimate}!FTBasden@{FTBasden}}
@@ -82,6 +329,51 @@ Definition at line 18 of file FTBasden.h.
 
 
 Definition at line 20 of file FTBasden.h.
+
+\hypertarget{classFTBasden_ab76d8343edad3ec52f4677b4b0444027}{
+\index{FTBasden@{FTBasden}!previous\_\-time@{previous\_\-time}}
+\index{previous\_\-time@{previous\_\-time}!FTBasden@{FTBasden}}
+\subsubsection[{previous\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTBasden::previous\_\-time}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_ab76d8343edad3ec52f4677b4b0444027}
+
+
+Definition at line 39 of file FTBasden.h.
+
+\hypertarget{classFTBasden_a0ce6d1dfd48295970fae36c2fd66c7c0}{
+\index{FTBasden@{FTBasden}!scalefactor@{scalefactor}}
+\index{scalefactor@{scalefactor}!FTBasden@{FTBasden}}
+\subsubsection[{scalefactor}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTBasden::scalefactor}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_a0ce6d1dfd48295970fae36c2fd66c7c0}
+
+
+Definition at line 29 of file FTBasden.h.
+
+\hypertarget{classFTBasden_aed5e060486471328c4b0cb30b828d242}{
+\index{FTBasden@{FTBasden}!spectr@{spectr}}
+\index{spectr@{spectr}!FTBasden@{FTBasden}}
+\subsubsection[{spectr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SpectralMode}$\ast$ {\bf FTBasden::spectr}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_aed5e060486471328c4b0cb30b828d242}
+
+
+Definition at line 41 of file FTBasden.h.
+
+\hypertarget{classFTBasden_abebf10bcdc72528f9c98459e91524545}{
+\index{FTBasden@{FTBasden}!w1type@{w1type}}
+\index{w1type@{w1type}!FTBasden@{FTBasden}}
+\subsubsection[{w1type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::w1type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_abebf10bcdc72528f9c98459e91524545}
+
+
+Definition at line 67 of file FTBasden.h.
+
+\hypertarget{classFTBasden_ac2f9b89d66840aba0f7ce01e5d3d0386}{
+\index{FTBasden@{FTBasden}!w2type@{w2type}}
+\index{w2type@{w2type}!FTBasden@{FTBasden}}
+\subsubsection[{w2type}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTBasden::w2type}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTBasden_ac2f9b89d66840aba0f7ce01e5d3d0386}
+
+
+Definition at line 69 of file FTBasden.h.
 
 
 

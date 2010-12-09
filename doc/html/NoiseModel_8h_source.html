@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f18ddd31d8999c44835cf8bd69077007.html">vis_sim</a>
+  <div class="navpath"><a class="el" href="dir_72ef693a9b20303b80390e494a4910ad.html">vis_sim</a>
   </div>
 </div>
 <div class="contents">
@@ -53,27 +53,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00004"></a>00004 <span class="keyword">class </span><a class="code" href="classSource.html" title="A class to represent the source object.">Source</a>;
 <a name="l00005"></a>00005 <span class="keyword">class </span><a class="code" href="classArray.html" title="A class to represent the array (i.e. the interferometer).">Array</a>;
 <a name="l00006"></a>00006 <span class="keyword">class </span><a class="code" href="classInstrument.html">Instrument</a>;
-<a name="l00007"></a>00007 
-<a name="l00008"></a>00008 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a98653f1e69081d2a1b6d6583217b20f1">Strehl</a>(<span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> r0, <span class="keywordtype">double</span> D);
-<a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a96b38ac87e9bf9fd1b7592d30ae92073">TimeInt</a>(<span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> r0, <span class="keywordtype">double</span> v);
-<a name="l00011"></a>00011 
-<a name="l00012"></a>00012 <span class="comment">// AS 2010-06-24</span>
-<a name="l00013"></a>00013 <span class="comment">// added a new dependency of PhCount on median_wl</span>
-<a name="l00014"></a>00014 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a6477a34f9615a47a92ed93eff65836d6">PhCount</a>(<a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classArray.html" title="A class to represent the array (i.e. the interferometer).">Array</a> &amp; s, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst,
-<a name="l00015"></a>00015    <span class="keywordtype">double</span> median_wl, <span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> Dlambda);
-<a name="l00016"></a>00016 
-<a name="l00017"></a>00017 <span class="comment">// AS 2010-06-22</span>
-<a name="l00018"></a>00018 <span class="comment">// eliminated the incoherent integration time from arguments of the function,</span>
-<a name="l00019"></a>00019 <span class="comment">// since it is now contained in the instrument class</span>
-<a name="l00020"></a>00020 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#ad8a09c9afa459b81e6fd28424f8ca8dd" title="compute the variance of a power spectrum point">VarPow1</a>(<span class="keywordtype">double</span> Pow, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec, <span class="keywordtype">int</span> specIndex,
-<a name="l00021"></a>00021    <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classArray.html" title="A class to represent the array (i.e. the interferometer).">Array</a> &amp; s, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
-<a name="l00022"></a>00022 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#aa21f91c926e5f561f80a1e3bca598b91">VarUnbiasedPow1</a>(<span class="keywordtype">double</span> Pow, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec, <span class="keywordtype">int</span> specIndex,
-<a name="l00023"></a>00023    <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classArray.html" title="A class to represent the array (i.e. the interferometer).">Array</a> &amp; s, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
-<a name="l00024"></a>00024 
-<a name="l00025"></a>00025 <a class="code" href="classMatrix.html">Matrix &lt; double &gt;</a> <a class="code" href="NoiseModel_8cpp.html#a9dd4cf7ca75e44a06df5ba71d5997a94" title=": VarCloPhase1() etc.">VarCloPhase</a>(<a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec,
-<a name="l00026"></a>00026    <a class="code" href="classMatrix.html">Matrix &lt; Complex &gt;</a> &amp;<a class="code" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a>, <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target,
-<a name="l00027"></a>00027    <a class="code" href="classArray.html" title="A class to represent the array (i.e. the interferometer).">Array</a> &amp; s, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst, <span class="keywordtype">int</span> Nbs, <span class="keywordtype">int</span> Nha);
+<a name="l00007"></a>00007 <span class="keyword">class </span><a class="code" href="classObservation.html">Observation</a>;
+<a name="l00008"></a>00008 
+<a name="l00009"></a>00009 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a98653f1e69081d2a1b6d6583217b20f1">Strehl</a>(<span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> r0, <span class="keywordtype">double</span> D);
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a96b38ac87e9bf9fd1b7592d30ae92073">TimeInt</a>(<span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> r0, <span class="keywordtype">double</span> v);
+<a name="l00012"></a>00012 
+<a name="l00013"></a>00013 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#ad775853061ae7f2673b67e894ec33313">PhCount</a>(<a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst, <span class="keywordtype">double</span> median_wl, <span class="keywordtype">double</span> wl, <span class="keywordtype">double</span> Dlambda);
+<a name="l00014"></a>00014 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a76a12be91feb4f19876246ee9e20dfb3">CoherentFlux1</a>(<span class="keywordtype">double</span> Ni, <span class="keywordtype">double</span> Pow, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
+<a name="l00015"></a>00015 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#abff54606badd8f72e37f2915bafa22b7" title="compute the variance of the squared coherent flux">VarCoherentFlux1</a>(<span class="keywordtype">double</span> Ni, <span class="keywordtype">double</span> Pow, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
+<a name="l00016"></a>00016 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#ab5dd2c51d95421f07f4c46a6601253aa" title="compute the variance of a power spectrum point">VarPow1</a>(<span class="keywordtype">double</span> Pow, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec, <span class="keywordtype">int</span> specIndex, <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
+<a name="l00017"></a>00017 <span class="keywordtype">double</span> <a class="code" href="NoiseModel_8cpp.html#a3010e5e3d05d0c67e05de91b6c5b8914">VarUnbiasedPow1</a>(<span class="keywordtype">double</span> Pow, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec, <span class="keywordtype">int</span> specIndex, <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst);
+<a name="l00018"></a>00018 <a class="code" href="classMatrix.html">Matrix &lt; double &gt;</a> <a class="code" href="NoiseModel_8cpp.html#a79488f745855a6fa932f534fe1232e3b" title=": VarCloPhase1() etc.">VarCloPhase</a>(<a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> &amp; spec, <a class="code" href="classMatrix.html">Matrix &lt; Complex &gt;</a> &amp;visibility, <a class="code" href="classSource.html" title="A class to represent the source object.">Source</a> &amp; target, <a class="code" href="classObservation.html">Observation</a> &amp; obs, <a class="code" href="classInstrument.html">Instrument</a> &amp; inst, <span class="keywordtype">int</span> Nbs, <span class="keywordtype">int</span> Nha);
+<a name="l00019"></a>00019 
+<a name="l00020"></a>00020 
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -89,7 +82,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:57 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

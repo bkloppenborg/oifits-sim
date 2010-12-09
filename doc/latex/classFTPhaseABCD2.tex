@@ -9,7 +9,7 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classFTPhaseABCD2_ad221cbcea6aae7dc1ee5b781c17bba81}{FTPhaseABCD2} (int nbins, int frames\_\-per\_\-bin, \hyperlink{classSpectralMode}{SpectralMode} $\ast$spectr, \hyperlink{classModulator}{Modulator} $\ast$modulator)
+\hyperlink{classFTPhaseABCD2_ad221cbcea6aae7dc1ee5b781c17bba81}{FTPhaseABCD2} (int \hyperlink{classFTPhaseABCD2_acbcfd8097caa8e93a79957b479448202}{nbins}, int \hyperlink{classFTPhaseABCD2_a819bc8d77a0005500876c87b9b08dab3}{frames\_\-per\_\-bin}, \hyperlink{classSpectralMode}{SpectralMode} $\ast$\hyperlink{classFTPhaseABCD2_a67e7dfc25f4d00d204a71361c8a15195}{spectr}, \hyperlink{classModulator}{Modulator} $\ast$\hyperlink{classFTPhaseABCD2_a1755a23fa779636dab93ffb9c9b93e6b}{modulator})
 \item 
 void \hyperlink{classFTPhaseABCD2_ad4b0d7297334da3cb4454f90fd6cb09f}{StoreOneFrame} (\hyperlink{classRow}{Row}$<$ int $>$ \&detectorframe, double time)
 \item 
@@ -59,6 +59,33 @@ int \hyperlink{classFTPhaseABCD2_a773a081c902d4d60218c667ae8dfb3fe}{search\_\-di
 double \hyperlink{classFTPhaseABCD2_a484c9e4e012a3fc922e7af510f0567db}{search\_\-OPD\_\-max}
 \item 
 double \hyperlink{classFTPhaseABCD2_a24fa4eafbdca00c095adb33dee3eaa4b}{search\_\-OPD\_\-steplength}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classFTPhaseABCD2_acbcfd8097caa8e93a79957b479448202}{nbins}
+\item 
+int \hyperlink{classFTPhaseABCD2_a819bc8d77a0005500876c87b9b08dab3}{frames\_\-per\_\-bin}
+\item 
+int \hyperlink{classFTPhaseABCD2_ab20a33f32bb64bb904caf74197593f2d}{framecounter}
+\item 
+int \hyperlink{classFTPhaseABCD2_a5353d092d53889e894f4c9f215c879cf}{nchannels}
+\item 
+double \hyperlink{classFTPhaseABCD2_a527852fce847c75999c7965fe50b7004}{previous\_\-time}
+\item 
+double \hyperlink{classFTPhaseABCD2_ac2491fdeea3af6651de745eed482db2b}{previous\_\-opd}
+\item 
+\hyperlink{classSpectralMode}{SpectralMode} $\ast$ \hyperlink{classFTPhaseABCD2_a67e7dfc25f4d00d204a71361c8a15195}{spectr}
+\item 
+\hyperlink{classModulator}{Modulator} $\ast$ \hyperlink{classFTPhaseABCD2_a1755a23fa779636dab93ffb9c9b93e6b}{modulator}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD2_a248bbc1dccd7a072e8e61710e4ae2259}{modulator\_\-position}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD2_adb45ef3385f322f04a5fae6a4fc5f8d0}{deltamod}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD2_a8a835c4c65a6bc45a0032aeced937be6}{frametime}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPhaseABCD2_abedbf8d6e352a94657090c240ae5b567}{frameduration}
 \end{DoxyCompactItemize}
 
 
@@ -148,6 +175,33 @@ Definition at line 32 of file FTPhaseABCD2.h.
 
 Definition at line 29 of file FTPhaseABCD2.h.
 
+\hypertarget{classFTPhaseABCD2_adb45ef3385f322f04a5fae6a4fc5f8d0}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!deltamod@{deltamod}}
+\index{deltamod@{deltamod}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{deltamod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD2::deltamod}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_adb45ef3385f322f04a5fae6a4fc5f8d0}
+
+
+Definition at line 81 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_ab20a33f32bb64bb904caf74197593f2d}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!framecounter@{framecounter}}
+\index{framecounter@{framecounter}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{framecounter}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD2::framecounter}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_ab20a33f32bb64bb904caf74197593f2d}
+
+
+Definition at line 67 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_abedbf8d6e352a94657090c240ae5b567}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!frameduration@{frameduration}}
+\index{frameduration@{frameduration}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{frameduration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD2::frameduration}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_abedbf8d6e352a94657090c240ae5b567}
+
+
+Definition at line 85 of file FTPhaseABCD2.h.
+
 \hypertarget{classFTPhaseABCD2_ac1284b3c87b8a3fcb28fb7aa25021e31}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!frames@{frames}}
 \index{frames@{frames}!FTPhaseABCD2@{FTPhaseABCD2}}
@@ -156,6 +210,24 @@ Definition at line 29 of file FTPhaseABCD2.h.
 
 
 Definition at line 22 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a819bc8d77a0005500876c87b9b08dab3}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!frames\_\-per\_\-bin@{frames\_\-per\_\-bin}}
+\index{frames\_\-per\_\-bin@{frames\_\-per\_\-bin}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{frames\_\-per\_\-bin}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD2::frames\_\-per\_\-bin}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a819bc8d77a0005500876c87b9b08dab3}
+
+
+Definition at line 65 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a8a835c4c65a6bc45a0032aeced937be6}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!frametime@{frametime}}
+\index{frametime@{frametime}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{frametime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD2::frametime}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a8a835c4c65a6bc45a0032aeced937be6}
+
+
+Definition at line 83 of file FTPhaseABCD2.h.
 
 \hypertarget{classFTPhaseABCD2_ac981d1d5990f77f19c3094a871a55697}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!last\_\-locked\_\-position@{last\_\-locked\_\-position}}
@@ -175,6 +247,42 @@ Definition at line 34 of file FTPhaseABCD2.h.
 
 Definition at line 44 of file FTPhaseABCD2.h.
 
+\hypertarget{classFTPhaseABCD2_a1755a23fa779636dab93ffb9c9b93e6b}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!modulator@{modulator}}
+\index{modulator@{modulator}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{modulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modulator}$\ast$ {\bf FTPhaseABCD2::modulator}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a1755a23fa779636dab93ffb9c9b93e6b}
+
+
+Definition at line 77 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a248bbc1dccd7a072e8e61710e4ae2259}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!modulator\_\-position@{modulator\_\-position}}
+\index{modulator\_\-position@{modulator\_\-position}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{modulator\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPhaseABCD2::modulator\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a248bbc1dccd7a072e8e61710e4ae2259}
+
+
+Definition at line 79 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_acbcfd8097caa8e93a79957b479448202}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!nbins@{nbins}}
+\index{nbins@{nbins}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{nbins}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD2::nbins}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_acbcfd8097caa8e93a79957b479448202}
+
+
+Definition at line 63 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a5353d092d53889e894f4c9f215c879cf}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!nchannels@{nchannels}}
+\index{nchannels@{nchannels}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{nchannels}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPhaseABCD2::nchannels}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a5353d092d53889e894f4c9f215c879cf}
+
+
+Definition at line 69 of file FTPhaseABCD2.h.
+
 \hypertarget{classFTPhaseABCD2_af1f0c943e60909356c5f9cc509c2612e}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!opd\_\-estimate@{opd\_\-estimate}}
 \index{opd\_\-estimate@{opd\_\-estimate}!FTPhaseABCD2@{FTPhaseABCD2}}
@@ -184,6 +292,15 @@ Definition at line 44 of file FTPhaseABCD2.h.
 
 Definition at line 27 of file FTPhaseABCD2.h.
 
+\hypertarget{classFTPhaseABCD2_ac2491fdeea3af6651de745eed482db2b}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!previous\_\-opd@{previous\_\-opd}}
+\index{previous\_\-opd@{previous\_\-opd}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{previous\_\-opd}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPhaseABCD2::previous\_\-opd}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_ac2491fdeea3af6651de745eed482db2b}
+
+
+Definition at line 73 of file FTPhaseABCD2.h.
+
 \hypertarget{classFTPhaseABCD2_af6cf30f4e9241a2d546d76687be8520c}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!previous\_\-phases@{previous\_\-phases}}
 \index{previous\_\-phases@{previous\_\-phases}!FTPhaseABCD2@{FTPhaseABCD2}}
@@ -192,6 +309,15 @@ Definition at line 27 of file FTPhaseABCD2.h.
 
 
 Definition at line 25 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a527852fce847c75999c7965fe50b7004}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!previous\_\-time@{previous\_\-time}}
+\index{previous\_\-time@{previous\_\-time}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{previous\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPhaseABCD2::previous\_\-time}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a527852fce847c75999c7965fe50b7004}
+
+
+Definition at line 71 of file FTPhaseABCD2.h.
 
 \hypertarget{classFTPhaseABCD2_a773a081c902d4d60218c667ae8dfb3fe}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!search\_\-direction@{search\_\-direction}}
@@ -282,6 +408,15 @@ Definition at line 52 of file FTPhaseABCD2.h.
 
 
 Definition at line 50 of file FTPhaseABCD2.h.
+
+\hypertarget{classFTPhaseABCD2_a67e7dfc25f4d00d204a71361c8a15195}{
+\index{FTPhaseABCD2@{FTPhaseABCD2}!spectr@{spectr}}
+\index{spectr@{spectr}!FTPhaseABCD2@{FTPhaseABCD2}}
+\subsubsection[{spectr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SpectralMode}$\ast$ {\bf FTPhaseABCD2::spectr}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPhaseABCD2_a67e7dfc25f4d00d204a71361c8a15195}
+
+
+Definition at line 75 of file FTPhaseABCD2.h.
 
 \hypertarget{classFTPhaseABCD2_a9d54cd7a78d5372bf59e8a4aef3b200a}{
 \index{FTPhaseABCD2@{FTPhaseABCD2}!timethreshold\_\-locking@{timethreshold\_\-locking}}

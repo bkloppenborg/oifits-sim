@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f18ddd31d8999c44835cf8bd69077007.html">vis_sim</a>
+  <div class="navpath"><a class="el" href="dir_72ef693a9b20303b80390e494a4910ad.html">vis_sim</a>
   </div>
 </div>
 <div class="contents">
@@ -52,76 +52,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;iostream&gt;</code><br/>
 <code>#include &lt;stdexcept&gt;</code><br/>
 <code>#include &lt;gtk/gtk.h&gt;</code><br/>
-<code>#include &quot;<a class="el" href="Simulator_8h_source.html">Simulator.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Instrument_8h_source.html">Instrument.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="HourAngle_8h_source.html">HourAngle.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Array_8h_source.html">Array.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="Source_8h_source.html">Source.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="userinterface_8h_source.html">userinterface.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="oifits__sim_8h_source.html">oifits_sim.h</a>&quot;</code><br/>
 
 <p><a href="userinterface_8cpp_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
-<tr><td colspan="2"><h2>Classes</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">class &nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html">VisSimParams</a></td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ab7ff7601281702a899520fa466afbab8">generate_oifits</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;, <a class="el" href="classHourAngle.html">HourAngle</a> &amp;, <a class="el" href="classSource.html">Source</a> &amp;, <a class="el" href="classArray.html">Array</a> &amp;, <a class="el" href="classInstrument.html">Instrument</a> &amp;, string)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#a03cd3f9f52e5874abf1155ea56e756ba">on_button1_clicked</a> (GtkButton *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ae1cacefbc69b694150c38b84cf1dc2d8">on_button2_clicked</a> (GtkButton *widget)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ab67034a3a07becb909ac3f70d6231486">on_targetchooser_file_set</a> (GtkFileChooser *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ad0fbadede6fb3dad5a80f031100d0624">on_arraychooser_file_set</a> (GtkFileChooser *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ac53765145b001f2f83b599be6ef487d5">on_instrumentchooser_file_set</a> (GtkFileChooser *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#a8cbe962c894cedf11643b3e2bf837695">on_SMchooser_file_set</a> (GtkFileChooser *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#ad1df2ed4ea6d2b281d5c7a4e3aa7cf30">on_HAchooser_file_set</a> (GtkFileChooser *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#abefee42f33aa90fae53bf2ff5bf4c4e6">on_oifitschooser_changed</a> (GtkEntry *widget, <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#a0a289dbbf8ea4cc9ce5ba9ef48e36a93">gui_main</a> (int argc, char *argv[])</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="userinterface_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="ab7ff7601281702a899520fa466afbab8"></a><!-- doxytag: member="userinterface.cpp::generate_oifits" ref="ab7ff7601281702a899520fa466afbab8" args="(SpectralMode &amp;, HourAngle &amp;, Source &amp;, Array &amp;, Instrument &amp;, string)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void generate_oifits </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;&nbsp;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classHourAngle.html">HourAngle</a> &amp;&nbsp;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classSource.html">Source</a> &amp;&nbsp;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classInstrument.html">Instrument</a> &amp;&nbsp;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&nbsp;</td>
-          <td class="paramname"></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00566">566</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
-
-</div>
-</div>
 <a class="anchor" id="a0a289dbbf8ea4cc9ce5ba9ef48e36a93"></a><!-- doxytag: member="userinterface.cpp::gui_main" ref="a0a289dbbf8ea4cc9ce5ba9ef48e36a93" args="(int argc, char *argv[])" -->
 <div class="memitem">
 <div class="memproto">
@@ -147,25 +95,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00131">131</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00087">87</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a0ddf1224851353fc92bfbff6f499fa97"></a><!-- doxytag: member="userinterface.cpp::main" ref="a0ddf1224851353fc92bfbff6f499fa97" args="(int argc, char *argv[])" -->
+<a class="anchor" id="ad0fbadede6fb3dad5a80f031100d0624"></a><!-- doxytag: member="userinterface.cpp::on_arraychooser_file_set" ref="ad0fbadede6fb3dad5a80f031100d0624" args="(GtkFileChooser *widget, VisSimParams *p)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int main </td>
+          <td class="memname">void on_arraychooser_file_set </td>
           <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>argc</em>, </td>
+          <td class="paramtype">GtkFileChooser *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *&nbsp;</td>
-          <td class="paramname"> <em>argv</em>[]</td><td>&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -176,7 +124,201 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00233">233</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00059">59</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a03cd3f9f52e5874abf1155ea56e756ba"></a><!-- doxytag: member="userinterface.cpp::on_button1_clicked" ref="a03cd3f9f52e5874abf1155ea56e756ba" args="(GtkButton *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_button1_clicked </td>
+          <td>(</td>
+          <td class="paramtype">GtkButton *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00015">15</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae1cacefbc69b694150c38b84cf1dc2d8"></a><!-- doxytag: member="userinterface.cpp::on_button2_clicked" ref="ae1cacefbc69b694150c38b84cf1dc2d8" args="(GtkButton *widget)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_button2_clicked </td>
+          <td>(</td>
+          <td class="paramtype">GtkButton *&nbsp;</td>
+          <td class="paramname"> <em>widget</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00049">49</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad1df2ed4ea6d2b281d5c7a4e3aa7cf30"></a><!-- doxytag: member="userinterface.cpp::on_HAchooser_file_set" ref="ad1df2ed4ea6d2b281d5c7a4e3aa7cf30" args="(GtkFileChooser *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_HAchooser_file_set </td>
+          <td>(</td>
+          <td class="paramtype">GtkFileChooser *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00076">76</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac53765145b001f2f83b599be6ef487d5"></a><!-- doxytag: member="userinterface.cpp::on_instrumentchooser_file_set" ref="ac53765145b001f2f83b599be6ef487d5" args="(GtkFileChooser *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_instrumentchooser_file_set </td>
+          <td>(</td>
+          <td class="paramtype">GtkFileChooser *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00064">64</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abefee42f33aa90fae53bf2ff5bf4c4e6"></a><!-- doxytag: member="userinterface.cpp::on_oifitschooser_changed" ref="abefee42f33aa90fae53bf2ff5bf4c4e6" args="(GtkEntry *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_oifitschooser_changed </td>
+          <td>(</td>
+          <td class="paramtype">GtkEntry *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00082">82</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8cbe962c894cedf11643b3e2bf837695"></a><!-- doxytag: member="userinterface.cpp::on_SMchooser_file_set" ref="a8cbe962c894cedf11643b3e2bf837695" args="(GtkFileChooser *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_SMchooser_file_set </td>
+          <td>(</td>
+          <td class="paramtype">GtkFileChooser *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00070">70</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab67034a3a07becb909ac3f70d6231486"></a><!-- doxytag: member="userinterface.cpp::on_targetchooser_file_set" ref="ab67034a3a07becb909ac3f70d6231486" args="(GtkFileChooser *widget, VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void on_targetchooser_file_set </td>
+          <td>(</td>
+          <td class="paramtype">GtkFileChooser *&nbsp;</td>
+          <td class="paramname"> <em>widget</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00054">54</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
 
 </div>
 </div>
@@ -195,7 +337,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

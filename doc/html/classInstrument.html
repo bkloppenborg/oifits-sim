@@ -52,7 +52,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstrument.html#af68972d40961b639787c594e3d62857e">Instrument</a> (double <a class="el" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a>, double <a class="el" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a>, int <a class="el" href="classInstrument.html#a349e2122c222f16ed712b5fb8660adb4">Npix</a>, double <a class="el" href="classInstrument.html#accb5f463e89c0c73d4c0e5b6b80397af">read_noise</a>, double <a class="el" href="classInstrument.html#af352575aa1a6bb255db663a53fbb2b8b">quantum_efficiency</a>, double vsqFracCalErr, double cloPhaseCalErrDeg, double <a class="el" href="classInstrument.html#a7e18ced4e4e556e5203c046c2ebb3c63">wind_speed</a>, double <a class="el" href="classInstrument.html#a508dcac890549428696372a66ed5d3bc">ast_seeing</a>, double <a class="el" href="classInstrument.html#ab431265cc3192bfcc9ceeafd1d30605b">incoh_time</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstrument.html#a1842ca96cd3d19a634121fd5cafc6ff4">Instrument</a> (const char *Inst_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstrument.html#a44911c880ba30eaf211f3905fc7ae7b5">Instrument</a> (string filename, string comment_chars)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstrument.html#aa43fea34962ffe530cc5cfb0dbaa67c2">GlobalThroughput</a> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a></td></tr>
@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00007">7</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00010">10</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af68972d40961b639787c594e3d62857e"></a><!-- doxytag: member="Instrument::Instrument" ref="af68972d40961b639787c594e3d62857e" args="(double throughput, double visibility, int Npix, double read_noise, double quantum_efficiency, double vsqFracCalErr, double cloPhaseCalErrDeg, double wind_speed, double ast_seeing, double incoh_time)" -->
 <div class="memitem">
@@ -143,30 +143,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00016">16</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00020">20</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a1842ca96cd3d19a634121fd5cafc6ff4"></a><!-- doxytag: member="Instrument::Instrument" ref="a1842ca96cd3d19a634121fd5cafc6ff4" args="(const char *Inst_file)" -->
+<a class="anchor" id="a44911c880ba30eaf211f3905fc7ae7b5"></a><!-- doxytag: member="Instrument::Instrument" ref="a44911c880ba30eaf211f3905fc7ae7b5" args="(string filename, string comment_chars)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Instrument::Instrument </td>
           <td>(</td>
-          <td class="paramtype">const char *&nbsp;</td>
-          <td class="paramname"> <em>Inst_file</em></td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>comment_chars</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p><p>runtime_error "Error Opening Instrument File" </p>
-</p>
-
-<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00033">33</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00037">37</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +193,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 <p>Return total interferometer throughput, including detector QE. </p>
 
-<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00084">84</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8cpp_source.html#l00068">68</a> of file <a class="el" href="Instrument_8cpp_source.html">Instrument.cpp</a>.</p>
 
 </div>
 </div>
@@ -203,7 +209,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00031">31</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00036">36</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -218,7 +224,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00027">27</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00032">32</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -233,7 +239,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00032">32</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00037">37</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -248,7 +254,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00023">23</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00028">28</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +269,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00025">25</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00030">30</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +284,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00024">24</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00029">29</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -293,7 +299,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00021">21</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00026">26</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -308,7 +314,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00022">22</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00027">27</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -323,7 +329,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00026">26</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00031">31</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +344,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00030">30</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
+<p>Definition at line <a class="el" href="Instrument_8h_source.html#l00035">35</a> of file <a class="el" href="Instrument_8h_source.html">Instrument.h</a>.</p>
 
 </div>
 </div>
@@ -361,7 +367,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

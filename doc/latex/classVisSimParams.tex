@@ -2,6 +2,17 @@
 \section{VisSimParams Class Reference}
 \label{classVisSimParams}\index{VisSimParams@{VisSimParams}}
 }
+
+
+{\ttfamily \#include $<$VisSimParams.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVisSimParams_a3c730d9c8f400a34aade38dbc0b0a675}{VisSimParams} (void)
+\item 
+bool \hyperlink{classVisSimParams_a39a09952f9e7cdc3dd0f46e1604e5c76}{have\_\-all\_\-params} ()
+\end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -13,16 +24,48 @@ string \hyperlink{classVisSimParams_a1b39663100b7215fc5d8f61d30d85044}{instrumen
 \item 
 string \hyperlink{classVisSimParams_a5b4b6a34093cd8d538fa32e159477d8e}{SpectralMode\_\-filename}
 \item 
-string \hyperlink{classVisSimParams_a6e44268b31963634fc2a2a6ec96c0d67}{HourAngles\_\-filename}
+string \hyperlink{classVisSimParams_af264c40e20632cfc50ebf48825cb5da8}{observation\_\-filename}
 \item 
 string \hyperlink{classVisSimParams_ab5550741409f4dbfe5d601194fe7be4b}{oifits\_\-filename}
+\item 
+string \hyperlink{classVisSimParams_ad590ce822859b9f7b777e30c708872ff}{input\_\-oifits\_\-filename}
+\item 
+bool \hyperlink{classVisSimParams_ae8c4c4e95792ee06a4198b39516e03fb}{bFromOIFITSFile}
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
+\begin{Desc}
+\item[\hyperlink{todo__todo000020}{Todo}]It would be nice to have this class print out the missing parameters with some information. \end{Desc}
 
 
-Definition at line 22 of file userinterface.cpp.
+Definition at line 10 of file VisSimParams.h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classVisSimParams_a3c730d9c8f400a34aade38dbc0b0a675}{
+\index{VisSimParams@{VisSimParams}!VisSimParams@{VisSimParams}}
+\index{VisSimParams@{VisSimParams}!VisSimParams@{VisSimParams}}
+\subsubsection[{VisSimParams}]{\setlength{\rightskip}{0pt plus 5cm}VisSimParams::VisSimParams (void)}}
+\label{classVisSimParams_a3c730d9c8f400a34aade38dbc0b0a675}
+
+
+Definition at line 4 of file VisSimParams.cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classVisSimParams_a39a09952f9e7cdc3dd0f46e1604e5c76}{
+\index{VisSimParams@{VisSimParams}!have\_\-all\_\-params@{have\_\-all\_\-params}}
+\index{have\_\-all\_\-params@{have\_\-all\_\-params}!VisSimParams@{VisSimParams}}
+\subsubsection[{have\_\-all\_\-params}]{\setlength{\rightskip}{0pt plus 5cm}bool VisSimParams::have\_\-all\_\-params ()}}
+\label{classVisSimParams_a39a09952f9e7cdc3dd0f46e1604e5c76}
+Determines whether or not all parameters required to run the simulator are present
+
+Two cases to see if all parameters are specified. If we are using an OIFITS file, we only need: target\_\-filename, SpectralMode\_\-filename, input\_\-oifits\_\-filename everything else is determined from the OIFITS file. Otherwise we need target\_\-filename, array\_\-filename, instrument\_\-filename, SpectralMode\_\-filename, HourAngles\_\-filename 
+
+Definition at line 24 of file VisSimParams.cpp.
 
 
 
@@ -34,16 +77,25 @@ Definition at line 22 of file userinterface.cpp.
 \label{classVisSimParams_ad4024dfafa47b1c4246c1885be3bd77e}
 
 
-Definition at line 26 of file userinterface.cpp.
+Definition at line 14 of file VisSimParams.h.
 
-\hypertarget{classVisSimParams_a6e44268b31963634fc2a2a6ec96c0d67}{
-\index{VisSimParams@{VisSimParams}!HourAngles\_\-filename@{HourAngles\_\-filename}}
-\index{HourAngles\_\-filename@{HourAngles\_\-filename}!VisSimParams@{VisSimParams}}
-\subsubsection[{HourAngles\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf VisSimParams::HourAngles\_\-filename}}}
-\label{classVisSimParams_a6e44268b31963634fc2a2a6ec96c0d67}
+\hypertarget{classVisSimParams_ae8c4c4e95792ee06a4198b39516e03fb}{
+\index{VisSimParams@{VisSimParams}!bFromOIFITSFile@{bFromOIFITSFile}}
+\index{bFromOIFITSFile@{bFromOIFITSFile}!VisSimParams@{VisSimParams}}
+\subsubsection[{bFromOIFITSFile}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf VisSimParams::bFromOIFITSFile}}}
+\label{classVisSimParams_ae8c4c4e95792ee06a4198b39516e03fb}
 
 
-Definition at line 29 of file userinterface.cpp.
+Definition at line 22 of file VisSimParams.h.
+
+\hypertarget{classVisSimParams_ad590ce822859b9f7b777e30c708872ff}{
+\index{VisSimParams@{VisSimParams}!input\_\-oifits\_\-filename@{input\_\-oifits\_\-filename}}
+\index{input\_\-oifits\_\-filename@{input\_\-oifits\_\-filename}!VisSimParams@{VisSimParams}}
+\subsubsection[{input\_\-oifits\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf VisSimParams::input\_\-oifits\_\-filename}}}
+\label{classVisSimParams_ad590ce822859b9f7b777e30c708872ff}
+
+
+Definition at line 20 of file VisSimParams.h.
 
 \hypertarget{classVisSimParams_a1b39663100b7215fc5d8f61d30d85044}{
 \index{VisSimParams@{VisSimParams}!instrument\_\-filename@{instrument\_\-filename}}
@@ -52,7 +104,16 @@ Definition at line 29 of file userinterface.cpp.
 \label{classVisSimParams_a1b39663100b7215fc5d8f61d30d85044}
 
 
-Definition at line 27 of file userinterface.cpp.
+Definition at line 15 of file VisSimParams.h.
+
+\hypertarget{classVisSimParams_af264c40e20632cfc50ebf48825cb5da8}{
+\index{VisSimParams@{VisSimParams}!observation\_\-filename@{observation\_\-filename}}
+\index{observation\_\-filename@{observation\_\-filename}!VisSimParams@{VisSimParams}}
+\subsubsection[{observation\_\-filename}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf VisSimParams::observation\_\-filename}}}
+\label{classVisSimParams_af264c40e20632cfc50ebf48825cb5da8}
+
+
+Definition at line 17 of file VisSimParams.h.
 
 \hypertarget{classVisSimParams_ab5550741409f4dbfe5d601194fe7be4b}{
 \index{VisSimParams@{VisSimParams}!oifits\_\-filename@{oifits\_\-filename}}
@@ -61,7 +122,7 @@ Definition at line 27 of file userinterface.cpp.
 \label{classVisSimParams_ab5550741409f4dbfe5d601194fe7be4b}
 
 
-Definition at line 30 of file userinterface.cpp.
+Definition at line 18 of file VisSimParams.h.
 
 \hypertarget{classVisSimParams_a5b4b6a34093cd8d538fa32e159477d8e}{
 \index{VisSimParams@{VisSimParams}!SpectralMode\_\-filename@{SpectralMode\_\-filename}}
@@ -70,7 +131,7 @@ Definition at line 30 of file userinterface.cpp.
 \label{classVisSimParams_a5b4b6a34093cd8d538fa32e159477d8e}
 
 
-Definition at line 28 of file userinterface.cpp.
+Definition at line 16 of file VisSimParams.h.
 
 \hypertarget{classVisSimParams_a225b522f1b7e0e07bb3745456693d84d}{
 \index{VisSimParams@{VisSimParams}!target\_\-filename@{target\_\-filename}}
@@ -79,10 +140,11 @@ Definition at line 28 of file userinterface.cpp.
 \label{classVisSimParams_a225b522f1b7e0e07bb3745456693d84d}
 
 
-Definition at line 25 of file userinterface.cpp.
+Definition at line 13 of file VisSimParams.h.
 
 
 
-The documentation for this class was generated from the following file:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
 \item 
-vis\_\-sim/\hyperlink{userinterface_8cpp}{userinterface.cpp}\end{DoxyCompactItemize}
+vis\_\-sim/\hyperlink{VisSimParams_8h}{VisSimParams.h}\item 
+vis\_\-sim/\hyperlink{VisSimParams_8cpp}{VisSimParams.cpp}\end{DoxyCompactItemize}

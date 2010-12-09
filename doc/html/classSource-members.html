@@ -52,12 +52,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="memlist"><td><a class="el" href="classSource.html#a380447fc2b80c1b6bc5c2a8b31ed6b98">band</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#acd65dbd79034b6bd27ce7bea9cddf80b">declination</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#a8888be0016028aa59006fa6d9fc7c575">flux</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classSource.html#ad87c09b8cc1ee838435de12a93495e1e">GetVis</a>(UVPoint uv)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classSource.html#ad802ea02880525552b1feea0bde38244">GetVis</a>(double wavenumber, double time, Array &amp;array, int index_station1, int index_station2)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classSource.html#a6ddbe3353cd4d57bcad7010c70a1b06c">InitFluxes</a>(char band, double background_magnitude, double sky_background_aperture)</td><td><a class="el" href="classSource.html">Source</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#a6a63845ae2495f7d0b9758e969ae34a5">magnitude</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classSource.html#a3378987660510b2ab4f02db5aa81791e">right_ascension</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#aa21a6313f7ab7c41bb206ed05f0909cc">sky_background_aperture</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classSource.html#aba8cb9f6fa274c8079bd5715850bf967">Source</a>(const char *filename, char band, double magnitude, double temperature, double background_magnitude, double sky_background_aperture, double declination)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classSource.html#a7a7af8ba36f94e74bf2d780f6636cfe4">Source</a>(const char *Source_file)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classSource.html#ac22e28a4b81a37fddf86ca720e93ec08">Source</a>(const char *filename, char band, double magnitude, double temperature, double background_magnitude, double sky_background_aperture, double declination, double right_ascension, double pixellation)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classSource.html#a62904da7bc93de0418c16bc3243adc3f">Source</a>(string filename, string comment_chars)</td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#ae39e6de7004f8f12968f38352c6c0f5e">source_image</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#aca080db4a19c5a8c149b6362aedcb0cd">source_name</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classSource.html#ad8a9910f6a3d807ac0e1b42195ba4147">source_pixellation</a></td><td><a class="el" href="classSource.html">Source</a></td><td></td></tr>
@@ -78,7 +78,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

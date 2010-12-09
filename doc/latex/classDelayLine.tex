@@ -22,7 +22,7 @@ double \hyperlink{classDelayLine_a230dfa049c8b66e41e028c15b63d23fa}{GetCurrentPo
 \item 
 void \hyperlink{classDelayLine_aa11d93779cebcc3a57b920a5fcbda891}{ComputePinhole} (int size, int padded\_\-size)
 \item 
-void \hyperlink{classDelayLine_aaea9efb6c8a6e791ac75f9bac6c4fe8e}{SetTargetPosition} (double target\_\-position)
+void \hyperlink{classDelayLine_aaea9efb6c8a6e791ac75f9bac6c4fe8e}{SetTargetPosition} (double \hyperlink{classDelayLine_a27fb66446caf539997819c3600e5299e}{target\_\-position})
 \end{DoxyCompactItemize}
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
@@ -40,6 +40,26 @@ double \hyperlink{classDelayLine_a36cd2a92c561630bbaa6646f23a00626}{x\_\-current
 double \hyperlink{classDelayLine_a4d51575ded15097f1a837d3ceeaf6bec}{v\_\-current}
 \item 
 double \hyperlink{classDelayLine_a4086dcba3b4835c3a1f2072768e6b8c2}{dt}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classDelayLine_a138684e1f275e87508a1f71c6599f6f9}{delay\_\-equation\_\-1st} (double t, double x)
+\item 
+double \hyperlink{classDelayLine_a49bab775499a10b2cae182b7706275bc}{delay\_\-equation\_\-2nd} (double t, double x, double v)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classDelayLine_a27fb66446caf539997819c3600e5299e}{target\_\-position}
+\item 
+double \hyperlink{classDelayLine_a76e51812021b57490411c932f607d82b}{previous\_\-calltime}
+\item 
+double \hyperlink{classDelayLine_a38f0fbf9f3090542153f5d6428edb20b}{previous\_\-position}
+\item 
+double \hyperlink{classDelayLine_a0e814cb4b3e6fdfbbbf6157f02a938df}{previous\_\-speed}
+\item 
+double \hyperlink{classDelayLine_a1565f8501d8baba454f5d7743b90bf97}{previous\_\-targetposition}
 \end{DoxyCompactItemize}
 
 
@@ -68,6 +88,24 @@ Definition at line 13 of file DelayLine.cpp.
 \index{ComputePinhole@{ComputePinhole}!DelayLine@{DelayLine}}
 \subsubsection[{ComputePinhole}]{\setlength{\rightskip}{0pt plus 5cm}void DelayLine::ComputePinhole (int {\em size}, \/  int {\em padded\_\-size})}}
 \label{classDelayLine_aa11d93779cebcc3a57b920a5fcbda891}
+\hypertarget{classDelayLine_a138684e1f275e87508a1f71c6599f6f9}{
+\index{DelayLine@{DelayLine}!delay\_\-equation\_\-1st@{delay\_\-equation\_\-1st}}
+\index{delay\_\-equation\_\-1st@{delay\_\-equation\_\-1st}!DelayLine@{DelayLine}}
+\subsubsection[{delay\_\-equation\_\-1st}]{\setlength{\rightskip}{0pt plus 5cm}double DelayLine::delay\_\-equation\_\-1st (double {\em t}, \/  double {\em x})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a138684e1f275e87508a1f71c6599f6f9}
+
+
+Definition at line 34 of file DelayLine.cpp.
+
+\hypertarget{classDelayLine_a49bab775499a10b2cae182b7706275bc}{
+\index{DelayLine@{DelayLine}!delay\_\-equation\_\-2nd@{delay\_\-equation\_\-2nd}}
+\index{delay\_\-equation\_\-2nd@{delay\_\-equation\_\-2nd}!DelayLine@{DelayLine}}
+\subsubsection[{delay\_\-equation\_\-2nd}]{\setlength{\rightskip}{0pt plus 5cm}double DelayLine::delay\_\-equation\_\-2nd (double {\em t}, \/  double {\em x}, \/  double {\em v})\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a49bab775499a10b2cae182b7706275bc}
+
+
+Definition at line 39 of file DelayLine.cpp.
+
 \hypertarget{classDelayLine_a230dfa049c8b66e41e028c15b63d23fa}{
 \index{DelayLine@{DelayLine}!GetCurrentPosition@{GetCurrentPosition}}
 \index{GetCurrentPosition@{GetCurrentPosition}!DelayLine@{DelayLine}}
@@ -130,6 +168,42 @@ Definition at line 11 of file DelayLine.h.
 
 Definition at line 15 of file DelayLine.h.
 
+\hypertarget{classDelayLine_a76e51812021b57490411c932f607d82b}{
+\index{DelayLine@{DelayLine}!previous\_\-calltime@{previous\_\-calltime}}
+\index{previous\_\-calltime@{previous\_\-calltime}!DelayLine@{DelayLine}}
+\subsubsection[{previous\_\-calltime}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf DelayLine::previous\_\-calltime}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a76e51812021b57490411c932f607d82b}
+
+
+Definition at line 36 of file DelayLine.h.
+
+\hypertarget{classDelayLine_a38f0fbf9f3090542153f5d6428edb20b}{
+\index{DelayLine@{DelayLine}!previous\_\-position@{previous\_\-position}}
+\index{previous\_\-position@{previous\_\-position}!DelayLine@{DelayLine}}
+\subsubsection[{previous\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf DelayLine::previous\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a38f0fbf9f3090542153f5d6428edb20b}
+
+
+Definition at line 38 of file DelayLine.h.
+
+\hypertarget{classDelayLine_a0e814cb4b3e6fdfbbbf6157f02a938df}{
+\index{DelayLine@{DelayLine}!previous\_\-speed@{previous\_\-speed}}
+\index{previous\_\-speed@{previous\_\-speed}!DelayLine@{DelayLine}}
+\subsubsection[{previous\_\-speed}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf DelayLine::previous\_\-speed}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a0e814cb4b3e6fdfbbbf6157f02a938df}
+
+
+Definition at line 40 of file DelayLine.h.
+
+\hypertarget{classDelayLine_a1565f8501d8baba454f5d7743b90bf97}{
+\index{DelayLine@{DelayLine}!previous\_\-targetposition@{previous\_\-targetposition}}
+\index{previous\_\-targetposition@{previous\_\-targetposition}!DelayLine@{DelayLine}}
+\subsubsection[{previous\_\-targetposition}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf DelayLine::previous\_\-targetposition}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a1565f8501d8baba454f5d7743b90bf97}
+
+
+Definition at line 42 of file DelayLine.h.
+
 \hypertarget{classDelayLine_ae46cf8249f9040270c5ffb1289e5f760}{
 \index{DelayLine@{DelayLine}!t\_\-current@{t\_\-current}}
 \index{t\_\-current@{t\_\-current}!DelayLine@{DelayLine}}
@@ -138,6 +212,15 @@ Definition at line 15 of file DelayLine.h.
 
 
 Definition at line 17 of file DelayLine.h.
+
+\hypertarget{classDelayLine_a27fb66446caf539997819c3600e5299e}{
+\index{DelayLine@{DelayLine}!target\_\-position@{target\_\-position}}
+\index{target\_\-position@{target\_\-position}!DelayLine@{DelayLine}}
+\subsubsection[{target\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf DelayLine::target\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classDelayLine_a27fb66446caf539997819c3600e5299e}
+
+
+Definition at line 34 of file DelayLine.h.
 
 \hypertarget{classDelayLine_a4d51575ded15097f1a837d3ceeaf6bec}{
 \index{DelayLine@{DelayLine}!v\_\-current@{v\_\-current}}

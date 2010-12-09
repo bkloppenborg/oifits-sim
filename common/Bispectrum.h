@@ -1,5 +1,7 @@
 /// \file Bispectrum.h
 
+#include "Matrix.h"
+
 // Bispectrum class
 class Bispectrum
 {

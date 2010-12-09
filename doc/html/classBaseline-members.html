@@ -46,11 +46,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>Baseline Member List</h1>This is the complete list of members for <a class="el" href="classBaseline.html">Baseline</a>, including all inherited members.<table>
-  <tr class="memlist"><td><a class="el" href="classBaseline.html#ad7df24f7615e0a456fb0f522c307e25e">Baseline</a>(Array &amp;array, int index_station1, int index_station2)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classBaseline.html#ae587b0cb5079c4fc80c51e057427cb8f">Geometric_OPD</a>(double hour_angle, double source_declination, double array_latitude)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classBaseline.html#a30f26555e34ed66db0ac34a79da505bb">UVcoords</a>(double time, double source_declination, double array_latitude, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classBaseline.html#a021810b132f5d98736d71b92b5f70e36">x</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classBaseline.html#a2ffd76cdea353462b6529ec4e9b425b2">y</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#afe029a1f3f85da82f45e19ab13f4a382">Baseline</a>(void)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a7aa78f64de16ef5469450348407612e9">Baseline</a>(Array *array, int station1, int station2)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#acb78f3f6c2020cc0c9cc923ddb6a2133">Baseline</a>(Station &amp;station1, Station &amp;station2)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#ab5374e1c77d1da0cd8d13dfff39f5877">ComputeVisError</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#af5d2d827062aae6eaff5440c60d3d0b4">ComputeVisibility</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a78f552de0293445a1e1a06a465f4aaf7">GetHashKey</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#ad12e1939189ed6b413f9fb691eeb7ff0">GetName</a>(void)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#ab21c506fd87b21f6562f09a1ba7ae77a">GetVisError</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a817d0c4e83714b68efcc7fb7fdac9a02">GetVisibility</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#af8afd0de67e28cd19f78691d203cb263">indicies</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a5007d2e286e10dd8c4651422df9b1dcc">mVisValues</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a2e756765673499ebf05fedaa1011f717">name</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a39f6121fa15d29d59e8b25e8850d2b0b">SetVisError</a>(Source &amp;source, double hour_angle, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a44fc7f5773b736303d344174ed4049b2">UVcoords</a>(double hour_angle, double source_declination, double wavenumber)</td><td><a class="el" href="classBaseline.html">Baseline</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classBaseline.html#a433e589e07963e5bf6c3902795997ef2">xyz</a></td><td><a class="el" href="classBaseline.html">Baseline</a></td><td><code> [private]</code></td></tr>
 </table></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -66,7 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

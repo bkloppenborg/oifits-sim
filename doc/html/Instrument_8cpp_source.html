@@ -43,95 +43,80 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f18ddd31d8999c44835cf8bd69077007.html">vis_sim</a>
+  <div class="navpath"><a class="el" href="dir_72ef693a9b20303b80390e494a4910ad.html">vis_sim</a>
   </div>
 </div>
 <div class="contents">
-<h1>Instrument.cpp</h1><a href="Instrument_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &lt;cstdio&gt;</span>
-<a name="l00002"></a>00002 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
-<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;iostream&gt;</span>
-<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;fstream&gt;</span>
-<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;vector&gt;</span>
-<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;string&gt;</span>
-<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
-<a name="l00008"></a>00008 <span class="preprocessor">#include &quot;<a class="code" href="Instrument_8h.html">Instrument.h</a>&quot;</span>
-<a name="l00009"></a>00009 
-<a name="l00010"></a>00010 <span class="keyword">using</span> std::vector;
-<a name="l00011"></a>00011 <span class="keyword">using</span> std::string;
-<a name="l00012"></a>00012 <span class="keyword">using</span> std::ifstream;
-<a name="l00013"></a>00013 <span class="keyword">using</span> std::cout;
-<a name="l00014"></a>00014 <span class="keyword">using</span> std::endl;
-<a name="l00015"></a>00015 
-<a name="l00016"></a><a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">00016</a> <a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">Instrument::Instrument</a>(<span class="keywordtype">double</span> throughput, <span class="keywordtype">double</span> visibility, <span class="keywordtype">int</span> Npix,
-<a name="l00017"></a>00017    <span class="keywordtype">double</span> read_noise, <span class="keywordtype">double</span> quantum_efficiency,
-<a name="l00018"></a>00018    <span class="keywordtype">double</span> vsq_frac_cal_err, <span class="keywordtype">double</span> clo_cal_err,
-<a name="l00019"></a>00019    <span class="keywordtype">double</span> wind_speed, <span class="keywordtype">double</span> ast_seeing, <span class="keywordtype">double</span> incoh_time)
-<a name="l00020"></a>00020 {
-<a name="l00021"></a>00021         this-&gt;throughput = throughput;
-<a name="l00022"></a>00022         this-&gt;visibility = visibility;
-<a name="l00023"></a>00023         this-&gt;Npix = Npix;
-<a name="l00024"></a>00024         this-&gt;read_noise = read_noise;
-<a name="l00025"></a>00025         this-&gt;quantum_efficiency = quantum_efficiency;
-<a name="l00026"></a>00026         this-&gt;vsq_frac_cal_err = vsq_frac_cal_err;
-<a name="l00027"></a>00027         this-&gt;<a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> = clo_cal_err;
-<a name="l00028"></a>00028         this-&gt;wind_speed = wind_speed;
-<a name="l00029"></a>00029         this-&gt;ast_seeing = ast_seeing;
-<a name="l00030"></a>00030         this-&gt;incoh_time = incoh_time;
-<a name="l00031"></a>00031 }
-<a name="l00032"></a>00032 
-<a name="l00033"></a><a class="code" href="classInstrument.html#a1842ca96cd3d19a634121fd5cafc6ff4">00033</a> <a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">Instrument::Instrument</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *Inst_file)
-<a name="l00034"></a>00034 {
-<a name="l00035"></a>00035         <span class="keyword">const</span> <span class="keywordtype">string</span> comments(<span class="stringliteral">&quot;\\/#~$&amp;£%&quot;</span>);
-<a name="l00036"></a>00036         vector &lt; string &gt; lines;        <span class="comment">// stores non-blank, non-comment lines</span>
-<a name="l00037"></a>00037 
-<a name="l00038"></a>00038         ifstream fil(Inst_file);
-<a name="l00039"></a>00039         <span class="keywordflow">if</span> (fil.is_open())
-<a name="l00040"></a>00040         {
-<a name="l00041"></a>00041                 <span class="keywordtype">string</span> line;
-<a name="l00042"></a>00042                 <span class="keywordflow">while</span> (!fil.eof())
-<a name="l00043"></a>00043                 {
-<a name="l00044"></a>00044                         getline(fil, line);
-<a name="l00045"></a>00045                         <span class="keywordflow">while</span> ((line.size() == 0
-<a name="l00046"></a>00046                                   || comments.find(line[0]) != string::npos) &amp;&amp; !fil.eof())
-<a name="l00047"></a>00047                                 getline(fil, line);
-<a name="l00048"></a>00048                         <span class="keywordflow">if</span> (!fil.eof())
-<a name="l00049"></a>00049                                 lines.push_back(line);
-<a name="l00050"></a>00050                 }
-<a name="l00051"></a>00051                 fil.close();
-<a name="l00052"></a>00052         }
-<a name="l00053"></a>00053         <span class="keywordflow">else</span>
-<a name="l00054"></a>00054         {
-<a name="l00056"></a>00056                 <span class="keywordflow">throw</span> std::runtime_error(<span class="stringliteral">&quot;Error opening instrument file&quot;</span>);
-<a name="l00057"></a>00057         }
-<a name="l00058"></a>00058 
-<a name="l00059"></a>00059         <span class="keywordflow">if</span> (lines.size() != 10)
-<a name="l00060"></a>00060                 <span class="keywordflow">throw</span>
-<a name="l00061"></a>00061                    std::runtime_error
-<a name="l00062"></a>00062                    (<span class="stringliteral">&quot;Invalid number of parameters in the instrument file&quot;</span>);
-<a name="l00063"></a>00063 
-<a name="l00064"></a>00064         <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> = atof(lines[0].c_str());
-<a name="l00065"></a>00065         <a class="code" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a> = atof(lines[1].c_str());
-<a name="l00066"></a>00066         <a class="code" href="classInstrument.html#a349e2122c222f16ed712b5fb8660adb4">Npix</a> = atoi(lines[2].c_str());
-<a name="l00067"></a>00067         <a class="code" href="classInstrument.html#accb5f463e89c0c73d4c0e5b6b80397af">read_noise</a> = atof(lines[3].c_str());
-<a name="l00068"></a>00068         <a class="code" href="classInstrument.html#af352575aa1a6bb255db663a53fbb2b8b">quantum_efficiency</a> = atof(lines[4].c_str());
-<a name="l00069"></a>00069         <a class="code" href="classInstrument.html#ad51820f02768c7632da7d9136ace806f">vsq_frac_cal_err</a> = atof(lines[5].c_str());
-<a name="l00070"></a>00070         <a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> = atof(lines[6].c_str());
-<a name="l00071"></a>00071         <a class="code" href="classInstrument.html#a7e18ced4e4e556e5203c046c2ebb3c63">wind_speed</a> = atof(lines[7].c_str());
-<a name="l00072"></a>00072         <a class="code" href="classInstrument.html#a508dcac890549428696372a66ed5d3bc">ast_seeing</a> = atof(lines[8].c_str());
-<a name="l00073"></a>00073         <a class="code" href="classInstrument.html#ab431265cc3192bfcc9ceeafd1d30605b">incoh_time</a> = atof(lines[9].c_str());
-<a name="l00074"></a>00074         cout &lt;&lt; <span class="stringliteral">&quot;throughput = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> &lt;&lt; endl;  <span class="comment">// </span>
-<a name="l00075"></a>00075         cout &lt;&lt; <span class="stringliteral">&quot;inst visibility = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a> &lt;&lt; endl;     <span class="comment">// </span>
-<a name="l00076"></a>00076         cout &lt;&lt; <span class="stringliteral">&quot;Npix = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a349e2122c222f16ed712b5fb8660adb4">Npix</a> &lt;&lt; endl;      <span class="comment">// </span>
-<a name="l00077"></a>00077         cout &lt;&lt; <span class="stringliteral">&quot;clo phase cal err = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> &lt;&lt; <span class="stringliteral">&quot; deg&quot;</span> &lt;&lt; endl;    <span class="comment">// </span>
-<a name="l00078"></a>00078         cout &lt;&lt; <span class="stringliteral">&quot;Wind speed = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a7e18ced4e4e556e5203c046c2ebb3c63">wind_speed</a> &lt;&lt; <span class="stringliteral">&quot; m/s&quot;</span> &lt;&lt; endl;
-<a name="l00079"></a>00079         cout &lt;&lt; <span class="stringliteral">&quot;Fried parameter@500nm = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a508dcac890549428696372a66ed5d3bc">ast_seeing</a> &lt;&lt; <span class="stringliteral">&quot; m&quot;</span> &lt;&lt; endl;
-<a name="l00080"></a>00080         cout &lt;&lt; <span class="stringliteral">&quot;Incoherent integration time = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#ab431265cc3192bfcc9ceeafd1d30605b">incoh_time</a> &lt;&lt; <span class="stringliteral">&quot; s&quot;</span> &lt;&lt; endl;
-<a name="l00081"></a>00081 }
-<a name="l00082"></a>00082 
-<a name="l00084"></a><a class="code" href="classInstrument.html#aa43fea34962ffe530cc5cfb0dbaa67c2">00084</a> <span class="keywordtype">double</span> <a class="code" href="classInstrument.html#aa43fea34962ffe530cc5cfb0dbaa67c2">Instrument::GlobalThroughput</a>()
-<a name="l00085"></a>00085 {
-<a name="l00086"></a>00086         <span class="keywordflow">return</span> <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> * <a class="code" href="classInstrument.html#af352575aa1a6bb255db663a53fbb2b8b">quantum_efficiency</a>;
-<a name="l00087"></a>00087 }
+<h1>Instrument.cpp</h1><a href="Instrument_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><pre class="fragment"><a name="l00001"></a>00001 <span class="preprocessor">#include &quot;<a class="code" href="Instrument_8h.html">Instrument.h</a>&quot;</span>
+<a name="l00002"></a>00002 
+<a name="l00003"></a>00003 <span class="preprocessor">#include &lt;cstdio&gt;</span>
+<a name="l00004"></a>00004 <span class="preprocessor">#include &lt;cstdlib&gt;</span>
+<a name="l00005"></a>00005 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l00006"></a>00006 <span class="preprocessor">#include &lt;fstream&gt;</span>
+<a name="l00007"></a>00007 <span class="preprocessor">#include &lt;vector&gt;</span>
+<a name="l00008"></a>00008 <span class="preprocessor">#include &lt;string&gt;</span>
+<a name="l00009"></a>00009 <span class="preprocessor">#include &lt;stdexcept&gt;</span>
+<a name="l00010"></a>00010 
+<a name="l00011"></a>00011 
+<a name="l00012"></a>00012 <span class="preprocessor">#include &quot;<a class="code" href="Simulator_8h.html">Simulator.h</a>&quot;</span>
+<a name="l00013"></a>00013 
+<a name="l00014"></a>00014 <span class="keyword">using</span> std::vector;
+<a name="l00015"></a>00015 <span class="keyword">using</span> std::string;
+<a name="l00016"></a>00016 <span class="keyword">using</span> std::ifstream;
+<a name="l00017"></a>00017 <span class="keyword">using</span> std::cout;
+<a name="l00018"></a>00018 <span class="keyword">using</span> std::endl;
+<a name="l00019"></a>00019 
+<a name="l00020"></a><a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">00020</a> <a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">Instrument::Instrument</a>(<span class="keywordtype">double</span> throughput, <span class="keywordtype">double</span> visibility, <span class="keywordtype">int</span> Npix,
+<a name="l00021"></a>00021    <span class="keywordtype">double</span> read_noise, <span class="keywordtype">double</span> quantum_efficiency,
+<a name="l00022"></a>00022    <span class="keywordtype">double</span> vsq_frac_cal_err, <span class="keywordtype">double</span> clo_cal_err,
+<a name="l00023"></a>00023    <span class="keywordtype">double</span> wind_speed, <span class="keywordtype">double</span> ast_seeing, <span class="keywordtype">double</span> incoh_time)
+<a name="l00024"></a>00024 {
+<a name="l00025"></a>00025         this-&gt;throughput = throughput;
+<a name="l00026"></a>00026         this-&gt;visibility = visibility;
+<a name="l00027"></a>00027         this-&gt;Npix = Npix;
+<a name="l00028"></a>00028         this-&gt;read_noise = read_noise;
+<a name="l00029"></a>00029         this-&gt;quantum_efficiency = quantum_efficiency;
+<a name="l00030"></a>00030         this-&gt;vsq_frac_cal_err = vsq_frac_cal_err;
+<a name="l00031"></a>00031         this-&gt;<a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> = clo_cal_err;
+<a name="l00032"></a>00032         this-&gt;wind_speed = wind_speed;
+<a name="l00033"></a>00033         this-&gt;ast_seeing = ast_seeing;
+<a name="l00034"></a>00034         this-&gt;incoh_time = incoh_time;
+<a name="l00035"></a>00035 }
+<a name="l00036"></a>00036 
+<a name="l00037"></a><a class="code" href="classInstrument.html#a44911c880ba30eaf211f3905fc7ae7b5">00037</a> <a class="code" href="classInstrument.html#af68972d40961b639787c594e3d62857e">Instrument::Instrument</a>(<span class="keywordtype">string</span> filename, <span class="keywordtype">string</span> comment_chars)
+<a name="l00038"></a>00038 {
+<a name="l00039"></a>00039         vector &lt; string &gt; lines = <a class="code" href="Simulator_8cpp.html#a3b6003aef2dd8107d063fd27f5295a07">ReadFile</a>(filename, comment_chars, <span class="stringliteral">&quot;Cannot Open Instrument Definition File&quot;</span>);
+<a name="l00040"></a>00040 
+<a name="l00041"></a>00041         
+<a name="l00042"></a>00042 
+<a name="l00043"></a>00043         <span class="keywordflow">if</span> (lines.size() != 10)
+<a name="l00044"></a>00044                 <span class="keywordflow">throw</span>
+<a name="l00045"></a>00045                    std::runtime_error
+<a name="l00046"></a>00046                    (<span class="stringliteral">&quot;Invalid number of parameters in the instrument file&quot;</span>);
+<a name="l00047"></a>00047 
+<a name="l00048"></a>00048         <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> = atof(lines[0].c_str());
+<a name="l00049"></a>00049         <a class="code" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a> = atof(lines[1].c_str());
+<a name="l00050"></a>00050         <a class="code" href="classInstrument.html#a349e2122c222f16ed712b5fb8660adb4">Npix</a> = atoi(lines[2].c_str());
+<a name="l00051"></a>00051         <a class="code" href="classInstrument.html#accb5f463e89c0c73d4c0e5b6b80397af">read_noise</a> = atof(lines[3].c_str());
+<a name="l00052"></a>00052         <a class="code" href="classInstrument.html#af352575aa1a6bb255db663a53fbb2b8b">quantum_efficiency</a> = atof(lines[4].c_str());
+<a name="l00053"></a>00053         <a class="code" href="classInstrument.html#ad51820f02768c7632da7d9136ace806f">vsq_frac_cal_err</a> = atof(lines[5].c_str());
+<a name="l00054"></a>00054         <a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> = atof(lines[6].c_str());
+<a name="l00055"></a>00055         <a class="code" href="classInstrument.html#a7e18ced4e4e556e5203c046c2ebb3c63">wind_speed</a> = atof(lines[7].c_str());
+<a name="l00056"></a>00056         <a class="code" href="classInstrument.html#a508dcac890549428696372a66ed5d3bc">ast_seeing</a> = atof(lines[8].c_str());
+<a name="l00057"></a>00057         <a class="code" href="classInstrument.html#ab431265cc3192bfcc9ceeafd1d30605b">incoh_time</a> = atof(lines[9].c_str());
+<a name="l00058"></a>00058         cout &lt;&lt; <span class="stringliteral">&quot;throughput = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> &lt;&lt; endl;  <span class="comment">// </span>
+<a name="l00059"></a>00059         cout &lt;&lt; <span class="stringliteral">&quot;inst visibility = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a8a79a07bd650ab75118beff9f46886a6">visibility</a> &lt;&lt; endl;     <span class="comment">// </span>
+<a name="l00060"></a>00060         cout &lt;&lt; <span class="stringliteral">&quot;Npix = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a349e2122c222f16ed712b5fb8660adb4">Npix</a> &lt;&lt; endl;      <span class="comment">// </span>
+<a name="l00061"></a>00061         cout &lt;&lt; <span class="stringliteral">&quot;clo phase cal err = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a755a26a3b1c7ea48fdcf213371254068">clo_cal_err_deg</a> &lt;&lt; <span class="stringliteral">&quot; deg&quot;</span> &lt;&lt; endl;    <span class="comment">// </span>
+<a name="l00062"></a>00062         cout &lt;&lt; <span class="stringliteral">&quot;Wind speed = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a7e18ced4e4e556e5203c046c2ebb3c63">wind_speed</a> &lt;&lt; <span class="stringliteral">&quot; m/s&quot;</span> &lt;&lt; endl;
+<a name="l00063"></a>00063         cout &lt;&lt; <span class="stringliteral">&quot;Fried parameter@500nm = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#a508dcac890549428696372a66ed5d3bc">ast_seeing</a> &lt;&lt; <span class="stringliteral">&quot; m&quot;</span> &lt;&lt; endl;
+<a name="l00064"></a>00064         cout &lt;&lt; <span class="stringliteral">&quot;Incoherent integration time = &quot;</span> &lt;&lt; <a class="code" href="classInstrument.html#ab431265cc3192bfcc9ceeafd1d30605b">incoh_time</a> &lt;&lt; <span class="stringliteral">&quot; s&quot;</span> &lt;&lt; endl;
+<a name="l00065"></a>00065 }
+<a name="l00066"></a>00066 
+<a name="l00068"></a><a class="code" href="classInstrument.html#aa43fea34962ffe530cc5cfb0dbaa67c2">00068</a> <span class="keywordtype">double</span> <a class="code" href="classInstrument.html#aa43fea34962ffe530cc5cfb0dbaa67c2">Instrument::GlobalThroughput</a>()
+<a name="l00069"></a>00069 {
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> <a class="code" href="classInstrument.html#a24c5a78025ce2474443eb34b8828df08">throughput</a> * <a class="code" href="classInstrument.html#af352575aa1a6bb255db663a53fbb2b8b">quantum_efficiency</a>;
+<a name="l00071"></a>00071 }
 </pre></div></div>
 <!--- window showing the filter options -->
 <div id="MSearchSelectWindow"
@@ -147,7 +132,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:57 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

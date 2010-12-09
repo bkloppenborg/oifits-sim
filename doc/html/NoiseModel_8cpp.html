@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f18ddd31d8999c44835cf8bd69077007.html">vis_sim</a>
+  <div class="navpath"><a class="el" href="dir_72ef693a9b20303b80390e494a4910ad.html">vis_sim</a>
   </div>
 </div>
 <div class="contents">
@@ -54,21 +54,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="Instrument_8h_source.html">Instrument.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Array_8h_source.html">Array.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Source_8h_source.html">Source.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Observation_8h_source.html">Observation.h</a>&quot;</code><br/>
 
 <p><a href="NoiseModel_8cpp_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a98653f1e69081d2a1b6d6583217b20f1">Strehl</a> (double wl, double r0, double D)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a96b38ac87e9bf9fd1b7592d30ae92073">TimeInt</a> (double median_wl, double r0, double v)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a6477a34f9615a47a92ed93eff65836d6">PhCount</a> (<a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, double median_wl, double wl, double Dlambda)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#ad8a09c9afa459b81e6fd28424f8ca8dd">VarPow1</a> (double Pow, <a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, int specIndex, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">compute the variance of a power spectrum point  <a href="#ad8a09c9afa459b81e6fd28424f8ca8dd"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#aa21f91c926e5f561f80a1e3bca598b91">VarUnbiasedPow1</a> (double Pow, <a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, int specIndex, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a9dd4cf7ca75e44a06df5ba71d5997a94">VarCloPhase</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Nbs, int Nha)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">: VarCloPhase1() etc.  <a href="#a9dd4cf7ca75e44a06df5ba71d5997a94"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#ad775853061ae7f2673b67e894ec33313">PhCount</a> (<a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, double median_wl, double wl, double Dlambda)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a76a12be91feb4f19876246ee9e20dfb3">CoherentFlux1</a> (double Ni, double Pow, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#abff54606badd8f72e37f2915bafa22b7">VarCoherentFlux1</a> (double Ni, double Pow, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">compute the variance of the squared coherent flux  <a href="#abff54606badd8f72e37f2915bafa22b7"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#ab5dd2c51d95421f07f4c46a6601253aa">VarPow1</a> (double Pow, <a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, int specIndex, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">compute the variance of a power spectrum point  <a href="#ab5dd2c51d95421f07f4c46a6601253aa"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a3010e5e3d05d0c67e05de91b6c5b8914">VarUnbiasedPow1</a> (double Pow, <a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, int specIndex, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="NoiseModel_8cpp.html#a79488f745855a6fa932f534fe1232e3b">VarCloPhase</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Nbs, int Nha)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">: VarCloPhase1() etc.  <a href="#a79488f745855a6fa932f534fe1232e3b"></a><br/></td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a6477a34f9615a47a92ed93eff65836d6"></a><!-- doxytag: member="NoiseModel.cpp::PhCount" ref="a6477a34f9615a47a92ed93eff65836d6" args="(Source &amp;target, Array &amp;s, Instrument &amp;inst, double median_wl, double wl, double Dlambda)" -->
+<a class="anchor" id="a76a12be91feb4f19876246ee9e20dfb3"></a><!-- doxytag: member="NoiseModel.cpp::CoherentFlux1" ref="a76a12be91feb4f19876246ee9e20dfb3" args="(double Ni, double Pow, Observation &amp;obs, Instrument &amp;inst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double CoherentFlux1 </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Ni</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Pow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classInstrument.html">Instrument</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>inst</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00065">65</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad775853061ae7f2673b67e894ec33313"></a><!-- doxytag: member="NoiseModel.cpp::PhCount" ref="ad775853061ae7f2673b67e894ec33313" args="(Source &amp;target, Observation &amp;obs, Instrument &amp;inst, double median_wl, double wl, double Dlambda)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -81,8 +126,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -116,9 +161,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
-<p>function that computes the photon count per coherent integration depends on the target, the array, the instrument and the waveband </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00056">56</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00054">54</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
@@ -154,7 +198,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 <p>function for setting the correct values of the Strehl ratio according to the wavelenght, the astronomical seeing at 500 nm and the station diameter Assumes 1.4m telescopes and 1 arcsec seeing AS 2010-06-22 modified the function to match equation given in the error budget spreadsheet </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00021">21</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00022">22</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,11 +234,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 <p>function for setting the correct values of the integration time according to the mean wavelength, the Fried parameter at 500 nm and the seeing wind speed </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00039">39</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00040">40</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9dd4cf7ca75e44a06df5ba71d5997a94"></a><!-- doxytag: member="NoiseModel.cpp::VarCloPhase" ref="a9dd4cf7ca75e44a06df5ba71d5997a94" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Array &amp;s, Instrument &amp;inst, int Nbs, int Nha)" -->
+<a class="anchor" id="a79488f745855a6fa932f534fe1232e3b"></a><!-- doxytag: member="NoiseModel.cpp::VarCloPhase" ref="a79488f745855a6fa932f534fe1232e3b" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Observation &amp;obs, Instrument &amp;inst, int Nbs, int Nha)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -219,8 +263,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -251,11 +295,54 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>: VarCloPhase1() etc. </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00156">156</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00170">170</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad8a09c9afa459b81e6fd28424f8ca8dd"></a><!-- doxytag: member="NoiseModel.cpp::VarPow1" ref="ad8a09c9afa459b81e6fd28424f8ca8dd" args="(double Pow, SpectralMode &amp;spec, int specIndex, Source &amp;target, Array &amp;s, Instrument &amp;inst)" -->
+<a class="anchor" id="abff54606badd8f72e37f2915bafa22b7"></a><!-- doxytag: member="NoiseModel.cpp::VarCoherentFlux1" ref="abff54606badd8f72e37f2915bafa22b7" args="(double Ni, double Pow, Observation &amp;obs, Instrument &amp;inst)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double VarCoherentFlux1 </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Ni</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>Pow</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classInstrument.html">Instrument</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>inst</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>compute the variance of the squared coherent flux </p>
+
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00074">74</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5dd2c51d95421f07f4c46a6601253aa"></a><!-- doxytag: member="NoiseModel.cpp::VarPow1" ref="ab5dd2c51d95421f07f4c46a6601253aa" args="(double Pow, SpectralMode &amp;spec, int specIndex, Source &amp;target, Observation &amp;obs, Instrument &amp;inst)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -286,8 +373,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -306,11 +393,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>compute the variance of a power spectrum point </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00104">104</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00103">103</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aa21f91c926e5f561f80a1e3bca598b91"></a><!-- doxytag: member="NoiseModel.cpp::VarUnbiasedPow1" ref="aa21f91c926e5f561f80a1e3bca598b91" args="(double Pow, SpectralMode &amp;spec, int specIndex, Source &amp;target, Array &amp;s, Instrument &amp;inst)" -->
+<a class="anchor" id="a3010e5e3d05d0c67e05de91b6c5b8914"></a><!-- doxytag: member="NoiseModel.cpp::VarUnbiasedPow1" ref="a3010e5e3d05d0c67e05de91b6c5b8914" args="(double Pow, SpectralMode &amp;spec, int specIndex, Source &amp;target, Observation &amp;obs, Instrument &amp;inst)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -341,8 +428,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -360,7 +447,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 <p>compute the variance of a power spectrum point, assuming unbiased estimator </p>
 
-<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00128">128</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
+<p>Definition at line <a class="el" href="NoiseModel_8cpp_source.html#l00141">141</a> of file <a class="el" href="NoiseModel_8cpp_source.html">NoiseModel.cpp</a>.</p>
 
 </div>
 </div>
@@ -379,7 +466,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

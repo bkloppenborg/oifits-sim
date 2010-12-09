@@ -11,7 +11,7 @@
 \item 
 void \hyperlink{classFTPedretti_aa5840df9985ff246fc42318c94c7779a}{GDEstimate} ()
 \item 
-\hyperlink{classFTPedretti_a8aa7bb8087a0e003f495e0ca98393867}{FTPedretti} (int n\_\-coh, int ndelta\_\-coh, int n\_\-incoh, \hyperlink{classSpectralMode}{SpectralMode} $\ast$spectr, \hyperlink{classModulator}{Modulator} $\ast$modulator)
+\hyperlink{classFTPedretti_a8aa7bb8087a0e003f495e0ca98393867}{FTPedretti} (int \hyperlink{classFTPedretti_ad60e472d0ef298c0ccd9255662d2e92e}{n\_\-coh}, int \hyperlink{classFTPedretti_a62797d32a2a9efb508a6a50e37537bca}{ndelta\_\-coh}, int \hyperlink{classFTPedretti_a80d65a4169e0885939736694bc76f4a8}{n\_\-incoh}, \hyperlink{classSpectralMode}{SpectralMode} $\ast$\hyperlink{classFTPedretti_a154536c2195506b9c254e417cf752cb6}{spectr}, \hyperlink{classModulator}{Modulator} $\ast$\hyperlink{classFTPedretti_ac366c4d6cd99a518c673d3636ab97245}{modulator})
 \item 
 void \hyperlink{classFTPedretti_a8d57325be576602b6f3eb56c2b4ef19d}{StoreOneFrame} (\hyperlink{classRow}{Row}$<$ int $>$ \&detectorframe, double time)
 \end{DoxyCompactItemize}
@@ -19,6 +19,50 @@ void \hyperlink{classFTPedretti_a8d57325be576602b6f3eb56c2b4ef19d}{StoreOneFrame
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classMatrix}{Matrix}$<$ double $>$ \hyperlink{classFTPedretti_ae3c6c05c945c59fb8b3df83876faeab2}{frames}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classFTPedretti_abbda83f3da7fc03afc92af8a9197b71e}{DFT} ()
+\item 
+void \hyperlink{classFTPedretti_a12bed5efb6c39dd3bf07e696c04a215b}{ComputeCrossSpectra} ()
+\item 
+void \hyperlink{classFTPedretti_ac229ccfe757c2b890fe465ef7367aebe}{AverageSpectrum} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classFTPedretti_a6aab8bf34752e2003fd24429b5deabf0}{framecounter}
+\item 
+int \hyperlink{classFTPedretti_a617b319f056add9357e59becefdf629f}{nchannels}
+\item 
+int \hyperlink{classFTPedretti_ad60e472d0ef298c0ccd9255662d2e92e}{n\_\-coh}
+\item 
+int \hyperlink{classFTPedretti_a62797d32a2a9efb508a6a50e37537bca}{ndelta\_\-coh}
+\item 
+int \hyperlink{classFTPedretti_a80d65a4169e0885939736694bc76f4a8}{n\_\-incoh}
+\item 
+double \hyperlink{classFTPedretti_a363822135e76101433c55c8556da68e5}{previous\_\-time}
+\item 
+\hyperlink{classSpectralMode}{SpectralMode} $\ast$ \hyperlink{classFTPedretti_a154536c2195506b9c254e417cf752cb6}{spectr}
+\item 
+\hyperlink{classModulator}{Modulator} $\ast$ \hyperlink{classFTPedretti_ac366c4d6cd99a518c673d3636ab97245}{modulator}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPedretti_aeb6720656e824ab24b4f70d31cd7b40d}{modulator\_\-position}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPedretti_a576b58f03f27f35cdf75aa1e988b2982}{deltamod}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPedretti_a3100d1c07aa75cee3c5c81814f92f8c3}{frametime}
+\item 
+\hyperlink{classRow}{Row}$<$ double $>$ \hyperlink{classFTPedretti_a760d972f67ceec4fbfb8defb7b44db8e}{frameduration}
+\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classFTPedretti_a974818e3a26fcb5bff164d3b6af61e50}{ntilde}
+\item 
+\hyperlink{classRow}{Row}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{classFTPedretti_a3b9e230976542d982323faaae89341bf}{X}
+\item 
+\hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} \hyperlink{classFTPedretti_a900b82719031d79c46298d544eb1d313}{X\_\-avg}
+\item 
+double \hyperlink{classFTPedretti_aa195ccba303a9bbf0e87de722e4e29c3}{delta\_\-m12}
 \end{DoxyCompactItemize}
 
 
@@ -42,6 +86,33 @@ Definition at line 21 of file FTPedretti.cpp.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classFTPedretti_ac229ccfe757c2b890fe465ef7367aebe}{
+\index{FTPedretti@{FTPedretti}!AverageSpectrum@{AverageSpectrum}}
+\index{AverageSpectrum@{AverageSpectrum}!FTPedretti@{FTPedretti}}
+\subsubsection[{AverageSpectrum}]{\setlength{\rightskip}{0pt plus 5cm}void FTPedretti::AverageSpectrum ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_ac229ccfe757c2b890fe465ef7367aebe}
+
+
+Definition at line 117 of file FTPedretti.cpp.
+
+\hypertarget{classFTPedretti_a12bed5efb6c39dd3bf07e696c04a215b}{
+\index{FTPedretti@{FTPedretti}!ComputeCrossSpectra@{ComputeCrossSpectra}}
+\index{ComputeCrossSpectra@{ComputeCrossSpectra}!FTPedretti@{FTPedretti}}
+\subsubsection[{ComputeCrossSpectra}]{\setlength{\rightskip}{0pt plus 5cm}void FTPedretti::ComputeCrossSpectra ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a12bed5efb6c39dd3bf07e696c04a215b}
+
+
+Definition at line 108 of file FTPedretti.cpp.
+
+\hypertarget{classFTPedretti_abbda83f3da7fc03afc92af8a9197b71e}{
+\index{FTPedretti@{FTPedretti}!DFT@{DFT}}
+\index{DFT@{DFT}!FTPedretti@{FTPedretti}}
+\subsubsection[{DFT}]{\setlength{\rightskip}{0pt plus 5cm}void FTPedretti::DFT ()\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_abbda83f3da7fc03afc92af8a9197b71e}
+
+
+Definition at line 74 of file FTPedretti.cpp.
+
 \hypertarget{classFTPedretti_aa5840df9985ff246fc42318c94c7779a}{
 \index{FTPedretti@{FTPedretti}!GDEstimate@{GDEstimate}}
 \index{GDEstimate@{GDEstimate}!FTPedretti@{FTPedretti}}
@@ -63,6 +134,42 @@ Definition at line 51 of file FTPedretti.cpp.
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classFTPedretti_aa195ccba303a9bbf0e87de722e4e29c3}{
+\index{FTPedretti@{FTPedretti}!delta\_\-m12@{delta\_\-m12}}
+\index{delta\_\-m12@{delta\_\-m12}!FTPedretti@{FTPedretti}}
+\subsubsection[{delta\_\-m12}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPedretti::delta\_\-m12}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_aa195ccba303a9bbf0e87de722e4e29c3}
+
+
+Definition at line 48 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a576b58f03f27f35cdf75aa1e988b2982}{
+\index{FTPedretti@{FTPedretti}!deltamod@{deltamod}}
+\index{deltamod@{deltamod}!FTPedretti@{FTPedretti}}
+\subsubsection[{deltamod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPedretti::deltamod}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a576b58f03f27f35cdf75aa1e988b2982}
+
+
+Definition at line 38 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a6aab8bf34752e2003fd24429b5deabf0}{
+\index{FTPedretti@{FTPedretti}!framecounter@{framecounter}}
+\index{framecounter@{framecounter}!FTPedretti@{FTPedretti}}
+\subsubsection[{framecounter}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPedretti::framecounter}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a6aab8bf34752e2003fd24429b5deabf0}
+
+
+Definition at line 20 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a760d972f67ceec4fbfb8defb7b44db8e}{
+\index{FTPedretti@{FTPedretti}!frameduration@{frameduration}}
+\index{frameduration@{frameduration}!FTPedretti@{FTPedretti}}
+\subsubsection[{frameduration}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPedretti::frameduration}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a760d972f67ceec4fbfb8defb7b44db8e}
+
+
+Definition at line 42 of file FTPedretti.h.
+
 \hypertarget{classFTPedretti_ae3c6c05c945c59fb8b3df83876faeab2}{
 \index{FTPedretti@{FTPedretti}!frames@{frames}}
 \index{frames@{frames}!FTPedretti@{FTPedretti}}
@@ -71,6 +178,114 @@ Definition at line 51 of file FTPedretti.cpp.
 
 
 Definition at line 17 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a3100d1c07aa75cee3c5c81814f92f8c3}{
+\index{FTPedretti@{FTPedretti}!frametime@{frametime}}
+\index{frametime@{frametime}!FTPedretti@{FTPedretti}}
+\subsubsection[{frametime}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPedretti::frametime}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a3100d1c07aa75cee3c5c81814f92f8c3}
+
+
+Definition at line 40 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_ac366c4d6cd99a518c673d3636ab97245}{
+\index{FTPedretti@{FTPedretti}!modulator@{modulator}}
+\index{modulator@{modulator}!FTPedretti@{FTPedretti}}
+\subsubsection[{modulator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Modulator}$\ast$ {\bf FTPedretti::modulator}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_ac366c4d6cd99a518c673d3636ab97245}
+
+
+Definition at line 34 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_aeb6720656e824ab24b4f70d31cd7b40d}{
+\index{FTPedretti@{FTPedretti}!modulator\_\-position@{modulator\_\-position}}
+\index{modulator\_\-position@{modulator\_\-position}!FTPedretti@{FTPedretti}}
+\subsubsection[{modulator\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ double $>$ {\bf FTPedretti::modulator\_\-position}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_aeb6720656e824ab24b4f70d31cd7b40d}
+
+
+Definition at line 36 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_ad60e472d0ef298c0ccd9255662d2e92e}{
+\index{FTPedretti@{FTPedretti}!n\_\-coh@{n\_\-coh}}
+\index{n\_\-coh@{n\_\-coh}!FTPedretti@{FTPedretti}}
+\subsubsection[{n\_\-coh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPedretti::n\_\-coh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_ad60e472d0ef298c0ccd9255662d2e92e}
+
+
+Definition at line 24 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a80d65a4169e0885939736694bc76f4a8}{
+\index{FTPedretti@{FTPedretti}!n\_\-incoh@{n\_\-incoh}}
+\index{n\_\-incoh@{n\_\-incoh}!FTPedretti@{FTPedretti}}
+\subsubsection[{n\_\-incoh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPedretti::n\_\-incoh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a80d65a4169e0885939736694bc76f4a8}
+
+
+Definition at line 28 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a617b319f056add9357e59becefdf629f}{
+\index{FTPedretti@{FTPedretti}!nchannels@{nchannels}}
+\index{nchannels@{nchannels}!FTPedretti@{FTPedretti}}
+\subsubsection[{nchannels}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPedretti::nchannels}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a617b319f056add9357e59becefdf629f}
+
+
+Definition at line 22 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a62797d32a2a9efb508a6a50e37537bca}{
+\index{FTPedretti@{FTPedretti}!ndelta\_\-coh@{ndelta\_\-coh}}
+\index{ndelta\_\-coh@{ndelta\_\-coh}!FTPedretti@{FTPedretti}}
+\subsubsection[{ndelta\_\-coh}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf FTPedretti::ndelta\_\-coh}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a62797d32a2a9efb508a6a50e37537bca}
+
+
+Definition at line 26 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a974818e3a26fcb5bff164d3b6af61e50}{
+\index{FTPedretti@{FTPedretti}!ntilde@{ntilde}}
+\index{ntilde@{ntilde}!FTPedretti@{FTPedretti}}
+\subsubsection[{ntilde}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf Complex} $>$ {\bf FTPedretti::ntilde}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a974818e3a26fcb5bff164d3b6af61e50}
+
+
+Definition at line 45 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a363822135e76101433c55c8556da68e5}{
+\index{FTPedretti@{FTPedretti}!previous\_\-time@{previous\_\-time}}
+\index{previous\_\-time@{previous\_\-time}!FTPedretti@{FTPedretti}}
+\subsubsection[{previous\_\-time}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf FTPedretti::previous\_\-time}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a363822135e76101433c55c8556da68e5}
+
+
+Definition at line 30 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a154536c2195506b9c254e417cf752cb6}{
+\index{FTPedretti@{FTPedretti}!spectr@{spectr}}
+\index{spectr@{spectr}!FTPedretti@{FTPedretti}}
+\subsubsection[{spectr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf SpectralMode}$\ast$ {\bf FTPedretti::spectr}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a154536c2195506b9c254e417cf752cb6}
+
+
+Definition at line 32 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a3b9e230976542d982323faaae89341bf}{
+\index{FTPedretti@{FTPedretti}!X@{X}}
+\index{X@{X}!FTPedretti@{FTPedretti}}
+\subsubsection[{X}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Row}$<$ {\bf Complex} $>$ {\bf FTPedretti::X}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a3b9e230976542d982323faaae89341bf}
+
+
+Definition at line 46 of file FTPedretti.h.
+
+\hypertarget{classFTPedretti_a900b82719031d79c46298d544eb1d313}{
+\index{FTPedretti@{FTPedretti}!X\_\-avg@{X\_\-avg}}
+\index{X\_\-avg@{X\_\-avg}!FTPedretti@{FTPedretti}}
+\subsubsection[{X\_\-avg}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Complex} {\bf FTPedretti::X\_\-avg}\hspace{0.3cm}{\ttfamily  \mbox{[}private\mbox{]}}}}
+\label{classFTPedretti_a900b82719031d79c46298d544eb1d313}
+
+
+Definition at line 47 of file FTPedretti.h.
 
 
 

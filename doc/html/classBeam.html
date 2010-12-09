@@ -71,6 +71,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSpatialFilter.html">SpatialFilter</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#a68bc1a7abd201297114cd53af925f83f">spatialfilter</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#a2de78a8bf91493e5c0cf0544613d0289">AOorder</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classZernikeLib.html">ZernikeLib</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#ad41f9e0d00cfe3ed0e5a22a2f3e7c399">zernlib</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#aeaad2ad917df4957a3da23267e0753a7">ComputePhase</a> (double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#ada1230316b0e535d81383a9bb65bf538">ComputeAmplitude</a> (double time)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#a466fbf1bc5b110e62b40a7729be3a87e">ComputePhasor</a> (double wavenumber)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBeam.html#a8d515929f16780a73c997f659d4c1c97">FilterBeam</a> (double wavenumber)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 
@@ -137,7 +142,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00022">22</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00023">23</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
 
 </div>
 </div>
@@ -156,11 +161,91 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00109">109</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00113">113</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="ada1230316b0e535d81383a9bb65bf538"></a><!-- doxytag: member="Beam::ComputeAmplitude" ref="ada1230316b0e535d81383a9bb65bf538" args="(double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Beam::ComputeAmplitude </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00076">76</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aeaad2ad917df4957a3da23267e0753a7"></a><!-- doxytag: member="Beam::ComputePhase" ref="aeaad2ad917df4957a3da23267e0753a7" args="(double time)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Beam::ComputePhase </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>time</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00050">50</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a466fbf1bc5b110e62b40a7729be3a87e"></a><!-- doxytag: member="Beam::ComputePhasor" ref="a466fbf1bc5b110e62b40a7729be3a87e" args="(double wavenumber)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Beam::ComputePhasor </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>wavenumber</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00091">91</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8d515929f16780a73c997f659d4c1c97"></a><!-- doxytag: member="Beam::FilterBeam" ref="a8d515929f16780a73c997f659d4c1c97" args="(double wavenumber)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Beam::FilterBeam </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>wavenumber</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00117">117</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4d94ec1dd570ba7b50614ae39bda51fc"></a><!-- doxytag: member="Beam::Update" ref="a4d94ec1dd570ba7b50614ae39bda51fc" args="(double time, double wavenumber)" -->
 <div class="memitem">
 <div class="memproto">
@@ -186,7 +271,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00094">94</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Beam_8cpp_source.html#l00098">98</a> of file <a class="el" href="Beam_8cpp_source.html">Beam.cpp</a>.</p>
 
 </div>
 </div>
@@ -450,7 +535,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

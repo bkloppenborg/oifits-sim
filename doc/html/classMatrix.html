@@ -75,6 +75,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a9bea17f8319e2e2064fd85700e46d2fb">operator=</a> (const double s)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a3226c4b1a3ffb1090a7434806ad2ef03">operator*=</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;m)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#ae9307b29ba230013f0fce5ebf8e7fecd">operator*</a> (const <a class="el" href="classMatrix.html">Matrix</a> &amp;m)</td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a30b634d02c22a903661761ef74189ae0">ncols</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#adaa4451e47cf953a563db25d155acbcc">nrows</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; T &gt; *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a433500d09b0f8495dcc2c86ee9224508">matrix</a></td></tr>
 <tr><td colspan="2"><h2>Friends</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">ostream &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#a5ed9a90fd6f010e7e9840a17d92d5361">operator&lt;&lt;</a> (ostream &amp;os, const <a class="el" href="classMatrix.html">Matrix</a> &amp;m)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">istream &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMatrix.html#afcea9fa7d9a5052070fe1fda963ef237">operator&gt;&gt;</a> (istream &amp;is, <a class="el" href="classMatrix.html">Matrix</a> &amp;m)</td></tr>
@@ -692,6 +696,58 @@ template&lt;class T&gt; </div>
 
 </div>
 </div>
+<hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a433500d09b0f8495dcc2c86ee9224508"></a><!-- doxytag: member="Matrix::matrix" ref="a433500d09b0f8495dcc2c86ee9224508" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; T &gt;* <a class="el" href="classMatrix.html">Matrix</a>&lt; T &gt;::<a class="el" href="classMatrix.html#a433500d09b0f8495dcc2c86ee9224508">matrix</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Matrix_8h_source.html#l00363">363</a> of file <a class="el" href="Matrix_8h_source.html">Matrix.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a30b634d02c22a903661761ef74189ae0"></a><!-- doxytag: member="Matrix::ncols" ref="a30b634d02c22a903661761ef74189ae0" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classMatrix.html">Matrix</a>&lt; T &gt;::<a class="el" href="classMatrix.html#a30b634d02c22a903661761ef74189ae0">ncols</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Matrix_8h_source.html#l00361">361</a> of file <a class="el" href="Matrix_8h_source.html">Matrix.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adaa4451e47cf953a563db25d155acbcc"></a><!-- doxytag: member="Matrix::nrows" ref="adaa4451e47cf953a563db25d155acbcc" args="" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classMatrix.html">Matrix</a>&lt; T &gt;::<a class="el" href="classMatrix.html#adaa4451e47cf953a563db25d155acbcc">nrows</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Matrix_8h_source.html#l00361">361</a> of file <a class="el" href="Matrix_8h_source.html">Matrix.h</a>.</p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>common/<a class="el" href="Matrix_8h_source.html">Matrix.h</a></li>
 </ul>
@@ -710,7 +766,7 @@ template&lt;class T&gt; </div>
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

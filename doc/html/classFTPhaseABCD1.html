@@ -51,7 +51,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classFTPhaseABCD1-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a5cbce7f05ad5e81f40f3ab40ddb3faf0">FTPhaseABCD1</a> (int nbins, int frames_per_bin, <a class="el" href="classSpectralMode.html">SpectralMode</a> *spectr, <a class="el" href="classModulator.html">Modulator</a> *modulator)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a5cbce7f05ad5e81f40f3ab40ddb3faf0">FTPhaseABCD1</a> (int <a class="el" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">nbins</a>, int <a class="el" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">frames_per_bin</a>, <a class="el" href="classSpectralMode.html">SpectralMode</a> *<a class="el" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>, <a class="el" href="classModulator.html">Modulator</a> *<a class="el" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">modulator</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#adca39b254b058fc6ebc624354bec5255">~FTPhaseABCD1</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a3af0de42c400aeed38d77b2edf0e77e7">StoreOneFrame</a> (<a class="el" href="classRow.html">Row</a>&lt; int &gt; &amp;detectorframe, double time)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a2b378a7f7486447bd702fece1f2b6ba3">OPD_Estimate</a> ()</td></tr>
@@ -76,6 +76,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a41c864e9da51314cabe1f724a81f3d68">search_direction</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a7a04057b036f5caa88ea6d6e3661e309">search_OPD_max</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a96dfa4270b568d344a29313dcf36874f">search_OPD_steplength</a></td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">nbins</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">frames_per_bin</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">previous_time</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a4775273ef7115bdb72e25501d0c948f3">previous_opd</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSpectralMode.html">SpectralMode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classModulator.html">Modulator</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">modulator</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">deltamod</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">frametime</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">frameduration</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 
@@ -269,6 +282,51 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="aeb7776acda071f75923ff5ffe51b8d1e"></a><!-- doxytag: member="FTPhaseABCD1::deltamod" ref="aeb7776acda071f75923ff5ffe51b8d1e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">FTPhaseABCD1::deltamod</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00082">82</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2db315608806d1b281341482fd8123e7"></a><!-- doxytag: member="FTPhaseABCD1::framecounter" ref="a2db315608806d1b281341482fd8123e7" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">FTPhaseABCD1::framecounter</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00068">68</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a21916a5951e6c54a7aa568642769b614"></a><!-- doxytag: member="FTPhaseABCD1::frameduration" ref="a21916a5951e6c54a7aa568642769b614" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">FTPhaseABCD1::frameduration</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00086">86</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a1891f6e4f2a92991da6a1a3a0fc99fd4"></a><!-- doxytag: member="FTPhaseABCD1::frames" ref="a1891f6e4f2a92991da6a1a3a0fc99fd4" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -281,6 +339,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00024">24</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f8098aa51b878962500a3bae1eac959"></a><!-- doxytag: member="FTPhaseABCD1::frames_per_bin" ref="a5f8098aa51b878962500a3bae1eac959" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">FTPhaseABCD1::frames_per_bin</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00066">66</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7dacaa305568f8fc4d0a59f4df383142"></a><!-- doxytag: member="FTPhaseABCD1::frametime" ref="a7dacaa305568f8fc4d0a59f4df383142" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">FTPhaseABCD1::frametime</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00084">84</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
 
 </div>
 </div>
@@ -314,6 +402,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="adc5fbcfc33764d9ccf0ab886e2d1899c"></a><!-- doxytag: member="FTPhaseABCD1::modulator" ref="adc5fbcfc33764d9ccf0ab886e2d1899c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classModulator.html">Modulator</a>* <a class="el" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">FTPhaseABCD1::modulator</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00078">78</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab5f6042aa8eee4a574fbfd72279f81ca"></a><!-- doxytag: member="FTPhaseABCD1::modulator_position" ref="ab5f6042aa8eee4a574fbfd72279f81ca" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">FTPhaseABCD1::modulator_position</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00080">80</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6346350122f18739641a583fa6bb6480"></a><!-- doxytag: member="FTPhaseABCD1::nbins" ref="a6346350122f18739641a583fa6bb6480" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">FTPhaseABCD1::nbins</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00064">64</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adc6d698b02a5ac590368df1c94ef1f9c"></a><!-- doxytag: member="FTPhaseABCD1::nchannels" ref="adc6d698b02a5ac590368df1c94ef1f9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">FTPhaseABCD1::nchannels</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00070">70</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="acc233644e0b0bfd0efdf31fda757fcce"></a><!-- doxytag: member="FTPhaseABCD1::opd_estimate" ref="acc233644e0b0bfd0efdf31fda757fcce" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -329,6 +477,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="a4775273ef7115bdb72e25501d0c948f3"></a><!-- doxytag: member="FTPhaseABCD1::previous_opd" ref="a4775273ef7115bdb72e25501d0c948f3" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classFTPhaseABCD1.html#a4775273ef7115bdb72e25501d0c948f3">FTPhaseABCD1::previous_opd</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00074">74</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ac673e4c9a6b8139316509541e1044828"></a><!-- doxytag: member="FTPhaseABCD1::previous_phases" ref="ac673e4c9a6b8139316509541e1044828" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -341,6 +504,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00026">26</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a42f5c115652dfc81584d2784f129f714"></a><!-- doxytag: member="FTPhaseABCD1::previous_time" ref="a42f5c115652dfc81584d2784f129f714" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">FTPhaseABCD1::previous_time</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00072">72</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
 
 </div>
 </div>
@@ -494,6 +672,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="ab56ac2436c8084fb4601d64686338519"></a><!-- doxytag: member="FTPhaseABCD1::spectr" ref="ab56ac2436c8084fb4601d64686338519" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpectralMode.html">SpectralMode</a>* <a class="el" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">FTPhaseABCD1::spectr</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTPhaseABCD1_8h_source.html#l00076">76</a> of file <a class="el" href="FTPhaseABCD1_8h_source.html">FTPhaseABCD1.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a5ad155e1d7ac3ad4c60f3c0768ae8e56"></a><!-- doxytag: member="FTPhaseABCD1::timethreshold_locking" ref="a5ad155e1d7ac3ad4c60f3c0768ae8e56" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -528,7 +721,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

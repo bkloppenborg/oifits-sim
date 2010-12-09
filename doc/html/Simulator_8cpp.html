@@ -43,18 +43,108 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
 <h1>Simulator.cpp File Reference</h1><code>#include &quot;<a class="el" href="Simulator_8h_source.html">Simulator.h</a>&quot;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;fstream&gt;</code><br/>
+<code>#include &lt;stdexcept&gt;</code><br/>
 
 <p><a href="Simulator_8cpp_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
+<tr><td class="memTemplParams" colspan="2">template&lt;typename T , typename P &gt; </td></tr>
+<tr><td class="memTemplItemLeft" align="right" valign="top">T&nbsp;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#a3482e4fb66b976aa016d22c41cf41830">remove_if</a> (T beg, T end, P pred)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#a0445317b8b5fbc8bbf74271f4a43889c">sinc</a> (double number)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#aa4306b3f9de56846c29159ec0006d9af">StringSplit</a> (string str, string delim, vector&lt; string &gt; &amp;results)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#aedc3a2d627c34a475a62337fc5424453">StripWhitespace</a> (string str)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#a22e796200dc87e9852a8af124fbac832">StripWhitespace</a> (vector&lt; string &gt; &amp;strings)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="Simulator_8cpp.html#a3b6003aef2dd8107d063fd27f5295a07">ReadFile</a> (string filename, string comment_chars, string error_message)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a3b6003aef2dd8107d063fd27f5295a07"></a><!-- doxytag: member="Simulator.cpp::ReadFile" ref="a3b6003aef2dd8107d063fd27f5295a07" args="(string filename, string comment_chars, string error_message)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;string&gt; ReadFile </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>comment_chars</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>error_message</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Reads in a file, returns non-comment lines as a vector of strings If the file cannot be opened, an exception is thrown with the message contained in error_message </p>
+
+<p><dl><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Error opening array file The array file could not be located. It is likely that the user just specified an invalid path. </td></tr>
+  </table>
+  </dd>
+</dl>
+</p>
+
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00059">59</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3482e4fb66b976aa016d22c41cf41830"></a><!-- doxytag: member="Simulator.cpp::remove_if" ref="a3482e4fb66b976aa016d22c41cf41830" args="(T beg, T end, P pred)" -->
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T , typename P &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T remove_if </td>
+          <td>(</td>
+          <td class="paramtype">T&nbsp;</td>
+          <td class="paramname"> <em>beg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&nbsp;</td>
+          <td class="paramname"> <em>end</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">P&nbsp;</td>
+          <td class="paramname"> <em>pred</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00008">8</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a0445317b8b5fbc8bbf74271f4a43889c"></a><!-- doxytag: member="Simulator.cpp::sinc" ref="a0445317b8b5fbc8bbf74271f4a43889c" args="(double number)" -->
 <div class="memitem">
 <div class="memproto">
@@ -71,7 +161,82 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00003">3</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00017">17</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa4306b3f9de56846c29159ec0006d9af"></a><!-- doxytag: member="Simulator.cpp::StringSplit" ref="aa4306b3f9de56846c29159ec0006d9af" args="(string str, string delim, vector&lt; string &gt; &amp;results)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StringSplit </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>delim</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>results</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00025">25</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a22e796200dc87e9852a8af124fbac832"></a><!-- doxytag: member="Simulator.cpp::StripWhitespace" ref="a22e796200dc87e9852a8af124fbac832" args="(vector&lt; string &gt; &amp;strings)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StripWhitespace </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt; &amp;&nbsp;</td>
+          <td class="paramname"> <em>strings</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00048">48</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aedc3a2d627c34a475a62337fc5424453"></a><!-- doxytag: member="Simulator.cpp::StripWhitespace" ref="aedc3a2d627c34a475a62337fc5424453" args="(string str)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string StripWhitespace </td>
+          <td>(</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>str</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Simulator_8cpp_source.html#l00041">41</a> of file <a class="el" href="Simulator_8cpp_source.html">Simulator.cpp</a>.</p>
 
 </div>
 </div>
@@ -90,7 +255,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

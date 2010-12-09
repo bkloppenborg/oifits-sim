@@ -54,9 +54,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classSpectralMode-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#aa8c39bc91262a9fe5b840f10c41b301a">SpectralMode</a> (int <a class="el" href="classSpectralMode.html#a7720aa3a3f0d28c755169f86a3125d58">type</a>, double minvalue, double maxvalue, int spectralchannels)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#a9511acf327e4119cbb9d10e6a24276d5">SpectralMode</a> (int <a class="el" href="classSpectralMode.html#a7720aa3a3f0d28c755169f86a3125d58">type</a>, <a class="el" href="classRow.html">Row</a>&lt; double &gt;wav)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#aab85eb7484d260cc3d4c76e2d44ee2d9">SpectralMode</a> (int <a class="el" href="classSpectralMode.html#a7720aa3a3f0d28c755169f86a3125d58">type</a>, const char *SpectralMode_file)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#abfb56a691dd864cfc5f93357ee7a3eee">SpectralMode</a> (string filename, string comment_chars)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#abafb61f9ba5c980bf5db7ebcad116d57">SpectralMode</a> (double minvalue, double maxvalue, int spectralchannels)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#a56d1476d403b85e1967948b5d6a77c71">SpectralMode</a> (<a class="el" href="classRow.html">Row</a>&lt; double &gt;wav)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#a8f6ff593021e7d0e175b528c94896a6b">~SpectralMode</a> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#a702eb517e9b821c6fc6508fa6b96579c">minnumber</a></td></tr>
@@ -68,25 +68,52 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#af83f2181ef2b8660feac40e7691893d6">mean_wavelength</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#af4835d0dd1c5276798e400f3bcfa1bb7">delta_wavelength</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#a8c817cc0d2f5d57823a03256743260b3">median_wavelength</a></td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#aa843aedc510953af4fb64b4dd41e3e22">wavenumber</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSpectralMode.html#ac56b7c0c01e1f396bef1b192b6365add">wavelength</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A class to represent the spectral mode(s) of the instrument. </p>
 
 <p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00008">8</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aa8c39bc91262a9fe5b840f10c41b301a"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="aa8c39bc91262a9fe5b840f10c41b301a" args="(int type, double minvalue, double maxvalue, int spectralchannels)" -->
+<a class="anchor" id="abfb56a691dd864cfc5f93357ee7a3eee"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="abfb56a691dd864cfc5f93357ee7a3eee" args="(string filename, string comment_chars)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">SpectralMode::SpectralMode </td>
           <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>filename</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>comment_chars</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Constructor for a <a class="el" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> object. Reads in space delineated text file of one or more lines in the following format: mean_wavelength effective_bandwidth Comment characters are specified by comment_chars </p>
+
+<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00020">20</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abafb61f9ba5c980bf5db7ebcad116d57"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="abafb61f9ba5c980bf5db7ebcad116d57" args="(double minvalue, double maxvalue, int spectralchannels)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SpectralMode::SpectralMode </td>
+          <td>(</td>
           <td class="paramtype">double&nbsp;</td>
           <td class="paramname"> <em>minvalue</em>, </td>
         </tr>
@@ -111,65 +138,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00084">84</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
-
 </div>
 </div>
-<a class="anchor" id="a9511acf327e4119cbb9d10e6a24276d5"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="a9511acf327e4119cbb9d10e6a24276d5" args="(int type, Row&lt; double &gt;wav)" -->
+<a class="anchor" id="a56d1476d403b85e1967948b5d6a77c71"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="a56d1476d403b85e1967948b5d6a77c71" args="(Row&lt; double &gt;wav)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">SpectralMode::SpectralMode </td>
           <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td>
-          <td class="paramname"> <em>wav</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
+          <td class="paramname"> <em>wav</em></td>
+          <td>&nbsp;)&nbsp;</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
-
-<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00141">141</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aab85eb7484d260cc3d4c76e2d44ee2d9"></a><!-- doxytag: member="SpectralMode::SpectralMode" ref="aab85eb7484d260cc3d4c76e2d44ee2d9" args="(int type, const char *SpectralMode_file)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">SpectralMode::SpectralMode </td>
-          <td>(</td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>type</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&nbsp;</td>
-          <td class="paramname"> <em>SpectralMode_file</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00015">15</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
 
 </div>
 </div>
@@ -188,7 +173,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00191">191</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8cpp_source.html#l00169">169</a> of file <a class="el" href="SpectralMode_8cpp_source.html">SpectralMode.cpp</a>.</p>
 
 </div>
 </div>
@@ -204,7 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00025">25</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00032">32</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -219,7 +204,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00021">21</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00028">28</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -234,7 +219,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00013">13</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00020">20</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +234,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00023">23</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00030">30</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -264,7 +249,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00019">19</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00026">26</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -279,7 +264,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00030">30</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00037">37</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -294,7 +279,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00011">11</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00018">18</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -309,7 +294,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00015">15</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00022">22</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -324,7 +309,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00017">17</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00024">24</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac56b7c0c01e1f396bef1b192b6365add"></a><!-- doxytag: member="SpectralMode::wavelength" ref="ac56b7c0c01e1f396bef1b192b6365add" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classSpectralMode.html#ac56b7c0c01e1f396bef1b192b6365add">SpectralMode::wavelength</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00044">44</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa843aedc510953af4fb64b4dd41e3e22"></a><!-- doxytag: member="SpectralMode::wavenumber" ref="aa843aedc510953af4fb64b4dd41e3e22" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classSpectralMode.html#aa843aedc510953af4fb64b4dd41e3e22">SpectralMode::wavenumber</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="SpectralMode_8h_source.html#l00042">42</a> of file <a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>.</p>
 
 </div>
 </div>
@@ -347,7 +362,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

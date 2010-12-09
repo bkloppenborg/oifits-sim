@@ -46,19 +46,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="contents">
 <h1>VisSimParams Class Reference</h1><!-- doxytag: class="VisSimParams" -->
+<p><code>#include &lt;<a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>&gt;</code></p>
+
 <p><a href="classVisSimParams-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
+<tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a3c730d9c8f400a34aade38dbc0b0a675">VisSimParams</a> (void)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a39a09952f9e7cdc3dd0f46e1604e5c76">have_all_params</a> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a225b522f1b7e0e07bb3745456693d84d">target_filename</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#ad4024dfafa47b1c4246c1885be3bd77e">array_filename</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a1b39663100b7215fc5d8f61d30d85044">instrument_filename</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a5b4b6a34093cd8d538fa32e159477d8e">SpectralMode_filename</a></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#a6e44268b31963634fc2a2a6ec96c0d67">HourAngles_filename</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#af264c40e20632cfc50ebf48825cb5da8">observation_filename</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#ab5550741409f4dbfe5d601194fe7be4b">oifits_filename</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#ad590ce822859b9f7b777e30c708872ff">input_oifits_filename</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVisSimParams.html#ae8c4c4e95792ee06a4198b39516e03fb">bFromOIFITSFile</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000020">Todo:</a></b></dt><dd>It would be nice to have this class print out the missing parameters with some information. </dd></dl>
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00022">22</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00010">10</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
+<hr/><h2>Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a3c730d9c8f400a34aade38dbc0b0a675"></a><!-- doxytag: member="VisSimParams::VisSimParams" ref="a3c730d9c8f400a34aade38dbc0b0a675" args="(void)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">VisSimParams::VisSimParams </td>
+          <td>(</td>
+          <td class="paramtype">void&nbsp;</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="VisSimParams_8cpp_source.html#l00004">4</a> of file <a class="el" href="VisSimParams_8cpp_source.html">VisSimParams.cpp</a>.</p>
+
+</div>
+</div>
+<hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a39a09952f9e7cdc3dd0f46e1604e5c76"></a><!-- doxytag: member="VisSimParams::have_all_params" ref="a39a09952f9e7cdc3dd0f46e1604e5c76" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool VisSimParams::have_all_params </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<p>Determines whether or not all parameters required to run the simulator are present</p>
+<p>Two cases to see if all parameters are specified. If we are using an OIFITS file, we only need: target_filename, SpectralMode_filename, input_oifits_filename everything else is determined from the OIFITS file. Otherwise we need target_filename, array_filename, instrument_filename, SpectralMode_filename, HourAngles_filename </p>
+
+<p>Definition at line <a class="el" href="VisSimParams_8cpp_source.html#l00024">24</a> of file <a class="el" href="VisSimParams_8cpp_source.html">VisSimParams.cpp</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
 <a class="anchor" id="ad4024dfafa47b1c4246c1885be3bd77e"></a><!-- doxytag: member="VisSimParams::array_filename" ref="ad4024dfafa47b1c4246c1885be3bd77e" args="" -->
 <div class="memitem">
@@ -71,22 +122,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00026">26</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00014">14</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a6e44268b31963634fc2a2a6ec96c0d67"></a><!-- doxytag: member="VisSimParams::HourAngles_filename" ref="a6e44268b31963634fc2a2a6ec96c0d67" args="" -->
+<a class="anchor" id="ae8c4c4e95792ee06a4198b39516e03fb"></a><!-- doxytag: member="VisSimParams::bFromOIFITSFile" ref="ae8c4c4e95792ee06a4198b39516e03fb" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string <a class="el" href="classVisSimParams.html#a6e44268b31963634fc2a2a6ec96c0d67">VisSimParams::HourAngles_filename</a></td>
+          <td class="memname">bool <a class="el" href="classVisSimParams.html#ae8c4c4e95792ee06a4198b39516e03fb">VisSimParams::bFromOIFITSFile</a></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00029">29</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00022">22</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad590ce822859b9f7b777e30c708872ff"></a><!-- doxytag: member="VisSimParams::input_oifits_filename" ref="ad590ce822859b9f7b777e30c708872ff" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string <a class="el" href="classVisSimParams.html#ad590ce822859b9f7b777e30c708872ff">VisSimParams::input_oifits_filename</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00020">20</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
@@ -101,7 +167,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00027">27</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00015">15</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="af264c40e20632cfc50ebf48825cb5da8"></a><!-- doxytag: member="VisSimParams::observation_filename" ref="af264c40e20632cfc50ebf48825cb5da8" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string <a class="el" href="classVisSimParams.html#af264c40e20632cfc50ebf48825cb5da8">VisSimParams::observation_filename</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00017">17</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
@@ -116,7 +197,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00030">30</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00018">18</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
@@ -131,7 +212,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00028">28</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00016">16</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
@@ -146,12 +227,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="userinterface_8cpp_source.html#l00025">25</a> of file <a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a>.</p>
+<p>Definition at line <a class="el" href="VisSimParams_8h_source.html#l00013">13</a> of file <a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
-<li>vis_sim/<a class="el" href="userinterface_8cpp_source.html">userinterface.cpp</a></li>
+<hr/>The documentation for this class was generated from the following files:<ul>
+<li>vis_sim/<a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a></li>
+<li>vis_sim/<a class="el" href="VisSimParams_8cpp_source.html">VisSimParams.cpp</a></li>
 </ul>
 </div>
 <!--- window showing the filter options -->
@@ -168,7 +250,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

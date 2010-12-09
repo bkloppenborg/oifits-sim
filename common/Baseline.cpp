@@ -8,6 +8,7 @@
 #include "Array.h"
 #include "Simulator.h"
 #include "Station.h"
+#include "Source.h"
 
 Baseline::Baseline()
 {
@@ -55,6 +56,108 @@ UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double 
 string Baseline::GetName(void)
 {
     return this->name;
+}
+
+
+/// Computes the complex visibility of the source at the specified UV point.
+/// \todo Switch the hash lookup over to a multihash instead of using strings?
+complex<double> Baseline::GetVisibility(Source & source, double hour_angle, double wavenumber)
+{
+    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    complex <double> visibility(0.0, 0.0);
+    
+    // First try looking up the value in the hash table
+    if(mVisValues.find(hash_key) != mVisValues.end())
+    {
+        visibility = mVisValues[hash_key];
+    }
+    else
+    {
+        // The value did not exist in the hash table, we need to compute and store it.
+        visibility = ComputeVisibility(source, hour_angle, wavenumber);
+        mVisValues[hash_key] = visibility;
+    }
+    
+    return visibility;
+}
+
+
+// Computes a hash key from the source, hour angle, and wavenumber.
+string  Baseline::GetHashKey(Source & source, double hour_angle, double wavenumber)
+{
+    /// \todo It may be necessary for the doubles coming into this function to be cast into some 
+    /// finite floating point format.
+    
+    std::ostringstream sstream;
+    sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
+    std::string str = sstream.str();
+    return str;
+}
+
+/// Computes the error in the visibility
+/// \todo Implement computations of error in visibility.  This function returns an error of zero for now.
+complex<double> Baseline::ComputeVisError(Source & source, double hour_angle, double wavenumber)
+{
+    return complex <double> (0.0, 0.0);
+}
+
+/// Returns the error in the visibility assoicated with this source, hour angle, and wavenumber.
+complex<double> Baseline::GetVisError(Source & source, double hour_angle, double wavenumber)
+{
+    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    complex <double> vis_error(0.0, 0.0);
+    
+    // First try looking up the value in the hash table:
+    if(mVisErrors.find(hash_key) != mVisErrors.end())
+    {
+        vis_error = mVisErrors[hash_key];
+    }
+    else
+    {
+        vis_error = ComputeVisError(source, hour_angle, wavenumber);
+        mVisErrors[hash_key] = vis_error;
+    }
+    
+    return vis_error;
+}
+
+/// Sets the visibility error for the given source, hour angle and wavenumber.  
+/// Note: It is intended that this function is used to set the error from existing OIFITS data files.
+void    Baseline::SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error)
+{
+    /// \todo At the moment this function assumes that vis_error is a real number which then is
+    /// cast into a complex number and stored.  This probably isn't correct and needs to be changed.
+    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    mVisErrors[hash_key] = complex<double>(vis_error);
+}
+
+complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, double wavenumber)
+{
+    complex <double> visibility(0.0, 0.0);
+
+    // Point source
+    if (source.source_image.GetCols() == 0)
+    {
+        visibility = 1.0;
+    }
+    else    // A resolved object
+    {
+        UVPoint uv = this->UVcoords(hour_angle, source.declination, wavenumber);
+        
+        int nx = source.source_image.GetCols();
+        int ny = source.source_image.GetRows();
+
+        /// \todo This calculation could be farmed out to a GPU very easily.
+        for (int ii = 0; ii < nx; ii++)
+        {
+            for (int jj = 0; jj < ny; jj++)
+            {
+                visibility += source.source_image[ii][jj] * polar(1., -2.0 * PI * source.source_pixellation * milliarcsec * (uv.u * (double)ii + uv.v * (double)jj));
+            }
+        }
+    }
+
+    return visibility;
 }
 
 ////////////////////////////////////////////////////////////////////

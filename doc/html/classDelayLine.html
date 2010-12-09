@@ -58,7 +58,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#af03fce4b30c09428624fcf27bb6d8476">GetDelay</a> (double time)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a230dfa049c8b66e41e028c15b63d23fa">GetCurrentPosition</a> (double time)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#aa11d93779cebcc3a57b920a5fcbda891">ComputePinhole</a> (int size, int padded_size)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#aaea9efb6c8a6e791ac75f9bac6c4fe8e">SetTargetPosition</a> (double target_position)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#aaea9efb6c8a6e791ac75f9bac6c4fe8e">SetTargetPosition</a> (double <a class="el" href="classDelayLine.html#a27fb66446caf539997819c3600e5299e">target_position</a>)</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a86b4adda2792d346ee78b59a3e26992a">filter_type</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a55d069a045ac765d5783f41a2348fdd4">coeffs</a> [3]</td></tr>
@@ -67,6 +67,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a36cd2a92c561630bbaa6646f23a00626">x_current</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a4d51575ded15097f1a837d3ceeaf6bec">v_current</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a4086dcba3b4835c3a1f2072768e6b8c2">dt</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a138684e1f275e87508a1f71c6599f6f9">delay_equation_1st</a> (double t, double x)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a49bab775499a10b2cae182b7706275bc">delay_equation_2nd</a> (double t, double x, double v)</td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a27fb66446caf539997819c3600e5299e">target_position</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a76e51812021b57490411c932f607d82b">previous_calltime</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a38f0fbf9f3090542153f5d6428edb20b">previous_position</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a0e814cb4b3e6fdfbbbf6157f02a938df">previous_speed</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDelayLine.html#a1565f8501d8baba454f5d7743b90bf97">previous_targetposition</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A class representing a delay line. </p>
@@ -139,6 +148,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a138684e1f275e87508a1f71c6599f6f9"></a><!-- doxytag: member="DelayLine::delay_equation_1st" ref="a138684e1f275e87508a1f71c6599f6f9" args="(double t, double x)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DelayLine::delay_equation_1st </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8cpp_source.html#l00034">34</a> of file <a class="el" href="DelayLine_8cpp_source.html">DelayLine.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a49bab775499a10b2cae182b7706275bc"></a><!-- doxytag: member="DelayLine::delay_equation_2nd" ref="a49bab775499a10b2cae182b7706275bc" args="(double t, double x, double v)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DelayLine::delay_equation_2nd </td>
+          <td>(</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>t</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>v</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8cpp_source.html#l00039">39</a> of file <a class="el" href="DelayLine_8cpp_source.html">DelayLine.cpp</a>.</p>
 
 </div>
 </div>
@@ -261,6 +334,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="a76e51812021b57490411c932f607d82b"></a><!-- doxytag: member="DelayLine::previous_calltime" ref="a76e51812021b57490411c932f607d82b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classDelayLine.html#a76e51812021b57490411c932f607d82b">DelayLine::previous_calltime</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00036">36</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a38f0fbf9f3090542153f5d6428edb20b"></a><!-- doxytag: member="DelayLine::previous_position" ref="a38f0fbf9f3090542153f5d6428edb20b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classDelayLine.html#a38f0fbf9f3090542153f5d6428edb20b">DelayLine::previous_position</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00038">38</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0e814cb4b3e6fdfbbbf6157f02a938df"></a><!-- doxytag: member="DelayLine::previous_speed" ref="a0e814cb4b3e6fdfbbbf6157f02a938df" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classDelayLine.html#a0e814cb4b3e6fdfbbbf6157f02a938df">DelayLine::previous_speed</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00040">40</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1565f8501d8baba454f5d7743b90bf97"></a><!-- doxytag: member="DelayLine::previous_targetposition" ref="a1565f8501d8baba454f5d7743b90bf97" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classDelayLine.html#a1565f8501d8baba454f5d7743b90bf97">DelayLine::previous_targetposition</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00042">42</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ae46cf8249f9040270c5ffb1289e5f760"></a><!-- doxytag: member="DelayLine::t_current" ref="ae46cf8249f9040270c5ffb1289e5f760" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -273,6 +406,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00017">17</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a27fb66446caf539997819c3600e5299e"></a><!-- doxytag: member="DelayLine::target_position" ref="a27fb66446caf539997819c3600e5299e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classDelayLine.html#a27fb66446caf539997819c3600e5299e">DelayLine::target_position</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="DelayLine_8h_source.html#l00034">34</a> of file <a class="el" href="DelayLine_8h_source.html">DelayLine.h</a>.</p>
 
 </div>
 </div>
@@ -325,7 +473,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -10,7 +10,6 @@
 // by the station module.
 
 #include <iostream>
-#include <complex>
 #include <stdexcept>
 #include <vector>
 #include <fstream>
@@ -19,82 +18,48 @@
 
 #include "Simulator.h"
 #include "Source.h"
-#include "UVPoint.h"
-#include "Baseline.h"
-#include "Array.h"
 
-// Forward Declaration of classes
-class Baseline;
-class UVPoint;
-class Array;
+//Complex Source::GetVis(double wavenumber, double hour_angle, Array & array, int index_station1, int index_station2)
+//{
+//    Complex visibility;
 
-/// Computes the Complex visibility of the source at the specified UV point.
-Complex Source::GetVis(UVPoint uv)
-{
-    Complex visibility;
+//    if (source_image.GetCols() == 0)
+//    {
+//        // point source, no need to calculate uv coords
+//        visibility = 1.0;
+//    }
+//    else
+//    {
 
-    if (source_image.GetCols() == 0)
-    {
-        // point source
-        visibility = 1.0;
-    }
-    else
-    {
-        // resolved object
-        visibility = 0.0;
-        int nx = source_image.GetCols();
-        int ny = source_image.GetRows();
+//        // resolved object
+//        // according to time and wavenumber, get the uv points, then the
+//        // corresponding visibility
+//        // to implement - update the visibility only if enough time elapsed
+//        // between measurements
+//        Baseline B = Baseline(array.GetStation(index_station1), array.GetStation(index_station2));
+//        UVPoint uv = B.UVcoords(hour_angle, declination, wavenumber); // from 
+//                                                                                // UVPoint 
+//                                                                                // uv 
+//                                                                                // is 
+//                                                                                // now 
+//                                                                                // = 
+//                                                                                // B.UVcoords. 
+//                                                                                // function 
+//                                                                                // defined 
+//                                                                                // in 
+//                                                                                // stations.cpp
+//        visibility = GetVis(uv);        // source visibility is equal to the
+//                                        // equation above: visibility +=
+//                                        // source_image[ ii ][ jj ] *
+//                                        // polar(1., -2.0 * PI *
+//                                        // source_pixellation * milliarcsec *
+//                                        // (uv.u * (double) ii + uv.v *
+//                                        // (double) jj));
 
-        /// \todo This calculation could be farmed out to a GPU very easily.
-        for (int ii = 0; ii < nx; ii++)
-            for (int jj = 0; jj < ny; jj++)
-                visibility += source_image[ii][jj] * polar(1., -2.0 * PI * source_pixellation * milliarcsec * (uv.u * (double)ii + uv.v * (double)jj));
-    }
+//    }
 
-    return visibility;
-}
-
-Complex Source::GetVis(double wavenumber, double hour_angle, Array & array, int index_station1, int index_station2)
-{
-    Complex visibility;
-
-    if (source_image.GetCols() == 0)
-    {
-        // point source, no need to calculate uv coords
-        visibility = 1.0;
-    }
-    else
-    {
-
-        // resolved object
-        // according to time and wavenumber, get the uv points, then the
-        // corresponding visibility
-        // to implement - update the visibility only if enough time elapsed
-        // between measurements
-        Baseline B = Baseline(array.GetStation(index_station1), array.GetStation(index_station2));
-        UVPoint uv = B.UVcoords(hour_angle, declination, wavenumber); // from 
-                                                                                // UVPoint 
-                                                                                // uv 
-                                                                                // is 
-                                                                                // now 
-                                                                                // = 
-                                                                                // B.UVcoords. 
-                                                                                // function 
-                                                                                // defined 
-                                                                                // in 
-                                                                                // stations.cpp
-        visibility = GetVis(uv);        // source visibility is equal to the
-                                        // equation above: visibility +=
-                                        // source_image[ ii ][ jj ] *
-                                        // polar(1., -2.0 * PI *
-                                        // source_pixellation * milliarcsec *
-                                        // (uv.u * (double) ii + uv.v *
-                                        // (double) jj));
-
-    }
-
-    return visibility;
-}
+//    return visibility;
+//}
 
 double Source::Spectrum(double wavenumber)
 {
@@ -325,4 +290,9 @@ Source::Source(string filename, string comment_chars)
         // Normalize it
         source_image /= total(source_image);
     }
+}
+
+string  Source::GetName(void)
+{
+    return this->source_name;
 }

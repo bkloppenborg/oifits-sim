@@ -2,12 +2,118 @@
 \hypertarget{todo__todo000001}{}
  
 \begin{DoxyDescription}
-\item[Member \hyperlink{classArray_ab28022bcc92a1ae0f5676f0dcd22eb1b}{Array::Array}(const char $\ast$Array\_\-file) ]It would be wise to parse these values from the file in key-\/$>$value pairs 
+\item[Member \hyperlink{classArray_a4a5d472a84870d72b3d67edec898bcfa}{Array::Array}(string filename, string comment\_\-chars) ]fix this function to comply with the class definition. 
+\end{DoxyDescription}
+
+\label{todo__todo000003}
+\hypertarget{todo__todo000003}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classArray_acb9ecf27c0fe2ad73e15c34f80d90c5c}{Array::GetStation}(int station\_\-index) ]The Get$\ast$ functions that deal with hashes should throw an exception if the key is not found. 
 \end{DoxyDescription}
 
 \label{todo__todo000002}
 \hypertarget{todo__todo000002}{}
  
 \begin{DoxyDescription}
-\item[Member \hyperlink{classSource_a7a7af8ba36f94e74bf2d780f6636cfe4}{Source::Source}(const char $\ast$Source\_\-file) ]Perhaps we could parse the source file in key-\/$>$value pairs? 
+\item[Member \hyperlink{classArray_a3d0a097d6c7d27ab0ba7b72a9b2223e1}{Array::latitude} ]Make all datamembers private unless absolutely necessary. 
+
+Compute \hyperlink{classStation}{Station} indicies as stations are read in. 
+\end{DoxyDescription}
+
+\label{todo__todo000004}
+\hypertarget{todo__todo000004}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classBaseline_acb78f3f6c2020cc0c9cc923ddb6a2133}{Baseline::Baseline}(\hyperlink{classStation}{Station} \&station1, \hyperlink{classStation}{Station} \&station2) ]Stop using NEU coordinates here, switch to station.x, station.y, and station.z. 
+\end{DoxyDescription}
+
+\label{todo__todo000006}
+\hypertarget{todo__todo000006}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classBaseline_ab5374e1c77d1da0cd8d13dfff39f5877}{Baseline::ComputeVisError}(\hyperlink{classSource}{Source} \&source, double hour\_\-angle, double wavenumber) ]Implement computations of error in visibility. This function returns an error of zero for now. 
+\end{DoxyDescription}
+
+\label{todo__todo000009}
+\hypertarget{todo__todo000009}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classBaseline_af5d2d827062aae6eaff5440c60d3d0b4}{Baseline::ComputeVisibility}(\hyperlink{classSource}{Source} \&source, double hour\_\-angle, double wavenumber) ]Rewrite this function to work with the new class definition. 
+
+This calculation could be farmed out to a GPU very easily. 
+\end{DoxyDescription}
+
+\label{todo__todo000005}
+\hypertarget{todo__todo000005}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classBaseline_a817d0c4e83714b68efcc7fb7fdac9a02}{Baseline::GetVisibility}(\hyperlink{classSource}{Source} \&source, double hour\_\-angle, double wavenumber) ]Switch the hash lookup over to a multihash instead of using strings? 
+\end{DoxyDescription}
+
+\label{todo__todo000015}
+\hypertarget{todo__todo000015}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}(int argc, char $\ast$argv\mbox{[}\mbox{]}) ]Determine where a forward declaration will suffice, rather than including header files 
+\end{DoxyDescription}
+
+\label{todo__todo000011}
+\hypertarget{todo__todo000011}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classObservation_aa2ee58b5ea31a94720e891eef7554898}{Observation::ReadObservation\_\-Descriptive}(\hyperlink{classArray}{Array} $\ast$array, string filename, string comment\_\-chars) ]Perhaps issue a warning, but keep going? 
+\end{DoxyDescription}
+
+\label{todo__todo000017}
+\hypertarget{todo__todo000017}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{oifits__sim_8h_a605cac6d1c5a57adc6806b0e3a6a4db7}{run\_\-sim}(const \hyperlink{classVisSimParams}{VisSimParams} $\ast$p) ]Check that all parameters are specified here instead of in the gui\_\-main and main functions. 
+
+Pass comment\_\-chars to file reading functions rather than have it be specified differently everywhere. 
+
+read in the file format type, right now it's locked to the descriptive only format. 
+\end{DoxyDescription}
+
+\label{todo__todo000010}
+\hypertarget{todo__todo000010}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{Observation_8cpp_a7b3b1fd442e24f879e0ecb8d83322aba}{SameObservation}(\hyperlink{classObservation}{Observation} \&A, \hyperlink{classObservation}{Observation} \&B) ]Re-\/enable this exception. 
+\end{DoxyDescription}
+
+\label{todo__todo000012}
+\hypertarget{todo__todo000012}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classSource_a6ddbe3353cd4d57bcad7010c70a1b06c}{Source::InitFluxes}(char band, double background\_\-magnitude, double sky\_\-background\_\-aperture) ]Implement more than just JHK bands here. Needs to work at optical wavelengths too. 
+\end{DoxyDescription}
+
+\label{todo__todo000013}
+\hypertarget{todo__todo000013}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classSource_a1b9f408aa6c5dcd5550e9cb28922e3af}{Source::Spectrum}(double wavenumber) ]Remove this function, sources shouldn't calculate their visibilities, that is the baseline's job. 
+\end{DoxyDescription}
+
+\label{todo__todo000014}
+\hypertarget{todo__todo000014}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{classTriplet_a1ca8200db446ed4018debea8ff3cfd2e}{Triplet::ContainsBaseline}(string bl\_\-name) ]We could probably implment this as a hash lookup instead of a string operation this should make the lookup slightly faster. 
+\end{DoxyDescription}
+
+\label{todo__todo000020}
+\hypertarget{todo__todo000020}{}
+ 
+\begin{DoxyDescription}
+\item[Class \hyperlink{classVisSimParams}{VisSimParams} ]It would be nice to have this class print out the missing parameters with some information. 
+\end{DoxyDescription}
+
+\label{todo__todo000016}
+\hypertarget{todo__todo000016}{}
+ 
+\begin{DoxyDescription}
+\item[Member \hyperlink{oifits__sim_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}{write\_\-oifits\_\-file}(float declination, string datafile, \hyperlink{classArray}{Array} s, \hyperlink{classSpectralMode}{SpectralMode} spec, \hyperlink{classPowerSpectrum}{PowerSpectrum} Power, int Npow, \hyperlink{classBispectrum}{Bispectrum} $\ast$pBispec, int Nbs, \hyperlink{classRow}{Row$<$ double $>$}time) ]Pull the station index from the station object 
 \end{DoxyDescription}

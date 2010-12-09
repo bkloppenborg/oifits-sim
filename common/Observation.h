@@ -10,27 +10,32 @@
 #include <tr1/unordered_map>
 
 #include "Array.h"
-#include "Baseline.h"
 #include "Station.h"
+#include "Baseline.h"
+#include "Triplet.h"
 
 using namespace std;
 typedef std::tr1::unordered_map<string, string> BLNameHash;
+typedef std::tr1::unordered_map<string, string> TNameHash;
 
 class Observation
 {
     // Probably shouldn't be public, but it seems to be the convention in this set of code.
-  public:
+  private:
     Array * mArray;
     double mJD;         // The Full Julian Date of the observation (including time)
     double mHA;         // The hour angle of the observation
     bool   mComputeHA;  // A boolean flag to indicate that the hour angle has not been computed.
     
-    vector<Baseline>    mBaselines;
     vector<Station>     mStations;
+    vector<Baseline>    mBaselines;
+    vector<Triplet>     mTriplets;
 
   private:
-    vector<Baseline>    FindBaselines(vector<Station> stations, string exclude_baselines);
     vector<Station>     FindStations(string telescopes);
+    vector<Baseline>    FindBaselines(vector<Station> stations, string exclude_baselines);
+    vector<Triplet>     FindTriplets(vector<Station> stations, string exclude_baselines);  
+
     double  GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long);
     double  GetSiderealTime(double jd_high, double jd_low, double ee);
     

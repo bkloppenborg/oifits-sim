@@ -43,7 +43,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_4d13266a1c5bff2fae36413c697d20c0.html">common</a>
+  <div class="navpath"><a class="el" href="dir_82f1f55b83bdd3b3904a9039ee26bdd3.html">common</a>
   </div>
 </div>
 <div class="contents">
@@ -57,8 +57,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00008"></a><a class="code" href="classFTPhaseABCD1.html">00008</a> <span class="keyword">class </span><a class="code" href="classFTPhaseABCD1.html">FTPhaseABCD1</a>
 <a name="l00009"></a>00009 {
 <a name="l00010"></a>00010   <span class="keyword">public</span>:
-<a name="l00011"></a>00011     <a class="code" href="classFTPhaseABCD1.html#a5cbce7f05ad5e81f40f3ab40ddb3faf0">FTPhaseABCD1</a>(<span class="keywordtype">int</span> nbins, <span class="keywordtype">int</span> frames_per_bin, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> * spectr,
-<a name="l00012"></a>00012                  <a class="code" href="classModulator.html">Modulator</a> * modulator);
+<a name="l00011"></a>00011     <a class="code" href="classFTPhaseABCD1.html#a5cbce7f05ad5e81f40f3ab40ddb3faf0">FTPhaseABCD1</a>(<span class="keywordtype">int</span> <a class="code" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">nbins</a>, <span class="keywordtype">int</span> <a class="code" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">frames_per_bin</a>, <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> * <a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">spectr</a>,
+<a name="l00012"></a>00012                  <a class="code" href="classModulator.html">Modulator</a> * <a class="code" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">modulator</a>);
 <a name="l00013"></a>00013     <span class="keyword">virtual</span> <a class="code" href="classFTPhaseABCD1.html#adca39b254b058fc6ebc624354bec5255">~ FTPhaseABCD1</a>();
 <a name="l00014"></a>00014   <span class="keyword">public</span>:
 <a name="l00015"></a>00015 
@@ -110,29 +110,29 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00061"></a><a class="code" href="classFTPhaseABCD1.html#a96dfa4270b568d344a29313dcf36874f">00061</a>     <span class="keywordtype">double</span> <a class="code" href="classFTPhaseABCD1.html#a96dfa4270b568d344a29313dcf36874f">search_OPD_steplength</a>;
 <a name="l00062"></a>00062 
 <a name="l00063"></a>00063   <span class="keyword">private</span>:
-<a name="l00064"></a>00064     <span class="keywordtype">int</span> nbins;
+<a name="l00064"></a><a class="code" href="classFTPhaseABCD1.html#a6346350122f18739641a583fa6bb6480">00064</a>     <span class="keywordtype">int</span> nbins;
 <a name="l00065"></a>00065 
-<a name="l00066"></a>00066     <span class="keywordtype">int</span> frames_per_bin;
+<a name="l00066"></a><a class="code" href="classFTPhaseABCD1.html#a5f8098aa51b878962500a3bae1eac959">00066</a>     <span class="keywordtype">int</span> frames_per_bin;
 <a name="l00067"></a>00067 
-<a name="l00068"></a>00068     <span class="keywordtype">int</span> framecounter;
+<a name="l00068"></a><a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">00068</a>     <span class="keywordtype">int</span> <a class="code" href="classFTPhaseABCD1.html#a2db315608806d1b281341482fd8123e7">framecounter</a>;
 <a name="l00069"></a>00069 
-<a name="l00070"></a>00070     <span class="keywordtype">int</span> nchannels;              <span class="comment">// number of channels</span>
+<a name="l00070"></a><a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">00070</a>     <span class="keywordtype">int</span> <a class="code" href="classFTPhaseABCD1.html#adc6d698b02a5ac590368df1c94ef1f9c">nchannels</a>;              <span class="comment">// number of channels</span>
 <a name="l00071"></a>00071 
-<a name="l00072"></a>00072     <span class="keywordtype">double</span> previous_time;       <span class="comment">// used in frame acquisition routine</span>
+<a name="l00072"></a><a class="code" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">00072</a>     <span class="keywordtype">double</span> <a class="code" href="classFTPhaseABCD1.html#a42f5c115652dfc81584d2784f129f714">previous_time</a>;       <span class="comment">// used in frame acquisition routine</span>
 <a name="l00073"></a>00073 
-<a name="l00074"></a>00074     <span class="keywordtype">double</span> previous_opd;        <span class="comment">// used for unwrapping</span>
+<a name="l00074"></a><a class="code" href="classFTPhaseABCD1.html#a4775273ef7115bdb72e25501d0c948f3">00074</a>     <span class="keywordtype">double</span> <a class="code" href="classFTPhaseABCD1.html#a4775273ef7115bdb72e25501d0c948f3">previous_opd</a>;        <span class="comment">// used for unwrapping</span>
 <a name="l00075"></a>00075 
-<a name="l00076"></a>00076     <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> *spectr;
+<a name="l00076"></a><a class="code" href="classFTPhaseABCD1.html#ab56ac2436c8084fb4601d64686338519">00076</a>     <a class="code" href="classSpectralMode.html" title="A class to represent the spectral mode(s) of the instrument.">SpectralMode</a> *spectr;
 <a name="l00077"></a>00077 
-<a name="l00078"></a>00078     <a class="code" href="classModulator.html">Modulator</a> *modulator;
+<a name="l00078"></a><a class="code" href="classFTPhaseABCD1.html#adc5fbcfc33764d9ccf0ab886e2d1899c">00078</a>     <a class="code" href="classModulator.html">Modulator</a> *modulator;
 <a name="l00079"></a>00079 
-<a name="l00080"></a>00080     <a class="code" href="classRow.html">Row &lt; double &gt;</a>modulator_position;   <span class="comment">// [ framenumber ]</span>
+<a name="l00080"></a><a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">00080</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPhaseABCD1.html#ab5f6042aa8eee4a574fbfd72279f81ca">modulator_position</a>;   <span class="comment">// [ framenumber ]</span>
 <a name="l00081"></a>00081 
-<a name="l00082"></a>00082     <a class="code" href="classRow.html">Row &lt; double &gt;</a>deltamod;     <span class="comment">// [ framenumber ]</span>
+<a name="l00082"></a><a class="code" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">00082</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPhaseABCD1.html#aeb7776acda071f75923ff5ffe51b8d1e">deltamod</a>;     <span class="comment">// [ framenumber ]</span>
 <a name="l00083"></a>00083 
-<a name="l00084"></a>00084     <a class="code" href="classRow.html">Row &lt; double &gt;</a>frametime;    <span class="comment">// [ framenumber ]</span>
+<a name="l00084"></a><a class="code" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">00084</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPhaseABCD1.html#a7dacaa305568f8fc4d0a59f4df383142">frametime</a>;    <span class="comment">// [ framenumber ]</span>
 <a name="l00085"></a>00085 
-<a name="l00086"></a>00086     <a class="code" href="classRow.html">Row &lt; double &gt;</a>frameduration;
+<a name="l00086"></a><a class="code" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">00086</a>     <a class="code" href="classRow.html">Row &lt; double &gt;</a><a class="code" href="classFTPhaseABCD1.html#a21916a5951e6c54a7aa568642769b614">frameduration</a>;
 <a name="l00087"></a>00087 
 <a name="l00088"></a>00088 };
 <a name="l00089"></a>00089 
@@ -151,7 +151,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:57 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

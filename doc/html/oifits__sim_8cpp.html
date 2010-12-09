@@ -43,18 +43,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>File&nbsp;Members</span></a></li>
     </ul>
   </div>
-  <div class="navpath"><a class="el" href="dir_f18ddd31d8999c44835cf8bd69077007.html">vis_sim</a>
+  <div class="navpath"><a class="el" href="dir_72ef693a9b20303b80390e494a4910ad.html">vis_sim</a>
   </div>
 </div>
 <div class="contents">
 <h1>oifits_sim.cpp File Reference</h1><code>#include &lt;cstdlib&gt;</code><br/>
 <code>#include &lt;string&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;list&gt;</code><br/>
+<code>#include &quot;<a class="el" href="oifits__sim_8h_source.html">oifits_sim.h</a>&quot;</code><br/>
 <code>#include &quot;exchange.h&quot;</code><br/>
+<code>#include &quot;oifile.h&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Array_8h_source.html">Array.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Baseline_8h_source.html">Baseline.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Bispectrum_8h_source.html">Bispectrum.h</a>&quot;</code><br/>
-<code>#include &quot;<a class="el" href="HourAngle_8h_source.html">HourAngle.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="Instrument_8h_source.html">Instrument.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="NoiseModel_8h_source.html">NoiseModel.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="PowerSpectrum_8h_source.html">PowerSpectrum.h</a>&quot;</code><br/>
@@ -63,20 +65,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &quot;<a class="el" href="Source_8h_source.html">Source.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="SpectralMode_8h_source.html">SpectralMode.h</a>&quot;</code><br/>
 <code>#include &quot;<a class="el" href="UVPoint_8h_source.html">UVPoint.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="VisSimParams_8h_source.html">VisSimParams.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="Observation_8h_source.html">Observation.h</a>&quot;</code><br/>
 
 <p><a href="oifits__sim_8cpp_source.html">Go to the source code of this file.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a9c99622adbe6cfcb37111a50422826e3">Vis2Pow</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, int Nwav, int Npow)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#ae964626ec80ff322718c79dbbf0e843e">Vis2Bis</a> (<a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, int N, int Nwav, int Nbs, int Nha)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPowerSpectrum.html">PowerSpectrum</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a2087f143f88c82a1dc505b4c0d5de23b">GenPower</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Npow, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t1, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t2, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;u, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;v)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBispectrum.html">Bispectrum</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a86331f146700f899da51ece6b750b059">GenBispec</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Nbs, int Nha, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t1, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t2, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;u, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPowerSpectrum.html">PowerSpectrum</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#aa1122d0991d23b3c6fcc3e4ad8d7ce3e">GenPower</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Npow, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t1, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t2, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;u, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;v)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBispectrum.html">Bispectrum</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a71f2cea8183c417db70abae2e7ba130c">GenBispec</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classMatrix.html">Matrix</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; &amp;visibility, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classObservation.html">Observation</a> &amp;obs, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, int Nbs, int Nha, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t1, <a class="el" href="classMatrix.html">Matrix</a>&lt; int &gt; &amp;t2, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;u, <a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt; &amp;v)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#abc8d1aa870a53f018b7e1e79a7968041">wgs84_to_geoc</a> (double lat, double height, double *GeocLat, double *GeocRadius)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#af7f7af2a9a20b52d3e4fd0ebc9186039">write_oifits_file</a> (float declination, string datafile, <a class="el" href="classArray.html">Array</a> s, <a class="el" href="classSpectralMode.html">SpectralMode</a> spec, <a class="el" href="classPowerSpectrum.html">PowerSpectrum</a> Power, int Npow, <a class="el" href="classBispectrum.html">Bispectrum</a> *pBispec, int Nbs, <a class="el" href="classRow.html">Row</a>&lt; double &gt;time)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a610c2160fd98956573bf947a8a97ec56">generate_oifits</a> (<a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;spec, <a class="el" href="classHourAngle.html">HourAngle</a> &amp;ha, <a class="el" href="classSource.html">Source</a> &amp;target, <a class="el" href="classArray.html">Array</a> &amp;s, <a class="el" href="classInstrument.html">Instrument</a> &amp;inst, string oifits_filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="oifits__sim_8cpp.html#a605cac6d1c5a57adc6806b0e3a6a4db7">run_sim</a> (const <a class="el" href="classVisSimParams.html">VisSimParams</a> *p)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
-<a class="anchor" id="a86331f146700f899da51ece6b750b059"></a><!-- doxytag: member="oifits_sim.cpp::GenBispec" ref="a86331f146700f899da51ece6b750b059" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Array &amp;s, Instrument &amp;inst, int Nbs, int Nha, Matrix&lt; int &gt; &amp;t1, Matrix&lt; int &gt; &amp;t2, Matrix&lt; double &gt; &amp;u, Matrix&lt; double &gt; &amp;v)" -->
+<a class="anchor" id="a71f2cea8183c417db70abae2e7ba130c"></a><!-- doxytag: member="oifits_sim.cpp::GenBispec" ref="a71f2cea8183c417db70abae2e7ba130c" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Observation &amp;obs, Instrument &amp;inst, int Nbs, int Nha, Matrix&lt; int &gt; &amp;t1, Matrix&lt; int &gt; &amp;t2, Matrix&lt; double &gt; &amp;u, Matrix&lt; double &gt; &amp;v)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -101,8 +105,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -155,64 +159,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00161">161</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00146">146</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a610c2160fd98956573bf947a8a97ec56"></a><!-- doxytag: member="oifits_sim.cpp::generate_oifits" ref="a610c2160fd98956573bf947a8a97ec56" args="(SpectralMode &amp;spec, HourAngle &amp;ha, Source &amp;target, Array &amp;s, Instrument &amp;inst, string oifits_filename)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void generate_oifits </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classSpectralMode.html">SpectralMode</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>spec</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classHourAngle.html">HourAngle</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>ha</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classSource.html">Source</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>target</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="classInstrument.html">Instrument</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>inst</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">string&nbsp;</td>
-          <td class="paramname"> <em>oifits_filename</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00566">566</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2087f143f88c82a1dc505b4c0d5de23b"></a><!-- doxytag: member="oifits_sim.cpp::GenPower" ref="a2087f143f88c82a1dc505b4c0d5de23b" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Array &amp;s, Instrument &amp;inst, int Npow, Matrix&lt; int &gt; &amp;t1, Matrix&lt; int &gt; &amp;t2, Matrix&lt; double &gt; &amp;u, Matrix&lt; double &gt; &amp;v)" -->
+<a class="anchor" id="aa1122d0991d23b3c6fcc3e4ad8d7ce3e"></a><!-- doxytag: member="oifits_sim.cpp::GenPower" ref="aa1122d0991d23b3c6fcc3e4ad8d7ce3e" args="(SpectralMode &amp;spec, Matrix&lt; Complex &gt; &amp;visibility, Source &amp;target, Observation &amp;obs, Instrument &amp;inst, int Npow, Matrix&lt; int &gt; &amp;t1, Matrix&lt; int &gt; &amp;t2, Matrix&lt; double &gt; &amp;u, Matrix&lt; double &gt; &amp;v)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -237,8 +188,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>s</em>, </td>
+          <td class="paramtype"><a class="el" href="classObservation.html">Observation</a> &amp;&nbsp;</td>
+          <td class="paramname"> <em>obs</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -285,7 +236,32 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00108">108</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00094">94</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a605cac6d1c5a57adc6806b0e3a6a4db7"></a><!-- doxytag: member="oifits_sim.cpp::run_sim" ref="a605cac6d1c5a57adc6806b0e3a6a4db7" args="(const VisSimParams *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void run_sim </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classVisSimParams.html">VisSimParams</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000017">Todo:</a></b></dt><dd>Check that all parameters are specified here instead of in the gui_main and main functions. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000018">Todo:</a></b></dt><dd>Pass comment_chars to file reading functions rather than have it be specified differently everywhere. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000019">Todo:</a></b></dt><dd>read in the file format type, right now it's locked to the descriptive only format. </dd></dl>
+</p>
+
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00670">670</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
@@ -332,7 +308,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00070">70</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00060">60</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
@@ -367,7 +343,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00051">51</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00041">41</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
@@ -419,7 +395,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00313">313</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00299">299</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
@@ -490,7 +466,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00343">343</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
+<p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000016">Todo:</a></b></dt><dd>Pull the station index from the station object </dd></dl>
+</p>
+
+<p>Definition at line <a class="el" href="oifits__sim_8cpp_source.html#l00327">327</a> of file <a class="el" href="oifits__sim_8cpp_source.html">oifits_sim.cpp</a>.</p>
 
 </div>
 </div>
@@ -509,7 +488,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

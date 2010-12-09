@@ -3,14 +3,52 @@
 \label{Simulator_8cpp}\index{common/Simulator.cpp@{common/Simulator.cpp}}
 }
 {\ttfamily \#include \char`\"{}Simulator.h\char`\"{}}\par
+{\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$fstream$>$}\par
+{\ttfamily \#include $<$stdexcept$>$}\par
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\footnotesize template$<$typename T , typename P $>$ }\\T \hyperlink{Simulator_8cpp_a3482e4fb66b976aa016d22c41cf41830}{remove\_\-if} (T beg, T end, P pred)
+\item 
 double \hyperlink{Simulator_8cpp_a0445317b8b5fbc8bbf74271f4a43889c}{sinc} (double number)
+\item 
+void \hyperlink{Simulator_8cpp_aa4306b3f9de56846c29159ec0006d9af}{StringSplit} (string str, string delim, vector$<$ string $>$ \&results)
+\item 
+string \hyperlink{Simulator_8cpp_aedc3a2d627c34a475a62337fc5424453}{StripWhitespace} (string str)
+\item 
+void \hyperlink{Simulator_8cpp_a22e796200dc87e9852a8af124fbac832}{StripWhitespace} (vector$<$ string $>$ \&strings)
+\item 
+vector$<$ string $>$ \hyperlink{Simulator_8cpp_a3b6003aef2dd8107d063fd27f5295a07}{ReadFile} (string filename, string comment\_\-chars, string error\_\-message)
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
+\hypertarget{Simulator_8cpp_a3b6003aef2dd8107d063fd27f5295a07}{
+\index{Simulator.cpp@{Simulator.cpp}!ReadFile@{ReadFile}}
+\index{ReadFile@{ReadFile}!Simulator.cpp@{Simulator.cpp}}
+\subsubsection[{ReadFile}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ ReadFile (string {\em filename}, \/  string {\em comment\_\-chars}, \/  string {\em error\_\-message})}}
+\label{Simulator_8cpp_a3b6003aef2dd8107d063fd27f5295a07}
+Reads in a file, returns non-\/comment lines as a vector of strings If the file cannot be opened, an exception is thrown with the message contained in error\_\-message 
+
+
+\begin{DoxyExceptions}{Exceptions}
+\item[{\em runtime\_\-error}]Error opening array file The array file could not be located. It is likely that the user just specified an invalid path. \end{DoxyExceptions}
+
+
+
+
+Definition at line 59 of file Simulator.cpp.
+
+\hypertarget{Simulator_8cpp_a3482e4fb66b976aa016d22c41cf41830}{
+\index{Simulator.cpp@{Simulator.cpp}!remove\_\-if@{remove\_\-if}}
+\index{remove\_\-if@{remove\_\-if}!Simulator.cpp@{Simulator.cpp}}
+\subsubsection[{remove\_\-if}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename P $>$ T remove\_\-if (T {\em beg}, \/  T {\em end}, \/  P {\em pred})\hspace{0.3cm}{\ttfamily  \mbox{[}inline\mbox{]}}}}
+\label{Simulator_8cpp_a3482e4fb66b976aa016d22c41cf41830}
+
+
+Definition at line 8 of file Simulator.cpp.
+
 \hypertarget{Simulator_8cpp_a0445317b8b5fbc8bbf74271f4a43889c}{
 \index{Simulator.cpp@{Simulator.cpp}!sinc@{sinc}}
 \index{sinc@{sinc}!Simulator.cpp@{Simulator.cpp}}
@@ -18,5 +56,32 @@ double \hyperlink{Simulator_8cpp_a0445317b8b5fbc8bbf74271f4a43889c}{sinc} (doubl
 \label{Simulator_8cpp_a0445317b8b5fbc8bbf74271f4a43889c}
 
 
-Definition at line 3 of file Simulator.cpp.
+Definition at line 17 of file Simulator.cpp.
+
+\hypertarget{Simulator_8cpp_aa4306b3f9de56846c29159ec0006d9af}{
+\index{Simulator.cpp@{Simulator.cpp}!StringSplit@{StringSplit}}
+\index{StringSplit@{StringSplit}!Simulator.cpp@{Simulator.cpp}}
+\subsubsection[{StringSplit}]{\setlength{\rightskip}{0pt plus 5cm}void StringSplit (string {\em str}, \/  string {\em delim}, \/  vector$<$ string $>$ \& {\em results})}}
+\label{Simulator_8cpp_aa4306b3f9de56846c29159ec0006d9af}
+
+
+Definition at line 25 of file Simulator.cpp.
+
+\hypertarget{Simulator_8cpp_a22e796200dc87e9852a8af124fbac832}{
+\index{Simulator.cpp@{Simulator.cpp}!StripWhitespace@{StripWhitespace}}
+\index{StripWhitespace@{StripWhitespace}!Simulator.cpp@{Simulator.cpp}}
+\subsubsection[{StripWhitespace}]{\setlength{\rightskip}{0pt plus 5cm}void StripWhitespace (vector$<$ string $>$ \& {\em strings})}}
+\label{Simulator_8cpp_a22e796200dc87e9852a8af124fbac832}
+
+
+Definition at line 48 of file Simulator.cpp.
+
+\hypertarget{Simulator_8cpp_aedc3a2d627c34a475a62337fc5424453}{
+\index{Simulator.cpp@{Simulator.cpp}!StripWhitespace@{StripWhitespace}}
+\index{StripWhitespace@{StripWhitespace}!Simulator.cpp@{Simulator.cpp}}
+\subsubsection[{StripWhitespace}]{\setlength{\rightskip}{0pt plus 5cm}string StripWhitespace (string {\em str})}}
+\label{Simulator_8cpp_aedc3a2d627c34a475a62337fc5424453}
+
+
+Definition at line 41 of file Simulator.cpp.
 

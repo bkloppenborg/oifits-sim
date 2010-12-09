@@ -52,11 +52,39 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#acd78f51a4e9289f0baa700911a8d57e8">GDEstimate</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a5f5d73040e778dbf7115ab23f6bb9c9d">FTBasden</a> (int n_coh, int ndelta_coh, int n_incoh, <a class="el" href="classSpectralMode.html">SpectralMode</a> *spectr, <a class="el" href="classModulator.html">Modulator</a> *modulator, int w1type, int w2type)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a5f5d73040e778dbf7115ab23f6bb9c9d">FTBasden</a> (int <a class="el" href="classFTBasden.html#a73eaee344474c1a9684092fc153c276a">n_coh</a>, int <a class="el" href="classFTBasden.html#ad4f3178302c51d384fd6982291b1c013">ndelta_coh</a>, int <a class="el" href="classFTBasden.html#a08a54e66d27db92948d214db32a271d4">n_incoh</a>, <a class="el" href="classSpectralMode.html">SpectralMode</a> *<a class="el" href="classFTBasden.html#aed5e060486471328c4b0cb30b828d242">spectr</a>, <a class="el" href="classModulator.html">Modulator</a> *<a class="el" href="classFTBasden.html#a1042a3192c3eeedb17421dea33637fc2">modulator</a>, int <a class="el" href="classFTBasden.html#abebf10bcdc72528f9c98459e91524545">w1type</a>, int <a class="el" href="classFTBasden.html#ac2f9b89d66840aba0f7ce01e5d3d0386">w2type</a>)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a76fe6fade8b81a074ea5e1724dbe4d6c">StoreOneFrame</a> (<a class="el" href="classRow.html">Row</a>&lt; int &gt; &amp;detectorframe, double time)</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a4dcdeaee548ee6378d126b348c943f39">frames</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a306a1bc5d8932b9eb3ba98d670ea631b">OPD_estimate</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a8d1e981f8af57e71a569f026b8ab9980">W1</a> (int pixel)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#abe46b656653caaabd727215148634ff8">W2</a> (int pixel)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a8ccb1870a2b2676f9c8b89a79b80deef">ComputeF1</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a1a78fe9de40c29a7379ff938e5f87cb3">ComputeF2</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#afb9ff4ea4467ec2245c72dbda5dd55a1">ComputeF3</a> ()</td></tr>
+<tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#ae346f291d45f1d1d99a4f7663c13c2f6">framecounter</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a5f79935ce61595d637dc6c05071dbc9c">nchannels</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a427aed6fcb0f1e47aa7c3f074e135881">ntrials</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a0ce6d1dfd48295970fae36c2fd66c7c0">scalefactor</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a73eaee344474c1a9684092fc153c276a">n_coh</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#ad4f3178302c51d384fd6982291b1c013">ndelta_coh</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a08a54e66d27db92948d214db32a271d4">n_incoh</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a991d9edce4679a24a08b23de51e070cb">a</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#ab76d8343edad3ec52f4677b4b0444027">previous_time</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSpectralMode.html">SpectralMode</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#aed5e060486471328c4b0cb30b828d242">spectr</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classModulator.html">Modulator</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a1042a3192c3eeedb17421dea33637fc2">modulator</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a3c5201a3b733632396c088c037dfb452">modulator_position</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a8613c1a7437bdd9f42b8bd4565a3c625">deltamod</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a185b651a1ce01fbe60e51ce748b07899">meantime</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a5ccd0ee80c5cb01a9538bd72e6079af4">frameduration</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#aabfa0e2dc66143dfdf26316c1b545eef">F1</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#a41536d290b26183806301f7601bbeb27">F2</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#ad7ec1f815688a42e02211d7fa98b6a60">F3</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classRow.html">Row</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#aecafc948a0316d86977907073b6a6603">gd</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#abebf10bcdc72528f9c98459e91524545">w1type</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFTBasden.html#ac2f9b89d66840aba0f7ce01e5d3d0386">w2type</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 
@@ -122,6 +150,63 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a8ccb1870a2b2676f9c8b89a79b80deef"></a><!-- doxytag: member="FTBasden::ComputeF1" ref="a8ccb1870a2b2676f9c8b89a79b80deef" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FTBasden::ComputeF1 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8cpp_source.html#l00150">150</a> of file <a class="el" href="FTBasden_8cpp_source.html">FTBasden.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1a78fe9de40c29a7379ff938e5f87cb3"></a><!-- doxytag: member="FTBasden::ComputeF2" ref="a1a78fe9de40c29a7379ff938e5f87cb3" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FTBasden::ComputeF2 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8cpp_source.html#l00172">172</a> of file <a class="el" href="FTBasden_8cpp_source.html">FTBasden.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="afb9ff4ea4467ec2245c72dbda5dd55a1"></a><!-- doxytag: member="FTBasden::ComputeF3" ref="afb9ff4ea4467ec2245c72dbda5dd55a1" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FTBasden::ComputeF3 </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8cpp_source.html#l00195">195</a> of file <a class="el" href="FTBasden_8cpp_source.html">FTBasden.cpp</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="acd78f51a4e9289f0baa700911a8d57e8"></a><!-- doxytag: member="FTBasden::GDEstimate" ref="acd78f51a4e9289f0baa700911a8d57e8" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +255,152 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="a8d1e981f8af57e71a569f026b8ab9980"></a><!-- doxytag: member="FTBasden::W1" ref="a8d1e981f8af57e71a569f026b8ab9980" args="(int pixel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FTBasden::W1 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>pixel</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8cpp_source.html#l00024">24</a> of file <a class="el" href="FTBasden_8cpp_source.html">FTBasden.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abe46b656653caaabd727215148634ff8"></a><!-- doxytag: member="FTBasden::W2" ref="abe46b656653caaabd727215148634ff8" args="(int pixel)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double FTBasden::W2 </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>pixel</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8cpp_source.html#l00052">52</a> of file <a class="el" href="FTBasden_8cpp_source.html">FTBasden.cpp</a>.</p>
+
+</div>
+</div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a991d9edce4679a24a08b23de51e070cb"></a><!-- doxytag: member="FTBasden::a" ref="a991d9edce4679a24a08b23de51e070cb" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classFTBasden.html#a991d9edce4679a24a08b23de51e070cb">FTBasden::a</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00037">37</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8613c1a7437bdd9f42b8bd4565a3c625"></a><!-- doxytag: member="FTBasden::deltamod" ref="a8613c1a7437bdd9f42b8bd4565a3c625" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#a8613c1a7437bdd9f42b8bd4565a3c625">FTBasden::deltamod</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00047">47</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aabfa0e2dc66143dfdf26316c1b545eef"></a><!-- doxytag: member="FTBasden::F1" ref="aabfa0e2dc66143dfdf26316c1b545eef" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; <a class="el" href="classFTBasden.html#aabfa0e2dc66143dfdf26316c1b545eef">FTBasden::F1</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00054">54</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a41536d290b26183806301f7601bbeb27"></a><!-- doxytag: member="FTBasden::F2" ref="a41536d290b26183806301f7601bbeb27" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; <a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> &gt; <a class="el" href="classFTBasden.html#a41536d290b26183806301f7601bbeb27">FTBasden::F2</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00056">56</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad7ec1f815688a42e02211d7fa98b6a60"></a><!-- doxytag: member="FTBasden::F3" ref="ad7ec1f815688a42e02211d7fa98b6a60" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#ad7ec1f815688a42e02211d7fa98b6a60">FTBasden::F3</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00058">58</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae346f291d45f1d1d99a4f7663c13c2f6"></a><!-- doxytag: member="FTBasden::framecounter" ref="ae346f291d45f1d1d99a4f7663c13c2f6" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#ae346f291d45f1d1d99a4f7663c13c2f6">FTBasden::framecounter</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00023">23</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5ccd0ee80c5cb01a9538bd72e6079af4"></a><!-- doxytag: member="FTBasden::frameduration" ref="a5ccd0ee80c5cb01a9538bd72e6079af4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#a5ccd0ee80c5cb01a9538bd72e6079af4">FTBasden::frameduration</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00051">51</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a4dcdeaee548ee6378d126b348c943f39"></a><!-- doxytag: member="FTBasden::frames" ref="a4dcdeaee548ee6378d126b348c943f39" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -186,6 +416,141 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 </div>
 </div>
+<a class="anchor" id="aecafc948a0316d86977907073b6a6603"></a><!-- doxytag: member="FTBasden::gd" ref="aecafc948a0316d86977907073b6a6603" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#aecafc948a0316d86977907073b6a6603">FTBasden::gd</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00060">60</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a185b651a1ce01fbe60e51ce748b07899"></a><!-- doxytag: member="FTBasden::meantime" ref="a185b651a1ce01fbe60e51ce748b07899" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#a185b651a1ce01fbe60e51ce748b07899">FTBasden::meantime</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00049">49</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1042a3192c3eeedb17421dea33637fc2"></a><!-- doxytag: member="FTBasden::modulator" ref="a1042a3192c3eeedb17421dea33637fc2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classModulator.html">Modulator</a>* <a class="el" href="classFTBasden.html#a1042a3192c3eeedb17421dea33637fc2">FTBasden::modulator</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00043">43</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3c5201a3b733632396c088c037dfb452"></a><!-- doxytag: member="FTBasden::modulator_position" ref="a3c5201a3b733632396c088c037dfb452" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classRow.html">Row</a>&lt; double &gt; <a class="el" href="classFTBasden.html#a3c5201a3b733632396c088c037dfb452">FTBasden::modulator_position</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00045">45</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a73eaee344474c1a9684092fc153c276a"></a><!-- doxytag: member="FTBasden::n_coh" ref="a73eaee344474c1a9684092fc153c276a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#a73eaee344474c1a9684092fc153c276a">FTBasden::n_coh</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00031">31</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a08a54e66d27db92948d214db32a271d4"></a><!-- doxytag: member="FTBasden::n_incoh" ref="a08a54e66d27db92948d214db32a271d4" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#a08a54e66d27db92948d214db32a271d4">FTBasden::n_incoh</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00035">35</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a5f79935ce61595d637dc6c05071dbc9c"></a><!-- doxytag: member="FTBasden::nchannels" ref="a5f79935ce61595d637dc6c05071dbc9c" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#a5f79935ce61595d637dc6c05071dbc9c">FTBasden::nchannels</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00025">25</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad4f3178302c51d384fd6982291b1c013"></a><!-- doxytag: member="FTBasden::ndelta_coh" ref="ad4f3178302c51d384fd6982291b1c013" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#ad4f3178302c51d384fd6982291b1c013">FTBasden::ndelta_coh</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00033">33</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a427aed6fcb0f1e47aa7c3f074e135881"></a><!-- doxytag: member="FTBasden::ntrials" ref="a427aed6fcb0f1e47aa7c3f074e135881" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#a427aed6fcb0f1e47aa7c3f074e135881">FTBasden::ntrials</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00027">27</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a306a1bc5d8932b9eb3ba98d670ea631b"></a><!-- doxytag: member="FTBasden::OPD_estimate" ref="a306a1bc5d8932b9eb3ba98d670ea631b" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -198,6 +563,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00020">20</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ab76d8343edad3ec52f4677b4b0444027"></a><!-- doxytag: member="FTBasden::previous_time" ref="ab76d8343edad3ec52f4677b4b0444027" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classFTBasden.html#ab76d8343edad3ec52f4677b4b0444027">FTBasden::previous_time</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00039">39</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a0ce6d1dfd48295970fae36c2fd66c7c0"></a><!-- doxytag: member="FTBasden::scalefactor" ref="a0ce6d1dfd48295970fae36c2fd66c7c0" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classFTBasden.html#a0ce6d1dfd48295970fae36c2fd66c7c0">FTBasden::scalefactor</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00029">29</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aed5e060486471328c4b0cb30b828d242"></a><!-- doxytag: member="FTBasden::spectr" ref="aed5e060486471328c4b0cb30b828d242" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classSpectralMode.html">SpectralMode</a>* <a class="el" href="classFTBasden.html#aed5e060486471328c4b0cb30b828d242">FTBasden::spectr</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00041">41</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="abebf10bcdc72528f9c98459e91524545"></a><!-- doxytag: member="FTBasden::w1type" ref="abebf10bcdc72528f9c98459e91524545" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#abebf10bcdc72528f9c98459e91524545">FTBasden::w1type</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00067">67</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac2f9b89d66840aba0f7ce01e5d3d0386"></a><!-- doxytag: member="FTBasden::w2type" ref="ac2f9b89d66840aba0f7ce01e5d3d0386" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classFTBasden.html#ac2f9b89d66840aba0f7ce01e5d3d0386">FTBasden::w2type</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="FTBasden_8h_source.html#l00069">69</a> of file <a class="el" href="FTBasden_8h_source.html">FTBasden.h</a>.</p>
 
 </div>
 </div>
@@ -220,7 +660,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

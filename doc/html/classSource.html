@@ -54,11 +54,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><a href="classSource-members.html">List of all members.</a></p>
 <table border="0" cellpadding="0" cellspacing="0">
 <tr><td colspan="2"><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#aba8cb9f6fa274c8079bd5715850bf967">Source</a> (const char *filename, char <a class="el" href="classSource.html#a380447fc2b80c1b6bc5c2a8b31ed6b98">band</a>, double <a class="el" href="classSource.html#a6a63845ae2495f7d0b9758e969ae34a5">magnitude</a>, double <a class="el" href="classSource.html#a01ad608788eb4c0e4a7b2a6228398394">temperature</a>, double <a class="el" href="classSource.html#af8077dd4bf90295d11680d6dbd0baea9">background_magnitude</a>, double <a class="el" href="classSource.html#aa21a6313f7ab7c41bb206ed05f0909cc">sky_background_aperture</a>, double <a class="el" href="classSource.html#acd65dbd79034b6bd27ce7bea9cddf80b">declination</a>)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a7a7af8ba36f94e74bf2d780f6636cfe4">Source</a> (const char *Source_file)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ad87c09b8cc1ee838435de12a93495e1e">GetVis</a> (<a class="el" href="classUVPoint.html">UVPoint</a> uv)</td></tr>
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Computes the Complex visibility of the source at the specified UV point.  <a href="#ad87c09b8cc1ee838435de12a93495e1e"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a>&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ad802ea02880525552b1feea0bde38244">GetVis</a> (double wavenumber, double time, <a class="el" href="classArray.html">Array</a> &amp;array, int index_station1, int index_station2)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ac22e28a4b81a37fddf86ca720e93ec08">Source</a> (const char *filename, char <a class="el" href="classSource.html#a380447fc2b80c1b6bc5c2a8b31ed6b98">band</a>, double <a class="el" href="classSource.html#a6a63845ae2495f7d0b9758e969ae34a5">magnitude</a>, double <a class="el" href="classSource.html#a01ad608788eb4c0e4a7b2a6228398394">temperature</a>, double <a class="el" href="classSource.html#af8077dd4bf90295d11680d6dbd0baea9">background_magnitude</a>, double <a class="el" href="classSource.html#aa21a6313f7ab7c41bb206ed05f0909cc">sky_background_aperture</a>, double <a class="el" href="classSource.html#acd65dbd79034b6bd27ce7bea9cddf80b">declination</a>, double <a class="el" href="classSource.html#a3378987660510b2ab4f02db5aa81791e">right_ascension</a>, double pixellation)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a62904da7bc93de0418c16bc3243adc3f">Source</a> (string filename, string comment_chars)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a1b9f408aa6c5dcd5550e9cb28922e3af">Spectrum</a> (double wavenumber)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a29c1541293674ddb2b9e7aa4cb130306">BackgroundSpectrum</a> (double wavenumber)</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
@@ -69,17 +66,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a6a63845ae2495f7d0b9758e969ae34a5">magnitude</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a01ad608788eb4c0e4a7b2a6228398394">temperature</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#acd65dbd79034b6bd27ce7bea9cddf80b">declination</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a3378987660510b2ab4f02db5aa81791e">right_ascension</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#af8077dd4bf90295d11680d6dbd0baea9">background_magnitude</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#aa21a6313f7ab7c41bb206ed05f0909cc">sky_background_aperture</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classMatrix.html">Matrix</a>&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ae39e6de7004f8f12968f38352c6c0f5e">source_image</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#ad8a9910f6a3d807ac0e1b42195ba4147">source_pixellation</a></td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSource.html#a6ddbe3353cd4d57bcad7010c70a1b06c">InitFluxes</a> (char <a class="el" href="classSource.html#a380447fc2b80c1b6bc5c2a8b31ed6b98">band</a>, double <a class="el" href="classSource.html#af8077dd4bf90295d11680d6dbd0baea9">background_magnitude</a>, double <a class="el" href="classSource.html#aa21a6313f7ab7c41bb206ed05f0909cc">sky_background_aperture</a>)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>A class to represent the source object. </p>
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00019">19</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00013">13</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aba8cb9f6fa274c8079bd5715850bf967"></a><!-- doxytag: member="Source::Source" ref="aba8cb9f6fa274c8079bd5715850bf967" args="(const char *filename, char band, double magnitude, double temperature, double background_magnitude, double sky_background_aperture, double declination)" -->
+<a class="anchor" id="ac22e28a4b81a37fddf86ca720e93ec08"></a><!-- doxytag: member="Source::Source" ref="ac22e28a4b81a37fddf86ca720e93ec08" args="(const char *filename, char band, double magnitude, double temperature, double background_magnitude, double sky_background_aperture, double declination, double right_ascension, double pixellation)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -123,7 +123,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>declination</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>declination</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>right_ascension</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>pixellation</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -134,30 +146,37 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00158">158</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00121">121</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7a7af8ba36f94e74bf2d780f6636cfe4"></a><!-- doxytag: member="Source::Source" ref="a7a7af8ba36f94e74bf2d780f6636cfe4" args="(const char *Source_file)" -->
+<a class="anchor" id="a62904da7bc93de0418c16bc3243adc3f"></a><!-- doxytag: member="Source::Source" ref="a62904da7bc93de0418c16bc3243adc3f" args="(string filename, string comment_chars)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Source::Source </td>
           <td>(</td>
-          <td class="paramtype">const char *&nbsp;</td>
-          <td class="paramname"> <em>Source_file</em></td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&nbsp;</td>
+          <td class="paramname"> <em>comment_chars</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Perhaps we could parse the source file in key-&gt;value pairs? </dd></dl>
-<dl><dt><b>Exceptions:</b></dt><dd>
+<p><dl><dt><b>Exceptions:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Error opening source file. The <a class="el" href="classSource.html" title="A class to represent the source object.">Source</a> file could not be opened.</td></tr>
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid FITS image filename The file specified by the user evidently does not exist.</td></tr>
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid source band The source band specified bythe user is not valid.</td></tr>
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid source magnitude The source magnitude was not defined</td></tr>
@@ -165,12 +184,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid sky background magnitude</td></tr>
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid sky background aperture</td></tr>
     <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid source declination</td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>runtime_error</em>&nbsp;</td><td>Invalid source declination</td></tr>
   </table>
   </dd>
 </dl>
 </p>
 
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00200">200</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00166">166</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
 
 </div>
 </div>
@@ -191,76 +211,45 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00115">115</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00077">77</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ad802ea02880525552b1feea0bde38244"></a><!-- doxytag: member="Source::GetVis" ref="ad802ea02880525552b1feea0bde38244" args="(double wavenumber, double time, Array &amp;array, int index_station1, int index_station2)" -->
+<a class="anchor" id="a6ddbe3353cd4d57bcad7010c70a1b06c"></a><!-- doxytag: member="Source::InitFluxes" ref="a6ddbe3353cd4d57bcad7010c70a1b06c" args="(char band, double background_magnitude, double sky_background_aperture)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> Source::GetVis </td>
+          <td class="memname">void Source::InitFluxes </td>
           <td>(</td>
-          <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>wavenumber</em>, </td>
+          <td class="paramtype">char&nbsp;</td>
+          <td class="paramname"> <em>band</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double&nbsp;</td>
-          <td class="paramname"> <em>time</em>, </td>
+          <td class="paramname"> <em>background_magnitude</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="classArray.html">Array</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>array</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>index_station1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>index_station2</em></td><td>&nbsp;</td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>sky_background_aperture</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td><td></td>
+          <td></td><td></td><td><code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00057">57</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Implement more than just JHK bands here. Needs to work at optical wavelengths too. </dd></dl>
+</p>
 
-</div>
-</div>
-<a class="anchor" id="ad87c09b8cc1ee838435de12a93495e1e"></a><!-- doxytag: member="Source::GetVis" ref="ad87c09b8cc1ee838435de12a93495e1e" args="(UVPoint uv)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="Matrix_8h.html#a37333e1628babc1863d6963489e5e9ea">Complex</a> Source::GetVis </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classUVPoint.html">UVPoint</a>&nbsp;</td>
-          <td class="paramname"> <em>uv</em></td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Computes the Complex visibility of the source at the specified UV point. </p>
-
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00032">32</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00082">82</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
 
 </div>
 </div>
@@ -279,8 +268,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </table>
 </div>
 <div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Remove this function, sources shouldn't calculate their visibilities, that is the baseline's job. </dd></dl>
 
-<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00102">102</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
+<p>Definition at line <a class="el" href="Source_8cpp_source.html#l00064">64</a> of file <a class="el" href="Source_8cpp_source.html">Source.cpp</a>.</p>
 
 </div>
 </div>
@@ -296,7 +286,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00040">40</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00036">36</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +301,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00029">29</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00024">24</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -326,7 +316,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00032">32</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00027">27</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -341,7 +331,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00038">38</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00033">33</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -356,7 +346,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00027">27</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00022">22</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -366,6 +356,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <table class="memname">
         <tr>
           <td class="memname">double <a class="el" href="classSource.html#a6a63845ae2495f7d0b9758e969ae34a5">Source::magnitude</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00029">29</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3378987660510b2ab4f02db5aa81791e"></a><!-- doxytag: member="Source::right_ascension" ref="a3378987660510b2ab4f02db5aa81791e" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classSource.html#a3378987660510b2ab4f02db5aa81791e">Source::right_ascension</a></td>
         </tr>
       </table>
 </div>
@@ -386,7 +391,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00042">42</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00038">38</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -401,7 +406,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00044">44</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00040">40</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -416,7 +421,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00031">31</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00026">26</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -431,7 +436,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00046">46</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00042">42</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -446,7 +451,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="Source_8h_source.html#l00036">36</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
+<p>Definition at line <a class="el" href="Source_8h_source.html#l00031">31</a> of file <a class="el" href="Source_8h_source.html">Source.h</a>.</p>
 
 </div>
 </div>
@@ -469,7 +474,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 1 00:38:48 2010 for OIFITS Simulator by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Dec 9 00:22:58 2010 for OIFITS Simulator by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

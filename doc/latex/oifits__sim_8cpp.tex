@@ -5,11 +5,13 @@
 {\ttfamily \#include $<$cstdlib$>$}\par
 {\ttfamily \#include $<$string$>$}\par
 {\ttfamily \#include $<$iostream$>$}\par
+{\ttfamily \#include $<$list$>$}\par
+{\ttfamily \#include \char`\"{}oifits\_\-sim.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}exchange.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}oifile.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}Array.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}Baseline.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}Bispectrum.h\char`\"{}}\par
-{\ttfamily \#include \char`\"{}HourAngle.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}Instrument.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}NoiseModel.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}PowerSpectrum.h\char`\"{}}\par
@@ -18,6 +20,8 @@
 {\ttfamily \#include \char`\"{}Source.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}SpectralMode.h\char`\"{}}\par
 {\ttfamily \#include \char`\"{}UVPoint.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}VisSimParams.h\char`\"{}}\par
+{\ttfamily \#include \char`\"{}Observation.h\char`\"{}}\par
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -25,45 +29,57 @@
 \item 
 \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \hyperlink{oifits__sim_8cpp_ae964626ec80ff322718c79dbbf0e843e}{Vis2Bis} (\hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, int N, int Nwav, int Nbs, int Nha)
 \item 
-\hyperlink{classPowerSpectrum}{PowerSpectrum} \hyperlink{oifits__sim_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}{GenPower} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Npow, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
+\hyperlink{classPowerSpectrum}{PowerSpectrum} \hyperlink{oifits__sim_8cpp_aa1122d0991d23b3c6fcc3e4ad8d7ce3e}{GenPower} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classObservation}{Observation} \&obs, \hyperlink{classInstrument}{Instrument} \&inst, int Npow, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
 \item 
-\hyperlink{classBispectrum}{Bispectrum} \hyperlink{oifits__sim_8cpp_a86331f146700f899da51ece6b750b059}{GenBispec} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, int Nbs, int Nha, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
+\hyperlink{classBispectrum}{Bispectrum} \hyperlink{oifits__sim_8cpp_a71f2cea8183c417db70abae2e7ba130c}{GenBispec} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classMatrix}{Matrix}$<$ \hyperlink{Matrix_8h_a37333e1628babc1863d6963489e5e9ea}{Complex} $>$ \&visibility, \hyperlink{classSource}{Source} \&target, \hyperlink{classObservation}{Observation} \&obs, \hyperlink{classInstrument}{Instrument} \&inst, int Nbs, int Nha, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t1, \hyperlink{classMatrix}{Matrix}$<$ int $>$ \&t2, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&u, \hyperlink{classMatrix}{Matrix}$<$ double $>$ \&v)
 \item 
 void \hyperlink{oifits__sim_8cpp_abc8d1aa870a53f018b7e1e79a7968041}{wgs84\_\-to\_\-geoc} (double lat, double height, double $\ast$GeocLat, double $\ast$GeocRadius)
 \item 
 void \hyperlink{oifits__sim_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}{write\_\-oifits\_\-file} (float declination, string datafile, \hyperlink{classArray}{Array} s, \hyperlink{classSpectralMode}{SpectralMode} spec, \hyperlink{classPowerSpectrum}{PowerSpectrum} Power, int Npow, \hyperlink{classBispectrum}{Bispectrum} $\ast$pBispec, int Nbs, \hyperlink{classRow}{Row}$<$ double $>$time)
 \item 
-void \hyperlink{oifits__sim_8cpp_a610c2160fd98956573bf947a8a97ec56}{generate\_\-oifits} (\hyperlink{classSpectralMode}{SpectralMode} \&spec, \hyperlink{classHourAngle}{HourAngle} \&ha, \hyperlink{classSource}{Source} \&target, \hyperlink{classArray}{Array} \&s, \hyperlink{classInstrument}{Instrument} \&inst, string oifits\_\-filename)
+void \hyperlink{oifits__sim_8cpp_a605cac6d1c5a57adc6806b0e3a6a4db7}{run\_\-sim} (const \hyperlink{classVisSimParams}{VisSimParams} $\ast$p)
 \end{DoxyCompactItemize}
 
 
 \subsection{Function Documentation}
-\hypertarget{oifits__sim_8cpp_a86331f146700f899da51ece6b750b059}{
+\hypertarget{oifits__sim_8cpp_a71f2cea8183c417db70abae2e7ba130c}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!GenBispec@{GenBispec}}
 \index{GenBispec@{GenBispec}!oifits_sim.cpp@{oifits\_\-sim.cpp}}
-\subsubsection[{GenBispec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bispectrum} GenBispec ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Nbs}, \/  int {\em Nha}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
-\label{oifits__sim_8cpp_a86331f146700f899da51ece6b750b059}
+\subsubsection[{GenBispec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Bispectrum} GenBispec ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Observation} \& {\em obs}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Nbs}, \/  int {\em Nha}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
+\label{oifits__sim_8cpp_a71f2cea8183c417db70abae2e7ba130c}
 
 
-Definition at line 161 of file oifits\_\-sim.cpp.
+Definition at line 146 of file oifits\_\-sim.cpp.
 
-\hypertarget{oifits__sim_8cpp_a610c2160fd98956573bf947a8a97ec56}{
-\index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!generate\_\-oifits@{generate\_\-oifits}}
-\index{generate\_\-oifits@{generate\_\-oifits}!oifits_sim.cpp@{oifits\_\-sim.cpp}}
-\subsubsection[{generate\_\-oifits}]{\setlength{\rightskip}{0pt plus 5cm}void generate\_\-oifits ({\bf SpectralMode} \& {\em spec}, \/  {\bf HourAngle} \& {\em ha}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  string {\em oifits\_\-filename})}}
-\label{oifits__sim_8cpp_a610c2160fd98956573bf947a8a97ec56}
-
-
-Definition at line 566 of file oifits\_\-sim.cpp.
-
-\hypertarget{oifits__sim_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}{
+\hypertarget{oifits__sim_8cpp_aa1122d0991d23b3c6fcc3e4ad8d7ce3e}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!GenPower@{GenPower}}
 \index{GenPower@{GenPower}!oifits_sim.cpp@{oifits\_\-sim.cpp}}
-\subsubsection[{GenPower}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PowerSpectrum} GenPower ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Array} \& {\em s}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Npow}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
-\label{oifits__sim_8cpp_a2087f143f88c82a1dc505b4c0d5de23b}
+\subsubsection[{GenPower}]{\setlength{\rightskip}{0pt plus 5cm}{\bf PowerSpectrum} GenPower ({\bf SpectralMode} \& {\em spec}, \/  {\bf Matrix}$<$ {\bf Complex} $>$ \& {\em visibility}, \/  {\bf Source} \& {\em target}, \/  {\bf Observation} \& {\em obs}, \/  {\bf Instrument} \& {\em inst}, \/  int {\em Npow}, \/  {\bf Matrix}$<$ int $>$ \& {\em t1}, \/  {\bf Matrix}$<$ int $>$ \& {\em t2}, \/  {\bf Matrix}$<$ double $>$ \& {\em u}, \/  {\bf Matrix}$<$ double $>$ \& {\em v})}}
+\label{oifits__sim_8cpp_aa1122d0991d23b3c6fcc3e4ad8d7ce3e}
 
 
-Definition at line 108 of file oifits\_\-sim.cpp.
+Definition at line 94 of file oifits\_\-sim.cpp.
+
+\hypertarget{oifits__sim_8cpp_a605cac6d1c5a57adc6806b0e3a6a4db7}{
+\index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!run\_\-sim@{run\_\-sim}}
+\index{run\_\-sim@{run\_\-sim}!oifits_sim.cpp@{oifits\_\-sim.cpp}}
+\subsubsection[{run\_\-sim}]{\setlength{\rightskip}{0pt plus 5cm}void run\_\-sim (const {\bf VisSimParams} $\ast$ {\em p})}}
+\label{oifits__sim_8cpp_a605cac6d1c5a57adc6806b0e3a6a4db7}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000017}{Todo}]Check that all parameters are specified here instead of in the gui\_\-main and main functions. \end{Desc}
+\begin{Desc}
+\item[\hyperlink{todo__todo000018}{Todo}]Pass comment\_\-chars to file reading functions rather than have it be specified differently everywhere. \end{Desc}
+
+
+\begin{Desc}
+\item[\hyperlink{todo__todo000019}{Todo}]read in the file format type, right now it's locked to the descriptive only format. \end{Desc}
+
+
+
+
+Definition at line 670 of file oifits\_\-sim.cpp.
 
 \hypertarget{oifits__sim_8cpp_ae964626ec80ff322718c79dbbf0e843e}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!Vis2Bis@{Vis2Bis}}
@@ -72,7 +88,7 @@ Definition at line 108 of file oifits\_\-sim.cpp.
 \label{oifits__sim_8cpp_ae964626ec80ff322718c79dbbf0e843e}
 
 
-Definition at line 70 of file oifits\_\-sim.cpp.
+Definition at line 60 of file oifits\_\-sim.cpp.
 
 \hypertarget{oifits__sim_8cpp_a9c99622adbe6cfcb37111a50422826e3}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!Vis2Pow@{Vis2Pow}}
@@ -81,7 +97,7 @@ Definition at line 70 of file oifits\_\-sim.cpp.
 \label{oifits__sim_8cpp_a9c99622adbe6cfcb37111a50422826e3}
 
 
-Definition at line 51 of file oifits\_\-sim.cpp.
+Definition at line 41 of file oifits\_\-sim.cpp.
 
 \hypertarget{oifits__sim_8cpp_abc8d1aa870a53f018b7e1e79a7968041}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!wgs84\_\-to\_\-geoc@{wgs84\_\-to\_\-geoc}}
@@ -97,7 +113,7 @@ Uses WGS84 geoid parameters.
 \item[{\em lat}]Geodetic latitude /radians. \item[{\em height}]Height above geoid /metres. \item[{\em GeocLat}]Return location for geocentric latitude /radians. \item[{\em GeocRadius}]Return location for geocentric radius /metres. \end{DoxyParams}
 
 
-Definition at line 313 of file oifits\_\-sim.cpp.
+Definition at line 299 of file oifits\_\-sim.cpp.
 
 \hypertarget{oifits__sim_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}{
 \index{oifits\_\-sim.cpp@{oifits\_\-sim.cpp}!write\_\-oifits\_\-file@{write\_\-oifits\_\-file}}
@@ -106,5 +122,11 @@ Definition at line 313 of file oifits\_\-sim.cpp.
 \label{oifits__sim_8cpp_af7f7af2a9a20b52d3e4fd0ebc9186039}
 
 
-Definition at line 343 of file oifits\_\-sim.cpp.
+\begin{Desc}
+\item[\hyperlink{todo__todo000016}{Todo}]Pull the station index from the station object \end{Desc}
+
+
+
+
+Definition at line 327 of file oifits\_\-sim.cpp.
 
