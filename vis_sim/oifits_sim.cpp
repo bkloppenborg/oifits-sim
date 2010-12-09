@@ -73,11 +73,8 @@ Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav, int 
 			{
 				for (int k = j + 1; k < N - 1; k++)
 				{
-					bis[ii][i] =
-					   visibility[ii][j +
-					   jj * N * (N - 1) / 2]
-					   * conj(visibility[ii]
-					   [k + jj * N * (N - 1) / 2])
+					bis[ii][i] = visibility[ii][j + jj * N * (N - 1) / 2]
+					   * conj(visibility[ii][k + jj * N * (N - 1) / 2])
 					   * visibility[ii][i + (N - 1) * (jj + 1)];
 					i++;
 				}
@@ -213,8 +210,7 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
 		for (int j = 0; j < Nbs; j++)
 		{
 			ErrPhi[i][j] = sqrt(VarPhi[i][j]);
-			PhiErr[i][j] =
-			   Phi[i][j] + ErrPhi[i][j] * Rangauss(random_seed);
+			PhiErr[i][j] = Phi[i][j] + ErrPhi[i][j] * Rangauss(random_seed);
 			// assume circular noise cloud
 			ErrT3[i][j] = sqrt(T3true[i][j] * T3true[i][j] * VarPhi[i][j]);
 			T3[i][j] = T3true[i][j] + ErrT3[i][j] * Rangauss(random_seed);
@@ -686,8 +682,9 @@ void run_sim(const VisSimParams * p)
 	// Allocate pointers for the array and hour angle information:
 	Array * array = new Array(p->array_filename, comment_chars);
 
-    // Read in the observations.  For now we only take hour angle files.
-    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 0);
+    // Read in the observations.
+    /// \todo read in the file format type, right now it's locked to the descriptive only format.
+    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
         
 	
 //	// If we are using an OIFITS file as input, we need to call different constructors (hence the need for pointers here)

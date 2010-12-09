@@ -36,7 +36,7 @@ Instrument::Instrument(double throughput, double visibility, int Npix,
 
 Instrument::Instrument(string filename, string comment_chars)
 {
-	vector < string > lines = ReadFile(comment_chars, filename, "Cannot Open Instrument Definition File");
+	vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Instrument Definition File");
 
 	
 

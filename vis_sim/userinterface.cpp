@@ -22,7 +22,7 @@ void on_button1_clicked(GtkButton * widget, VisSimParams * p)
 		cout << "Spectral Mode selected: " << p->
 		   SpectralMode_filename << endl;
 		cout << "Instrument selected: " << p->instrument_filename << endl;
-		cout << "Hour angles selected:" << p->HourAngles_filename << endl;
+		cout << "Observation file selected:" << p->observation_filename << endl;
 		cout << "The output file is " << p->oifits_filename << endl;
 		try
 		{
@@ -75,7 +75,7 @@ void on_SMchooser_file_set(GtkFileChooser * widget, VisSimParams * p)
 
 void on_HAchooser_file_set(GtkFileChooser * widget, VisSimParams * p)
 {
-	p->HourAngles_filename = gtk_file_chooser_get_filename(widget);
+	p->observation_filename = gtk_file_chooser_get_filename(widget);
 
 }
 
