@@ -13,12 +13,6 @@
 
 #include "oifits_sim.h"
 
-// Header files for other libraries
-extern "C" {
-    #include "exchange.h"
-    #include "oifile.h"
-}
-
 // Header files for remaining classes.
 #include "Array.h"
 #include "Baseline.h"
@@ -282,35 +276,6 @@ Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
 	return (bispec);
 }
 
-// AS 2010-06-22
-// added function from JSY's sidereal.c routine to compute the true
-// geocentric coordinates 
-// of the array location
-/**
- * Convert position on Earth's surface from geodetic to geocentric coordinates.
- *
- * Uses WGS84 geoid parameters.
- *
- * @param lat     Geodetic latitude /radians.
- * @param height  Height above geoid /metres.
- * @param GeocLat     Return location for geocentric latitude /radians.
- * @param GeocRadius  Return location for geocentric radius /metres.
- */
-void wgs84_to_geoc(double lat, double height, double *GeocLat, double *GeocRadius)
-{
-	double cosLat, sinLat, c, c0, s0, one_f_sq;
-
-	cosLat = cos(lat);
-	sinLat = sin(lat);
-	one_f_sq = (1. - WGS_F) * (1. - WGS_F);
-	c = pow(cosLat * cosLat + one_f_sq * sinLat * sinLat, -0.5);
-	c0 = WGS_A0 * c + height;
-	s0 = WGS_A0 * one_f_sq * c + height;
-
-	*GeocLat = atan2(s0 * sinLat, c0 * cosLat);
-	*GeocRadius = pow(c0 * c0 * cosLat * cosLat + s0 * s0 * sinLat * sinLat, 0.5);
-}
-
 // AS 2010-06-21 
 // Added to avoid crash of the program in case there are only 2 
 // telescopes
@@ -388,33 +353,33 @@ void write_oifits_file(float declination, string datafile, Array s,
 	double altitude = s.GetAltitude();
 	string arrayname = s.GetArrayName();
 	
-	array.elem = (element *) malloc(nstations * sizeof(element));
-	array.revision = 1;
-	strncpy(array.arrname, arrayname.c_str(), FLEN_VALUE);
-	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
-	double GeocLat, GeocRadius;
-	// AS 2010-06-22
-	// adapting the coordinates of the array using JSY's routine
-	// wgs84_to_geoc
-	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
-	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
-	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
-	array.arrayz = GeocRadius * sin(GeocLat);
+//	array.elem = (element *) malloc(nstations * sizeof(element));
+//	array.revision = 1;
+//	strncpy(array.arrname, arrayname.c_str(), FLEN_VALUE);
+//	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
+//	double GeocLat, GeocRadius;
+//	// AS 2010-06-22
+//	// adapting the coordinates of the array using JSY's routine
+//	// wgs84_to_geoc
+//	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
+//	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
+//	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
+//	array.arrayz = GeocRadius * sin(GeocLat);
 
-	array.nelement = nstations;
-	Station station;
-	for (i = 0; i < nstations; i++)
-	{
-	    station = s.GetStation(i);
-		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
-		/// \todo Pull the station index from the station object
-		array.elem[i].sta_index = i + 1;
-		array.elem[i].diameter = station.diameter;
-		array.elem[i].staxyz[0] = station.xyz[0];
-		array.elem[i].staxyz[1] = station.xyz[1];
-		array.elem[i].staxyz[2] = station.xyz[2];
-	}
+//	array.nelement = nstations;
+//	Station station;
+//	for (i = 0; i < nstations; i++)
+//	{
+//	    station = s.GetStation(i);
+//		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
+//		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
+//		/// \todo Pull the station index from the station object
+//		array.elem[i].sta_index = i + 1;
+//		array.elem[i].diameter = station.diameter;
+//		array.elem[i].staxyz[0] = station.xyz[0];
+//		array.elem[i].staxyz[1] = station.xyz[1];
+//		array.elem[i].staxyz[2] = station.xyz[2];
+//	}
 
 	// WAVE
 	wave.nwave = spec.nchannels;
@@ -540,6 +505,12 @@ void write_oifits_file(float declination, string datafile, Array s,
 		free_oi_t3(&t3);
 	}
 	cout << "File written.\n";
+}
+
+/// Converts the Array class into an oi_array object.
+oi_array GetOIArray(Array & array)
+{
+
 }
 
 // function that computes the visibilities
@@ -685,6 +656,23 @@ void run_sim(const VisSimParams * p)
     // Read in the observations.
     /// \todo read in the file format type, right now it's locked to the descriptive only format.
     vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
+    
+    // pseudocode for the remainder of the process:
+    oi_array    oi_arr = GetOIArray(array);
+    oi_target   oi_targ = GetOITarget(target);
+    oi_wavelength oi_wave = GetOIWavelength(spec);
+    
+    
+//    get array info
+//    get target info
+//    get wavelength info
+//    
+//    for observation in observations
+//        get oi_vis2
+//        get oi_t3
+//        write_data
+//        
+//    write oifile
         
 	
 //	// If we are using an OIFITS file as input, we need to call different constructors (hence the need for pointers here)

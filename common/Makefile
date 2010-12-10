@@ -1,4 +1,7 @@
 
+OIFITS_DIR = ../lib/oifitslib
+OIFITS_INC = -I$(OIFITS_DIR)
+OIFITS_LIB = -L$(OIFITS_DIR)
 
 # Create a list of all of the .cpp files:
 CPP_SOURCES = $(wildcard *.cpp)
@@ -8,12 +11,16 @@ CPP_OBJECTS = $(patsubst %.cpp, %.o, $(CPP_SOURCES))
 CC_SOURCES = $(wildcard *.c)
 CC_OBJECTS = $(patsubst %.c, %.o, $(CC_SOURCES))
 
+INCLUDES = $(OIFITS_INC)
+LIBS = $(OIFITS_LIB)
+
 # Compilers:
 CPP = g++
-CPPFLAGS = -ggdb -g -Wall --pedantic -Wextra
+CPPFLAGS = -ggdb -g -Wall --pedantic -Wextra $(INCLUDES)
 
 CC = gcc
 CCFLAGS = -g -Wall
+
 
 ############# Make Targets below #############
 

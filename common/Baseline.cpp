@@ -191,7 +191,7 @@ BaselineHash ComputeBaselineHash(vector<Baseline> baselines)
 {
     BaselineHash hash;
     
-    for(int i = 0; i < baselines.size(); i++)
+    for(unsigned int i = 0; i < baselines.size(); i++)
     {
         hash.insert(BaselineHash::value_type(baselines[i].GetName(), baselines[i]) );
     }

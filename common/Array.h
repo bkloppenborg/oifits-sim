@@ -12,6 +12,10 @@
 #include "Triplet.h"
 using namespace std;
 
+// Header files for other libraries
+extern "C" {
+    #include "exchange.h"
+}
 
 // Forward declarations
 class Station;
@@ -71,6 +75,8 @@ class Array
     string      GetArrayName(void);
     
     vector<Station> GetAllStations(void);
+    
+    oi_array    GetOIArray(void);
 };
 
 #endif // #ifndef ARRAY_H

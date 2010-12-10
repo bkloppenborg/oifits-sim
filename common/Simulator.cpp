@@ -88,3 +88,33 @@ vector<string> ReadFile(string filename, string comment_chars, string error_mess
     
     return lines;
 }
+
+// AS 2010-06-22
+// added function from JSY's sidereal.c routine to compute the true
+// geocentric coordinates 
+// of the array location
+/**
+ * Convert position on Earth's surface from geodetic to geocentric coordinates.
+ *
+ * Uses WGS84 geoid parameters.
+ *
+ * @param lat     Geodetic latitude /radians.
+ * @param height  Height above geoid /metres.
+ * @param GeocLat     Return location for geocentric latitude /radians.
+ * @param GeocRadius  Return location for geocentric radius /metres.
+ */
+void wgs84_to_geoc(double lat, double height, double *GeocLat, double *GeocRadius)
+{
+	double cosLat, sinLat, c, c0, s0, one_f_sq;
+
+	cosLat = cos(lat);
+	sinLat = sin(lat);
+	one_f_sq = (1. - WGS_F) * (1. - WGS_F);
+	c = pow(cosLat * cosLat + one_f_sq * sinLat * sinLat, -0.5);
+	c0 = WGS_A0 * c + height;
+	s0 = WGS_A0 * one_f_sq * c + height;
+
+	*GeocLat = atan2(s0 * sinLat, c0 * cosLat);
+	*GeocRadius = pow(c0 * c0 * cosLat * cosLat + s0 * s0 * sinLat * sinLat, 0.5);
+}
+

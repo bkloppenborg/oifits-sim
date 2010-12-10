@@ -51,6 +51,10 @@ class Observation
     static vector <Observation> ReadObservation_HA(Array * array, string filename, string comment_chars);
     static vector <Observation> ReadObservation_Descriptive(Array * array, string filename, string comment_chars);
     
+  // Methods for simulating data.
+    oi_vis2 GetVis2(void);
+    oi_t3   GetT3(void);
+    
   // Other Methods
     double  GetHA(double targ_ra);
     friend  bool SameObservation(Observation & A, Observation & B);

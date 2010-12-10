@@ -20,6 +20,13 @@
 #include <vector>
 using namespace std;
 
+// First define some constants:
+/// WGS84 Earth equatorial radius /m 
+static const double WGS_A0 = 6378137;
+
+/// WGS84 reference spheroid flattening factor 
+static const double WGS_F = 1.0 / 298.257223563;
+
 /// Global throughput.  Does not include the quantum efficiencey.
 /// This value is used in FastOneRead function.
 const double instrument_throughput = 0.1324 / 0.65; 
@@ -33,6 +40,8 @@ const complex<double> I(0.0, 1.0);
 
 const complex<double> ZEROCOMP(0., 0.);
 
+// Now define a few functions
+void wgs84_to_geoc(double lat, double height, double *GeocLat, double *GeocRadius);
 void testzern();
 
 double phasemagrun(double magnitude);

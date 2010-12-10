@@ -215,3 +215,44 @@ Triplet &   Array::GetTriplet(string triplet_name)
 {
     return this->tri_hash[triplet_name];
 }
+
+/// Converts this object to a valid OIFITSLIB OI_ARRAY struct.
+oi_array    Array::GetOIArray(void)
+{	
+    /// \todo This could be claned up to use datamembers instead of function calls.
+    
+    // init local vars:
+    oi_array array;
+    int nstations = GetNumStations();
+    string arrname = GetArrayName();
+	double GeocLat, GeocRadius;
+    
+    // Allocate room for the station information
+    array.elem = (element *) malloc(nstations * sizeof(element));
+    
+    // Set the revision number, array name, and coordiantes.
+	array.revision = 1;
+	strncpy(array.arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
+
+	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
+	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
+	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
+	array.arrayz = GeocRadius * sin(GeocLat);
+
+	array.nelement = nstations;
+	Station station;
+	for (int i = 0; i < nstations; i++)
+	{
+	    station = this->GetStation(i);
+		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
+		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
+		/// \todo Pull the station index from the station object
+		array.elem[i].sta_index = i + 1;
+		array.elem[i].diameter = station.diameter;
+		array.elem[i].staxyz[0] = station.xyz[0];
+		array.elem[i].staxyz[1] = station.xyz[1];
+		array.elem[i].staxyz[2] = station.xyz[2];
+	}
+
+}
