@@ -97,7 +97,10 @@ void Detector::FastOneReadP( double current_time , Combiner* combiner , Spectral
                 for (int mbeam = 0; mbeam < nbeam; mbeam++)
                 {
                     // Get source visibility for the current baseline
-                    source_vis = Source->GetVis(Wav->mean_wavenumber[ iwavenumber ], time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index, combiner->beamlist[ mbeam ]->station_index );
+            
+                    /// \todo Re-enable this function call
+                    
+                    //source_vis = Source->GetVis(Wav->mean_wavenumber[ iwavenumber ], time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index, combiner->beamlist[ mbeam ]->station_index );
 
                     // phase[ iwavenumber ] = combiner->fringephase[ nbeam ][ mbeam ] + arg( source_vis ) ;
 
@@ -195,7 +198,10 @@ void Detector::OneReadP( double current_time , Combiner* combiner , SpectralMode
           for (int mbeam = 0; mbeam < nbeam; mbeam++)
           {
             // Get source visibility for the current baseline
-            source_vis = Source->GetVis(wavenumber, time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index, combiner->beamlist[ mbeam ]->station_index);
+            
+            /// \todo Re-enable this function call
+            
+            //source_vis = Source->GetVis(wavenumber, time, *combiner->beamlist[ 0 ]->array, combiner->beamlist[ nbeam ]->station_index, combiner->beamlist[ mbeam ]->station_index);
 
             // Now we add the coherence terms <p2.p1*> + <p3.p2*> + <p3.p1*> + <pn.pn-1*> to the flux
             // Hypothesis for the temporal smearing term: linear modulation on short timescale

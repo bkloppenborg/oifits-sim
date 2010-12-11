@@ -22,8 +22,11 @@ SpectralMode::SpectralMode(string filename, string comment_chars)
 
     vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Spectral Mode Definition File");
     
+    // First read in the name of the instrument
+    this->insname = lines[0];
+    
     // Now, set the number of channels
-    this->nchannels = lines.size();
+    this->nchannels = lines.size() - 1;
     this->mean_wavelength.setsize(this->nchannels);
     this->delta_wavelength.setsize(this->nchannels);
     this->mean_wavenumber.setsize(this->nchannels);
@@ -169,4 +172,20 @@ SpectralMode::SpectralMode(string filename, string comment_chars)
 SpectralMode::~SpectralMode( )
 {
   //
+}
+
+/// Returns an oi_wavelength object
+oi_wavelength SpectralMode::GetOIWavelength(void)
+{
+	oi_wavelength wave;
+	wave.nwave = this->nchannels;
+	wave.eff_wave = (float *) malloc(this->nchannels * sizeof(float));
+	wave.eff_band = (float *) malloc(this->nchannels * sizeof(float));
+	wave.revision = 1;
+	strncpy(wave.insname, this->insname.c_str(), this->insname.length());
+	for (int i = 0; i < wave.nwave; i++)
+	{
+		wave.eff_wave[i] = this->mean_wavelength[i];
+		wave.eff_band[i] = this->delta_wavelength[i];
+	}
 }

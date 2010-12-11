@@ -3,6 +3,7 @@
 #include "Array.h"
 #include "Baseline.h"
 #include "Station.h"
+#include "Source.h"
 
 #include <cstdio>
 using namespace std;
@@ -90,7 +91,7 @@ complex<double> Triplet::GetBispectra(Source & source, double hour_angle, double
         mBisValues[hash_key] = bis;
     }
     
-    return bis_err;
+    return bis;
 }
 
 complex<double> Triplet::GetBisError(Source & source, double hour_angle, double wavenumber)

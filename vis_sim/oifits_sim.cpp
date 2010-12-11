@@ -294,9 +294,9 @@ void write_oifits_file(float declination, string datafile, Array s,
    Bispectrum * pBispec, int Nbs, Row < double >time)
 {
 
-	oi_array array;
-	oi_target targets;
-	oi_wavelength wave;
+//	oi_array array;
+//	oi_target targets;
+//	oi_wavelength wave;
 	oi_vis2 vis2;
 	oi_t3 t3;
 	fitsfile *fptr;
@@ -319,30 +319,30 @@ void write_oifits_file(float declination, string datafile, Array s,
 	nulval = 0.0;
 	nulval /= nulval;
 
-	// TARGETS
-	/*
-	 * use malloc as free_oi_target() uses free: 
-	 */
-	targets.targ = (target *) malloc(sizeof(target));
-	targets.revision = 1;
-	targets.ntarget = 1;
-	targets.targ[0].target_id = 1;
-	strncpy(targets.targ[0].target, target_filename, 16);
-	targets.targ[0].raep0 = nulval;
-	targets.targ[0].decep0 = declination;
-	targets.targ[0].equinox = 2000.0;
-	targets.targ[0].ra_err = nulval;
-	targets.targ[0].dec_err = nulval;
-	targets.targ[0].sysvel = nulval;
-	strncpy(targets.targ[0].veltyp, zerostring, 8);
-	strncpy(targets.targ[0].veldef, zerostring, 8);
-	targets.targ[0].pmra = nulval;
-	targets.targ[0].pmdec = nulval;
-	targets.targ[0].pmra_err = nulval;
-	targets.targ[0].pmdec_err = nulval;
-	targets.targ[0].parallax = nulval;
-	targets.targ[0].para_err = nulval;
-	strncpy(targets.targ[0].spectyp, zerostring, 16);
+//	// TARGETS
+//	/*
+//	 * use malloc as free_oi_target() uses free: 
+//	 */
+//	targets.targ = (target *) malloc(sizeof(target));
+//	targets.revision = 1;
+//	targets.ntarget = 1;
+//	targets.targ[0].target_id = 1;
+//	strncpy(targets.targ[0].target, target_filename, 16);
+//	targets.targ[0].raep0 = nulval;
+//	targets.targ[0].decep0 = declination;
+//	targets.targ[0].equinox = 2000.0;
+//	targets.targ[0].ra_err = nulval;
+//	targets.targ[0].dec_err = nulval;
+//	targets.targ[0].sysvel = nulval;
+//	strncpy(targets.targ[0].veltyp, zerostring, 8);
+//	strncpy(targets.targ[0].veldef, zerostring, 8);
+//	targets.targ[0].pmra = nulval;
+//	targets.targ[0].pmdec = nulval;
+//	targets.targ[0].pmra_err = nulval;
+//	targets.targ[0].pmdec_err = nulval;
+//	targets.targ[0].parallax = nulval;
+//	targets.targ[0].para_err = nulval;
+//	strncpy(targets.targ[0].spectyp, zerostring, 16);
 
 	// ARRAY
 	// AS 2010-06-17
@@ -382,16 +382,16 @@ void write_oifits_file(float declination, string datafile, Array s,
 //	}
 
 	// WAVE
-	wave.nwave = spec.nchannels;
-	wave.eff_wave = (float *) malloc(wave.nwave * sizeof(float));
-	wave.eff_band = (float *) malloc(wave.nwave * sizeof(float));
-	wave.revision = 1;
-	strncpy(wave.insname, insname, FLEN_VALUE);
-	for (iwav = 0; iwav < wave.nwave; iwav++)
-	{
-		wave.eff_wave[iwav] = spec.mean_wavelength[iwav];
-		wave.eff_band[iwav] = spec.delta_wavelength[iwav];
-	}
+//	wave.nwave = spec.nchannels;
+//	wave.eff_wave = (float *) malloc(wave.nwave * sizeof(float));
+//	wave.eff_band = (float *) malloc(wave.nwave * sizeof(float));
+//	wave.revision = 1;
+//	strncpy(wave.insname, insname, FLEN_VALUE);
+//	for (iwav = 0; iwav < wave.nwave; iwav++)
+//	{
+//		wave.eff_wave[iwav] = spec.mean_wavelength[iwav];
+//		wave.eff_band[iwav] = spec.delta_wavelength[iwav];
+//	}
 
 	// VIS2
 	vis2.record = (oi_vis2_record *) malloc(Npow * sizeof(oi_vis2_record));
@@ -505,12 +505,6 @@ void write_oifits_file(float declination, string datafile, Array s,
 		free_oi_t3(&t3);
 	}
 	cout << "File written.\n";
-}
-
-/// Converts the Array class into an oi_array object.
-oi_array GetOIArray(Array & array)
-{
-
 }
 
 // function that computes the visibilities
@@ -658,9 +652,9 @@ void run_sim(const VisSimParams * p)
     vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
     
     // pseudocode for the remainder of the process:
-    oi_array    oi_arr = GetOIArray(array);
-    oi_target   oi_targ = GetOITarget(target);
-    oi_wavelength oi_wave = GetOIWavelength(spec);
+    oi_array    oi_arr = array->GetOIArray();
+    oi_target   oi_targ = target->GetOITarget();
+    oi_wavelength oi_wave = spec->GetOIWavelength();
     
     
 //    get array info

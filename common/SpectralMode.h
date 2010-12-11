@@ -3,6 +3,12 @@
 
 #include "Matrix.h"
 
+// Header files for other libraries
+extern "C" {
+    #include "exchange.h"
+}
+
+
 /// \class SpectralMode simulator.h
 /// \brief A class to represent the spectral mode(s) of the instrument.
 class SpectralMode
@@ -20,8 +26,8 @@ class SpectralMode
     double maxnumber;
 
     int nchannels;
-
     int type;
+    string insname; // The name of the instrument
 
     Row < double >mean_wavenumber;
 
@@ -42,4 +48,6 @@ class SpectralMode
     Row < double >wavenumber;
 
     Row < double >wavelength;
+    
+    oi_wavelength GetOIWavelength(void);
 };

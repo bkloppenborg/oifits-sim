@@ -10,6 +10,11 @@
 #include <vector>
 #include <complex>
 
+// Header files for other libraries
+extern "C" {
+    #include "exchange.h"
+}
+
 using namespace std;
 
 typedef std::tr1::unordered_map<std::string, complex<double> > VisHash;
@@ -53,6 +58,7 @@ class Baseline
     void SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error);
     
     UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
+    oi_vis2_record GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers);
 };
 
 // Hash data type

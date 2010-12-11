@@ -8,6 +8,9 @@ extern "C" {
 }
 
 class VisSimParams;
+class Array;
+class Source;
+class SpectralMode;
 
 
 // defining seed for the random number generating function
@@ -15,8 +18,3 @@ static Rand_t random_seed;
 
 // Code to run the simulator.
 void run_sim(const VisSimParams * p);
-
-// Code for building OIFITS data tables.
-oi_array GetOIArray(Array & array);
-oi_target GetOITarget(Source & target);
-oi_wavelength GetOIWavelength(SpectralMode spec);

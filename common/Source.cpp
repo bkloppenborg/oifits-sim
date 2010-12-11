@@ -296,3 +296,45 @@ string  Source::GetName(void)
 {
     return this->source_name;
 }
+
+/// Returns the target ID
+/// NOTE: It is assume a single target will be simulated so this value is fixed to one, but kept
+/// as a function for future expansion of this program.
+int     Source::GetTargetID(void)
+{
+    return 1;
+}
+
+/// Returns an OIFITS target struct representing this source.
+target Source::GetOITarget(void)
+{
+    // Init local vars:
+	target target;
+	string empty = " ";
+	
+	string targ_name = "Simulated " + this->source_name;
+    
+	// TARGETS
+	/*
+	 * use malloc as free_oi_target() uses free: 
+	 */
+	target.target_id = 1;
+	strncpy(target.target, targ_name.c_str(), targ_name.length());
+	target.raep0 = this->right_ascension;
+	target.decep0 = this->declination;
+	target.equinox = 2000.0;
+	target.ra_err = 0.0;
+	target.dec_err = 0.0;
+	target.sysvel = 0.0;
+	strncpy(target.veltyp, empty.c_str(), 1);
+	strncpy(target.veldef, empty.c_str(), 1);
+	target.pmra = 0.0;
+	target.pmdec = 0.0;
+	target.pmra_err = 0.0;
+	target.pmdec_err = 0.0;
+	target.parallax = 0.0;
+	target.para_err = 0.0;
+	strncpy(target.spectyp, empty.c_str(), 1);
+	
+	return target;
+}

@@ -26,8 +26,8 @@ class Triplet
     Baseline    mBaselines[3]; 
     string name;
     
-    BisHash mVisValues; // Stores computed bispectrum values
-    BisHash mVisErrors; // Stores computed/stored bispectrum error values.
+    BisHash mBisValues; // Stores computed bispectrum values
+    BisHash mBisErrors; // Stores computed/stored bispectrum error values.
 
   public:
     Triplet();

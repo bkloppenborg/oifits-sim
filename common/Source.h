@@ -5,6 +5,11 @@
 
 #include "Matrix.h"
 
+// Header files for other libraries
+extern "C" {
+    #include "exchange.h"
+}
+
 /// \class Source simulator.h 
 /// \brief A class to represent the source object.
 // AS 2010-06-23
@@ -52,5 +57,7 @@ class Source
     void InitFluxes(char band, double background_magnitude, double sky_background_aperture);
     
   public:
-    string GetName(void);
+    int     GetTargetID(void);
+    string  GetName(void);
+    target  GetOITarget(void);
 };

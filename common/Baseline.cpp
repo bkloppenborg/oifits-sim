@@ -162,6 +162,53 @@ complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, 
     return visibility;
 }
 
+/// Returns an OIFITS oi_vis2_record for the given source, hour angle and wavenumber
+oi_vis2_record Baseline::GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers)
+{
+    // init local vars
+    complex<double> vis;
+    complex<double> vis_err;
+    double vis2;
+    double vis2_err;
+
+    // Finally assemble the oi_vis2_record:
+    oi_vis2_record record;
+    record.target_id = source.GetTargetID();
+    
+    /// \bug The time and MJD recorded here are nonsense values.
+    record.time = 0;
+    record.mjd = 0.0;
+    
+    /// \bug Integration time is set to 1-second by default regardless of instrument setting.
+    record.int_time = 1;
+    
+    // Get the UV point at the mid-point of the data.
+    UVPoint uv = UVcoords(hour_angle, source.declination, wavenumbers[wavenumbers.size()/2]);
+    
+    record.ucoord = uv.u;
+    record.vcoord = uv.v;
+    record.sta_index[0] = this->indicies[0];
+    record.sta_index[1] = this->indicies[1];
+
+    // Now write out the 
+    for(unsigned int i = 0; i < wavenumbers.size(); i++)
+    {
+        // First get the visibility and error.
+        vis = GetVisibility(source, hour_angle, wavenumbers[i]);
+        vis_err = GetVisError(source, hour_angle, wavenumbers[i]);
+        
+        // Now compute the powerspectra for this point:
+        vis2 = norm(vis);
+        vis2_err = norm(vis_err);
+
+        record.vis2data[i] = vis2;
+        record.vis2err[i] = vis2_err;
+        record.flag[i] = FALSE;
+    }
+
+    return record;
+}
+
 ////////////////////////////////////////////////////////////////////
 // Non Class Functions Below
 ////////////////////////////////////////////////////////////////////
