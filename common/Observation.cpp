@@ -11,6 +11,8 @@
 
 #include "Observation.h"
 #include "Simulator.h"
+#include "Source.h"
+#include "UVPoint.h"
 
 /// The minimum timespan
 const double SAMEOBS = 5 / (60 * 24); // 5 minutes in days.
@@ -273,6 +275,73 @@ int Observation::GetNumStations(void)
 Station & Observation::GetStation(int sta_index)
 {
     return this->mStations[sta_index];
+}
+
+/// Creates an OIFITS oi_vis2 compliant entry for this observation.
+oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & wavenumbers)
+{
+    // init local vars
+    oi_vis2 vis2;
+    int npow = this->mBaselines.size();
+    int nwave = wavenumbers.size();
+    int iwave = 0;
+    string arrname = this->mArray->GetArrayName();
+    
+    /// \bug I'm not sure which wavenumber should be used for the UV point reference
+    /// so I'm assuming the middle channel is correct.
+    double wavenumber = wavenumbers[floor(nwave/2)];
+    
+    double ra = source.right_ascension;
+    double dec = source.declination;
+    UVPoint uv;
+    
+    // Allocate room for the vis2 records and their data.
+	vis2.record = (oi_vis2_record *) malloc(npow * sizeof(oi_vis2_record));
+	for (int i = 0; i < npow; i++)
+	{
+		vis2.record[i].vis2data = (double *) malloc(nwave * sizeof(double));
+		vis2.record[i].vis2err = (double *) malloc(nwave * sizeof(double));
+		vis2.record[i].flag = (char *) malloc(nwave * sizeof(char));
+	}
+	
+	vis2.revision = 1;
+	/// \bug The observation date is set to all zeros by default.  
+	/// This is to ensure the user knows this is simulated data, but may not be compliant
+	/// with the OIFITS format, or good "note taking"
+	strncpy(vis2.date_obs, "0000-00-00", 11);
+	strncpy(vis2.arrname, arrname.c_str(), arrname.size());
+	strncpy(vis2.insname, ins_name.c_str(), ins_name.size());
+	vis2.numrec = npow;
+	vis2.nwave = nwave;
+	for (int i = 0; i < npow; i++)
+	{
+	    /// \bug By default the target ID is set to 1.
+		vis2.record[i].target_id = 1;
+		/// \bug The time is set to zero by default 
+		vis2.record[i].time = 0.0;
+		vis2.record[i].mjd = this->mJD;
+		/// \bug The integration time is set to 10 seconds by default.
+		vis2.record[i].int_time = 10;
+		
+		// Compute the UV coordinates and record the station positions:
+		uv = this->mBaselines[i].UVcoords(this->GetHA(ra), dec, wavenumber);
+		vis2.record[i].ucoord = uv.u;
+		vis2.record[i].vcoord = uv.v;
+		vis2.record[i].sta_index[0] = this->mBaselines[i].GetStationID(0);
+		vis2.record[i].sta_index[1] = this->mBaselines[i].GetStationID(1);
+		
+		// Now compute the individual visibilities and uncertainties
+		for (iwave = 0; iwave < nwave; iwave++)
+		{
+		    // look up the present wavenumber, and then find the data
+		    wavenumber = wavenumbers[iwave];
+			vis2.record[i].vis2data[iwave] = this->mBaselines[i].GetVis2(source, mHA, wavenumber);
+			vis2.record[i].vis2err[iwave] = this->mBaselines[i].GetVis2Err(source, mHA, wavenumber);
+			vis2.record[i].flag[iwave] = FALSE;
+		}
+	}
+	
+	return vis2;
 }
 
 /// Reads in an properly formatted observation file in a formats defined by file_type:

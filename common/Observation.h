@@ -52,8 +52,8 @@ class Observation
     static vector <Observation> ReadObservation_Descriptive(Array * array, string filename, string comment_chars);
     
   // Methods for simulating data.
-    oi_vis2 GetVis2(void);
-    oi_t3   GetT3(void);
+    oi_vis2 GetVis2(string ins_name, Source & source, vector<double> & wavenumbers);
+//    oi_t3   GetT3(vector<double> & wavenumbers);
     
   // Other Methods
     double  GetHA(double targ_ra);

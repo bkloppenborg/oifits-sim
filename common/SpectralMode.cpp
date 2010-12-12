@@ -183,9 +183,34 @@ oi_wavelength SpectralMode::GetOIWavelength(void)
 	wave.eff_band = (float *) malloc(this->nchannels * sizeof(float));
 	wave.revision = 1;
 	strncpy(wave.insname, this->insname.c_str(), this->insname.length());
+	// Now copy the wavelengths over:
 	for (int i = 0; i < wave.nwave; i++)
 	{
 		wave.eff_wave[i] = this->mean_wavelength[i];
 		wave.eff_band[i] = this->delta_wavelength[i];
 	}
+	
+	return wave;
+}
+
+/// Returns the wavelengths as a vector.
+vector<double> SpectralMode::GetWavelengths(void)
+{
+    vector<double> wavelengths;
+    
+    for(int i = 0; i < this->nchannels; i++)
+        wavelengths.push_back(1.0*this->mean_wavelength[i]);
+        
+    return wavelengths;
+}
+
+/// Returns the wavenumbers as a vector.
+vector<double> SpectralMode::GetWavenumbers(void)
+{
+    vector<double> wavenumbers;
+    
+    for(int i = 0; i < this->nchannels; i++)
+        wavenumbers.push_back(1.0 / this->mean_wavelength[i]);
+        
+    return wavenumbers;
 }

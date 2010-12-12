@@ -59,5 +59,5 @@ class Source
   public:
     int     GetTargetID(void);
     string  GetName(void);
-    target  GetOITarget(void);
+    oi_target  GetOITarget(void);
 };

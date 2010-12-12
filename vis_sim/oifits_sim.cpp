@@ -293,7 +293,7 @@ void write_oifits_file(float declination, string datafile, Array s,
    SpectralMode spec, PowerSpectrum Power, int Npow,
    Bispectrum * pBispec, int Nbs, Row < double >time)
 {
-
+/*
 //	oi_array array;
 //	oi_target targets;
 //	oi_wavelength wave;
@@ -319,30 +319,6 @@ void write_oifits_file(float declination, string datafile, Array s,
 	nulval = 0.0;
 	nulval /= nulval;
 
-//	// TARGETS
-//	/*
-//	 * use malloc as free_oi_target() uses free: 
-//	 */
-//	targets.targ = (target *) malloc(sizeof(target));
-//	targets.revision = 1;
-//	targets.ntarget = 1;
-//	targets.targ[0].target_id = 1;
-//	strncpy(targets.targ[0].target, target_filename, 16);
-//	targets.targ[0].raep0 = nulval;
-//	targets.targ[0].decep0 = declination;
-//	targets.targ[0].equinox = 2000.0;
-//	targets.targ[0].ra_err = nulval;
-//	targets.targ[0].dec_err = nulval;
-//	targets.targ[0].sysvel = nulval;
-//	strncpy(targets.targ[0].veltyp, zerostring, 8);
-//	strncpy(targets.targ[0].veldef, zerostring, 8);
-//	targets.targ[0].pmra = nulval;
-//	targets.targ[0].pmdec = nulval;
-//	targets.targ[0].pmra_err = nulval;
-//	targets.targ[0].pmdec_err = nulval;
-//	targets.targ[0].parallax = nulval;
-//	targets.targ[0].para_err = nulval;
-//	strncpy(targets.targ[0].spectyp, zerostring, 16);
 
 	// ARRAY
 	// AS 2010-06-17
@@ -353,33 +329,6 @@ void write_oifits_file(float declination, string datafile, Array s,
 	double altitude = s.GetAltitude();
 	string arrayname = s.GetArrayName();
 	
-//	array.elem = (element *) malloc(nstations * sizeof(element));
-//	array.revision = 1;
-//	strncpy(array.arrname, arrayname.c_str(), FLEN_VALUE);
-//	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
-//	double GeocLat, GeocRadius;
-//	// AS 2010-06-22
-//	// adapting the coordinates of the array using JSY's routine
-//	// wgs84_to_geoc
-//	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
-//	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
-//	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
-//	array.arrayz = GeocRadius * sin(GeocLat);
-
-//	array.nelement = nstations;
-//	Station station;
-//	for (i = 0; i < nstations; i++)
-//	{
-//	    station = s.GetStation(i);
-//		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-//		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
-//		/// \todo Pull the station index from the station object
-//		array.elem[i].sta_index = i + 1;
-//		array.elem[i].diameter = station.diameter;
-//		array.elem[i].staxyz[0] = station.xyz[0];
-//		array.elem[i].staxyz[1] = station.xyz[1];
-//		array.elem[i].staxyz[2] = station.xyz[2];
-//	}
 
 	// WAVE
 //	wave.nwave = spec.nchannels;
@@ -394,36 +343,36 @@ void write_oifits_file(float declination, string datafile, Array s,
 //	}
 
 	// VIS2
-	vis2.record = (oi_vis2_record *) malloc(Npow * sizeof(oi_vis2_record));
-	for (j = 0; j < Npow; j++)
-	{
-		vis2.record[j].vis2data = (double *) malloc(wave.nwave * sizeof(double));
-		vis2.record[j].vis2err = (double *) malloc(wave.nwave * sizeof(double));
-		vis2.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
-	}
-	vis2.revision = 1;
-	strncpy(vis2.date_obs, "2009-08-06", FLEN_VALUE);
-	strncpy(vis2.arrname, arrname, FLEN_VALUE);
-	strncpy(vis2.insname, insname, FLEN_VALUE);
-	vis2.numrec = Npow;
-	vis2.nwave = wave.nwave;
-	for (j = 0; j < Npow; j++)
-	{
-		vis2.record[j].target_id = 1;
-		vis2.record[j].time = time[j];
-		vis2.record[j].mjd = 0.0;
-		vis2.record[j].int_time = Power.int_time;
-		vis2.record[j].ucoord = Power.u[0][j];
-		vis2.record[j].vcoord = Power.v[0][j];
-		vis2.record[j].sta_index[0] = Power.t1[0][j];
-		vis2.record[j].sta_index[1] = Power.t2[0][j];
-		for (iwav = 0; iwav < wave.nwave; iwav++)
-		{
-			vis2.record[j].vis2data[iwav] = Power.vis2data[iwav][j];
-			vis2.record[j].vis2err[iwav] = Power.vis2err[iwav][j];
-			vis2.record[j].flag[iwav] = FALSE;
-		}
-	}
+//	vis2.record = (oi_vis2_record *) malloc(Npow * sizeof(oi_vis2_record));
+//	for (j = 0; j < Npow; j++)
+//	{
+//		vis2.record[j].vis2data = (double *) malloc(wave.nwave * sizeof(double));
+//		vis2.record[j].vis2err = (double *) malloc(wave.nwave * sizeof(double));
+//		vis2.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
+//	}
+//	vis2.revision = 1;
+//	strncpy(vis2.date_obs, "2009-08-06", FLEN_VALUE);
+//	strncpy(vis2.arrname, arrname, FLEN_VALUE);
+//	strncpy(vis2.insname, insname, FLEN_VALUE);
+//	vis2.numrec = Npow;
+//	vis2.nwave = wave.nwave;
+//	for (j = 0; j < Npow; j++)
+//	{
+//		vis2.record[j].target_id = 1;
+//		vis2.record[j].time = time[j];
+//		vis2.record[j].mjd = 0.0;
+//		vis2.record[j].int_time = Power.int_time;
+//		vis2.record[j].ucoord = Power.u[0][j];
+//		vis2.record[j].vcoord = Power.v[0][j];
+//		vis2.record[j].sta_index[0] = Power.t1[0][j];
+//		vis2.record[j].sta_index[1] = Power.t2[0][j];
+//		for (iwav = 0; iwav < wave.nwave; iwav++)
+//		{
+//			vis2.record[j].vis2data[iwav] = Power.vis2data[iwav][j];
+//			vis2.record[j].vis2err[iwav] = Power.vis2err[iwav][j];
+//			vis2.record[j].flag[iwav] = FALSE;
+//		}
+//	}
 
 	// T3
 	if (pBispec != NULL)
@@ -493,9 +442,6 @@ void write_oifits_file(float declination, string datafile, Array s,
 		fits_close_file(fptr, &status);
 	}
 
-	/*
-	 * Free OI-FITS data structure memory 
-	 */
 	free_oi_array(&array);
 	free_oi_target(&targets);
 	free_oi_wavelength(&wave);
@@ -505,6 +451,7 @@ void write_oifits_file(float declination, string datafile, Array s,
 		free_oi_t3(&t3);
 	}
 	cout << "File written.\n";
+	*/
 }
 
 // function that computes the visibilities
@@ -652,9 +599,24 @@ void run_sim(const VisSimParams * p)
     vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
     
     // pseudocode for the remainder of the process:
-    oi_array    oi_arr = array->GetOIArray();
-    oi_target   oi_targ = target->GetOITarget();
+    oi_array oi_arr = array->GetOIArray();    
+    /// \bug The target
+    oi_target targ = target->GetOITarget();
     oi_wavelength oi_wave = spec->GetOIWavelength();
+    
+    vector<double> wavenumbers = spec->GetWavenumbers();
+    
+    // Now compute the vis2 records and t3s:
+    vector<oi_vis2> vis2;
+//    vector<oi_t3> t3;
+    for(unsigned int i = 0; i < observations.size(); i++)
+    {
+        vis2.push_back(observations[i].GetVis2(spec->insname, *target, wavenumbers));
+//        t3.push_back(observations[i].GetVis2(spec->GetWavenumbers()));
+    }
+
+    
+    
     
     
 //    get array info

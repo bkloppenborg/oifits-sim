@@ -48,6 +48,10 @@ class SpectralMode
     Row < double >wavenumber;
 
     Row < double >wavelength;
-    
+
+  public:    
     oi_wavelength GetOIWavelength(void);
+    
+    vector<double> GetWavelengths(void);
+    vector<double> GetWavenumbers(void);
 };

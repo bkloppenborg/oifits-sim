@@ -54,11 +54,15 @@ class Baseline
     string  GetName(void);
     complex<double> GetVisibility(Source & source, double hour_angle, double wavenumber);
     complex<double> GetVisError(Source & source, double hour_angle, double wavenumber);
+    double  GetVis2(Source & source, double hour_angle, double wavenumber);
+    double  GetVis2Err(Source & source, double hour_angle, double wavenumber);   
     
     void SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error);
     
     UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
-    oi_vis2_record GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers);
+//    oi_vis2_record GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers);
+    
+    int GetStationID(int station_num);
 };
 
 // Hash data type

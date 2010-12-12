@@ -306,10 +306,10 @@ int     Source::GetTargetID(void)
 }
 
 /// Returns an OIFITS target struct representing this source.
-target Source::GetOITarget(void)
+oi_target Source::GetOITarget(void)
 {
     // Init local vars:
-	target target;
+	target * targ = (target*) malloc(1 * sizeof(target));
 	string empty = " ";
 	
 	string targ_name = "Simulated " + this->source_name;
@@ -318,23 +318,29 @@ target Source::GetOITarget(void)
 	/*
 	 * use malloc as free_oi_target() uses free: 
 	 */
-	target.target_id = 1;
-	strncpy(target.target, targ_name.c_str(), targ_name.length());
-	target.raep0 = this->right_ascension;
-	target.decep0 = this->declination;
-	target.equinox = 2000.0;
-	target.ra_err = 0.0;
-	target.dec_err = 0.0;
-	target.sysvel = 0.0;
-	strncpy(target.veltyp, empty.c_str(), 1);
-	strncpy(target.veldef, empty.c_str(), 1);
-	target.pmra = 0.0;
-	target.pmdec = 0.0;
-	target.pmra_err = 0.0;
-	target.pmdec_err = 0.0;
-	target.parallax = 0.0;
-	target.para_err = 0.0;
-	strncpy(target.spectyp, empty.c_str(), 1);
+	targ->target_id = 1;
+	strncpy(targ->target, targ_name.c_str(), targ_name.length());
+	targ->raep0 = this->right_ascension;
+	targ->decep0 = this->declination;
+	targ->equinox = 2000.0;
+	targ->ra_err = 0.0;
+	targ->dec_err = 0.0;
+	targ->sysvel = 0.0;
+	strncpy(targ->veltyp, empty.c_str(), 1);
+	strncpy(targ->veldef, empty.c_str(), 1);
+	targ->pmra = 0.0;
+	targ->pmdec = 0.0;
+	targ->pmra_err = 0.0;
+	targ->pmdec_err = 0.0;
+	targ->parallax = 0.0;
+	targ->para_err = 0.0;
+	strncpy(targ->spectyp, empty.c_str(), 1);
 	
-	return target;
+	oi_target oi_targ;
+	oi_targ.revision = 1;
+	oi_targ.ntarget = 1;
+	oi_targ.targ = targ;
+	
+	
+	return oi_targ;
 }
