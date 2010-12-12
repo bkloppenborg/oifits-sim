@@ -309,8 +309,8 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 	/// This is to ensure the user knows this is simulated data, but may not be compliant
 	/// with the OIFITS format, or good "note taking"
 	strncpy(vis2.date_obs, "0000-00-00", 11);
-	strncpy(vis2.arrname, arrname.c_str(), arrname.size());
-	strncpy(vis2.insname, ins_name.c_str(), ins_name.size());
+	strncpy(vis2.arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(vis2.insname, ins_name.c_str(), FLEN_VALUE);
 	vis2.numrec = npow;
 	vis2.nwave = nwave;
 	for (int i = 0; i < npow; i++)

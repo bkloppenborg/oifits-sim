@@ -38,7 +38,7 @@ SpectralMode::SpectralMode(string filename, string comment_chars)
     for(int i = 0; i < this->nchannels; i++)
     {
         // Parse the line into two tokens:
-        istringstream lineStream(lines[i]);
+        istringstream lineStream(lines[i+1]);
         vector <string> tokens;
         string item;
         while(lineStream >> item)

@@ -246,7 +246,7 @@ oi_array    Array::GetOIArray(void)
 	{
 	    station = this->GetStation(i);
 		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-		strncpy(array.elem[i].sta_name, station.GetName().c_str(), 16);
+		strncpy(array.elem[i].sta_name, station.GetName().c_str(), station.GetName().size());
 		/// \todo Pull the station index from the station object
 		array.elem[i].sta_index = i + 1;
 		array.elem[i].diameter = station.diameter;
@@ -254,5 +254,6 @@ oi_array    Array::GetOIArray(void)
 		array.elem[i].staxyz[1] = station.xyz[1];
 		array.elem[i].staxyz[2] = station.xyz[2];
 	}
-
+	
+	return array;
 }

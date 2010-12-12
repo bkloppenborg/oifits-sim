@@ -167,39 +167,42 @@ Source::Source(string filename, string comment_chars)
 {
     vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
 
-    if (lines.size() != 9)
-        throw std::
-            runtime_error("Invalid number of parameters in the source file");
-
-    string fits_filename = lines[0];
-
     // AS 2010-06-24
     // added forced exit of the programme if the parameters are of the wrong
     // type
-    // \todo Allow point source to be specified
-    if (lines[0].find(".fits") == string::npos)
-    {
-        /// \exception runtime_error Invalid FITS image filename
-        /// The file specified by the user evidently does not exist.
-        throw std::runtime_error("Invalid FITS image filename");
-    }
-    else
-    {
-        source_name = lines[0];
-    }
+    if (lines.size() != 10)
+        throw std::
+            runtime_error("Invalid number of parameters in the source file");
+
+    this->source_name = lines[0];
+
+    string fits_filename = lines[1];
+
+
+//    /// \todo Allow point source to be specified
+//    if (lines[1].find(".fits") == string::npos)
+//    {
+//        /// \exception runtime_error Invalid FITS image filename
+//        /// The file specified by the user evidently does not exist.
+//        throw std::runtime_error("Invalid FITS image filename");
+//    }
+//    else
+//    {
+//        source_name = lines[1];
+//    }
     
     // Pull out the pixellation constant:
-    if(!isdigit(lines[1][0]))
+    if(!isdigit(lines[2][0]))
     {
         throw std::runtime_error("Invalid Pixellation Definition.");
     }
     else
     {
-        this->source_pixellation = atof(lines[1].c_str());
+        this->source_pixellation = atof(lines[2].c_str());
         cout << "Image pixellation = " << source_pixellation << " mas/pixel" << endl;
     }
 
-    if (!(isalpha(lines[2][0])))
+    if (!(isalpha(lines[3][0])))
     {   
         /// \exception runtime_error Invalid source band
         /// The source band specified bythe user is not valid.
@@ -207,10 +210,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        band = lines[2][0];
+        band = lines[3][0];
     }
 
-    if (!isdigit(lines[3][0]))
+    if (!isdigit(lines[4][0]))
     {
         /// \exception runtime_error Invalid source magnitude
         /// The source magnitude was not defined
@@ -218,10 +221,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        magnitude = atof(lines[3].c_str());
+        magnitude = atof(lines[4].c_str());
     }
 
-    if (!isdigit(lines[4][0]))
+    if (!isdigit(lines[5][0]))
     {
         /// \exception runtime_error Invalid source temperature
         /// 
@@ -229,10 +232,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        temperature = atof(lines[4].c_str());
+        temperature = atof(lines[5].c_str());
     }
 
-    if (!isdigit(lines[5][0]))
+    if (!isdigit(lines[6][0]))
     {
         /// \exception runtime_error Invalid sky background magnitude
         /// 
@@ -240,10 +243,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        background_magnitude = atof(lines[5].c_str());
+        background_magnitude = atof(lines[6].c_str());
     }
 
-    if (!isdigit(lines[6][0]))
+    if (!isdigit(lines[7][0]))
     {
         /// \exception runtime_error Invalid sky background aperture
         /// 
@@ -251,10 +254,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        sky_background_aperture = atof(lines[6].c_str());
+        sky_background_aperture = atof(lines[7].c_str());
     }
 
-    if (!isdigit(lines[7][0]))
+    if (!isdigit(lines[8][0]))
     {
         /// \exception runtime_error Invalid source declination
         /// 
@@ -262,9 +265,10 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        declination = atof(lines[7].c_str());
+        declination = atof(lines[8].c_str());
     }
-    if (!isdigit(lines[8][0]))
+    
+    if (!isdigit(lines[9][0]))
     {
         /// \exception runtime_error Invalid source declination
         /// 
@@ -272,7 +276,7 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        right_ascension = atof(lines[8].c_str());
+        right_ascension = atof(lines[9].c_str());
     }
 
 
@@ -310,7 +314,7 @@ oi_target Source::GetOITarget(void)
 {
     // Init local vars:
 	target * targ = (target*) malloc(1 * sizeof(target));
-	string empty = " ";
+	string empty = "NULL";
 	
 	string targ_name = "Simulated " + this->source_name;
     
@@ -326,15 +330,17 @@ oi_target Source::GetOITarget(void)
 	targ->ra_err = 0.0;
 	targ->dec_err = 0.0;
 	targ->sysvel = 0.0;
-	strncpy(targ->veltyp, empty.c_str(), 1);
-	strncpy(targ->veldef, empty.c_str(), 1);
+	strncpy(targ->veltyp, empty.c_str(), empty.size());
+	strncpy(targ->veldef, empty.c_str(), empty.size());
 	targ->pmra = 0.0;
 	targ->pmdec = 0.0;
 	targ->pmra_err = 0.0;
 	targ->pmdec_err = 0.0;
 	targ->parallax = 0.0;
 	targ->para_err = 0.0;
-	strncpy(targ->spectyp, empty.c_str(), 1);
+	
+	/// \bug Spectral type output here always has some junk after it.  Not sure why though.
+	strncpy(targ->spectyp, empty.c_str(), empty.size());
 	
 	oi_target oi_targ;
 	oi_targ.revision = 1;
