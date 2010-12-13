@@ -622,12 +622,19 @@ void run_sim(const VisSimParams * p)
     
     // Now compute the vis2 records and t3s:
     oi_vis2 vis2table;
-//    vector<oi_t3> t3;
+    oi_t3 t3table;
     for(unsigned int i = 0; i < observations.size(); i++)
     {
         vis2table = observations[i].GetVis2(spec->insname, *target, wavenumbers);
         write_oi_vis2(fptr, vis2table, 1, &status);
-//        t3.push_back(observations[i].GetVis2(spec->GetWavenumbers()));
+        
+        if(observations[i].HasTriplets())
+        {
+            t3table = observations[i].GetT3(spec->insname, *target, wavenumbers);
+            write_oi_t3(fptr, t3table, 1, &status);
+        }
+        
+
     }
     
 

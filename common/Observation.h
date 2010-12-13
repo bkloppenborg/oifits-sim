@@ -53,7 +53,7 @@ class Observation
     
   // Methods for simulating data.
     oi_vis2 GetVis2(string ins_name, Source & source, vector<double> & wavenumbers);
-//    oi_t3   GetT3(vector<double> & wavenumbers);
+    oi_t3   GetT3(string ins_name, Source & source, vector<double> & wavenumbers);
     
   // Other Methods
     double  GetHA(double targ_ra);
@@ -61,5 +61,6 @@ class Observation
     
     int         GetNumStations(void);
     Station &   GetStation(int sta_index);
+    bool    HasTriplets(void);
 };
 

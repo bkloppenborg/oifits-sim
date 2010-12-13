@@ -46,6 +46,9 @@ class Triplet
     
     complex<double> GetBisError(Source & source, double hour_angle, double wavenumber);
     void    SetBisError(Source & source, double hour_angle, double wavenumber);
+    int     GetStationID(int station_num);
+    
+    Baseline & GetBaseline(int baseline_num);
 };
 
 // Hash data type

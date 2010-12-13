@@ -43,9 +43,16 @@ string Triplet::GetName(void)
     return this->name;
 }
 
+int     Triplet::GetStationID(int station_num)
+{
+    /// \todo Assert that station_num is less than 3.
+    return this->mStations[station_num].GetIndex();
+}
+
 complex<double> Triplet::ComputeBisError(Source & source, double hour_angle, double wavenumber)
 {
-    return complex <double> (0.0, 0.0);
+    /// \bug Bispectrum error is set to 0.000001 by default
+    return complex <double> (0.000001, 0.000001);
 }
 
 complex<double> Triplet::ComputeBispectra(Source & source, double hour_angle, double wavenumber)
@@ -126,6 +133,12 @@ string  Triplet::GetHashKey(Source & source, double hour_angle, double wavenumbe
     sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
     std::string str = sstream.str();
     return str;
+}
+
+Baseline & Triplet::GetBaseline(int baseline_num)
+{
+    /// \todo Assert that baseline_num is less than 3
+    return mBaselines[baseline_num];
 }
 
 ////////////////////////////////////////////////////////////////////

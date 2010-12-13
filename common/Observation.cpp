@@ -315,8 +315,7 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 	vis2.nwave = nwave;
 	for (int i = 0; i < npow; i++)
 	{
-	    /// \bug By default the target ID is set to 1.
-		vis2.record[i].target_id = 1;
+		vis2.record[i].target_id = source.GetTargetID();
 		/// \bug The time is set to zero by default 
 		vis2.record[i].time = 0.0;
 		vis2.record[i].mjd = this->mJD;
@@ -343,6 +342,82 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 	
 	return vis2;
 }
+
+/// Create an OIFITS-compliant t3 table for this observation.
+oi_t3 Observation::GetT3(string ins_name, Source & source, vector<double> & wavenumbers)
+{
+    oi_t3 t3;
+    int nTriplets = this->mTriplets.size();
+    int nwave = wavenumbers.size();
+    string arrname = this->mArray->GetArrayName();
+    complex<double> bis;
+    complex<double> bis_err;
+    
+    UVPoint uv_AB;
+    UVPoint uv_BC;
+    
+        
+    /// \bug I'm not sure which wavenumber should be used for the UV point reference
+    /// so I'm assuming the middle channel is correct.
+    double wavenumber = wavenumbers[floor(nwave/2)];
+    
+	t3.record = (oi_t3_record *) malloc(nTriplets * sizeof(oi_t3_record));
+	for (int i = 0; i < nTriplets; i++)
+	{
+		t3.record[i].t3amp = (double *) malloc(nwave * sizeof(double));
+		t3.record[i].t3amperr = (double *) malloc(nwave * sizeof(double));
+		t3.record[i].t3phi = (double *) malloc(nwave * sizeof(double));
+		t3.record[i].t3phierr = (double *) malloc(nwave * sizeof(double));
+		t3.record[i].flag = (char *) malloc(nwave * sizeof(char));
+	}
+	t3.revision = 1;
+	/// \bug Observation date is set to 0000-00-00 by default
+	strncpy(t3.date_obs, "0000-00-00", FLEN_VALUE);
+	strncpy(t3.arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(t3.insname, ins_name.c_str(), FLEN_VALUE);
+	t3.numrec = nTriplets;
+	t3.nwave = nwave;
+	
+	// Now copy the data into t3 records:
+	for (int i = 0; i < nTriplets; i++)
+	{
+	   
+		t3.record[i].target_id = source.GetTargetID();
+		/// \bug Time is set to zero by default.
+		t3.record[i].time = 0.0;
+		t3.record[i].mjd = this->mJD;
+		/// \bug Integration time set to 10 seconds by default.
+		t3.record[i].int_time = 10;
+		
+		// Get the UV coordinates for the AB and BC baselines
+		uv_AB = mTriplets[i].GetBaseline(0).UVcoords(this->mHA, source.declination, wavenumber);
+		uv_BC = mTriplets[i].GetBaseline(1).UVcoords(this->mHA, source.declination, wavenumber);
+		
+		t3.record[i].u1coord = uv_AB.u;
+		t3.record[i].v1coord = uv_AB.v;
+		t3.record[i].u2coord = uv_BC.u;
+		t3.record[i].v2coord = uv_BC.v;
+		t3.record[i].sta_index[0] = mTriplets[i].GetStationID(0);
+		t3.record[i].sta_index[1] = mTriplets[i].GetStationID(1);
+		t3.record[i].sta_index[2] = mTriplets[i].GetStationID(2);
+		
+		for(int j = 0; j < nwave; j++)
+		{
+		    bis = mTriplets[i].GetBispectra(source, this->mHA, wavenumbers[j]);
+		    bis_err = mTriplets[i].GetBisError(source, this->mHA, wavenumbers[j]);
+			t3.record[i].t3amp[j] = abs(bis);
+			t3.record[i].t3phi[j] = arg(bis) * 180 / PI;
+			t3.record[i].t3amperr[j] = abs(bis_err);
+			t3.record[i].t3phierr[j] = arg(bis_err) * 180 / PI;
+			t3.record[i].flag[j] = FALSE;
+		}
+		
+	}
+		
+	return t3;
+}
+
+
 
 /// Reads in an properly formatted observation file in a formats defined by file_type:
 ///     0: A list of hour angles (in decimal hours)
@@ -497,4 +572,12 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
     
     
     return observations;
+}
+
+bool    Observation::HasTriplets(void)
+{
+    if(this->mTriplets.size() > 0)
+        return true;
+        
+    return false;
 }
