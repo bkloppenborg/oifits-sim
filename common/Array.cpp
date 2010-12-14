@@ -165,18 +165,24 @@ Array::Array(string filename, string comment_chars)
     this->tri_hash = ComputeTripletHash(this->triplets);
 }
 
+// Destructor for the array object.
+Array::~Array()
+{
+
+}
+
 // Returns a reference to a baseline object.
-Baseline &  Array::GetBaseline(string baseline_name)
+Baseline *  Array::GetBaseline(string baseline_name)
 {
-    return this->bl_hash[baseline_name.c_str()];
+    return this->bl_hash[baseline_name];
 }
 
-Station &   Array::GetStation(int station_index)
+Station *   Array::GetStation(int station_index)
 {
-    return this->stations[station_index];
+    return &this->stations[station_index];
 }
 
-Station &   Array::GetStation(string sta_name)
+Station *   Array::GetStation(string sta_name)
 {
     return this->sta_hash[sta_name];
 }
@@ -206,12 +212,17 @@ string  Array::GetArrayName(void)
     return this->arrayname;
 }
 
-vector<Station> Array::GetAllStations(void)
+vector<Station*> Array::GetAllStations(void)
 {
-    return this->stations;
+    vector<Station*> temp;
+    
+    for(unsigned int i = 0; i < this->stations.size(); i++)
+        temp.push_back(&this->stations[i]);
+    
+    return temp;
 }
 
-Triplet &   Array::GetTriplet(string triplet_name)
+Triplet *   Array::GetTriplet(string triplet_name)
 {
     return this->tri_hash[triplet_name];
 }
@@ -241,18 +252,18 @@ oi_array    Array::GetOIArray(void)
 	array.arrayz = GeocRadius * sin(GeocLat);
 
 	array.nelement = nstations;
-	Station station;
+	Station * station;
 	for (int i = 0; i < nstations; i++)
 	{
 	    station = this->GetStation(i);
 		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-		strncpy(array.elem[i].sta_name, station.GetName().c_str(), FLEN_VALUE);
+		strncpy(array.elem[i].sta_name, station->GetName().c_str(), FLEN_VALUE);
 		/// \todo Pull the station index from the station object
 		array.elem[i].sta_index = i + 1;
-		array.elem[i].diameter = station.diameter;
-		array.elem[i].staxyz[0] = station.xyz[0];
-		array.elem[i].staxyz[1] = station.xyz[1];
-		array.elem[i].staxyz[2] = station.xyz[2];
+		array.elem[i].diameter = station->diameter;
+		array.elem[i].staxyz[0] = station->xyz[0];
+		array.elem[i].staxyz[1] = station->xyz[1];
+		array.elem[i].staxyz[2] = station->xyz[2];
 	}
 	
 	return array;

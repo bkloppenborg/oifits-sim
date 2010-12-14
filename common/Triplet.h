@@ -22,8 +22,8 @@ class Array;
 class Triplet
 {
   private:
-    Station     mStations[3];
-    Baseline    mBaselines[3]; 
+    Station     *   mStations[3];
+    Baseline    *   mBaselines[3]; 
     string name;
     
     BisHash mBisValues; // Stores computed bispectrum values
@@ -31,7 +31,7 @@ class Triplet
 
   public:
     Triplet();
-    Triplet(Array * array, Station & station1, Station & station2, Station & station3);
+    Triplet(Array * array, Station * station1, Station * station2, Station * station3);
 
   private:    
     complex<double> ComputeBisError(Source & source, double hour_angle, double wavenumber);
@@ -48,11 +48,11 @@ class Triplet
     void    SetBisError(Source & source, double hour_angle, double wavenumber);
     int     GetStationID(int station_num);
     
-    Baseline & GetBaseline(int baseline_num);
+    Baseline * GetBaseline(int baseline_num);
 };
 
 // Hash data type
-typedef std::tr1::unordered_map<std::string, Triplet> TripletHash;
+typedef std::tr1::unordered_map<std::string, Triplet*> TripletHash;
 
 vector<Triplet> ComputeTriplets(Array * array, vector<Station> stations);
 TripletHash ComputeTripletHash(vector<Triplet> triplets);

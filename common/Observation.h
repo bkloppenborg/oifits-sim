@@ -27,21 +27,24 @@ class Observation
     double mHA;         // The hour angle of the observation
     bool   mComputeHA;  // A boolean flag to indicate that the hour angle has not been computed.
     
-    vector<Station>     mStations;
-    vector<Baseline>    mBaselines;
-    vector<Triplet>     mTriplets;
+    // Note, these are vectors of pointers.  It is intended that this class only destroy the
+    // pointers and NOT the objects themselves.  
+    /// \bug Smart pointers would be better here.
+    vector<Station*>     mStations;
+    vector<Baseline*>    mBaselines;
+    vector<Triplet*>     mTriplets;
 
   private:
-    vector<Station>     FindStations(string telescopes);
-    vector<Baseline>    FindBaselines(vector<Station> stations, string exclude_baselines);
-    vector<Triplet>     FindTriplets(vector<Station> stations, string exclude_baselines);  
+    vector<Station*>     FindStations(string telescopes);
+    vector<Baseline*>    FindBaselines(vector<Station*> stations, string exclude_baselines);
+    vector<Triplet*>     FindTriplets(vector<Station*> stations, string exclude_baselines);  
 
     double  GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long);
     double  GetSiderealTime(double jd_high, double jd_low, double ee);
     
   public:
   // Constructors
-    Observation(Array * array, vector<Station> stations, string exclude_baselines);
+    Observation(Array * array, vector<Station*> stations, string exclude_baselines);
     Observation(Array * array, double hour_angle, string telescopes, string exclude_baselines);
     Observation(Array * array, double mjd, double time, string telescopes, string exclude_baselines);
     
@@ -60,7 +63,7 @@ class Observation
     friend  bool SameObservation(Observation & A, Observation & B);
     
     int         GetNumStations(void);
-    Station &   GetStation(int sta_index);
-    bool    HasTriplets(void);
+    Station *   GetStation(int sta_index);
+    bool        HasTriplets(void);
 };
 

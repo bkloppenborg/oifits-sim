@@ -40,7 +40,7 @@ inline bool SameObservation(Observation & A, Observation & B)
     return false;
 }
 
-Observation::Observation(Array * array, vector<Station> stations, string exclude_baselines)
+Observation::Observation(Array * array, vector<Station*> stations, string exclude_baselines)
 {
     this->mArray = array;
     this->mStations = stations;
@@ -76,9 +76,9 @@ Observation::Observation(Array * array, double MJD, double time, string telescop
 }
 
 /// Queries the Array object for the scopes found in the comma separated string "telescopes"
-vector<Station> Observation::FindStations(string telescopes)
+vector<Station*> Observation::FindStations(string telescopes)
 {
-    vector<Station> stations;
+    vector<Station*> stations;
     vector<string> station_names;
 
     // First extract the names of the telescopes from the CSV string, "telescopes"
@@ -96,9 +96,9 @@ vector<Station> Observation::FindStations(string telescopes)
 }
 
 // Finds the baselines specified in the Array object.
-vector<Baseline> Observation::FindBaselines(vector <Station> stations, string exclude_baselines)
+vector<Baseline*> Observation::FindBaselines(vector <Station*> stations, string exclude_baselines)
 {
-    vector<Baseline> baselines;
+    vector<Baseline*> baselines;
     vector<string> excluded_baselines;
     string str;
     string sta1_name;
@@ -112,11 +112,11 @@ vector<Baseline> Observation::FindBaselines(vector <Station> stations, string ex
     int i, j;
     for(i = 0; i < num_stations; i++)
     {
-        sta1_name = stations[i].GetName();
+        sta1_name = stations[i]->GetName();
         
         for(j = i + 1; j < num_stations; j++)
         {
-            string sta2_name = stations[j].GetName();
+            string sta2_name = stations[j]->GetName();
             bl_name = sta1_name + "-" + sta2_name;
             
             bl_names.insert( BLNameHash::value_type(bl_name, bl_name) );
@@ -144,9 +144,9 @@ vector<Baseline> Observation::FindBaselines(vector <Station> stations, string ex
     return baselines;
 }
 
-vector<Triplet>    Observation::FindTriplets(vector<Station> stations, string exclude_baselines)
+vector<Triplet*>    Observation::FindTriplets(vector<Station*> stations, string exclude_baselines)
 {
-    vector<Triplet> triplets;
+    vector<Triplet*> triplets;
     vector<string> excluded_baselines;
     string sta1_name;
     string sta2_name;
@@ -161,15 +161,15 @@ vector<Triplet>    Observation::FindTriplets(vector<Station> stations, string ex
     int i, j, k;
     for(i = 0; i < num_stations - 2; i++)
     {
-        sta1_name = stations[i].GetName();
+        sta1_name = stations[i]->GetName();
         
         for(j = i + 1; j < num_stations - 1; j++)
         {
-            sta2_name = stations[j].GetName();
+            sta2_name = stations[j]->GetName();
            
             for(k = j + 1; k < num_stations; k++)
             {
-                sta3_name = stations[k].GetName();
+                sta3_name = stations[k]->GetName();
                 tri_name = sta1_name + "-" + sta2_name + "-" + sta3_name;
                 
                 // Insert the triplet name into the hash.
@@ -191,7 +191,7 @@ vector<Triplet>    Observation::FindTriplets(vector<Station> stations, string ex
         {
             bl_name = excluded_baselines[j];
             
-            if(this->mArray->GetTriplet(tri_name).ContainsBaseline(bl_name))
+            if(this->mArray->GetTriplet(tri_name)->ContainsBaseline(bl_name))
             {   
                 // The excluded baseline is contained in this triplet, remove it from the hash
                 tri_names.erase(it);
@@ -240,8 +240,8 @@ double Observation::GetLocalSiderealTime(double jd_high, double jd_low, double e
 // Get the Sidereal time as a double given the High and Low Julian Date
 double  Observation::GetSiderealTime(double jd_high, double jd_low, double ee)
 {
-	// Code slightly modified from NOVAS to use the current SystemTime
-	// Naval Observatory Vector Astrometry Subroutines (C Language Version 2.0)
+	// Code slightly modified from Naval Observatory Vector Astrometry Subroutines 
+	// (C Language Version 2.0)
 	const double T0 = 2451545.00000000;
 	double t_hi = 0;
 	double t_lo = 0;
@@ -272,7 +272,7 @@ int Observation::GetNumStations(void)
 {
     return this->mStations.size();
 }
-Station & Observation::GetStation(int sta_index)
+Station * Observation::GetStation(int sta_index)
 {
     return this->mStations[sta_index];
 }
@@ -323,19 +323,19 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 		vis2.record[i].int_time = 10;
 		
 		// Compute the UV coordinates and record the station positions:
-		uv = this->mBaselines[i].UVcoords(this->GetHA(ra), dec, wavenumber);
+		uv = this->mBaselines[i]->UVcoords(this->GetHA(ra), dec, wavenumber);
 		vis2.record[i].ucoord = uv.u;
 		vis2.record[i].vcoord = uv.v;
-		vis2.record[i].sta_index[0] = this->mBaselines[i].GetStationID(0);
-		vis2.record[i].sta_index[1] = this->mBaselines[i].GetStationID(1);
+		vis2.record[i].sta_index[0] = this->mBaselines[i]->GetStationID(0);
+		vis2.record[i].sta_index[1] = this->mBaselines[i]->GetStationID(1);
 		
 		// Now compute the individual visibilities and uncertainties
 		for (iwave = 0; iwave < nwave; iwave++)
 		{
 		    // look up the present wavenumber, and then find the data
 		    wavenumber = wavenumbers[iwave];
-			vis2.record[i].vis2data[iwave] = this->mBaselines[i].GetVis2(source, mHA, wavenumber);
-			vis2.record[i].vis2err[iwave] = this->mBaselines[i].GetVis2Err(source, mHA, wavenumber);
+			vis2.record[i].vis2data[iwave] = this->mBaselines[i]->GetVis2(source, mHA, wavenumber);
+			vis2.record[i].vis2err[iwave] = this->mBaselines[i]->GetVis2Err(source, mHA, wavenumber);
 			vis2.record[i].flag[iwave] = FALSE;
 		}
 	}
@@ -390,21 +390,21 @@ oi_t3 Observation::GetT3(string ins_name, Source & source, vector<double> & wave
 		t3.record[i].int_time = 10;
 		
 		// Get the UV coordinates for the AB and BC baselines
-		uv_AB = mTriplets[i].GetBaseline(0).UVcoords(this->mHA, source.declination, wavenumber);
-		uv_BC = mTriplets[i].GetBaseline(1).UVcoords(this->mHA, source.declination, wavenumber);
+		uv_AB = mTriplets[i]->GetBaseline(0)->UVcoords(this->mHA, source.declination, wavenumber);
+		uv_BC = mTriplets[i]->GetBaseline(1)->UVcoords(this->mHA, source.declination, wavenumber);
 		
 		t3.record[i].u1coord = uv_AB.u;
 		t3.record[i].v1coord = uv_AB.v;
 		t3.record[i].u2coord = uv_BC.u;
 		t3.record[i].v2coord = uv_BC.v;
-		t3.record[i].sta_index[0] = mTriplets[i].GetStationID(0);
-		t3.record[i].sta_index[1] = mTriplets[i].GetStationID(1);
-		t3.record[i].sta_index[2] = mTriplets[i].GetStationID(2);
+		t3.record[i].sta_index[0] = mTriplets[i]->GetStationID(0);
+		t3.record[i].sta_index[1] = mTriplets[i]->GetStationID(1);
+		t3.record[i].sta_index[2] = mTriplets[i]->GetStationID(2);
 		
 		for(int j = 0; j < nwave; j++)
 		{
-		    bis = mTriplets[i].GetBispectra(source, this->mHA, wavenumbers[j]);
-		    bis_err = mTriplets[i].GetBisError(source, this->mHA, wavenumbers[j]);
+		    bis = mTriplets[i]->GetBispectra(source, this->mHA, wavenumbers[j]);
+		    bis_err = mTriplets[i]->GetBisError(source, this->mHA, wavenumbers[j]);
 			t3.record[i].t3amp[j] = abs(bis);
 			t3.record[i].t3phi[j] = arg(bis) * 180 / PI;
 			t3.record[i].t3amperr[j] = abs(bis_err);

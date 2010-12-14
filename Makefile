@@ -6,15 +6,15 @@
 CFITSIO_INC = -I/usr/include -I/usr/local/include
 CFITSIO_LIB = -L/usr/lib -L/usr/local/lib -lcfitsio
 
-OIFITS_DIR = ../lib/oifitslib
+OIFITS_DIR = ./lib/oifitslib
 OIFITS_INC = -I$(OIFITS_DIR)
 OIFITS_LIB = -L$(OIFITS_DIR)
 
-COMMON_DIR = ../common
+COMMON_DIR = ./common
 COMMON_INC = -I$(COMMON_DIR)
 COMMON_LIB = -L$(COMMON_DIR)
 
-SOURCES = $(wildcard *.cpp)
+SOURCES = $(wildcard ./vis_sim/*.cpp)
 OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
 
 INCLUDES = $(COMMON_INC) $(CFITSIO_INC) $(OIFITS_INC) \
@@ -48,9 +48,10 @@ oifitslib:
 common:
 	$(MAKE) default -C $(COMMON_DIR)
 	
-%.o : %.cpp
-	$(CPP) -c $(CPPFLAGS) $< -o $@
-	
+.PHONY: vis_sim
+vis_sim:
+	$(CPP) -c $(CPPFLAGS) /vis_sim/$< -o /vis_sim.$@
+
 vsim: $(OBJECTS)
 	$(CPP) -o $(EXECUTABLE) $(OBJECTS) $(CPPFLAGS) $(LIBS) $(LDFLAGS)
 

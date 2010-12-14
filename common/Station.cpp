@@ -79,7 +79,7 @@ StationHash ComputeStationHash(vector<Station> stations)
     
     for(int i = 0; i < stations.size(); i++)
     {
-        hash.insert(StationHash::value_type(stations[i].GetName(), stations[i]) );
+        hash.insert(StationHash::value_type(stations[i].GetName(), &stations[i]) );
     }
     
     return hash;

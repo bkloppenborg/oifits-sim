@@ -630,8 +630,6 @@ void run_sim(const VisSimParams * p)
             t3table = observations[i].GetT3(spec->insname, *target, wavenumbers);
             write_oi_t3(fptr, t3table, 1, &status);
         }
-        
-
     }
     
 

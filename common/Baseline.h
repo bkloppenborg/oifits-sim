@@ -40,7 +40,7 @@ class Baseline
   public:
     Baseline(void);
     Baseline(Array * array, int station1, int station2);
-    Baseline(Station & station1, Station & station2);
+    Baseline(Station * station1, Station * station2);
     
     /// \todo Rewrite this function to work with the new class definition.
     //double Geometric_OPD(double hour_angle, double source_declination);
@@ -66,7 +66,7 @@ class Baseline
 };
 
 // Hash data type
-typedef std::tr1::unordered_map<std::string, Baseline> BaselineHash;
+typedef std::tr1::unordered_map<std::string, Baseline*> BaselineHash;
 
 vector<Baseline> ComputeBaselines(vector<Station> stations);
 BaselineHash ComputeBaselineHash(vector<Baseline> baselines);

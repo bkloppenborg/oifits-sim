@@ -59,13 +59,14 @@ class Array
     // Constructor
     Array(string filename, string comment_chars);
     Array(std::string arrayname, double latitude, double longitude, double altitude, int nstations, Station * stations);
+    ~Array();
 
   public:
     /// \todo The Get* functions that deal with hashes should throw an exception if the key is not found.
-    Station &   GetStation(int station_index);
-    Station &   GetStation(string sta_name);
-    Baseline &  GetBaseline(string baseline_name);
-    Triplet &   GetTriplet(string triplet_name);
+    Station     *   GetStation(int station_index);
+    Station     *   GetStation(string sta_name);
+    Baseline    *   GetBaseline(string baseline_name);
+    Triplet     *   GetTriplet(string triplet_name);
     
     
     double      GetLatitude(void);
@@ -74,7 +75,7 @@ class Array
     int         GetNumStations(void);
     string      GetArrayName(void);
     
-    vector<Station> GetAllStations(void);
+    vector<Station*> GetAllStations(void);
     
     oi_array    GetOIArray(void);
 };

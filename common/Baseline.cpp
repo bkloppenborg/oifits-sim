@@ -19,16 +19,16 @@ Baseline::Baseline()
 }
 
 /// \todo Stop using NEU coordinates here, switch to station.x, station.y, and station.z.
-Baseline::Baseline(Station & station1, Station & station2)
+Baseline::Baseline(Station * station1, Station * station2)
 {
     // Now calculate the xyz coordinates:
-    this->xyz[0] = station1.xyz[0] - station2.xyz[0];
-    this->xyz[1] = station1.xyz[1] - station2.xyz[1];
-    this->xyz[2] = station1.xyz[2] - station2.xyz[2];
+    this->xyz[0] = station1->xyz[0] - station2->xyz[0];
+    this->xyz[1] = station1->xyz[1] - station2->xyz[1];
+    this->xyz[2] = station1->xyz[2] - station2->xyz[2];
         
-    this->name = station1.GetName() + "-" + station2.GetName();
-    this->indicies[0] = station1.GetIndex();
-    this->indicies[1] = station2.GetIndex();
+    this->name = station1->GetName() + "-" + station2->GetName();
+    this->indicies[0] = station1->GetIndex();
+    this->indicies[1] = station2->GetIndex();
 }
 
 UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
@@ -246,7 +246,7 @@ vector<Baseline> ComputeBaselines(vector<Station> stations)
         for(int j = i+1; j < num_stations; j++)
         {
             // Create a new baseline, append it to the list of baselines
-            baselines.push_back(Baseline(stations[i], stations[j]));
+            baselines.push_back(Baseline(&stations[i], &stations[j]));
         }
     }
     
@@ -260,7 +260,7 @@ BaselineHash ComputeBaselineHash(vector<Baseline> baselines)
     
     for(unsigned int i = 0; i < baselines.size(); i++)
     {
-        hash.insert(BaselineHash::value_type(baselines[i].GetName(), baselines[i]) );
+        hash.insert(BaselineHash::value_type(baselines[i].GetName(), &baselines[i]) );
     }
     
     return hash;

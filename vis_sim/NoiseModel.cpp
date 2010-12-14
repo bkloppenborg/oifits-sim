@@ -56,8 +56,8 @@ double PhCount(Source & target, Observation & obs, Instrument & inst, double med
 	double Ni;
 
 	Ni = target.flux * pow(wl, -2.0) * TimeInt(median_wl, inst.ast_seeing, inst.wind_speed) *
-	   obs.GetNumStations() * PI * pow((obs.GetStation(0).diameter), 2.0) * 
-	   Dlambda * inst.GlobalThroughput() * Strehl(wl, inst.ast_seeing, obs.GetStation(0).diameter) / 4;
+	   obs.GetNumStations() * PI * pow((obs.GetStation(0)->diameter), 2.0) * 
+	   Dlambda * inst.GlobalThroughput() * Strehl(wl, inst.ast_seeing, obs.GetStation(0)->diameter) / 4;
 	return (Ni);
 }
 
