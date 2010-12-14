@@ -146,7 +146,7 @@ Baseline * Triplet::GetBaseline(int baseline_num)
 ////////////////////////////////////////////////////////////////////
 
 /// Computes all possible triplets for the stations provided.
-vector<Triplet> ComputeTriplets(Array * array, vector<Station> stations)
+vector<Triplet> ComputeTriplets(Array * array, vector<Station> & stations)
 {
     // init some local variables
     vector<Triplet> triplets;
@@ -167,7 +167,7 @@ vector<Triplet> ComputeTriplets(Array * array, vector<Station> stations)
     return triplets;
 }
 
-TripletHash ComputeTripletHash(vector<Triplet> triplets)
+TripletHash ComputeTripletHash(vector<Triplet> & triplets)
 {
     TripletHash hash;
     

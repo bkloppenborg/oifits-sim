@@ -54,7 +54,7 @@ class Triplet
 // Hash data type
 typedef std::tr1::unordered_map<std::string, Triplet*> TripletHash;
 
-vector<Triplet> ComputeTriplets(Array * array, vector<Station> stations);
-TripletHash ComputeTripletHash(vector<Triplet> triplets);
+vector<Triplet> ComputeTriplets(Array * array, vector<Station> & stations);
+TripletHash ComputeTripletHash(vector<Triplet> & triplets);
 
 #endif // TRIPLET_H

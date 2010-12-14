@@ -73,7 +73,7 @@ int     Station::GetIndex(void)
 ////////////////////////////////////////////////////////////////////
 // Non Class Functions Below
 ////////////////////////////////////////////////////////////////////
-StationHash ComputeStationHash(vector<Station> stations)
+StationHash ComputeStationHash(vector<Station> & stations)
 {
     StationHash hash;
     

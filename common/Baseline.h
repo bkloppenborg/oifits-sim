@@ -68,8 +68,8 @@ class Baseline
 // Hash data type
 typedef std::tr1::unordered_map<std::string, Baseline*> BaselineHash;
 
-vector<Baseline> ComputeBaselines(vector<Station> stations);
-BaselineHash ComputeBaselineHash(vector<Baseline> baselines);
+vector<Baseline> ComputeBaselines(vector<Station> & stations);
+BaselineHash ComputeBaselineHash(vector<Baseline> & baselines);
 
 
 #endif // #ifndef BASELINE_H

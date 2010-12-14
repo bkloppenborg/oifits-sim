@@ -257,9 +257,9 @@ oi_array    Array::GetOIArray(void)
 	{
 	    station = this->GetStation(i);
 		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-		strncpy(array.elem[i].sta_name, station->GetName().c_str(), FLEN_VALUE);
-		/// \todo Pull the station index from the station object
-		array.elem[i].sta_index = i + 1;
+		/// \bug The station names often have gibberish characters.  Something to do with this line.
+		strncpy(array.elem[i].sta_name, station->GetName().c_str(), station->GetName().size());
+		array.elem[i].sta_index = station->GetIndex();
 		array.elem[i].diameter = station->diameter;
 		array.elem[i].staxyz[0] = station->xyz[0];
 		array.elem[i].staxyz[1] = station->xyz[1];

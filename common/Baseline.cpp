@@ -234,7 +234,7 @@ double  Baseline::GetVis2Err(Source & source, double hour_angle, double wavenumb
 ////////////////////////////////////////////////////////////////////
 
 /// Computes all possible baselines formed by the specified stations.
-vector<Baseline> ComputeBaselines(vector<Station> stations)
+vector<Baseline> ComputeBaselines(vector<Station> & stations)
 {
     int num_stations = stations.size();
     
@@ -254,7 +254,7 @@ vector<Baseline> ComputeBaselines(vector<Station> stations)
 }
 
 /// Computes a (baseline_name, baseline_object) hash table.
-BaselineHash ComputeBaselineHash(vector<Baseline> baselines)
+BaselineHash ComputeBaselineHash(vector<Baseline> & baselines)
 {
     BaselineHash hash;
     

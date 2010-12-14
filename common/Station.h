@@ -47,6 +47,6 @@ class Station
 
 // Hash data type
 typedef std::tr1::unordered_map<std::string, Station*> StationHash;
-StationHash ComputeStationHash(vector<Station> stations);
+StationHash ComputeStationHash(vector<Station> & stations);
 
 #endif // STATION_H
