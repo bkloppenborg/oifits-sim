@@ -345,8 +345,8 @@ void mat2fits(Matrix < Complex > &m, char *filename)
     long naxes[2];
 
     // Initialise storage
-    naxes[0] = (long)m.GetCols();
-    naxes[1] = (long)m.GetRows();
+    naxes[0] = (long)m.GetRows();
+    naxes[1] = (long)m.GetCols();
     nelements = naxes[0] * naxes[1];
 
     // Filenames
@@ -369,7 +369,7 @@ void mat2fits(Matrix < Complex > &m, char *filename)
 
     for (int jj = 0; jj < naxes[1]; jj++)
         for (int ii = 0; ii < naxes[0]; ii++)
-            ptrimgreal[ii + jj * naxes[0]] = m[ii][jj].real();
+            ptrimgreal[ii + jj * naxes[0]] = m[jj][ii].real();
 
     // Create new file, write image, then close file
     if (status == 0)
@@ -462,10 +462,10 @@ void fits2mat(const char *fname, Matrix < double >&m)
     if (status == 0)
         fits_close_file(fptr, &status);
 
-    m.setsize(naxes[0], naxes[1]);
+    m.setsize(naxes[1], naxes[0]);
     for (int jj = 0; jj < naxes[1]; jj++)
         for (int ii = 0; ii < naxes[0]; ii++)
-            m[ii][jj] = ptrimg[ii + jj * naxes[0]];
+            m[jj][ii] = ptrimg[ii + jj * naxes[0]];
     free(ptrimg);
 
     // Report any errors

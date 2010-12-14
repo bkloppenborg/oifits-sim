@@ -34,8 +34,8 @@ Baseline::Baseline(Station & station1, Station & station2)
 UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
 {
     // First convert all values into radians (they should be degrees or decimal hours (of time) before now.
-    double h = hour_angle * PI;
-    double delta = source_declination;
+    double h = hour_angle * PI / 12;
+    double delta = source_declination * PI / 180;
 
     // Now compute the UV coordinates, again according to the APIS++ standards.
     UVPoint uv;

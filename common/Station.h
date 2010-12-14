@@ -9,6 +9,8 @@
 #include <string>
 using namespace std;
 
+#include "Simulator.h"
+
 class AtmosphereLayer;
 
 /// \class Station Station.h

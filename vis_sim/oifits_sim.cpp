@@ -598,13 +598,7 @@ void run_sim(const VisSimParams * p)
     /// \todo read in the file format type, right now it's locked to the descriptive only format.
     vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
     
-    // Start getting the OIFITS-formatted data:
-    oi_array oi_arr = array->GetOIArray();    
-    /// \bug The target
-    oi_target oi_targ = target->GetOITarget();
-    oi_wavelength oi_wave = spec->GetOIWavelength();
-    
-	// Write OI-FITS file
+    // Open up the OIFITS file.
 	string filename = "!test.oifits";
 	fitsfile *fptr;
 	int status = 0;
@@ -614,9 +608,12 @@ void run_sim(const VisSimParams * p)
 		fits_report_error(stderr, status);
 		return;
 	}
-
-	write_oi_array(fptr, oi_arr, 1, &status);
-	write_oi_target(fptr, oi_targ, &status);
+    oi_array oi_arr = array->GetOIArray();    
+    write_oi_array(fptr, oi_arr, 1, &status);
+    oi_target oi_targ = target->GetOITarget();
+    write_oi_target(fptr, oi_targ, &status);
+    oi_wavelength oi_wave = spec->GetOIWavelength();
+    write_oi_wavelength(fptr, oi_wave, 1, &status);
     
     vector<double> wavenumbers = spec->GetWavenumbers();
     
@@ -638,14 +635,6 @@ void run_sim(const VisSimParams * p)
     }
     
 
-
-//	write_oi_vis2(fptr, vis2table, 1, &status);
-//	if (pBispec != NULL)
-//	{
-//		write_oi_t3(fptr, t3, 1, &status);
-//	}
-	write_oi_wavelength(fptr, oi_wave, 1, &status);
-
 	if (status)
 	{
 		fits_delete_file(fptr, &status);
@@ -656,9 +645,9 @@ void run_sim(const VisSimParams * p)
 		fits_close_file(fptr, &status);
 	}
 
-	free_oi_array(&oi_arr);
-	free_oi_target(&oi_targ);
-	free_oi_wavelength(&oi_wave);
+	//free_oi_array(&oi_arr);
+	//free_oi_target(&oi_targ);
+	//free_oi_wavelength(&oi_wave);
 //	free_oi_vis2(&vis2);
 //	if (pBispec != NULL)
 //	{

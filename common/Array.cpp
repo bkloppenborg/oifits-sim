@@ -236,8 +236,8 @@ oi_array    Array::GetOIArray(void)
 	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
 
 	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
-	array.arrayx = GeocRadius * cos(GeocLat) * cos(longitude * PI / 180);
-	array.arrayy = GeocRadius * cos(GeocLat) * sin(longitude * PI / 180);
+	array.arrayx = GeocRadius * cos(GeocLat) * cos(this->longitude * PI / 180);
+	array.arrayy = GeocRadius * cos(GeocLat) * sin(this->longitude * PI / 180);
 	array.arrayz = GeocRadius * sin(GeocLat);
 
 	array.nelement = nstations;
@@ -246,7 +246,7 @@ oi_array    Array::GetOIArray(void)
 	{
 	    station = this->GetStation(i);
 		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
-		strncpy(array.elem[i].sta_name, station.GetName().c_str(), station.GetName().size());
+		strncpy(array.elem[i].sta_name, station.GetName().c_str(), FLEN_VALUE);
 		/// \todo Pull the station index from the station object
 		array.elem[i].sta_index = i + 1;
 		array.elem[i].diameter = station.diameter;
