@@ -286,10 +286,7 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
     int nwave = wavenumbers.size();
     int iwave = 0;
     string arrname = this->mArray->GetArrayName();
-    
-    /// \bug I'm not sure which wavenumber should be used for the UV point reference
-    /// so I'm assuming the middle channel is correct.
-    double wavenumber = wavenumbers[floor(nwave/2)];
+    double wavenumber = 0;
     
     double ra = source.right_ascension;
     double dec = source.declination;
@@ -323,7 +320,7 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 		vis2.record[i].int_time = 10;
 		
 		// Compute the UV coordinates and record the station positions:
-		uv = this->mBaselines[i]->UVcoords(this->GetHA(ra), dec, wavenumber);
+		uv = this->mBaselines[i]->UVcoords(this->GetHA(ra), dec);
 		vis2.record[i].ucoord = uv.u;
 		vis2.record[i].vcoord = uv.v;
 		vis2.record[i].sta_index[0] = this->mBaselines[i]->GetStationID(0);
@@ -352,14 +349,10 @@ oi_t3 Observation::GetT3(string ins_name, Source & source, vector<double> & wave
     string arrname = this->mArray->GetArrayName();
     complex<double> bis;
     complex<double> bis_err;
+    double wavenumber = 0.0;
     
     UVPoint uv_AB;
     UVPoint uv_BC;
-    
-        
-    /// \bug I'm not sure which wavenumber should be used for the UV point reference
-    /// so I'm assuming the middle channel is correct.
-    double wavenumber = wavenumbers[floor(nwave/2)];
     
 	t3.record = (oi_t3_record *) malloc(nTriplets * sizeof(oi_t3_record));
 	for (int i = 0; i < nTriplets; i++)
@@ -390,8 +383,8 @@ oi_t3 Observation::GetT3(string ins_name, Source & source, vector<double> & wave
 		t3.record[i].int_time = 10;
 		
 		// Get the UV coordinates for the AB and BC baselines
-		uv_AB = mTriplets[i]->GetBaseline(0)->UVcoords(this->mHA, source.declination, wavenumber);
-		uv_BC = mTriplets[i]->GetBaseline(1)->UVcoords(this->mHA, source.declination, wavenumber);
+		uv_AB = mTriplets[i]->GetBaseline(0)->UVcoords(this->mHA, source.declination);
+		uv_BC = mTriplets[i]->GetBaseline(1)->UVcoords(this->mHA, source.declination);
 		
 		t3.record[i].u1coord = uv_AB.u;
 		t3.record[i].v1coord = uv_AB.v;

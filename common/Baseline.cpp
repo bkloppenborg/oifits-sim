@@ -35,24 +35,20 @@ Baseline::Baseline(Station * station1, Station * station2)
 ///     hour_angle : The hour angle (decimal hours)
 ///     source_dec : The declination of the source (radians)
 ///     wavenumber : Wavenumber (1/meter)
-UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
+UVPoint Baseline::UVcoords(double hour_angle, double source_declination)
 {
     // First convert all values into radians (they should be degrees or decimal hours (of time) before now.
     double h = hour_angle * PI / 12;
     double delta = source_declination;
 
     // Now compute the UV coordinates, again according to the APIS++ standards.
-    UVPoint uv;
+    UVPoint uv = UVPoint();
     uv.u = sin(h) * xyz[0]                    + cos(h) * xyz[1];
     uv.v = -sin(delta) * cos(h) * xyz[0]      + sin(delta) * sin(h) * xyz[1]    + cos(delta) * xyz[2];
     uv.w = cos(delta) * cos(h)*xyz[0]         - cos(delta) * sin(h) * xyz[1]    + sin(delta) * xyz[2];
     
-    // Scale by the wavenumber (1/wavelength)
     /// \note The coordinates (u,v) calculated here appear to be (-u, -v) with respect to CHARA+MIRC data.
     /// Given that the UV plane is symmetric, this doesn't matter.
-    uv.u *= wavenumber;
-    uv.v *= wavenumber;
-    uv.w *= wavenumber;
     
     return uv;
 }
@@ -148,10 +144,15 @@ complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, 
     }
     else    // A resolved object
     {
-        UVPoint uv = this->UVcoords(hour_angle, source.declination, wavenumber);
+        UVPoint uv = this->UVcoords(hour_angle, source.declination);
         
         int nx = source.source_image.GetCols();
         int ny = source.source_image.GetRows();
+        
+        // Scale the UV coordinates by the wavenumber to properly sample the UV plane
+        uv.u *= wavenumber;
+        uv.v *= wavenumber;
+        uv.w *= wavenumber;       
 
         /// \todo This calculation could be farmed out to a GPU very easily.
         for (int ii = 0; ii < nx; ii++)

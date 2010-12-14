@@ -116,6 +116,7 @@ Array::Array(string filename, string comment_chars)
         double lon = atof(lines[2].c_str());
         cout << "Array longitude (deg): " << longitude << endl;
         
+        // Convert to radians
         this->longitude = lon * PI / 180;
     }
 

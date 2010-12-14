@@ -59,7 +59,7 @@ class Baseline
     
     void SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error);
     
-    UVPoint UVcoords(double hour_angle, double source_declination, double wavenumber);
+    UVPoint UVcoords(double hour_angle, double source_declination);
 //    oi_vis2_record GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers);
     
     int GetStationID(int station_num);

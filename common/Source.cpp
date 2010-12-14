@@ -265,7 +265,8 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        declination = atof(lines[8].c_str());
+        // Convert the declination
+        declination = atof(lines[8].c_str()) * PI / 180;
     }
     
     if (!isdigit(lines[9][0]))
@@ -276,7 +277,7 @@ Source::Source(string filename, string comment_chars)
     }
     else
     {
-        right_ascension = atof(lines[9].c_str());
+        right_ascension = atof(lines[9].c_str()) * PI / 180;
     }
 
 
