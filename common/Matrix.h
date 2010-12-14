@@ -393,6 +393,7 @@ Complex scalconj(Matrix < Complex > &m1, Matrix < Complex > &m2);       // total
 Complex scalprod(Matrix < Complex > &m1, Matrix < double >&m2);
 
 void FFT(Matrix < Complex > &min, Matrix < Complex > &mout, int direction, int dccenter);
+
 void mat2fits(Matrix < double >&m, const char *filename);
 
 void mat2fits(Matrix < Complex > &m, const char *filename);

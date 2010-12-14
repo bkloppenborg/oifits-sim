@@ -305,8 +305,8 @@ void mat2fits(Matrix < double >&m, const char *filename)
     long naxes[2];
 
     // Initialise storage
-    naxes[0] = (long)m.GetCols();
-    naxes[1] = (long)m.GetRows();
+    naxes[0] = (long)m.GetRows();
+    naxes[1] = (long)m.GetCols();
     nelements = naxes[0] * naxes[1];
 
     double *ptrimg;
@@ -316,7 +316,7 @@ void mat2fits(Matrix < double >&m, const char *filename)
 
     for (int ii = 0; ii < naxes[0]; ii++)
         for (int jj = 0; jj < naxes[1]; jj++)
-            ptrimg[ii + jj * naxes[0]] = m[ii][jj];
+            ptrimg[ ii + jj * naxes[0] ] = m[ii][jj];
 
     // Create new file, write image, then close file
     if (status == 0)
@@ -334,7 +334,7 @@ void mat2fits(Matrix < double >&m, const char *filename)
 }
 
 // / Converts a matrix composed of complex numbers into a FITS file
-void mat2fits(Matrix < Complex > &m, char *filename)
+void mat2fits(Matrix < Complex > &m, char *filename)  // TBD: fix row major vs colum major
 {
     int status = 0;
 
@@ -367,9 +367,9 @@ void mat2fits(Matrix < Complex > &m, char *filename)
 
     double *ptrimgreal = (double *)malloc(nelements * sizeof(double));
 
-    for (int jj = 0; jj < naxes[1]; jj++)
-        for (int ii = 0; ii < naxes[0]; ii++)
-            ptrimgreal[ii + jj * naxes[0]] = m[jj][ii].real();
+    for (int ii = 0; ii < naxes[0]; ii++)
+        for (int jj = 0; jj < naxes[1]; jj++)
+            ptrimgreal[ii + jj * naxes[0]] = m[ii][jj].real();
 
     // Create new file, write image, then close file
     if (status == 0)
@@ -386,8 +386,8 @@ void mat2fits(Matrix < Complex > &m, char *filename)
 
     double *ptrimgimag = (double *)malloc(nelements * sizeof(double));
 
-    for (int jj = 0; jj < naxes[1]; jj++)
-        for (int ii = 0; ii < naxes[0]; ii++)
+    for (int ii = 0; ii < naxes[0]; ii++)
+        for (int jj = 0; jj < naxes[1]; jj++)
             ptrimgimag[ii + jj * naxes[0]] = m[ii][jj].imag();
 
     // Create new file, write image, then close file
@@ -462,10 +462,10 @@ void fits2mat(const char *fname, Matrix < double >&m)
     if (status == 0)
         fits_close_file(fptr, &status);
 
-    m.setsize(naxes[1], naxes[0]);
-    for (int jj = 0; jj < naxes[1]; jj++)
-        for (int ii = 0; ii < naxes[0]; ii++)
-            m[jj][ii] = ptrimg[ii + jj * naxes[0]];
+    m.setsize(naxes[0], naxes[1]);
+     for (int ii = 0; ii < naxes[0]; ii++)
+        for (int jj = 0; jj < naxes[1]; jj++)
+            m[ii][jj] = ptrimg[ii + jj * naxes[0]];
     free(ptrimg);
 
     // Report any errors
@@ -476,8 +476,8 @@ void fits2mat(const char *fname, Matrix < double >&m)
 // / \brief Compute the FFT of a matrix
 // /
 // / Note: this FFT is normalized.
-void FFT(Matrix < Complex > &min, Matrix < Complex > &mout, int direction,
-         int dccenter)
+
+void FFT(Matrix < Complex > &min, Matrix < Complex > &mout, int direction, int dccenter)
 {
     assert(min.GetCols() == min.GetRows());     // square matrix
     assert(mout.GetCols() == mout.GetRows());
