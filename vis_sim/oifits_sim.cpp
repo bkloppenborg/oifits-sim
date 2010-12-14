@@ -8,8 +8,13 @@
 // Include built-in libraries
 #include <cstdlib>
 #include <string>
+
 #include <iostream>
-#include <list>
+#include <stdexcept>
+#include <vector>
+#include <fstream>
+#include <cstdio>
+#include <cstdlib>
 
 #include "oifits_sim.h"
 
@@ -620,8 +625,11 @@ void run_sim(const VisSimParams * p)
     // Now compute the vis2 records and t3s:
     oi_vis2 vis2table;
     oi_t3 t3table;
+    
     for(unsigned int i = 0; i < observations.size(); i++)
     {
+        printf("Simulating Observation at HA %f \n", observations[i].GetHA(target->right_ascension));
+        
         vis2table = observations[i].GetVis2(spec->insname, *target, wavenumbers);
         write_oi_vis2(fptr, vis2table, 1, &status);
         
@@ -651,7 +659,7 @@ void run_sim(const VisSimParams * p)
 //	{
 //		free_oi_t3(&t3);
 //	}
-	cout << "File written.\n";    
+	//cout << "File written.\n";    
     
     
     

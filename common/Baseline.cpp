@@ -100,7 +100,7 @@ string  Baseline::GetHashKey(Source & source, double hour_angle, double wavenumb
 /// \todo Implement computations of error in visibility.  This function returns an error of zero for now.
 complex<double> Baseline::ComputeVisError(Source & source, double hour_angle, double wavenumber)
 {
-    return complex <double> (0.0, 0.0);
+    return complex <double> (0.001, 0.001);
 }
 
 /// Returns the error in the visibility assoicated with this source, hour angle, and wavenumber.

@@ -2,39 +2,9 @@
 
 ##### May need to edit this section #####
 
-# Library Paths:
-CFITSIO_INC = -I/usr/include -I/usr/local/include
-CFITSIO_LIB = -L/usr/lib -L/usr/local/lib -lcfitsio
-
 OIFITS_DIR = ./lib/oifitslib
-OIFITS_INC = -I$(OIFITS_DIR)
-OIFITS_LIB = -L$(OIFITS_DIR)
-
 COMMON_DIR = ./common
-COMMON_INC = -I$(COMMON_DIR)
-COMMON_LIB = -L$(COMMON_DIR)
-
-SOURCES = $(wildcard ./vis_sim/*.cpp)
-OBJECTS = $(patsubst %.cpp, %.o, $(SOURCES))
-
-INCLUDES = $(COMMON_INC) $(CFITSIO_INC) $(OIFITS_INC) \
-	`pkg-config --cflags fftw3` `pkg-config --cflags gtk+-2.0`
-LDFLAGS = `pkg-config --libs fftw3` `pkg-config --libs gtk+-2.0` -loifits -lOISim
-LIBS = $(CFITSIO_LIB) $(OIFITS_LIB) $(COMMON_LIB)
-
-# Compilers/utilities to use
-CPP = g++ 
-
-# Compiler flags
-CPPFLAGS = -ggdb -g -Wall --pedantic -Wextra $(INCLUDES)
-
-EXECUTABLE = oifits-sim
-
-##### end of user-editable section #####
-
-# Rule to make .o file from .cpp file
-%.o : %.cpp
-	$(CPP) $(CPPFLAGS) -c $<
+VSIM_DIR = ./vis_sim
 
 .PHONY: all
 all: oifitslib common vsim
@@ -48,12 +18,9 @@ oifitslib:
 common:
 	$(MAKE) default -C $(COMMON_DIR)
 	
-.PHONY: vis_sim
-vis_sim:
-	$(CPP) -c $(CPPFLAGS) /vis_sim/$< -o /vis_sim.$@
-
-vsim: $(OBJECTS)
-	$(CPP) -o $(EXECUTABLE) $(OBJECTS) $(CPPFLAGS) $(LIBS) $(LDFLAGS)
+.PHONY: vsim
+vsim:
+	$(MAKE) vsim -C $(VSIM_DIR)
 
 # CLEANER
 .PHONY: clean

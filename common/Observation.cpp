@@ -224,12 +224,12 @@ double Observation::GetHA(double targ_ra)
         return this->mHA;
     
     double lst = this->GetLocalSiderealTime(this->mJD, 0, 0, this->mArray->GetLongitude());
-    return lst - targ_ra * 24.0/360;
+    return lst - targ_ra * 12.0/PI;
 }
 
 double Observation::GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long)
 {
-    double lst = this->GetSiderealTime(jd_high, jd_low, ee) + array_long * 24 / 360;
+    double lst = this->GetSiderealTime(jd_high, jd_low, ee) + array_long * 12 / PI;
     
 	if(lst < 0)
         lst += 24;
@@ -546,7 +546,7 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
             throw std::runtime_error("Unknown parameter specified in observation block " + j);
         }
         
-        if(bHourAngle && bStations && bExclude)
+        if(bHourAngle && bStations && (bExclude || i == lines.size() - 1))
         {
             // Push the observation on to the list
             observations.push_back( Observation(array, hour_angle, stations, excluded_baselines) );
