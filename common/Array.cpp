@@ -73,6 +73,8 @@ Array::Array(string filename, string comment_chars)
     double Up;
     double gain;
     double diameter;
+    int coord_sys;
+    bool xyz_coords = false;
 
     // stores non-blank, non-comment lines
     vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Array Definition File");
@@ -128,9 +130,28 @@ Array::Array(string filename, string comment_chars)
         cout << "Array altitude (m): " << altitude << endl;
     }
 
+    // read in the altitude of the telescope array
+    if (!isdigit(lines[4][0]))
+    {
+        throw std::runtime_error("Invalid XYZ or NEU coordinate specifier");
+    }
+    else
+    {
+        coord_sys = atoi(lines[4].c_str());
+        if(coord_sys == 0)
+        {
+            cout << "Telescope Coordinate system specified in XYZ." << endl;
+            xyz_coords = true;
+        }
+        else if(coord_sys == 0)
+            cout << "Telescope Coordinate system specified in (North, East, Up)." << endl;
+        else
+            throw std::runtime_error("Invalid Coordinate definition specification for telescope positions.");
+    }
+
     // Now iterate through the telescope definitions.  There are four entries above
     // this point in the data file so we start at 4.
-    for (unsigned int i = 4; i < lines.size(); i++)
+    for (unsigned int i = 5; i < lines.size(); i++)
     {
 
         istringstream lineStream(lines[i]);
@@ -153,7 +174,7 @@ Array::Array(string filename, string comment_chars)
         diameter = atof(tokens[6].c_str());
         
         // Push this station on to the list of stations for this array.
-        this->stations.push_back( Station(this->latitude, staname, sta_index, North, East, Up, gain, diameter) );
+        this->stations.push_back( Station(this->latitude, staname, sta_index, xyz_coords, North, East, Up, gain, diameter) );
     }
     
     this->sta_hash = ComputeStationHash(stations);

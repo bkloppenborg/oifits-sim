@@ -20,32 +20,53 @@ Station::Station()
     this->sta_index = 0;
 }
 
-Station::Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, double gain, double diameter)
+/// Constructs a Station object.
+/// ABC_is_XYZ permits specification of the XYZ coordinates if true.  If false input the (A=North, B=East, C=Up) coords
+Station::Station(double array_lat, string station_name, int sta_index, bool ABC_is_XYZ, double A, double B, double C, double gain, double diameter)
 {
     this->sta_name = station_name;
     this->sta_index = sta_index;
-    this->NEU[0] = North;
-    this->NEU[1] = East;
-    this->NEU[2] = Up;
+
     this->layer = NULL;
     this->gain = gain;
     this->diameter = diameter;
     
-    this->ComputeXYZ(array_lat);   
+    if(ABC_is_XYZ)
+    {
+        this->xyz[0] = A;
+        this->xyz[1] = B;
+        this->xyz[2] = C;   
+    }
+    else
+    {
+        this->NEU[0] = A;
+        this->NEU[1] = B;
+        this->NEU[2] = C;    
+        this->ComputeXYZ(array_lat);  
+    } 
 }
 
-Station::Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, AtmosphereLayer * atm, double gain, double diameter)
+Station::Station(double array_lat, string station_name, int sta_index, bool ABC_is_XYZ, double A, double B, double C, AtmosphereLayer * atm, double gain, double diameter)
 {
     this->sta_name = station_name;
     this->sta_index = sta_index;
-    this->NEU[0] = North;
-    this->NEU[1] = East;
-    this->NEU[2] = Up;
     this->layer = atm;
     this->gain = gain;
     this->diameter = diameter;
     
-    this->ComputeXYZ(array_lat);
+    if(ABC_is_XYZ)
+    {
+        this->xyz[0] = A;
+        this->xyz[1] = B;
+        this->xyz[2] = C;   
+    }
+    else
+    {
+        this->NEU[0] = A;
+        this->NEU[1] = B;
+        this->NEU[2] = C;    
+        this->ComputeXYZ(array_lat);  
+    } 
 }
 
 void    Station::ComputeXYZ(double phi)

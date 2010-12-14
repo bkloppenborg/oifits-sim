@@ -31,11 +31,15 @@ Baseline::Baseline(Station * station1, Station * station2)
     this->indicies[1] = station2->GetIndex();
 }
 
+/// Computes the UV coordinates for the given information.
+///     hour_angle : The hour angle (decimal hours)
+///     source_dec : The declination of the source (radians)
+///     wavenumber : Wavenumber (1/meter)
 UVPoint Baseline::UVcoords(double hour_angle, double source_declination, double wavenumber)
 {
     // First convert all values into radians (they should be degrees or decimal hours (of time) before now.
     double h = hour_angle * PI / 12;
-    double delta = source_declination * PI / 180;
+    double delta = source_declination;
 
     // Now compute the UV coordinates, again according to the APIS++ standards.
     UVPoint uv;

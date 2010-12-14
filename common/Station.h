@@ -34,8 +34,8 @@ class Station
     
   public:
     Station();
-    Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, double gain, double diameter);
-    Station(double array_lat, string station_name, int sta_index, double North, double East, double Up, AtmosphereLayer * atm, double gain, double diameter);
+    Station(double array_lat, string station_name, int sta_index, bool ABC_is_XYZ, double A, double B, double C, double gain, double diameter);
+    Station(double array_lat, string station_name, int sta_index, bool ABC_is_XYZ, double A, double B, double C, AtmosphereLayer * atm, double gain, double diameter);
 
   private:
     void    ComputeXYZ(double phi);
