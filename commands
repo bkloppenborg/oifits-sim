@@ -1,10 +1,10 @@
 Normal Operation (with OIFITS)
 
-./oifits-sim -t ~/Projects/CHARA/simulator_info/target_epsAur.txt  -s ~/Projects/CHARA/simulator_info/MIRC_LowH.txt  -obs ~/Projects/CHARA/simulator_info/obs_epsAur.txt  -i ~/Projects/CHARA/simulator_info/MIRC.txt   -a ~/Projects/CHARA/simulator_info/CHARA.txt  -o /tmp/test.oifits
+./oifits-sim -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sample_data/obs_epsAur.txt -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o /tmp/test.oifits
 
 Debugging:
 
 gdb ./oifits-sim
-run -t ~/Projects/CHARA/simulator_info/target_epsAur.txt  -s ~/Projects/CHARA/simulator_info/MIRC_LowH.txt  -obs ~/Projects/CHARA/simulator_info/obs_epsAur.txt  -i ~/Projects/CHARA/simulator_info/MIRC.txt   -a ~/Projects/CHARA/simulator_info/CHARA.txt  -o /tmp/test.oifits
+run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sample_data/obs_epsAur.txt -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o /tmp/test.oifits
 
 

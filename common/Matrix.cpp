@@ -369,7 +369,7 @@ void mat2fits(Matrix < Complex > &m, char *filename)  // TBD: fix row major vs c
 
     for (int ii = 0; ii < naxes[0]; ii++)
         for (int jj = 0; jj < naxes[1]; jj++)
-            ptrimgreal[ii + jj * naxes[0]] = m[ii][jj].real();
+            ptrimgreal[ii + jj * naxes[0]] = m[naxes[0] - ii - 1][jj].real();
 
     // Create new file, write image, then close file
     if (status == 0)
@@ -466,7 +466,7 @@ void fits2mat(const char *fname, Matrix < double >&m)
     m.setsize(naxes[0], naxes[1]);
      for (int ii = 0; ii < naxes[0]; ii++)
         for (int jj = 0; jj < naxes[1]; jj++)
-            m[ii][jj] = ptrimg[ii + jj * naxes[0]];
+            m[naxes[0] - ii- 1][jj] = ptrimg[ii + jj * naxes[0]];
     free(ptrimg);
 
     // Report any errors
