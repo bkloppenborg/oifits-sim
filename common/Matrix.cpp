@@ -240,13 +240,13 @@ void Interp2d(Matrix < double >&dataIn, Matrix < double >&dataOut,
 
     double x, y, intX0, intX1, intY0, intY1, fracX, fracY;
 
-    int nxIn = dataIn.GetCols();
+    int nxIn = dataIn.GetRows();
 
-    int nyIn = dataIn.GetRows();
+    int nyIn = dataIn.GetCols();
 
-    int nxOut = dataOut.GetCols();
+    int nxOut = dataOut.GetRows();
 
-    int nyOut = dataOut.GetRows();
+    int nyOut = dataOut.GetCols();
 
     double c = scale * cos(rotation);
 
@@ -462,10 +462,11 @@ void fits2mat(const char *fname, Matrix < double >&m)
     if (status == 0)
         fits_close_file(fptr, &status);
 
+    // Flipped the x-axis so images wouldn't be transposed as they are read into memory. BKK
     m.setsize(naxes[0], naxes[1]);
      for (int ii = 0; ii < naxes[0]; ii++)
         for (int jj = 0; jj < naxes[1]; jj++)
-            m[naxes[0] - ii - 1][jj] = ptrimg[ii + jj * naxes[0]];
+            m[ii][jj] = ptrimg[ii + jj * naxes[0]];
     free(ptrimg);
 
     // Report any errors

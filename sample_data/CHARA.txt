@@ -1,0 +1,31 @@
+# File describing the characteristics of the array
+# First line should contain the name of the array
+CHARA
+# Second line should be the latitude of the array in degrees
+34.281666666666666
+# Third line should be the longitude of the array in degrees
+# East positive longitude convention
+-118.05916666666667
+# Fourth line should contain the altitude in metres
+1731.264
+# Define the coordinate system used for the telescopes:
+#   0 : (x,y,z) per APIS++ standards (i.e. OIFITS coordinates)
+#   1 : North, East, Up
+0
+# Data belonging to each telescope on a different line 
+# for each telescope, in columns separated by tabs
+# one should have in this order: 
+#   1: The array's name for the station
+#   2: The array's index for the station
+#   3: The X/North Coordinate for the station (meters)
+#   4: The Y/East Coordinate for the station (meters)
+#   5: The Z/Up Coordinate for the station (meters)
+#   6: The Gain (not presently used, set to 1)
+#   7: The Diamemeter of the mirror (meters)
+# CHARA S1S2E1E2W1W2 configuration from MIRC observation of Eps Aur on 2010Sep23, 2010Sep24 by BKK
+S1  0	    0.0	                0.0	                0.0                 1.0 1.0
+S2  1	    3.56041112117068    18.9016271169964    28.1285801044       1.0 1.0
+E1  2	    193.840840981529    97.2098011027062    249.622119936415    1.0 1.0
+E2  3	    134.587748443428    102.809267386182    221.444107503027    1.0 1.0
+W1  4	    -93.0655419584202   197.608389566467    172.799951498137    1.0 1.0
+W2  5	    -8.39845878351636   131.113329791483    165.087133556127    1.0 1.0

@@ -146,8 +146,8 @@ complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, 
     {
         UVPoint uv = this->UVcoords(hour_angle, source.declination);
         
-        int nx = source.source_image.GetCols();
-        int ny = source.source_image.GetRows();
+        int nx = source.source_image.GetRows();
+        int ny = source.source_image.GetCols();
         
         // Scale the UV coordinates by the wavenumber to properly sample the UV plane
         uv.u *= wavenumber;
