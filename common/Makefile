@@ -2,6 +2,10 @@
 OIFITS_DIR = ../lib/oifitslib
 OIFITS_INC = -I$(OIFITS_DIR)
 OIFITS_LIB = -L$(OIFITS_DIR)
+OIFITS_OBJ = $(OIFITS_DIR)/read_fits.o $(OIFITS_DIR)/write_fits.o \
+            $(OIFITS_DIR)/free_fits.o $(OIFITS_DIR)/oifile.o \
+            $(OIFITS_DIR)/oifilter.o $(OIFITS_DIR)/oicheck.o \
+            $(OIFITS_DIR)/oimerge.o
 
 # Create a list of all of the .cpp files:
 CPP_SOURCES = $(wildcard *.cpp)
@@ -11,8 +15,12 @@ CPP_OBJECTS = $(patsubst %.cpp, %.o, $(CPP_SOURCES))
 CC_SOURCES = $(wildcard *.c)
 CC_OBJECTS = $(patsubst %.c, %.o, $(CC_SOURCES))
 
-INCLUDES = $(OIFITS_INC)
-LIBS = $(OIFITS_LIB)
+GTK_INC = `pkg-config --cflags gtk+-2.0`
+GTK_LIB = `pkg-config --libs gtk+-2.0`
+
+INCLUDES = $(OIFITS_INC) $(GTK_INC)
+LIBS = $(OIFITS_LIB) $(GTK_LIB)
+LDFLAGS = -loifits 
 
 # Compilers:
 CPP = g++
@@ -37,8 +45,8 @@ cc_common: $(CC_OBJECTS)
 cpp_common: $(CPP_OBJECTS)
 	
 libOISim.a:	cc_common cpp_common
-	rm -f $@
-	ar cq $@ $(CPP_OBJECTS) $(CC_OBJECTS)
+	ar -ruc $@ $(OIFITS_OBJ) $(CPP_OBJECTS) $(CC_OBJECTS)
+
 	
 # CLEANER
 .PHONY: clean

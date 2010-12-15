@@ -37,51 +37,51 @@
 using std::cout;
 
 // function that computes power spectra from the complex visibilities
-Matrix < double > Vis2Pow(Matrix < Complex > &visibility, int Nwav, int Npow)
-{
-	Matrix < double >pow(Nwav, Npow);
+//Matrix < double > Vis2Pow(Matrix < Complex > &visibility, int Nwav, int Npow)
+//{
+//	Matrix < double >pow(Nwav, Npow);
 
-	for (int i = 0; i < Nwav; i++)
-	{
-		for (int j = 0; j < Npow; j++)
-		{						// power spectrum as the
-			// norm of the visibility
-			pow[i][j] = norm(visibility[i][j]);
-		}
-	}
-	return (pow);
-}
+//	for (int i = 0; i < Nwav; i++)
+//	{
+//		for (int j = 0; j < Npow; j++)
+//		{						// power spectrum as the
+//			// norm of the visibility
+//			pow[i][j] = norm(visibility[i][j]);
+//		}
+//	}
+//	return (pow);
+//}
 
 // function that computes bispectra from the complex visibilities
 // the values depend on: the visibility, the number of telescopes, the
 // number of
 // wavelengths, the number of bispectra and the number of hour angles
-Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav, int Nbs, int Nha)
-{
-	int i = 0;					// just a counter
-	// declaring the bispectrum under the variable name bis; it is a
-	// complex matrix
-	Matrix < Complex > bis(Nwav, Nbs);
+//Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav, int Nbs, int Nha)
+//{
+//	int i = 0;					// just a counter
+//	// declaring the bispectrum under the variable name bis; it is a
+//	// complex matrix
+//	Matrix < Complex > bis(Nwav, Nbs);
 
-	for (int ii = 0; ii < Nwav; ii++)
-	{
-		i = 0;
-		for (int jj = 0; jj < Nha; jj++)
-		{
-			for (int j = 0; j < N - 2; j++)
-			{
-				for (int k = j + 1; k < N - 1; k++)
-				{
-					bis[ii][i] = visibility[ii][j + jj * N * (N - 1) / 2]
-					   * conj(visibility[ii][k + jj * N * (N - 1) / 2])
-					   * visibility[ii][i + (N - 1) * (jj + 1)];
-					i++;
-				}
-			}
-		}
-	}
-	return (bis);
-}
+//	for (int ii = 0; ii < Nwav; ii++)
+//	{
+//		i = 0;
+//		for (int jj = 0; jj < Nha; jj++)
+//		{
+//			for (int j = 0; j < N - 2; j++)
+//			{
+//				for (int k = j + 1; k < N - 1; k++)
+//				{
+//					bis[ii][i] = visibility[ii][j + jj * N * (N - 1) / 2]
+//					   * conj(visibility[ii][k + jj * N * (N - 1) / 2])
+//					   * visibility[ii][i + (N - 1) * (jj + 1)];
+//					i++;
+//				}
+//			}
+//		}
+//	}
+//	return (bis);
+//}
 
 // function computing the noisy power spectra
 // the values depend on a series of parameters: the wavelengths, the
@@ -89,50 +89,50 @@ Matrix < Complex > Vis2Bis(Matrix < Complex > &visibility, int N, int Nwav, int 
 // the target, the array, the instrument, the incoherent integration time,
 // the number of power spectra, the
 // telescope indexes defining the baselines and the u and v coordinates of
-// the baselines
-PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
-   Source & target, Observation & obs, Instrument & inst, int Npow,
-   Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
-   Matrix < double >&v)
-{
-	PowerSpectrum Power;
-	Matrix < double >Pow(spec.nchannels, Npow);
-	Matrix < double >Err(spec.nchannels, Npow);
-	Matrix < double >noisyPow(spec.nchannels, Npow);
+//// the baselines
+//PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
+//   Source & target, Observation & obs, Instrument & inst, int Npow,
+//   Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
+//   Matrix < double >&v)
+//{
+//	PowerSpectrum Power;
+//	Matrix < double >Pow(spec.nchannels, Npow);
+//	Matrix < double >Err(spec.nchannels, Npow);
+//	Matrix < double >noisyPow(spec.nchannels, Npow);
 
-	Pow = Vis2Pow(visibility, spec.nchannels, Npow);
+//	Pow = Vis2Pow(visibility, spec.nchannels, Npow);
 
-	for (int i = 0; i < spec.nchannels; i++)
-	{
-		for (int j = 0; j < Npow; j++)
-		{
-			Err[i][j] = sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, obs, inst));
-			noisyPow[i][j] = Pow[i][j] + Err[i][j] * Rangauss(random_seed);
-		}
-	}
+//	for (int i = 0; i < spec.nchannels; i++)
+//	{
+//		for (int j = 0; j < Npow; j++)
+//		{
+//			Err[i][j] = sqrt(VarUnbiasedPow1(Pow[i][j], spec, i, target, obs, inst));
+//			noisyPow[i][j] = Pow[i][j] + Err[i][j] * Rangauss(random_seed);
+//		}
+//	}
 
-	// assigning the values to different members of the class
-	// PowerSpectrum
-	// for the object Power
-	Power.pow = Vis2Pow(visibility, spec.nchannels, Npow);
-	Power.vis2err = Err;
-	Power.vis2data = noisyPow;
-	Power.u = u;
-	Power.v = v;
-	Power.t1 = t1;
-	Power.t2 = t2;
-	Power.int_time = inst.incoh_time;
-	/*
-	 * cout << "POWER SPECTRUM DATA: " << endl; cout << "T1 and T2 are: "
-	 * << endl << Power.t1 << endl << Power.t2 << endl; cout << "u and v
-	 * are: " << endl << Power.u << endl << Power.v << endl; cout << "The
-	 * power spectrum is: " << endl << Power.pow << endl; cout << "The
-	 * error of the power spectrum is: " << endl << Power.vis2err << endl;
-	 * cout << "The power spectrum with error is: " << endl <<
-	 * Power.vis2data << endl; 
-	 */
-	return (Power);
-}
+//	// assigning the values to different members of the class
+//	// PowerSpectrum
+//	// for the object Power
+//	Power.pow = Vis2Pow(visibility, spec.nchannels, Npow);
+//	Power.vis2err = Err;
+//	Power.vis2data = noisyPow;
+//	Power.u = u;
+//	Power.v = v;
+//	Power.t1 = t1;
+//	Power.t2 = t2;
+//	Power.int_time = inst.incoh_time;
+//	/*
+//	 * cout << "POWER SPECTRUM DATA: " << endl; cout << "T1 and T2 are: "
+//	 * << endl << Power.t1 << endl << Power.t2 << endl; cout << "u and v
+//	 * are: " << endl << Power.u << endl << Power.v << endl; cout << "The
+//	 * power spectrum is: " << endl << Power.pow << endl; cout << "The
+//	 * error of the power spectrum is: " << endl << Power.vis2err << endl;
+//	 * cout << "The power spectrum with error is: " << endl <<
+//	 * Power.vis2data << endl; 
+//	 */
+//	return (Power);
+//}
 
 // function that computes the triple amplitude with added noise and the
 // closure
@@ -472,85 +472,6 @@ void run_sim(const VisSimParams * p)
 	{
 		fits_close_file(fptr, &status);
 	}
-
-	//free_oi_array(&oi_arr);
-	//free_oi_target(&oi_targ);
-	//free_oi_wavelength(&oi_wave);
-//	free_oi_vis2(&vis2);
-//	if (pBispec != NULL)
-//	{
-//		free_oi_t3(&t3);
-//	}
-	//cout << "File written.\n";    
-    
-    
-    
-//    get array info
-//    get target info
-//    get wavelength info
-//    
-//    for observation in observations
-//        get oi_vis2
-//        get oi_t3
-//        write_data
-//        
-//    write oifile
-        
-	
-//	// If we are using an OIFITS file as input, we need to call different constructors (hence the need for pointers here)
-//	if(p->bFromOIFITSFile)
-//    {
-//        oi_fits input_oifits;
-//        GList * entry;
-//        oi_vis2 * pVis2 = NULL;
-//        int status = 0;
-//        list<Observation> observations;
-//        
-//        // Read in the OIFITS file using the library routine.
-//        read_oi_fits(p->input_oifits_filename.c_str(), &input_oifits, &status);
-//        
-//        // Get some information about the data file
-//        //print_oi_fits_summary(&input_oifits);
-//        
-//        // Read out the UV coordinates:
-//        // First iterate over the vis2 tables:
-//        entry = g_list_first(input_oifits.vis2List);
-//        while(entry)
-//        {
-//            pVis2 = (oi_vis2*) entry->data;
-//            oi_vis2_record* records = pVis2->record;
-//              
-//            // Now iterate over the records in the table
-//            for(int j = 0; j < pVis2->numrec; j++)
-//            {                                          
-//                observations.push_back(Observation(records[j].mjd));
-//            }
-//            
-//            entry = g_list_next(entry);
-//        }
-//        
-//        // Now find the unique mjd,times in the data
-//        //printf("List size: %i \n", observations.size());
-//        observations.unique(SameObservation);
-//        //printf("List size: %i \n", observations.size());
-//        
-//        // Now generate all list of hour angles from the specified observations:
-//        ha = new HourAngle((*target), (*s), observations);
-//        
-//        // Now that we have what we need, free the memory used by the OIFITS file:
-//        free_oi_fits(&input_oifits);
-//        
-//        //exit(0);
-//    }
-//    else
-//    {
-//	    // Now get the information that could come from an OIFITS file
-//	    ha = new HourAngle(p->HourAngles_filename.c_str());
-//	}
-//	
-//	
-//	// Now call the generator.  We de-reference the pointers here to avoid rewriting subsequent functions.
-//    generate_oifits((*spec), (*ha), (*target), (*s), (*inst), p->oifits_filename);
     
     // Free up memory
     delete inst;

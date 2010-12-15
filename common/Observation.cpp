@@ -571,8 +571,17 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
 /// Note, presently this function only supports ONE array, combiner, spectral mode per OIFITS file.
 vector <Observation> Observation::ReadObservation_OIFITS(Array * array, string filename)
 {
+    // init some local variables
     vector<Observation> observations;
+    oi_fits data;
+    int status = 0;
     
+    // First read the file into memory
+    read_oi_fits(filename.c_str(), &data, & status);
+    if(status)
+        throw std::runtime_error("Could not read OIFITS file.");
+    
+    // Now find all of the telescopes in file.  Record their names and indicies.
     
     return observations;
 }

@@ -9,6 +9,11 @@
 // Include headers for the unordered map.  Note, this may need to be just <unordered_map> if compiled in MSVS.
 #include <tr1/unordered_map>
 
+extern "C" {
+    #include "exchange.h"
+    #include "oifile.h"
+}
+
 #include "Array.h"
 #include "Station.h"
 #include "Baseline.h"
