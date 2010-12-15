@@ -415,12 +415,14 @@ oi_t3 Observation::GetT3(string ins_name, Source & source, vector<double> & wave
 /// Reads in an properly formatted observation file in a formats defined by file_type:
 ///     0: A list of hour angles (in decimal hours)
 ///     1: A descriptive list of the observation (see ReadObservation_Descriptive() for more info)
-vector<Observation> Observation::ReadObservations(Array * array, string filename, string comment_chars, int file_type)
+vector<Observation> Observation::ReadObservations(Array * array, string filename, string comment_chars, ObsFileType file_type)
 {
-    if(file_type == 0)
+    if(file_type == HOUR_ANGLE)
         return ReadObservation_HA(array, filename, comment_chars);
-    else if (file_type == 1)
+    else if (file_type == DESCRIPTIVE)
         return ReadObservation_Descriptive(array, filename, comment_chars);
+    else if(file_type == OIFITS)
+        return ReadObservation_OIFITS(array, filename);
     else
     {
         /// \exception runtime_error Invalid Observation File format Specifier
@@ -484,7 +486,7 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
     // Get the non-comment, non-blank lines
     vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
     
-    unsigned int j = 1;  // A counter for the number of observations
+    unsigned int j = 1;  // A counter for the number of observations.  Only used in error messages below.
     // Iterate over the lines in the file
     for(unsigned int i = 0; i < lines.size(); i++)
     {
@@ -561,7 +563,15 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
         }
     }
     
-    
+    return observations;
+}
+
+
+/// Reads an OIFITS data file and creates a series of observation based upon the data.
+/// Note, presently this function only supports ONE array, combiner, spectral mode per OIFITS file.
+vector <Observation> Observation::ReadObservation_OIFITS(Array * array, string filename)
+{
+    vector<Observation> observations;
     
     
     return observations;

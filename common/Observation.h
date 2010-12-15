@@ -18,6 +18,13 @@ using namespace std;
 typedef std::tr1::unordered_map<string, string> BLNameHash;
 typedef std::tr1::unordered_map<string, string> TNameHash;
 
+enum ObsFileType
+{
+    HOUR_ANGLE,
+    DESCRIPTIVE,
+    OIFITS
+};
+
 class Observation
 {
     // Probably shouldn't be public, but it seems to be the convention in this set of code.
@@ -50,9 +57,10 @@ class Observation
     
   public:
   // Methods for reading in data files with observations
-    static vector <Observation> ReadObservations(Array * array, string filename, string comment_chars, int file_type);
+    static vector <Observation> ReadObservations(Array * array, string filename, string comment_chars, ObsFileType file_type);
     static vector <Observation> ReadObservation_HA(Array * array, string filename, string comment_chars);
     static vector <Observation> ReadObservation_Descriptive(Array * array, string filename, string comment_chars);
+    static vector <Observation> ReadObservation_OIFITS(Array * array, string filename);
     
   // Methods for simulating data.
     oi_vis2 GetVis2(string ins_name, Source & source, vector<double> & wavenumbers);

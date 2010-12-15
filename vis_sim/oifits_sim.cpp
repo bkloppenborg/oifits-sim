@@ -21,7 +21,7 @@
 // Header files for remaining classes.
 #include "Array.h"
 #include "Baseline.h"
-#include "Bispectrum.h"
+//#include "Bispectrum.h"   // removed
 #include "Instrument.h"
 #include "NoiseModel.h"
 #include "PowerSpectrum.h"
@@ -142,322 +142,144 @@ PowerSpectrum GenPower(SpectralMode & spec, Matrix < Complex > &visibility,
 // the instrument, the incoherent integration time,
 // the number of triangles and sampled hour angles,
 // the telescope indexes and the UV coordinates
-Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
-   Source & target, Observation & obs, Instrument & inst, int Nbs, int Nha,
-   Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
-   Matrix < double >&v)
-{
-	Bispectrum bispec;
-	int i = 0;
+//Bispectrum GenBispec(SpectralMode & spec, Matrix < Complex > &visibility,
+//   Source & target, Observation & obs, Instrument & inst, int Nbs, int Nha,
+//   Matrix < int >&t1, Matrix < int >&t2, Matrix < double >&u,
+//   Matrix < double >&v)
+//{
+//	Bispectrum bispec;
+//	int i = 0;
 
-    int nstations = obs.GetNumStations();
+//    int nstations = obs.GetNumStations();
 
-	// matrix containing the U coordinate of the 1st baseline of the
-	// triangle
-	Matrix < double >u1(spec.nchannels, Nbs);
-	// matrix containing the V coordinate of the 1st baseline of the
-	// triangle
-	Matrix < double >v1(spec.nchannels, Nbs);
-	// matrix containing the U coordinate of the 2nd baseline of the
-	// triangle
-	Matrix < double >u2(spec.nchannels, Nbs);
-	// matrix containing the V coordinate of the 2nd baseline of the
-	// triangle
-	Matrix < double >v2(spec.nchannels, Nbs);
-	// matrix containing the indexes of the 1st telescope in the triangle
-	Matrix < int >tel1(spec.nchannels, Nbs);
-	// matrix containing the indexes of the 2nd telescope in the triangle
-	Matrix < int >tel2(spec.nchannels, Nbs);
-	// matrix containing the indexes of the 3rd telescope in the triangle
-	Matrix < int >tel3(spec.nchannels, Nbs);
+//	// matrix containing the U coordinate of the 1st baseline of the
+//	// triangle
+//	Matrix < double >u1(spec.nchannels, Nbs);
+//	// matrix containing the V coordinate of the 1st baseline of the
+//	// triangle
+//	Matrix < double >v1(spec.nchannels, Nbs);
+//	// matrix containing the U coordinate of the 2nd baseline of the
+//	// triangle
+//	Matrix < double >u2(spec.nchannels, Nbs);
+//	// matrix containing the V coordinate of the 2nd baseline of the
+//	// triangle
+//	Matrix < double >v2(spec.nchannels, Nbs);
+//	// matrix containing the indexes of the 1st telescope in the triangle
+//	Matrix < int >tel1(spec.nchannels, Nbs);
+//	// matrix containing the indexes of the 2nd telescope in the triangle
+//	Matrix < int >tel2(spec.nchannels, Nbs);
+//	// matrix containing the indexes of the 3rd telescope in the triangle
+//	Matrix < int >tel3(spec.nchannels, Nbs);
 
-	// matrix containing the bispectrum
-	Matrix < Complex > bis(spec.nchannels, Nbs);
+//	// matrix containing the bispectrum
+//	Matrix < Complex > bis(spec.nchannels, Nbs);
 
-	// matrix containing the triple amplitude
-	Matrix < double >T3true(spec.nchannels, Nbs);
-	// matrix containing the err of the triple amplitude
-	Matrix < double >ErrT3(spec.nchannels, Nbs);
-	// matrix containing the triple amplitude with added noise
-	Matrix < double >T3(spec.nchannels, Nbs);
+//	// matrix containing the triple amplitude
+//	Matrix < double >T3true(spec.nchannels, Nbs);
+//	// matrix containing the err of the triple amplitude
+//	Matrix < double >ErrT3(spec.nchannels, Nbs);
+//	// matrix containing the triple amplitude with added noise
+//	Matrix < double >T3(spec.nchannels, Nbs);
 
-	// matrix containing the closure phase
-	Matrix < double >Phi(spec.nchannels, Nbs);
-	// matrix containing the variance of the closure phase
-	Matrix < double >VarPhi(spec.nchannels, Nbs);
-	// matrix containing the error of the closure phase
-	Matrix < double >ErrPhi(spec.nchannels, Nbs);
-	// matrix containing the closure phase with added noise
-	Matrix < double >PhiErr(spec.nchannels, Nbs);
+//	// matrix containing the closure phase
+//	Matrix < double >Phi(spec.nchannels, Nbs);
+//	// matrix containing the variance of the closure phase
+//	Matrix < double >VarPhi(spec.nchannels, Nbs);
+//	// matrix containing the error of the closure phase
+//	Matrix < double >ErrPhi(spec.nchannels, Nbs);
+//	// matrix containing the closure phase with added noise
+//	Matrix < double >PhiErr(spec.nchannels, Nbs);
 
-	bis = Vis2Bis(visibility, nstations, spec.nchannels, Nbs, Nha);
+//	bis = Vis2Bis(visibility, nstations, spec.nchannels, Nbs, Nha);
 
-	// separate bispectrum into amplitude and phase
-	for (int i = 0; i < spec.nchannels; i++)
-	{
-		for (int j = 0; j < Nbs; j++)
-		{
-			Phi[i][j] = arg(bis[i][j]);
-			T3true[i][j] = abs(bis[i][j]);
-		}
-	}
-
-	// add noise
-	VarPhi = VarCloPhase(spec, visibility, target, obs, inst, Nbs, Nha);
-	for (int i = 0; i < spec.nchannels; i++)
-	{
-		for (int j = 0; j < Nbs; j++)
-		{
-			ErrPhi[i][j] = sqrt(VarPhi[i][j]);
-			PhiErr[i][j] = Phi[i][j] + ErrPhi[i][j] * Rangauss(random_seed);
-			// assume circular noise cloud
-			ErrT3[i][j] = sqrt(T3true[i][j] * T3true[i][j] * VarPhi[i][j]);
-			T3[i][j] = T3true[i][j] + ErrT3[i][j] * Rangauss(random_seed);
-		}
-	}
-
-	for (int ii = 0; ii < spec.nchannels; ii++)
-	{
-		i = 0;
-		for (int jj = 0; jj < Nha; jj++)
-		{
-			for (int j = 0; j < nstations - 2; j++)
-			{
-				for (int k = j + 1; k < nstations - 1; k++)
-				{
-					u1[ii][i] =
-					   u[ii][j + jj * nstations * (nstations - 1) / 2];
-					v1[ii][i] =
-					   v[ii][j + jj * nstations * (nstations - 1) / 2];
-					u2[ii][i] = u[ii][i + (jj + 1) * (nstations - 1)];
-					v2[ii][i] = v[ii][i + (jj + 1) * (nstations - 1)];
-					tel1[ii][i] =
-					   t1[ii][j + jj * nstations * (nstations -
-						  1) / 2];
-					tel2[ii][i] =
-					   t2[ii][j + jj * nstations * (nstations -
-						  1) / 2];
-					tel3[ii][i] =
-					   t2[ii][k + jj * nstations * (nstations -
-						  1) / 2];
-					i++;
-				}
-			}
-		}
-	}
-	bispec.u1 = u1;
-	bispec.v1 = v1;
-	bispec.u2 = u2;
-	bispec.v2 = v2;
-	bispec.t1 = tel1;
-	bispec.t2 = tel2;
-	bispec.t3 = tel3;
-
-	bispec.trueAmp = T3true;
-	bispec.t3amperr = ErrT3;
-	bispec.t3amp = T3;
-
-	bispec.truePhi = Phi * (180 / PI);
-	bispec.t3phierr = ErrPhi * (180 / PI);
-	bispec.t3phi = PhiErr * (180 / PI);
-	bispec.int_time = inst.incoh_time;
-
-	/*
-	 * cout << "BISPECTRUM DATA: " << endl; cout << "U points and V points 
-	 * are:" << endl << bispec.u1 << endl << bispec.v1 << endl; cout <<
-	 * "Telescope 1 , 2 and 3 are:" << endl << bispec.t1 << endl <<
-	 * bispec.t2 << endl << bispec.t3 << endl; cout << "The triple
-	 * amplitude is: " << endl << bispec.t3true << endl; cout << "The
-	 * error of the triple amplitude is: " << endl << bispec.t3amperr <<
-	 * endl; cout << "The triple amplitude with error is: " << endl <<
-	 * bispec.t3amp << endl;
-	 * 
-	 * cout << "The closure phase is: " << endl << bispec.phi << endl;
-	 * cout << "The error of the closure phase is: " << endl <<
-	 * bispec.t3phierr << endl; cout << "The closure phase with error is:
-	 * " << endl << bispec.t3phi << endl; 
-	 */
-
-	return (bispec);
-}
-
-// AS 2010-06-21 
-// Added to avoid crash of the program in case there are only 2 
-// telescopes
-// AS 2010-06-24
-// merged with the other similar function writing the OIFITS file without
-// bispectrum
-// now working with pointers for bispectrum, rather than objects
-// function writing the data obtained into the OIFITS format
-// arguments are: the declination of the source, the datafile name, the
-// array,
-// the wavelengths, the power spectrum, the number of power spectra, the
-// bispectrum,
-// the number of bispectra and the hour angles (time)
-void write_oifits_file(float declination, string datafile, Array s,
-   SpectralMode spec, PowerSpectrum Power, int Npow,
-   Bispectrum * pBispec, int Nbs, Row < double >time)
-{
-/*
-//	oi_array array;
-//	oi_target targets;
-//	oi_wavelength wave;
-	oi_vis2 vis2;
-	oi_t3 t3;
-	fitsfile *fptr;
-	char zerostring[FLEN_VALUE];
-	char insname[FLEN_VALUE];
-	char arrname[FLEN_VALUE];
-	char target_filename[FLEN_VALUE];
-	int status = 0;
-	int i, j, iwav;
-	double nulval;
-	string filename = "!" + datafile;
-
-	cout << "Generating OIFITS: " << filename << endl;
-	// Set to strings
-	strncpy(zerostring, " ", FLEN_VALUE);
-	strncpy(insname, "Fake_Ins", FLEN_VALUE);
-	strncpy(arrname, "Fake_Arr", FLEN_VALUE);
-	strncpy(target_filename, "Fake_Targ", FLEN_VALUE);
-	// FITS NULL
-	nulval = 0.0;
-	nulval /= nulval;
-
-
-	// ARRAY
-	// AS 2010-06-17
-	// added the array table in the OIFITS file
-	double nstations = s.GetNumStations();
-	double longitude = s.GetLongitude();
-	double latitude = s.GetLatitude();
-	double altitude = s.GetAltitude();
-	string arrayname = s.GetArrayName();
-	
-
-	// WAVE
-//	wave.nwave = spec.nchannels;
-//	wave.eff_wave = (float *) malloc(wave.nwave * sizeof(float));
-//	wave.eff_band = (float *) malloc(wave.nwave * sizeof(float));
-//	wave.revision = 1;
-//	strncpy(wave.insname, insname, FLEN_VALUE);
-//	for (iwav = 0; iwav < wave.nwave; iwav++)
+//	// separate bispectrum into amplitude and phase
+//	for (int i = 0; i < spec.nchannels; i++)
 //	{
-//		wave.eff_wave[iwav] = spec.mean_wavelength[iwav];
-//		wave.eff_band[iwav] = spec.delta_wavelength[iwav];
-//	}
-
-	// VIS2
-//	vis2.record = (oi_vis2_record *) malloc(Npow * sizeof(oi_vis2_record));
-//	for (j = 0; j < Npow; j++)
-//	{
-//		vis2.record[j].vis2data = (double *) malloc(wave.nwave * sizeof(double));
-//		vis2.record[j].vis2err = (double *) malloc(wave.nwave * sizeof(double));
-//		vis2.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
-//	}
-//	vis2.revision = 1;
-//	strncpy(vis2.date_obs, "2009-08-06", FLEN_VALUE);
-//	strncpy(vis2.arrname, arrname, FLEN_VALUE);
-//	strncpy(vis2.insname, insname, FLEN_VALUE);
-//	vis2.numrec = Npow;
-//	vis2.nwave = wave.nwave;
-//	for (j = 0; j < Npow; j++)
-//	{
-//		vis2.record[j].target_id = 1;
-//		vis2.record[j].time = time[j];
-//		vis2.record[j].mjd = 0.0;
-//		vis2.record[j].int_time = Power.int_time;
-//		vis2.record[j].ucoord = Power.u[0][j];
-//		vis2.record[j].vcoord = Power.v[0][j];
-//		vis2.record[j].sta_index[0] = Power.t1[0][j];
-//		vis2.record[j].sta_index[1] = Power.t2[0][j];
-//		for (iwav = 0; iwav < wave.nwave; iwav++)
+//		for (int j = 0; j < Nbs; j++)
 //		{
-//			vis2.record[j].vis2data[iwav] = Power.vis2data[iwav][j];
-//			vis2.record[j].vis2err[iwav] = Power.vis2err[iwav][j];
-//			vis2.record[j].flag[iwav] = FALSE;
+//			Phi[i][j] = arg(bis[i][j]);
+//			T3true[i][j] = abs(bis[i][j]);
 //		}
 //	}
 
-	// T3
-	if (pBispec != NULL)
-	{
-		t3.record = (oi_t3_record *) malloc(Nbs * sizeof(oi_t3_record));
-		for (j = 0; j < Nbs; j++)
-		{
-			t3.record[j].t3amp = (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3amperr = (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3phi = (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].t3phierr = (double *) malloc(wave.nwave * sizeof(double));
-			t3.record[j].flag = (char *) malloc(wave.nwave * sizeof(char));
-		}
-		t3.revision = 1;
-		strncpy(t3.date_obs, "2009-04-15", FLEN_VALUE);
-		strncpy(t3.arrname, arrname, FLEN_VALUE);
-		strncpy(t3.insname, insname, FLEN_VALUE);
-		t3.numrec = Nbs;
-		t3.nwave = wave.nwave;
-		for (j = 0; j < Nbs; j++)
-		{
-			t3.record[j].target_id = 1;
-			t3.record[j].time = time[j];
-			t3.record[j].mjd = 0.0;
-			t3.record[j].int_time = pBispec->int_time;
-			t3.record[j].u1coord = pBispec->u1[0][j];
-			t3.record[j].v1coord = pBispec->v1[0][j];
-			t3.record[j].u2coord = pBispec->u2[0][j];
-			t3.record[j].v2coord = pBispec->v2[0][j];
-			t3.record[j].sta_index[0] = pBispec->t1[0][j];
-			t3.record[j].sta_index[1] = pBispec->t2[0][j];
-			t3.record[j].sta_index[2] = pBispec->t3[0][j];
-			for (iwav = 0; iwav < wave.nwave; iwav++)
-			{
-				t3.record[j].t3amp[iwav] = pBispec->t3amp[iwav][j];
-				t3.record[j].t3phi[iwav] = pBispec->t3phi[iwav][j];
-				t3.record[j].t3amperr[iwav] = pBispec->t3amperr[iwav][j];
-				t3.record[j].t3phierr[iwav] = pBispec->t3phierr[iwav][j];
-				t3.record[j].flag[iwav] = FALSE;
-			}
-		}
-	}
-	// Write OI-FITS file
-	fits_create_file(&fptr, filename.c_str(), &status);
-	if (status)
-	{
-		fits_report_error(stderr, status);
-		return;
-	}
+//	// add noise
+//	VarPhi = VarCloPhase(spec, visibility, target, obs, inst, Nbs, Nha);
+//	for (int i = 0; i < spec.nchannels; i++)
+//	{
+//		for (int j = 0; j < Nbs; j++)
+//		{
+//			ErrPhi[i][j] = sqrt(VarPhi[i][j]);
+//			PhiErr[i][j] = Phi[i][j] + ErrPhi[i][j] * Rangauss(random_seed);
+//			// assume circular noise cloud
+//			ErrT3[i][j] = sqrt(T3true[i][j] * T3true[i][j] * VarPhi[i][j]);
+//			T3[i][j] = T3true[i][j] + ErrT3[i][j] * Rangauss(random_seed);
+//		}
+//	}
 
-	write_oi_array(fptr, array, 1, &status);
-	write_oi_target(fptr, targets, &status);
-	write_oi_vis2(fptr, vis2, 1, &status);
-	if (pBispec != NULL)
-	{
-		write_oi_t3(fptr, t3, 1, &status);
-	}
-	write_oi_wavelength(fptr, wave, 1, &status);
+//	for (int ii = 0; ii < spec.nchannels; ii++)
+//	{
+//		i = 0;
+//		for (int jj = 0; jj < Nha; jj++)
+//		{
+//			for (int j = 0; j < nstations - 2; j++)
+//			{
+//				for (int k = j + 1; k < nstations - 1; k++)
+//				{
+//					u1[ii][i] =
+//					   u[ii][j + jj * nstations * (nstations - 1) / 2];
+//					v1[ii][i] =
+//					   v[ii][j + jj * nstations * (nstations - 1) / 2];
+//					u2[ii][i] = u[ii][i + (jj + 1) * (nstations - 1)];
+//					v2[ii][i] = v[ii][i + (jj + 1) * (nstations - 1)];
+//					tel1[ii][i] =
+//					   t1[ii][j + jj * nstations * (nstations -
+//						  1) / 2];
+//					tel2[ii][i] =
+//					   t2[ii][j + jj * nstations * (nstations -
+//						  1) / 2];
+//					tel3[ii][i] =
+//					   t2[ii][k + jj * nstations * (nstations -
+//						  1) / 2];
+//					i++;
+//				}
+//			}
+//		}
+//	}
+//	bispec.u1 = u1;
+//	bispec.v1 = v1;
+//	bispec.u2 = u2;
+//	bispec.v2 = v2;
+//	bispec.t1 = tel1;
+//	bispec.t2 = tel2;
+//	bispec.t3 = tel3;
 
-	if (status)
-	{
-		fits_delete_file(fptr, &status);
-		return;
-	}
-	else
-	{
-		fits_close_file(fptr, &status);
-	}
+//	bispec.trueAmp = T3true;
+//	bispec.t3amperr = ErrT3;
+//	bispec.t3amp = T3;
 
-	free_oi_array(&array);
-	free_oi_target(&targets);
-	free_oi_wavelength(&wave);
-	free_oi_vis2(&vis2);
-	if (pBispec != NULL)
-	{
-		free_oi_t3(&t3);
-	}
-	cout << "File written.\n";
-	*/
-}
+//	bispec.truePhi = Phi * (180 / PI);
+//	bispec.t3phierr = ErrPhi * (180 / PI);
+//	bispec.t3phi = PhiErr * (180 / PI);
+//	bispec.int_time = inst.incoh_time;
+
+//	/*
+//	 * cout << "BISPECTRUM DATA: " << endl; cout << "U points and V points 
+//	 * are:" << endl << bispec.u1 << endl << bispec.v1 << endl; cout <<
+//	 * "Telescope 1 , 2 and 3 are:" << endl << bispec.t1 << endl <<
+//	 * bispec.t2 << endl << bispec.t3 << endl; cout << "The triple
+//	 * amplitude is: " << endl << bispec.t3true << endl; cout << "The
+//	 * error of the triple amplitude is: " << endl << bispec.t3amperr <<
+//	 * endl; cout << "The triple amplitude with error is: " << endl <<
+//	 * bispec.t3amp << endl;
+//	 * 
+//	 * cout << "The closure phase is: " << endl << bispec.phi << endl;
+//	 * cout << "The error of the closure phase is: " << endl <<
+//	 * bispec.t3phierr << endl; cout << "The closure phase with error is:
+//	 * " << endl << bispec.t3phi << endl; 
+//	 */
+
+//	return (bispec);
+//}
 
 // function that computes the visibilities
 // as arguments: the wavelengths, the hour angles, the source, the array
@@ -601,7 +423,7 @@ void run_sim(const VisSimParams * p)
 
     // Read in the observations.
     /// \todo read in the file format type, right now it's locked to the descriptive only format.
-    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, 1);
+    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
     
     // Open up the OIFITS file.
 	string filename = "!test.oifits";
