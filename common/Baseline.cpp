@@ -63,18 +63,25 @@ string Baseline::GetName(void)
 /// \todo Switch the hash lookup over to a multihash instead of using strings?
 complex<double> Baseline::GetVisibility(Source & source, double hour_angle, double wavenumber)
 {
-    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    // First look up the UV coordinates
+    UVPoint uv = UVcoords(hour_angle, source.declination);
+    uv.Scale(wavenumber);    
+    return GetVisibility(source, uv);
+}
+
+/// Returns the complex visibility of the given source
+complex<double> Baseline::GetVisibility(Source & source, UVPoint uv)
+{
+    string hash_key = GetHashKey(source, uv);
     complex <double> visibility(0.0, 0.0);
     
-    // First try looking up the value in the hash table
     if(mVisValues.find(hash_key) != mVisValues.end())
     {
-        visibility = mVisValues[hash_key];
+        visibility = mVisValues[hash_key];  
     }
     else
     {
-        // The value did not exist in the hash table, we need to compute and store it.
-        visibility = ComputeVisibility(source, hour_angle, wavenumber);
+        visibility = ComputeVisibility(source, uv);
         mVisValues[hash_key] = visibility;
     }
     
@@ -83,7 +90,7 @@ complex<double> Baseline::GetVisibility(Source & source, double hour_angle, doub
 
 
 // Computes a hash key from the source, hour angle, and wavenumber.
-string  Baseline::GetHashKey(Source & source, double hour_angle, double wavenumber)
+string  Baseline::GetHashKey(Source & source, UVPoint uv)
 {
     /// \todo It may be necessary for the doubles coming into this function to be cast into some 
     /// finite floating point format.
@@ -91,33 +98,41 @@ string  Baseline::GetHashKey(Source & source, double hour_angle, double wavenumb
     /// \todo This function is in common with the Triplet class, need to factor this code.
     
     std::ostringstream sstream;
-    sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
+    sstream << source.GetName() << '-' << uv.HashString();
     std::string str = sstream.str();
     return str;
 }
 
 /// Computes the error in the visibility
 /// \todo Implement computations of error in visibility.  This function returns an error of zero for now.
-complex<double> Baseline::ComputeVisError(Source & source, double hour_angle, double wavenumber)
+double Baseline::ComputeVis2Error(Source & source, UVPoint uv)
 {
-    return complex <double> (0.001, 0.001);
+    return 0.001;
 }
 
 /// Returns the error in the visibility assoicated with this source, hour angle, and wavenumber.
-complex<double> Baseline::GetVisError(Source & source, double hour_angle, double wavenumber)
+double Baseline::GetVis2Error(Source & source, double hour_angle, double wavenumber)
 {
-    string hash_key = GetHashKey(source, hour_angle, wavenumber);
-    complex <double> vis_error(0.0, 0.0);
+     // First look up the UV coordinates
+    UVPoint uv = UVcoords(hour_angle, source.declination);
+    uv.Scale(wavenumber);
+    return GetVis2Error(source, uv);   
+}
+
+double Baseline::GetVis2Error(Source & source, UVPoint uv)
+{
+    string hash_key = GetHashKey(source, uv);
+    double vis_error = 0.0;
     
     // First try looking up the value in the hash table:
-    if(mVisErrors.find(hash_key) != mVisErrors.end())
+    if(mVis2Errors.find(hash_key) != mVis2Errors.end())
     {
-        vis_error = mVisErrors[hash_key];
+        vis_error = mVis2Errors[hash_key];
     }
     else
     {
-        vis_error = ComputeVisError(source, hour_angle, wavenumber);
-        mVisErrors[hash_key] = vis_error;
+        vis_error = ComputeVis2Error(source, uv);
+        mVis2Errors[hash_key] = vis_error;
     }
     
     return vis_error;
@@ -125,15 +140,23 @@ complex<double> Baseline::GetVisError(Source & source, double hour_angle, double
 
 /// Sets the visibility error for the given source, hour angle and wavenumber.  
 /// Note: It is intended that this function is used to set the error from existing OIFITS data files.
-void    Baseline::SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error)
+void    Baseline::SetVis2Error(Source & source, double hour_angle, double wavenumber, double vis2error)
 {
-    /// \todo At the moment this function assumes that vis_error is a real number which then is
-    /// cast into a complex number and stored.  This probably isn't correct and needs to be changed.
-    string hash_key = GetHashKey(source, hour_angle, wavenumber);
-    mVisErrors[hash_key] = complex<double>(vis_error);
+     UVPoint uv = UVcoords(hour_angle, source.declination);
+     uv.Scale(wavenumber);
+     SetVis2Error(source, uv, vis2error);   
 }
 
-complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, double wavenumber)
+/// Sets the visibility squared error based upon the source and UV coordiantes.
+void    Baseline::SetVis2Error(Source & source, UVPoint uv, double vis2error)
+{
+    string hash_key = GetHashKey(source, uv);
+    mVis2Errors[hash_key] = vis2error;
+}
+
+/// Computes the visibility at the specified UV point.
+/// Note, uv should already be scaled by wavenumber.
+complex<double> Baseline::ComputeVisibility(Source & source, UVPoint uv)
 {
     complex <double> visibility(0.0, 0.0);
 
@@ -143,16 +166,9 @@ complex<double> Baseline::ComputeVisibility(Source & source, double hour_angle, 
         visibility = 1.0;
     }
     else    // A resolved object
-    {
-        UVPoint uv = this->UVcoords(hour_angle, source.declination);
-        
+    {      
         int nx = source.source_image.GetRows();
-        int ny = source.source_image.GetCols();
-        
-        // Scale the UV coordinates by the wavenumber to properly sample the UV plane
-        uv.u *= wavenumber;
-        uv.v *= wavenumber;
-        uv.w *= wavenumber;       
+        int ny = source.source_image.GetCols();    
 
         /// \todo This calculation could be farmed out to a GPU very easily.
         for (int ii = 0; ii < nx; ii++)
@@ -226,12 +242,6 @@ double  Baseline::GetVis2(Source & source, double hour_angle, double wavenumber)
     complex<double> vis = this->GetVisibility(source, hour_angle, wavenumber);
     
     return norm(vis);
-}
-
-double  Baseline::GetVis2Err(Source & source, double hour_angle, double wavenumber)
-{
-    complex<double> vis_err = this->GetVisError(source, hour_angle, wavenumber);
-    return norm(vis_err);
 }
 
 ////////////////////////////////////////////////////////////////////

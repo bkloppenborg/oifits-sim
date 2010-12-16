@@ -9,10 +9,12 @@
 
 #include "Baseline.h"
 #include "Station.h"
+#include "UVPoint.h"
 
 using namespace std;
 
 typedef std::tr1::unordered_map<std::string, complex<double> > BisHash;
+typedef std::tr1::unordered_map<std::string, double> BisErrHash;
 
 class Station;
 class Array;
@@ -26,26 +28,29 @@ class Triplet
     Baseline    *   mBaselines[3]; 
     string name;
     
-    BisHash mBisValues; // Stores computed bispectrum values
-    BisHash mBisErrors; // Stores computed/stored bispectrum error values.
+    BisHash     mBisValues; // Stores computed bispectrum values
+    BisErrHash  mBisErrors; // Stores computed/stored bispectrum error values.
 
   public:
     Triplet();
     Triplet(Array * array, Station * station1, Station * station2, Station * station3);
 
   private:    
-    complex<double> ComputeBisError(Source & source, double hour_angle, double wavenumber);
-    complex<double> ComputeBispectra(Source & source, double hour_angle, double wavenumber);
-    
-    string  GetHashKey(Source & source, double hour_angle, double wavenumber);
+    double  ComputeBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    complex<double> ComputeBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    string  GetHashKey(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     
   public:
     string  GetName(void);
     bool    ContainsBaseline(string bl_name);
     complex<double> GetBispectra(Source & source, double hour_angle, double wavenumber);
+    complex<double> GetBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     
-    complex<double> GetBisError(Source & source, double hour_angle, double wavenumber);
+    double  GetBisError(Source & source, double hour_angle, double wavenumber);
+    double  GetBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);    
     void    SetBisError(Source & source, double hour_angle, double wavenumber);
+    void    SetBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+        
     int     GetStationID(int station_num);
     
     Baseline * GetBaseline(int baseline_num);

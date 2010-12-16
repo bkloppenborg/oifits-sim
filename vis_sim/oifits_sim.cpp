@@ -462,7 +462,6 @@ void run_sim(const VisSimParams * p)
         }
     }
     
-
 	if (status)
 	{
 		fits_delete_file(fptr, &status);

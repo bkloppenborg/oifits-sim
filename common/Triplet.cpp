@@ -49,18 +49,18 @@ int     Triplet::GetStationID(int station_num)
     return this->mStations[station_num]->GetIndex();
 }
 
-complex<double> Triplet::ComputeBisError(Source & source, double hour_angle, double wavenumber)
+double Triplet::ComputeBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
 {
     /// \bug Bispectrum error is set to 0.000001 by default
-    return complex <double> (0.000001, 0.000001);
+    return 0.0001;
 }
 
-complex<double> Triplet::ComputeBispectra(Source & source, double hour_angle, double wavenumber)
+complex<double> Triplet::ComputeBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
 {
     // Get the visibilities on the baselines AB, BC, and CA.
-    complex<double> AB = mBaselines[0]->GetVisibility(source, hour_angle, wavenumber);
-    complex<double> BC = mBaselines[1]->GetVisibility(source, hour_angle, wavenumber);
-    complex<double> AC = mBaselines[2]->GetVisibility(source, hour_angle, wavenumber);   // Note, this is AC NOT CA
+    complex<double> AB = mBaselines[0]->GetVisibility(source, uv_ab);
+    complex<double> BC = mBaselines[1]->GetVisibility(source, uv_bc);
+    complex<double> AC = mBaselines[2]->GetVisibility(source, uv_ac);   // Note, this is AC NOT CA
     
     // Now compute the bispectrum.  We take the conjugate of AC to form CA.
     return AB * BC * conj(AC);
@@ -80,10 +80,23 @@ bool    Triplet::ContainsBaseline(string bl_name)
     return false;
 }
 
-// Computes the bispectra from the three baselines in this triplet.
+
 complex<double> Triplet::GetBispectra(Source & source, double hour_angle, double wavenumber)
 {
-    string hash_key = GetHashKey(source, hour_angle, wavenumber);
+    UVPoint uv_ab = mBaselines[0]->UVcoords(hour_angle, source.declination);
+    uv_ab.Scale(wavenumber);
+    UVPoint uv_bc = mBaselines[1]->UVcoords(hour_angle, source.declination);
+    uv_bc.Scale(wavenumber);
+    UVPoint uv_ac = mBaselines[2]->UVcoords(hour_angle, source.declination);
+    uv_ac.Scale(wavenumber);
+    
+    return GetBispectra(source, uv_ab, uv_bc, uv_ac);
+}
+
+// Computes the bispectra from the three baselines in this triplet.
+complex<double> Triplet::GetBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
+{
+    string hash_key = GetHashKey(source, uv_ab, uv_bc, uv_ac);
     complex <double> bis(0.0, 0.0);
     
     // First try looking up the value in the hash table
@@ -94,17 +107,29 @@ complex<double> Triplet::GetBispectra(Source & source, double hour_angle, double
     else
     {
         // The value did not exist in the hash table, we need to compute and store it.
-        bis = ComputeBispectra(source, hour_angle, wavenumber);
+        bis = ComputeBispectra(source, uv_ab, uv_bc, uv_ac);
         mBisValues[hash_key] = bis;
     }
     
     return bis;
 }
 
-complex<double> Triplet::GetBisError(Source & source, double hour_angle, double wavenumber)
+double Triplet::GetBisError(Source & source, double hour_angle, double wavenumber)
 {
-    string hash_key = GetHashKey(source, hour_angle, wavenumber);
-    complex <double> bis_err(0.0, 0.0);
+    UVPoint uv_ab = mBaselines[0]->UVcoords(hour_angle, source.declination);
+    uv_ab.Scale(wavenumber);
+    UVPoint uv_bc = mBaselines[1]->UVcoords(hour_angle, source.declination);
+    uv_bc.Scale(wavenumber);
+    UVPoint uv_ac = mBaselines[2]->UVcoords(hour_angle, source.declination);
+    uv_ac.Scale(wavenumber);
+    
+    return GetBisError(source, uv_ab, uv_bc, uv_ac);
+}
+
+double Triplet::GetBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
+{
+    string hash_key = GetHashKey(source, uv_ab, uv_bc, uv_ac);
+    double bis_err = 0.0;
     
     // First try looking up the value in the hash table
     if(mBisErrors.find(hash_key) != mBisErrors.end())
@@ -114,7 +139,7 @@ complex<double> Triplet::GetBisError(Source & source, double hour_angle, double 
     else
     {
         // The value did not exist in the hash table, we need to compute and store it.
-        bis_err = ComputeBisError(source, hour_angle, wavenumber);
+        bis_err = ComputeBisError(source, uv_ab, uv_bc, uv_ac);
         mBisErrors[hash_key] = bis_err;
     }
     
@@ -122,7 +147,7 @@ complex<double> Triplet::GetBisError(Source & source, double hour_angle, double 
 }
 
 // Computes a hash key from the source, hour angle, and wavenumber.
-string  Triplet::GetHashKey(Source & source, double hour_angle, double wavenumber)
+string  Triplet::GetHashKey(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
 {
     /// \todo It may be necessary for the doubles coming into this function to be cast into some 
     /// finite floating point format.
@@ -130,7 +155,7 @@ string  Triplet::GetHashKey(Source & source, double hour_angle, double wavenumbe
     /// \todo This function is in common with the Baseline class, need to factor this code.
     
     std::ostringstream sstream;
-    sstream << source.GetName() << "-" << hour_angle << "-" << wavenumber;
+    sstream << source.GetName() << "-" << uv_ab.HashString() << '-' << uv_bc.HashString() << '-' << uv_ac.HashString(); 
     std::string str = sstream.str();
     return str;
 }

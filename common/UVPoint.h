@@ -4,6 +4,11 @@
 #ifndef UVPOINT_H
 #define UVPOINT_H
 
+#include <string>
+#include <sstream>
+
+using namespace std;
+
 /// \class UVPoint UVPoint.h
 /// \brief A class representing a UV point
 class UVPoint
@@ -14,6 +19,8 @@ class UVPoint
     double w;                   // rarely used 
     
     UVPoint();
+    void    Scale(double wavenumber);
+    string  HashString(void);
 };
 
 #endif // UVPOINT_H

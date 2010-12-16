@@ -332,7 +332,7 @@ oi_vis2 Observation::GetVis2(string ins_name, Source & source, vector<double> & 
 		    // look up the present wavenumber, and then find the data
 		    wavenumber = wavenumbers[iwave];
 			vis2.record[i].vis2data[iwave] = this->mBaselines[i]->GetVis2(source, mHA, wavenumber);
-			vis2.record[i].vis2err[iwave] = this->mBaselines[i]->GetVis2Err(source, mHA, wavenumber);
+			vis2.record[i].vis2err[iwave] = this->mBaselines[i]->GetVis2Error(source, mHA, wavenumber);
 			vis2.record[i].flag[iwave] = FALSE;
 		}
 	}
@@ -566,7 +566,6 @@ vector <Observation> Observation::ReadObservation_Descriptive(Array * array, str
     return observations;
 }
 
-
 /// Reads an OIFITS data file and creates a series of observation based upon the data.
 /// Note, presently this function only supports ONE array, combiner, spectral mode per OIFITS file.
 vector <Observation> Observation::ReadObservation_OIFITS(Array * array, string filename)
@@ -581,7 +580,8 @@ vector <Observation> Observation::ReadObservation_OIFITS(Array * array, string f
     if(status)
         throw std::runtime_error("Could not read OIFITS file.");
     
-    // Now find all of the telescopes in file.  Record their names and indicies.
+    // With any luck the array definition file with this program has IDs that match
+    // what is listed in the OIFITS file so we simply read in UV coordinates and telescope IDs.
     
     return observations;
 }

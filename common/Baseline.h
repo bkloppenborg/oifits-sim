@@ -18,6 +18,7 @@ extern "C" {
 using namespace std;
 
 typedef std::tr1::unordered_map<std::string, complex<double> > VisHash;
+typedef std::tr1::unordered_map<std::string, double > Vis2Hash;
 
 // Forward class declarations:
 class UVPoint;
@@ -34,8 +35,8 @@ class Baseline
     
     string name;
     int indicies[2];
-    VisHash mVisValues; // Stores computed visibility values
-    VisHash mVisErrors; // Stores computed/stored visibility error values.
+    VisHash     mVisValues; // Stores computed visibility values
+    Vis2Hash    mVis2Errors; // Stores computed/stored visibility squared error values.
 
   public:
     Baseline(void);
@@ -46,18 +47,27 @@ class Baseline
     //double Geometric_OPD(double hour_angle, double source_declination);
     
   private:
-    complex<double> ComputeVisibility(Source & source, double hour_angle, double wavenumber);
-    complex<double> ComputeVisError(Source & source, double hour_angle, double wavenumber);
-    string  GetHashKey(Source & source, double hour_angle, double wavenumber);
+    complex<double> ComputeVisibility(Source & source, UVPoint uv);
+    double  ComputeVis2Error(Source & source, UVPoint uv);
+    
+    string  GetHashKey(Source & source, UVPoint uv);
     
   public:
     string  GetName(void);
     complex<double> GetVisibility(Source & source, double hour_angle, double wavenumber);
-    complex<double> GetVisError(Source & source, double hour_angle, double wavenumber);
+    complex<double> GetVisibility(Source & source, UVPoint uv_coords);   
+    
+    double  GetVis2Error(Source & source, double hour_angle, double wavenumber);
+    double  GetVis2Error(Source & source, UVPoint uv_coords);    
+    
     double  GetVis2(Source & source, double hour_angle, double wavenumber);
+    double  GetVis2(Source & source, UVPoint uv_coords);
+    
+    
     double  GetVis2Err(Source & source, double hour_angle, double wavenumber);   
     
-    void SetVisError(Source & source, double hour_angle, double wavenumber, double vis_error);
+    void    SetVis2Error(Source & source, double hour_angle, double wavenumber, double vis2error);
+    void    SetVis2Error(Source & source, UVPoint uv, double vis2error);
     
     UVPoint UVcoords(double hour_angle, double source_declination);
 //    oi_vis2_record GetVis2Record(Source & source, double hour_angle, vector<double> wavenumbers);
