@@ -31,7 +31,10 @@
 #include "SpectralMode.h"
 #include "UVPoint.h"
 #include "VisSimParams.h"
+// Various includes for the observation types
 #include "Observation.h"
+#include "Obs_HA.h"
+#include "Obs_OIFITS.h"
 
 
 using std::cout;
@@ -423,7 +426,7 @@ void run_sim(const VisSimParams * p)
 
     // Read in the observations.
     /// \todo read in the file format type, right now it's locked to the descriptive only format.
-    vector<Observation> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
+    vector<Observation*> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
     
     // Open up the OIFITS file.
 	string filename = "!test.oifits";
@@ -448,18 +451,40 @@ void run_sim(const VisSimParams * p)
     oi_vis2 vis2table;
     oi_t3 t3table;
     
-    for(unsigned int i = 0; i < observations.size(); i++)
+    Observation * observation;
+    
+    /// \todo Use an iterator for this instead, much cleaner.
+    for(unsigned int i = observations.size(); i > 0; i--)
     {
-        printf("Simulating Observation at HA %f \n", observations[i].GetHA(target->right_ascension));
+        observation = observations.back();
+        // First look up the type of observation
+        ObsType type = observation->GetObsType();
         
-        vis2table = observations[i].GetVis2(spec->insname, *target, wavenumbers);
+        if(type == HOUR_ANGLE || type == DESCRIPTIVE)
+        {
+            Obs_HA * observation = dynamic_cast<Obs_HA *>(observation);
+        }
+        else    //(type == OIFITS)
+        {
+            Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation);
+        }
+        // Pop the element off of the back of the vector.
+        observations.pop_back();
+            
+        
+        //printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
+        
+        vis2table = observation->GetVis2(spec->insname, *target, wavenumbers);
         write_oi_vis2(fptr, vis2table, 1, &status);
         
-        if(observations[i].HasTriplets())
+        if(observation->HasTriplets())
         {
-            t3table = observations[i].GetT3(spec->insname, *target, wavenumbers);
+            t3table = observation->GetT3(spec->insname, *target, wavenumbers);
             write_oi_t3(fptr, t3table, 1, &status);
         }
+
+        // All done with this observation object, free memory
+        delete observation;
     }
     
 	if (status)

@@ -1,6 +1,9 @@
 /// \file Source.h
 /// Header file for the source class
 
+#ifndef SOURCE_H
+#define SOURCE_H
+
 #include <string>
 
 #include "Matrix.h"
@@ -61,3 +64,5 @@ class Source
     string  GetName(void);
     oi_target  GetOITarget(void);
 };
+
+#endif // SOURCE
