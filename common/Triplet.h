@@ -36,20 +36,27 @@ class Triplet
     Triplet(Array * array, Station * station1, Station * station2, Station * station3);
 
   private:    
-    double  ComputeBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    complex<double> ComputeBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+//    complex<double> ComputeBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    complex<double> ComputeBis(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     string  GetHashKey(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     
   public:
     string  GetName(void);
     bool    ContainsBaseline(string bl_name);
-    complex<double> GetBispectra(Source & source, double hour_angle, double wavenumber);
+    
     complex<double> GetBispectra(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     
-    double  GetBisError(Source & source, double hour_angle, double wavenumber);
-    double  GetBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);    
-    void    SetBisError(Source & source, double hour_angle, double wavenumber);
-    void    SetBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetBisAmp(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetBisAmpErr(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetBisPhi(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetBisPhiErr(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);    
+
+    // Wrapper functions for the UV-coordinate taking versions.
+    double  GetBisAmp(Source & source, double hour_angle, double wavenumber);
+    double  GetBisAmpErr(Source & source, double hour_angle, double wavenumber);
+    double  GetBisPhi(Source & source, double hour_angle, double wavenumber);
+    double  GetBisPhiErr(Source & source, double hour_angle, double wavenumber);
+
         
     int     GetStationID(int station_num);
     

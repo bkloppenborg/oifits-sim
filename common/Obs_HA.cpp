@@ -19,6 +19,9 @@ Obs_HA::Obs_HA(Array * array, double hour_angle, string telescopes, string exclu
     this->mStations = this->FindStations(telescopes);
     this->mBaselines = this->FindBaselines(mStations, exclude_baselines);  
     this->mTriplets = this->FindTriplets(mStations, exclude_baselines);
+    
+    if(mTriplets.size() > 0)
+        this->mbHasTriplets = true;
 }
 
 /// Construct an Observation object from the MJD, time, and included/excluded telescopes.
@@ -34,6 +37,9 @@ Obs_HA::Obs_HA(Array * array, double MJD, double time, string telescopes, string
     this->mStations = this->FindStations(telescopes);
     this->mBaselines = this->FindBaselines(mStations, exclude_baselines); 
     this->mTriplets = this->FindTriplets(mStations, exclude_baselines);  
+    
+    if(mTriplets.size() > 0)
+        this->mbHasTriplets = true;
 }
 
 
@@ -293,12 +299,15 @@ oi_t3 Obs_HA::GetT3(string ins_name, Source & source, vector<double> & wavenumbe
 		
 		for(int j = 0; j < nwave; j++)
 		{
-		    bis = mTriplets[i]->GetBispectra(source, this->mHA, wavenumbers[j]);
-		    bis_err = mTriplets[i]->GetBisError(source, this->mHA, wavenumbers[j]);
-			t3.record[i].t3amp[j] = abs(bis);
-			t3.record[i].t3phi[j] = arg(bis) * 180 / PI;
-			t3.record[i].t3amperr[j] = abs(bis_err);
-			t3.record[i].t3phierr[j] = arg(bis_err) * 180 / PI;
+		    bis = mTriplets[i]->GetBisAmp(source, this->mHA, wavenumbers[j]);
+		    bis_err = mTriplets[i]->GetBisAmpErr(source, this->mHA, wavenumbers[j]);
+		    
+		    // First save the amplitudes
+			t3.record[i].t3amp[j] = mTriplets[i]->GetBisAmp(source, this->mHA, wavenumbers[j]);
+			t3.record[i].t3amperr[j] = mTriplets[i]->GetBisAmpErr(source, this->mHA, wavenumbers[j]);
+			// Now save the phases.  Remember, the phase is in degrees rather than radians.
+			t3.record[i].t3phi[j] = mTriplets[i]->GetBisPhi(source, this->mHA, wavenumbers[j]) * 180 / PI;
+			t3.record[i].t3phierr[j] = mTriplets[i]->GetBisPhiErr(source, this->mHA, wavenumbers[j]) * 180 / PI;
 			t3.record[i].flag[j] = FALSE;
 		}
 		

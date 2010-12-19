@@ -41,6 +41,7 @@ class Observation
   protected:
     Array * mArray;
     double  mJD;
+    bool    mbHasTriplets;
     
     ObsType mObsType;
     
@@ -63,7 +64,7 @@ class Observation
 
     int         GetNumStations(void);
     Station *   GetStation(int sta_index);
-    bool        HasTriplets(void);
+    bool HasTriplets(void);
     
     ObsType     GetObsType(void);
   

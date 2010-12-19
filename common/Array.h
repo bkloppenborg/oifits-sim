@@ -68,6 +68,7 @@ class Array
     Baseline    *   GetBaseline(string baseline_name);
     Baseline    *   GetBaseline(int sta1, int sta2);
     Triplet     *   GetTriplet(string triplet_name);
+    Triplet     *   GetTriplet(int sta1, int sta2, int sta3);
     
     
     double      GetLatitude(void);

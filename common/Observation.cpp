@@ -21,7 +21,7 @@
 /// Default constructor.
 Observation::Observation()
 {
-
+    mbHasTriplets = false;
 }
 
 Observation::~Observation()
@@ -209,8 +209,5 @@ vector<Observation*> Observation::ReadObservations(Array * array, string filenam
 // A simple function to see if the observation has triplets.
 bool    Observation::HasTriplets(void)
 {
-    if(this->mTriplets.size() > 0)
-        return true;
-        
-    return false;
+    return this->mbHasTriplets;
 }

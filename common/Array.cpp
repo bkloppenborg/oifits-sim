@@ -257,6 +257,15 @@ Triplet *   Array::GetTriplet(string triplet_name)
     return this->tri_hash[triplet_name];
 }
 
+Triplet *   Array::GetTriplet(int sta1, int sta2, int sta3)
+{
+    string sta1name = GetStation(sta1)->GetName();
+    string sta2name = GetStation(sta2)->GetName();
+    string sta3name = GetStation(sta3)->GetName();
+    
+    return GetTriplet(sta1name + '-' + sta2name + '-' + sta3name);
+}
+
 /// Converts this object to a valid OIFITSLIB OI_ARRAY struct.
 oi_array    Array::GetOIArray(void)
 {	
