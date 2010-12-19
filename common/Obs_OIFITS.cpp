@@ -92,14 +92,40 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
     			output.flag[j] = FALSE;
             }
             
+            // Now append the data to the output vector
+            vis2_data.push_back(output);
         }    
 
     }while(status == 0);
     
     // close the file
-    fits_close_file(fptr, status);
+    fits_close_file(fptr, &status);
+    oi_vis2_record vis2_record;
     
-    return vis2;
+    // Now convert the vis2_data vector into a properly formatted OI_VIS2 table.
+    oi_vis2 outvis2;
+    int npow = int(vis2_data.size());
+    string arrname = this->mArray->GetArrayName();
+    
+	outvis2.revision = 1;
+	/// \bug The observation date is set to all zeros by default.  
+	/// This is to ensure the user knows this is simulated data, but may not be compliant
+	/// with the OIFITS format, or good "note taking"
+	strncpy(outvis2.date_obs, "0000-00-00", 11);
+	strncpy(outvis2.arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(outvis2.insname, ins_name.c_str(), FLEN_VALUE);
+	outvis2.numrec = npow;
+	outvis2.nwave = nwave;
+	
+	outvis2.record = (oi_vis2_record *) malloc(npow * sizeof(oi_vis2_record));	
+	for(int i = 0; i < npow; i++)
+	{
+	    outvis2.record[i] = vis2_data.back();
+	    vis2_data.pop_back();
+	}
+    
+    
+    return outvis2;
 }
 
 oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wavenumbers)
