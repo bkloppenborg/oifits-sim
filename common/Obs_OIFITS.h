@@ -3,13 +3,14 @@
 #ifndef OBS_OIFITS_H
 #define OBS_OIFITS_H
 
-
 class Obs_OIFITS : public Observation 
 {
   private:
-
+    string mstrFilename;
     
   public:
+    Obs_OIFITS(Array * array, string filename);
+  
     static vector <Observation*> ReadObservation_OIFITS(Array * array, string filename);
 
     oi_vis2 GetVis2(string ins_name, Source & source, vector<double> & wavenumbers);

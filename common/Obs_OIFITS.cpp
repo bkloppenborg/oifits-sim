@@ -1,30 +1,100 @@
 #include "Obs_OIFITS.h"
 
+#include "fitsio.h"
+
 /// Reads an OIFITS data file and creates a series of observation based upon the data.
 /// Note, presently this function only supports ONE array, combiner, spectral mode per OIFITS file.
 vector <Observation*> Obs_OIFITS::ReadObservation_OIFITS(Array * array, string filename)
 {
-    // init some local variables
     vector<Observation*> observations;
+    
+    // We don't attempt to read anything from the OIFITS file, just set the filename.
+    observations.push_back(new Obs_OIFITS(array, filename) );
+    
+    return observations;
+
+}
+
+Obs_OIFITS::Obs_OIFITS(Array * array, string filename)
+{
+    this->mArray = array;
+    this->mstrFilename = filename;
+}
+
+//
+/// \todo This is a really hacky solution.  Come up with a better method.  Perhaps use
+/// the Baseline::GetOI_Vis2_record routine?
+oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & wavenumbers)
+{
+    // Make a place to store the data as we are simulating it.
+    vector<oi_vis2_record> vis2_data;
+
+    // init some local vars:
+    int nwave = int(wavenumbers.size());
+    fitsfile * fptr;
     oi_fits data;
     int status = 0;
     
     // First read the file into memory
-    read_oi_fits(filename.c_str(), &data, & status);
+    fits_open_file(&fptr, this->mstrFilename.c_str(), READONLY, &status);
     if(status)
         throw std::runtime_error("Could not read OIFITS file.");
-    
-    // With any luck the array definition file with this program has IDs that match
-    // what is listed in the OIFITS file so we simply read in UV coordinates and telescope IDs.
-    
-    return observations;
-}
-
-
-oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & wavenumbers)
-{
-    // init local vars
+        
+    // Now iterate through the OI_VIS2 tables, mirroring the sampling on the Source object 
+    // at the specified wavenumbers;
     oi_vis2 vis2;
+    UVPoint uv;
+    oi_vis2_record input_record;
+    Baseline * baseline;
+    
+    do
+    {
+        // Read in the next vis2 table
+        read_next_oi_vis2(fptr, &vis2, &status);
+        if(status)
+            break;    
+            
+        for(int record_id = 0; record_id < vis2.numrec; record_id++)
+        {
+            // Use a local var to store some information
+            input_record = vis2.record[record_id];
+            oi_vis2_record output;
+            
+            baseline = mArray->GetBaseline(input_record.sta_index[0], input_record.sta_index[1]);
+            
+            // Copy some information over to the output record:
+            output.target_id = 0;
+            output.time = input_record.time;
+            output.mjd = input_record.mjd;
+            output.int_time = input_record.int_time;
+            output.ucoord = input_record.ucoord;
+            output.vcoord = input_record.vcoord;
+            output.sta_index[0] = input_record.sta_index[0];
+            output.sta_index[1] = input_record.sta_index[1];
+            
+            // Allocate memory for the vis2data, vis2error, and flag:
+            output.vis2data = (double *) malloc(nwave * sizeof(double));
+            output.vis2err = (double *) malloc(nwave * sizeof(double));
+            output.flag = (char *) malloc(nwave * sizeof(char));
+            
+            // Now iterate over the wavenumbers
+            for(int j = 0; j < nwave; j++)
+            {            
+                // Reset the UV coordinates
+                uv.u = input_record.ucoord;
+                uv.v = input_record.vcoord;
+                uv.Scale(wavenumbers[j]);
+                
+                // Simulate the visibility based on the source.
+                output.vis2data[j] = baseline->GetVis2(source, uv);
+                // Copy the error from the input file.
+                output.vis2err[j] = input_record.vis2err[j];
+    			output.flag[j] = FALSE;
+            }
+            
+        }    
+
+    }while(status == 0);
     
     return vis2;
 }

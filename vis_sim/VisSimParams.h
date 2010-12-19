@@ -1,6 +1,6 @@
 #include <string>
 
-using std::string;
+using namespace std;
 
 #ifndef VISSIMPARAMS_H
 #define VISSIMPARAMS_H
@@ -26,6 +26,8 @@ class VisSimParams
     VisSimParams(void);
   
 	bool have_all_params();
+	
+	string GetFilename(void);
 };
 
 #endif //VISSIMPARAMS_H

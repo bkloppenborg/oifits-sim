@@ -46,3 +46,11 @@ bool VisSimParams::have_all_params()
 
     return false;
 }
+
+string VisSimParams::GetFilename()
+{
+    if(bFromOIFITSFile)
+        return this->input_oifits_filename;
+        
+    return observation_filename;
+}

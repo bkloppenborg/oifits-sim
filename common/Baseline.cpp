@@ -244,6 +244,12 @@ double  Baseline::GetVis2(Source & source, double hour_angle, double wavenumber)
     return norm(vis);
 }
 
+double Baseline::GetVis2(Source & source, UVPoint uv)
+{
+    complex<double> vis = this->GetVisibility(source, uv);
+    return norm(vis);   
+}
+
 ////////////////////////////////////////////////////////////////////
 // Non Class Functions Below
 ////////////////////////////////////////////////////////////////////

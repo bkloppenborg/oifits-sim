@@ -66,6 +66,7 @@ class Array
     Station     *   GetStation(int station_index);
     Station     *   GetStation(string sta_name);
     Baseline    *   GetBaseline(string baseline_name);
+    Baseline    *   GetBaseline(int sta1, int sta2);
     Triplet     *   GetTriplet(string triplet_name);
     
     

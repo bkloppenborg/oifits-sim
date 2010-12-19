@@ -7,4 +7,8 @@ Debugging:
 gdb ./oifits-sim
 run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sample_data/obs_epsAur.txt -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o /tmp/test.oifits
 
+Debugging with OIFITS:
+
+gdb ./oifits-sim
+run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -d ./sample_data/2008Dec10-eps_Aur.oifits -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o /tmp/test.oifits
 

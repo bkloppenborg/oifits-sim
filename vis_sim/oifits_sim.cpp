@@ -418,6 +418,8 @@ void run_sim(const VisSimParams * p)
     // Now pull out the information that must be in a file:
     // We use pointers in this function for consistency across all variables.
     Instrument * inst = new Instrument(p->instrument_filename, comment_chars);
+    
+    /// \todo Read in the spectral dispersion information from the OIFITS file
 	SpectralMode * spec = new SpectralMode(p->SpectralMode_filename, comment_chars);
 	Source * target = new Source(p->target_filename, comment_chars);
 	
@@ -426,7 +428,9 @@ void run_sim(const VisSimParams * p)
 
     // Read in the observations.
     /// \todo read in the file format type, right now it's locked to the descriptive only format.
-    vector<Observation*> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
+    /// \bug Note, when observations is destroyed it will not free memory occupied by the observation
+    ///     objects.  We must do this explicitly in the code below.    
+    vector<Observation*> observations = Observation::ReadObservations(array, p->input_oifits_filename, comment_chars, OIFITS);
     
     // Open up the OIFITS file.
 	string filename = "!test.oifits";
@@ -450,16 +454,18 @@ void run_sim(const VisSimParams * p)
     // Now compute the vis2 records and t3s:
     oi_vis2 vis2table;
     oi_t3 t3table;
-    
+
     Observation * observation;
     
     /// \todo Use an iterator for this instead, much cleaner.
+    /// For now iterate from the back of the vector to the front.
     for(unsigned int i = observations.size(); i > 0; i--)
     {
         observation = observations.back();
         // First look up the type of observation
         ObsType type = observation->GetObsType();
         
+        // Do a dymamic cast to get the subclass object back
         if(type == HOUR_ANGLE || type == DESCRIPTIVE)
         {
             Obs_HA * observation = dynamic_cast<Obs_HA *>(observation);
@@ -468,9 +474,6 @@ void run_sim(const VisSimParams * p)
         {
             Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation);
         }
-        // Pop the element off of the back of the vector.
-        observations.pop_back();
-            
         
         //printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
         
@@ -483,7 +486,8 @@ void run_sim(const VisSimParams * p)
             write_oi_t3(fptr, t3table, 1, &status);
         }
 
-        // All done with this observation object, free memory
+        // All done with this observation object.  Pop it off the vector and free memory.
+        observations.pop_back();
         delete observation;
     }
     

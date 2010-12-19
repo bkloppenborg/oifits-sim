@@ -199,6 +199,14 @@ Baseline *  Array::GetBaseline(string baseline_name)
     return this->bl_hash[baseline_name];
 }
 
+Baseline *  Array::GetBaseline(int sta1, int sta2)
+{
+    string sta1name = GetStation(sta1)->GetName();
+    string sta2name = GetStation(sta2)->GetName();
+    
+    return GetBaseline(sta1name + "-" + sta2name);
+}
+
 Station *   Array::GetStation(int station_index)
 {
     return &this->stations[station_index];
