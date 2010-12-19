@@ -35,7 +35,7 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
     oi_fits data;
     int status = 0;
     
-    // First read the file into memory
+    // Open the input file as read-only data.
     fits_open_file(&fptr, this->mstrFilename.c_str(), READONLY, &status);
     if(status)
         throw std::runtime_error("Could not read OIFITS file.");
@@ -95,6 +95,9 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
         }    
 
     }while(status == 0);
+    
+    // close the file
+    fits_close_file(fptr, status);
     
     return vis2;
 }
