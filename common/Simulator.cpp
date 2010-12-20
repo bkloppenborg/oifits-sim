@@ -118,3 +118,26 @@ void wgs84_to_geoc(double lat, double height, double *GeocLat, double *GeocRadiu
 	*GeocRadius = pow(c0 * c0 * cosLat * cosLat + s0 * s0 * sinLat * sinLat, 0.5);
 }
 
+void Swap(int *a, int *b) 
+{
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+void Sort(int &a, int &b)
+{
+    if(a > b)
+        Swap(&a, &b);
+}
+
+void Sort(int &a, int &b, int &c) 
+{
+    if (a > b) 
+        Swap(&a,&b);
+    if (a > c) 
+        Swap(&a,&c);
+    if (b > c) 
+        Swap(&b,&c);
+}
+

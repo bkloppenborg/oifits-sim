@@ -57,4 +57,8 @@ string  StripWhitespace(string str);
 void    StripWhitespace(vector<string> & strings);
 vector<string> ReadFile(string filename, string comment_chars, string error_message);
 
+void Swap(int *a, int *b);
+void Sort(int &a, int &b);
+void Sort(int &a, int &b, int &c);
+
 #endif // #ifndef SIMULATOR_H

@@ -66,6 +66,9 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
             
             baseline = mArray->GetBaseline(input_record.sta_index[0], input_record.sta_index[1]);
             
+            if(baseline == NULL)
+                printf("Indicies: %i %i \n", input_record.sta_index[0], input_record.sta_index[1]);
+            
             // Copy some information over to the output record:
             /// \bug Target is set to 1 by default
             output.target_id = 1;

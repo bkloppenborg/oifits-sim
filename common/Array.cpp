@@ -196,11 +196,19 @@ Array::~Array()
 // Returns a reference to a baseline object.
 Baseline *  Array::GetBaseline(string baseline_name)
 {
+    Baseline * baseline = this->bl_hash[baseline_name];
+    
+    if(this->bl_hash.find(baseline_name) == this->bl_hash.end())
+        throw std::runtime_error("Request for non-existant baseline, " + baseline_name + "!");
+        
     return this->bl_hash[baseline_name];
 }
 
 Baseline *  Array::GetBaseline(int sta1, int sta2)
 {
+    // First enforce sta1 < sta2
+    Sort(sta1, sta2);
+
     string sta1name = GetStation(sta1)->GetName();
     string sta2name = GetStation(sta2)->GetName();
     
@@ -259,6 +267,9 @@ Triplet *   Array::GetTriplet(string triplet_name)
 
 Triplet *   Array::GetTriplet(int sta1, int sta2, int sta3)
 {
+    // Enforce sta1 < sta2 < sta3
+    Sort(sta1, sta2, sta3);
+
     string sta1name = GetStation(sta1)->GetName();
     string sta2name = GetStation(sta2)->GetName();
     string sta3name = GetStation(sta3)->GetName();

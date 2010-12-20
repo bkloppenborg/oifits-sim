@@ -267,6 +267,8 @@ vector<Baseline> ComputeBaselines(vector<Station> & stations)
         for(int j = i+1; j < num_stations; j++)
         {
             // Create a new baseline, append it to the list of baselines
+            printf("Creating baseline %i %i. \n", stations[i].GetIndex(), stations[j].GetIndex());
+            
             baselines.push_back(Baseline(&stations[i], &stations[j]));
         }
     }
