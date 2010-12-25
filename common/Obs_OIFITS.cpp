@@ -211,8 +211,8 @@ oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wav
                 uv1.v = input_record.v1coord;
                 uv2.u = input_record.u2coord;
                 uv2.v = input_record.v2coord;
-                uv3.u = uv1.u - uv2.u;
-                uv3.v = uv1.v - uv2.v;
+                uv3.u = uv1.u + uv2.u;
+                uv3.v = uv1.v + uv2.v;
                 
                 // Scale them
                 uv1.Scale(wavenumbers[j]);
