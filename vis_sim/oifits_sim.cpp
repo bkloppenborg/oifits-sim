@@ -433,7 +433,7 @@ void run_sim(const VisSimParams * p)
     vector<Observation*> observations = Observation::ReadObservations(array, p->input_oifits_filename, comment_chars, OIFITS);
     
     // Open up the OIFITS file.
-	string filename = "!test.oifits";
+	string filename = "!" + p->oifits_filename;
 	fitsfile *fptr;
 	int status = 0;
 	fits_create_file(&fptr, filename.c_str(), &status);

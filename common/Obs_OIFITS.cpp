@@ -32,7 +32,9 @@ Obs_OIFITS::Obs_OIFITS(Array * array, string filename)
 oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & wavenumbers)
 {
     // Make a place to store the data as we are simulating it.
-    vector<oi_vis2_record> vis2_data;
+    // Note, the vis2_data vector doesn't know how to allocate oi_vis2_record* entries so we have 
+    // to do this manually below.
+    vector<oi_vis2_record*> vis2_data;
 
     // init some local vars:
     int nwave = int(wavenumbers.size());
@@ -62,7 +64,7 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
         {
             // Use a local var to store some information
             input_record = vis2.record[record_id];
-            oi_vis2_record output;
+            oi_vis2_record * output = (oi_vis2_record*) malloc(sizeof(oi_vis2_record));
             
             baseline = mArray->GetBaseline(input_record.sta_index[0], input_record.sta_index[1]);
             
@@ -71,19 +73,19 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
             
             // Copy some information over to the output record:
             /// \bug Target is set to 1 by default
-            output.target_id = 1;
-            output.time = input_record.time;
-            output.mjd = input_record.mjd;
-            output.int_time = input_record.int_time;
-            output.ucoord = input_record.ucoord;
-            output.vcoord = input_record.vcoord;
-            output.sta_index[0] = input_record.sta_index[0];
-            output.sta_index[1] = input_record.sta_index[1];
+            output->target_id = 1;
+            output->time = input_record.time;
+            output->mjd = input_record.mjd;
+            output->int_time = input_record.int_time;
+            output->ucoord = input_record.ucoord;
+            output->vcoord = input_record.vcoord;
+            output->sta_index[0] = input_record.sta_index[0];
+            output->sta_index[1] = input_record.sta_index[1];
             
             // Allocate memory for the vis2data, vis2error, and flag:
-            output.vis2data = (double *) malloc(nwave * sizeof(double));
-            output.vis2err = (double *) malloc(nwave * sizeof(double));
-            output.flag = (char *) malloc(nwave * sizeof(char));
+            output->vis2data = (double *) malloc(nwave * sizeof(double));
+            output->vis2err = (double *) malloc(nwave * sizeof(double));
+            output->flag = (char *) malloc(nwave * sizeof(char));
             
             // Now iterate over the wavenumbers
             for(int j = 0; j < nwave; j++)
@@ -94,10 +96,10 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
                 uv.Scale(wavenumbers[j]);
                 
                 // Simulate the visibility based on the source.
-                output.vis2data[j] = baseline->GetVis2(source, uv);
+                output->vis2data[j] = baseline->GetVis2(source, uv);
                 // Copy the error from the input file.
-                output.vis2err[j] = input_record.vis2err[j];
-    			output.flag[j] = FALSE;
+                output->vis2err[j] = input_record.vis2err[j];
+    			output->flag[j] = FALSE;
             }
             
             // Now append the data to the output vector
@@ -110,38 +112,40 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
     fits_close_file(fptr, &status);
     
     // Now convert the vis2_data vector into a properly formatted OI_VIS2 table.
-    oi_vis2 outvis2;
+    oi_vis2 * outvis2 = (oi_vis2*) malloc(sizeof(oi_vis2));
     int npow = int(vis2_data.size());
     string arrname = this->mArray->GetArrayName();
     
-	outvis2.revision = 1;
+	outvis2->revision = 1;
 	/// \bug The observation date is set to all zeros by default.  
 	/// This is to ensure the user knows this is simulated data, but may not be compliant
 	/// with the OIFITS format, or good "note taking"
-	strncpy(outvis2.date_obs, "0000-00-00", 11);
-	strncpy(outvis2.arrname, arrname.c_str(), FLEN_VALUE);
-	strncpy(outvis2.insname, ins_name.c_str(), FLEN_VALUE);
-	outvis2.numrec = npow;
-	outvis2.nwave = nwave;
+	strncpy(outvis2->date_obs, "0000-00-00", 11);
+	strncpy(outvis2->arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(outvis2->insname, ins_name.c_str(), FLEN_VALUE);
+	outvis2->numrec = npow;
+	outvis2->nwave = nwave;
 	
-	outvis2.record = (oi_vis2_record *) malloc(npow * sizeof(oi_vis2_record));	
+	outvis2->record = (oi_vis2_record *) malloc(npow * sizeof(oi_vis2_record));	
 	for(int i = 0; i < npow; i++)
 	{
-	    outvis2.record[i] = vis2_data.back();
+	    outvis2->record[i] = *vis2_data.back();
+	    
+	    // free memory and pop
+	    delete vis2_data.back();
 	    vis2_data.pop_back();
 	}
     
-    
-    return outvis2;
+    return *outvis2;
 }
 
 /// \todo This is a really hacky solution.  Try to find a better solution.
 oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wavenumbers)
 {
     // a place to store the data as we are simulating it.
-    /// \bug Notice, the t3_data vector doesn't know how to deallocate the oi_t3_records
-    /// so this will result in a memory leak.
-    vector<oi_t3_record> t3_data;
+    // Notice, the t3_data vector doesn't know how to deallocate the oi_t3_records
+    // so we will need to manually deallocate memory below.
+    vector<oi_t3_record*> t3_data;
 
     // init some local vars:
     int nwave = int(wavenumbers.size());
@@ -173,32 +177,32 @@ oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wav
         {
             // Use a local var to store some information
             input_record = t3.record[record_id];
-            oi_t3_record output;
+            oi_t3_record * output = (oi_t3_record*) malloc(sizeof(oi_t3_record));
             
             // Get the triplet
             triplet = mArray->GetTriplet(input_record.sta_index[0], input_record.sta_index[1], input_record.sta_index[2]);
             
             // Copy some information over to the output record:
             /// \bug Target is set to 1 by default
-            output.target_id = 1;
-            output.time = input_record.time;
-            output.mjd = input_record.mjd;
-            output.int_time = input_record.int_time;
-            output.u1coord = input_record.u1coord;
-            output.v1coord = input_record.v1coord;
-            output.u2coord = input_record.u2coord;
-            output.v2coord = input_record.v2coord;
-            output.sta_index[0] = input_record.sta_index[0];
-            output.sta_index[1] = input_record.sta_index[1];
-            output.sta_index[2] = input_record.sta_index[2];
+            output->target_id = 1;
+            output->time = input_record.time;
+            output->mjd = input_record.mjd;
+            output->int_time = input_record.int_time;
+            output->u1coord = input_record.u1coord;
+            output->v1coord = input_record.v1coord;
+            output->u2coord = input_record.u2coord;
+            output->v2coord = input_record.v2coord;
+            output->sta_index[0] = input_record.sta_index[0];
+            output->sta_index[1] = input_record.sta_index[1];
+            output->sta_index[2] = input_record.sta_index[2];
             
             // Allocate memory for the vis2data, vis2error, and flag:
-            output.t3amp = (double *) malloc(nwave * sizeof(double));
-            output.t3amperr = (double *) malloc(nwave * sizeof(double));
-            output.t3phi = (double *) malloc(nwave * sizeof(double));
-            output.t3phierr = (double *) malloc(nwave * sizeof(double));
-            output.flag = (char *) malloc(nwave * sizeof(char));
-            
+            output->t3amp = (double *) malloc(nwave * sizeof(double));
+            output->t3amperr = (double *) malloc(nwave * sizeof(double));
+            output->t3phi = (double *) malloc(nwave * sizeof(double));
+            output->t3phierr = (double *) malloc(nwave * sizeof(double));
+            output->flag = (char *) malloc(nwave * sizeof(char));
+                        	
             // Now iterate over the wavenumbers
             for(int j = 0; j < nwave; j++)
             {            
@@ -208,29 +212,30 @@ oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wav
                 uv2.u = input_record.u2coord;
                 uv2.v = input_record.v2coord;
                 uv3.u = uv1.u - uv2.u;
-                uv3.v = uv1.v - uv3.v;
+                uv3.v = uv1.v - uv2.v;
                 
                 // Scale them
                 uv1.Scale(wavenumbers[j]);
                 uv2.Scale(wavenumbers[j]);
                 uv3.Scale(wavenumbers[j]);
-                
+
                 // Simulate the bispectrum's amplitude based on the source image
-                output.t3amp[j] = triplet->GetBisAmp(source, uv1, uv2, uv3);
+                output->t3amp[j] = triplet->GetBisAmp(source, uv1, uv2, uv3);
                 // Copy the error from the input file.
-                output.t3amperr[j] = input_record.t3amperr[j];
+                output->t3amperr[j] = input_record.t3amperr[j];
                 
                 // Simulate the bispectrum's phase based on the source image.  Convert to Degrees!
-                output.t3phi[j] = triplet->GetBisPhi(source, uv1, uv2, uv3) * 180 / PI;
+                output->t3phi[j] = triplet->GetBisPhi(source, uv1, uv2, uv3) * 180 / PI;
                 // Copy the error from the input file
-                output.t3phierr[j] = input_record.t3phierr[j];
+                output->t3phierr[j] = input_record.t3phierr[j];
             
                 // Lastly set the "ignore this data" flag to false
-    			output.flag[j] = FALSE;
+    			output->flag[j] = FALSE;
             }
             
             // Now append the data to the output vector
             t3_data.push_back(output);
+
         }    
 
     }while(status == 0);
@@ -239,27 +244,30 @@ oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wav
     fits_close_file(fptr, &status);
     
     // Now convert the t3_data vector into a properly formatted OI_T3 table.
-    oi_t3 outt3;
-    int npow = int(t3_data.size());
+    oi_t3 * outt3 = (oi_t3*) malloc(sizeof(oi_t3));
+    int ndata = int(t3_data.size());
     string arrname = this->mArray->GetArrayName();
     
-	outt3.revision = 1;
+	outt3->revision = 1;
 	/// \bug The observation date is set to all zeros by default.  
 	/// This is to ensure the user knows this is simulated data, but may not be compliant
 	/// with the OIFITS format, or good "note taking"
-	strncpy(outt3.date_obs, "0000-00-00", 11);
-	strncpy(outt3.arrname, arrname.c_str(), FLEN_VALUE);
-	strncpy(outt3.insname, ins_name.c_str(), FLEN_VALUE);
-	outt3.numrec = npow;
-	outt3.nwave = nwave;
+	strncpy(outt3->date_obs, "0000-00-00", 11);
+	strncpy(outt3->arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(outt3->insname, ins_name.c_str(), FLEN_VALUE);
+	outt3->numrec = ndata;
+	outt3->nwave = nwave;
 	
-	outt3.record = (oi_t3_record *) malloc(npow * sizeof(oi_t3_record));	
-	for(int i = 0; i < npow; i++)
+	outt3->record = (oi_t3_record *) malloc(ndata * sizeof(oi_t3_record));		
+	for(int i = 0; i < ndata; i++)
 	{
-	    outt3.record[i] = t3_data.back();
+	    outt3->record[i] = *t3_data.back();
+	    
+	    // Free memory and pop
+	    //delete t3_data.back();
 	    t3_data.pop_back();
 	}
     
-    // 
-    return outt3;
+    // Note, this memory object contains pointers and should be freed the OIFITSLIB free_oi_t3.
+    return *outt3;
 }
