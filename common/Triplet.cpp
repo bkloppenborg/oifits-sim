@@ -51,7 +51,7 @@ int     Triplet::GetStationID(int station_num)
 
 //complex<double> Triplet::ComputeBisError(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
 //{
-//    /// \bug Bispectrum error is set to 0.000001 by default
+//    /// \bug Bispectrum error is set to 0.001 by default
 //    return complex<double>(0.001, 0.001);
 //}
 
@@ -84,7 +84,7 @@ bool    Triplet::ContainsBaseline(string bl_name)
 double  Triplet::GetBisAmp(Source & source, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac)
 {
     complex<double> bis = GetBispectra(source, uv_ab, uv_bc, uv_ac);
-    return norm(bis);
+    return abs(bis);
 }
 
 // Wrapper function for the UV-coordinate taking versions.

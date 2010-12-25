@@ -15,6 +15,11 @@ VisSimParams::VisSimParams()
 	this->bFromOIFITSFile = false;
 }
 
+bool VisSimParams::is_oifits_obs(void)
+{
+    return this->bFromOIFITSFile;
+}
+
 /// Determines whether or not all parameters required to run the simulator are present
 ///
 /// Two cases to see if all parameters are specified.  If we are using an OIFITS file, we only need:

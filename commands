@@ -1,6 +1,6 @@
-Normal Operation (with OIFITS)
+Normal Operation (with descriptive observation file)
 
-./oifits-sim -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sample_data/obs_epsAur.txt -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o /tmp/test.oifits
+./oifits-sim -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sample_data/obs_epsAur.txt -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o ./test.oifits
 
 Debugging:
 
@@ -10,6 +10,6 @@ run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -obs ./sam
 Debugging with OIFITS:
 
 gdb ./oifits-sim
-run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -d /home/bkloppenborg/Projects/CHARA/data/MIRC_calibrated/2010-02-eps_Aur-avg.oifits -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o ./test.oifits
+run -t ./sample_data/target_epsAur.txt -s ./sample_data/MIRC_LowH.txt -d ./sample_data/2008Dec10-eps_Aur.oifits -i ./sample_data/MIRC.txt -a ./sample_data/CHARA.txt -o ./test.oifits
 
 

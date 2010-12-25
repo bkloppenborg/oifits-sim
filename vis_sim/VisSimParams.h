@@ -28,6 +28,7 @@ class VisSimParams
 	bool have_all_params();
 	
 	string GetFilename(void);
+	bool is_oifits_obs(void);
 };
 
 #endif //VISSIMPARAMS_H
