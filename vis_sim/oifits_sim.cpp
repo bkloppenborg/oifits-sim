@@ -430,8 +430,8 @@ void run_sim(const VisSimParams * p)
     /// \todo read in the file format type, right now it's locked to only one format
     /// \bug Note, when observations is destroyed it will not free memory occupied by the observation
     ///     objects.  We must do this explicitly in the code below.    
-    //vector<Observation*> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
-    vector<Observation*> observations = Observation::ReadObservations(array, p->input_oifits_filename, comment_chars, OIFITS); 
+    vector<Observation*> observations = Observation::ReadObservations(array, p->observation_filename, comment_chars, DESCRIPTIVE);
+    //vector<Observation*> observations = Observation::ReadObservations(array, p->input_oifits_filename, comment_chars, OIFITS); 
     
     // Open up the OIFITS file.
 	string filename = "!" + p->oifits_filename;

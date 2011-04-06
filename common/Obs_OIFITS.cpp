@@ -87,6 +87,7 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
             output->vis2err = (double *) malloc(nwave * sizeof(double));
             output->flag = (char *) malloc(nwave * sizeof(char));
             
+            
             // Now iterate over the wavenumbers
             for(int j = 0; j < nwave; j++)
             {            
@@ -100,6 +101,7 @@ oi_vis2 Obs_OIFITS::GetVis2(string ins_name, Source & source, vector<double> & w
                 // Copy the error from the input file.
                 output->vis2err[j] = input_record.vis2err[j];
     			output->flag[j] = FALSE;
+    			
             }
             
             // Now append the data to the output vector
@@ -218,7 +220,7 @@ oi_t3   Obs_OIFITS::GetT3(string ins_name, Source & source, vector<double> & wav
                 uv1.Scale(wavenumbers[j]);
                 uv2.Scale(wavenumbers[j]);
                 uv3.Scale(wavenumbers[j]);
-
+                
                 // Simulate the bispectrum's amplitude based on the source image
                 output->t3amp[j] = triplet->GetBisAmp(source, uv1, uv2, uv3);
                 // Copy the error from the input file.
