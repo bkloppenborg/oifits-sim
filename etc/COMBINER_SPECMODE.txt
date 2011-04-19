@@ -1,0 +1,18 @@
+# This is a template file for a spectral mode of a combiner.
+
+# The name of the combiner to which this mode belongs.  The code enforces that
+# the combiner and the spectral mode must match.
+combiner = text
+
+# A name for this spectral mode.
+mode = text
+
+# Lastly the spectral bins and effective bandwidth written as one entry per line
+# with a (single) space separting them in units of meters.
+#   mean_wavelength effective_bandwidth
+# The effective bandwidth should be computed per the OIFITS file format specifications.  
+# The ordering of these entries does not matter.
+# Sample from MIRC Low_H:
+#	1.745909E-06 2.877857E-08
+#	1.717131E-06 3.252876E-08
+#	1.684602E-06 3.377056E-08

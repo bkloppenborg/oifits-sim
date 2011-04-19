@@ -1,0 +1,49 @@
+# This is a template file for describing the characteristics of the combiner.
+# It contains parameters required for computing the noise on the data and 
+# estimation of the visibilities
+
+# The name of the instrument (ideally matching the filename)
+name = text
+
+# The optical transmission for the beam combiner, excluding detector QE
+# and flux lost due to optical coupling problems (i.e. fibers)
+int_trans = float
+
+# Typical instrumental visibility (i.e. for an unresolved source)
+vis = float
+
+# The number of pixels used to sample fringes
+n_pix_fringe = integer
+
+# The number of pixels used for photometric sampling
+n_pix_photometry = integer
+
+# The next two parameters define the quantity of light used for 
+# photometry and fringe sampling.  Acceptable values 0 < x <= 1.0
+# ideally adding up to 1 in a fiber-fed combiner.  Include any losses
+# due to transmission in these factors.
+flux_frac_photometry = double
+flux_frac_fringes = double
+
+# The next two parameters define the througput on the photometric and 
+# fringe sampling arms of the combiner.  Acceptable values 0 < x <= 1.0
+throughput_photometry = double
+throughput_fringes = double
+
+# The number of splits in the combiner:
+n_splits = int
+
+# Detector readout noise in electrons
+read_noise = float
+
+# Detector quantum efficiency
+quantum_efficiency = float
+
+# Typical fractional calibration error on squared visibility
+v2_cal_err = float
+
+# Typical calibration error on closure phase in units of degrees
+phase_cal_err = float
+
+# Typical integration time.
+incoh_int_time = float

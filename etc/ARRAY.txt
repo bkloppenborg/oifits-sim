@@ -1,0 +1,45 @@
+# This is a template for array definition files.  
+# A few notes first:
+# * A line with comments begins with a "#"
+# * The named parameters (foo = something) do not need to be specified in any particular order
+# * The telescope definitions must be the last parameters in the file.
+
+# The name of the array
+name = text
+
+# The array latitute (deg), longitude (deg), and altitude (meters)
+lat = float
+lon = float
+alt = float
+
+# The coord line describes the coordinate system used for the telescope.  In most cases
+# you should use the APIS++ standard (used in OIFITS files).
+#   0 : (x,y,z) per APIS++ standards (i.e. OIFITS coordinates)
+#   1 : North, East, Up
+coord = integer
+
+# An estimation for the throughput up to the combiner (i.e. just the throughput of the array).
+# Actual values here are good, but theoretical computations based upon transmission/reflection
+# should be fine as well.
+# 0 <= throughput <= 1.0
+throughput = float
+
+# An estimation for the average wind velocity in units of m/s
+wind_speed = float
+
+# An estimation for the average seeing value on-site given at 500 nm in units of meters.
+r0 = float
+
+# Lastly a list of telescopes with one telescope on each line.  Columns are 
+# white-space separated and consist of seven columns in the following order
+#   1: The array's name for the station (text)
+#   2: The array's index for the station (integer)
+#   3: The X/North Coordinate for the station (float, meters)
+#   4: The Y/East Coordinate for the station (float, meters)
+#   5: The Z/Up Coordinate for the station (float, meters)
+#   6: The Gain (float, 0 <= gain <= 1).  Set to 1 unless you have a good reason
+#   7: The Diamemeter of the mirror (float, meters)
+# An example of this format for CHARA (APIS++ standard definition)
+#S1  0	    0.0	                0.0	                0.0                 1.0 1.0
+#S2  1	    3.56041112117068    18.9016271169964    28.1285801044       1.0 1.0
+

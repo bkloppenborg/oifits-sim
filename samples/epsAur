@@ -1,0 +1,8 @@
+From the bin directory try running the following commands:
+
+ -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -a CHARA -c MIRC -m LowH -obs --start -1 --end 1 --every 0.5 -o test.oifits 
+
+
+./oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -a CHARA -c MIRC -m LowH -d ../samples/2010-10-eps_Aur-all-avg5.oifits -o test.oifits
+
+

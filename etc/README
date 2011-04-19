@@ -1,0 +1,15 @@
+This directory contains definition files for arrays, combiners, and spectral modes for the combiners.
+
+The code is setup to permit users to specify their own array, combiners, and spectral modes.  It will
+first check for the existance of a file with the same name specified on the command line.  If that fails,
+it will search this directory for similarly named files.  Because of this we have to enforce a naming
+convention on the files.  
+
+Generically we follow this naming convention:
+
+ARRAY.txt
+COMBINER.txt
+COMBINER_SPECMODE.txt
+
+For example, if you want to use CHARA with MIRC in LowH mode, the program will search for 
+CHARA.txt, MIRC.txt and MIRC_LowH.txt

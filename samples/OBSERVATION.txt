@@ -1,0 +1,10 @@
+# There are three ways one may specify observations.  The easiest one is via. command line:
+#  oifits-sim ... -obs --start float --every float --end float [--T string]
+# which uses the telescopes (--T) specified to sample the target at the interval (in hours)
+# specified.  See the documentation for detailed description of how to use this mode.
+
+# The other methods involve observation files.  There are two type of observation files. 
+# the first is an extension of the command line option (useful for simulating the data
+# collected over several nights) and the second is a "descriptive" method which permits
+# full control of hour angles and telescopes used.  Samples of both types can be found
+# in the samples directory.

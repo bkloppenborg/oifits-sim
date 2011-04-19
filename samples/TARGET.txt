@@ -1,0 +1,31 @@
+# A file describing the characteristics of the target in key-value pairs.
+# Note that most of these parameters can be overridden by command line arguments
+# but they must have default, specified values in this file.
+
+# The name of the target
+name = text
+
+# The resolution of the image used for input
+res = double
+
+# Magnitude
+mag = double
+
+# The photometric band in which the magnitude is supplied
+# Valid values are J, H, and K for now.
+band = character
+
+# The blackbody temperature of the source:
+temp = double
+
+# The sky background in magnitude per square arcsecond (in the same band as specified above)
+bkgrnd = double
+
+# Sky background aperture size in square degrees
+bkgrnd_ap = double
+
+# The declination of the source in degrees
+src_dec = double
+
+# The right ascention of the source in degrees
+src_ra = double

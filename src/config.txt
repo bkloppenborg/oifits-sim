@@ -1,0 +1,2 @@
+# Define where the array/combiner definition files are kept:
+etc_conf = ../etc

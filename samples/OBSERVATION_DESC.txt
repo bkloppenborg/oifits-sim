@@ -1,0 +1,33 @@
+# This file describes the descriptive type of observation file.
+# The goal of this observation type is to permit the most flexibility for
+# observation planning.
+
+# Much like the basic hour-angle case, the first parameter specified in the
+# file must be the type (1 = DESCRIPTIVE)
+type = 1
+
+# The remainder of the file consists of a series of blocks describing the observations
+# there are three commands:
+hour_angle = float
+telescopes = string
+exclude = string
+   
+# where the exclude line is (entirely) optional.  There is no limit on the number
+# of blocks permitted in the file.  Examples of these files are in the samples directory.
+
+# The parameters are as follows:
+# hour_angle = float
+#  This is the hour angle at which the observation is planned to occur.
+
+# telescopes = string
+#  A comma separated list of the telescopes used in this observation.  For example:
+#  telescopes = S1,E1,W1,W2
+#  would create all baselines and triplets from the four telescopes S1, E1, W1, and W2
+
+# exclude = string
+#  This keyword permits the user to exclude baselines from being included in the
+#  observation.  This is a comma separated, hyphen-delineated list of telescopes.
+#  For example, to include all telescopes at CHARA but exclude the baseline formed
+#  by E1 and W1 as well as S1 and W1 we would specify:
+#   telescopes = S1,S2,E1,E2,W1,W2
+#   exclude = E1-W1,S1-W1
