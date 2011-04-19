@@ -28,9 +28,11 @@ In this mode the program will simulate observations from the interferometer and 
 uncertainty estimates from an existing data file.  This mode is useful if you are exploring
 artifacts in existing images as you can sample a model image and reconstruct the resulting 
 OIFITS file.  To use this mode the user needs to specify the target, target image, output 
-file, and input OIFITS file.
+file, input OIFITS file, array, combiner, and spectral mode of the combiner.  In future versions
+the last three parameters will be determined (in as much as possible) from the OIFITS file
+but in the present version this wasn't possible.
 
-    $ oifits-sim -t target_file.txt -i image_file.fits -o output.oifits -d existing.oifits
+    $ oifits-sim -t target_file.txt -i image_file.fits -o output.oifits -d existing.oifits -a array -c combiner -m mode
     
 The simulator attempts to find information about the array, combiner and spectral mode from
 the OIFITS file.  If it fails, it will prompt you for more information.
@@ -89,3 +91,9 @@ All parameters that can be overriden are mentioned below.  See documentation for
 
     Target:
         --res double
+        
+###############
+Bug Reporting and Feature Requests
+###############        
+Please contact Brian Kloppenborg at bkloppen *at* du.edu or file on Trac:
+http://finiteline.homeip.net/trac/oifits-sim
