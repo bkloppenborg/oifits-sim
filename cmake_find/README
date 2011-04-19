@@ -1,0 +1,1 @@
+This directory contains additional cmake find* definitions that might need to be installed on your platform.  Copy these files into your cmake/Modules directory (on Ubuntu in /usr/share/cmake-v.x/Modules) for them to work.
