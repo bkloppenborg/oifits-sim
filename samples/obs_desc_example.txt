@@ -1,0 +1,17 @@
+# This file describes the descriptive type of observation file.
+# The goal of this observation type is to permit the most flexibility for
+# observation planning.
+
+# Much like the basic hour-angle case, the first parameter specified in the
+# file must be the type (1 = DESCRIPTIVE)
+type = 1
+
+# The remainder of the file consists of a series of blocks describing the observations
+# there are three commands:
+hour_angle = -1.234
+telescopes = S1,E1,E2,W1,W2
+
+hour_angle = -0.51
+telescopes = S1,E1,E2,W1,W2
+exclude = E1-W1
+   
