@@ -82,20 +82,34 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
 	// TODO Redo this function, it won't work with the new file definition!
 	// TODO
     vector <Observation*> observations;
+	vector <string> results;
     
     // Now parse the file, make the observations
     double ha;
-    for(unsigned int j = i; j < lines.size(); j++)
+    for(unsigned int j = i+1; j < lines.size(); j++)
     {
-        if (!isdigit(lines[j][0]))
-        {
-            throw std::runtime_error("Non numeric character found in observation entry " + i);
-        }
+        StringSplit(lines[j], "=", results);
+        StripWhitespace(results);
 
-        ha = atof(lines[j].c_str());
-        
-        // Make a new observation with all of the stations included.
-        observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
+        if(results[0] == "hour_angle")
+        {
+        	try
+        	{
+
+                ha = atof(results[1].c_str());
+
+                // Make a new observation with all of the stations included.
+                observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
+        	}
+        	catch(...)
+        	{
+        		throw std::runtime_error("Invalid observation type field in observation file.");
+        	}
+        }
+        else
+        {
+        	printf("Warning, detected non-keyword, %s, in observation definition file.  Ignoring\n", results[0].c_str());
+        }
     }
     
     return observations;

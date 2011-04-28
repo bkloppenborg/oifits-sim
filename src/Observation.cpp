@@ -194,7 +194,7 @@ vector <Observation*> Observation::ParseCommandLine(Array * array, char *argv[],
 	// be defined on the command line OR we can get a file.
 
 	// This first case is for a single observation defined on the command line:
-	if(strcmp(argv[i+1], "--start") || strcmp(argv[i+1], "--end") || strcmp(argv[i+1], "--every") || strcmp(argv[i+1], "--T"))
+	if(strcmp(argv[i+1], "--start") == 0 || strcmp(argv[i+1], "--end") == 0 || strcmp(argv[i+1], "--every") == 0 || strcmp(argv[i+1], "--T") == 0)
 	{
 		// The user is specifying things on the command line.  Parse those
 		return ParseCommandLineObs(array, argv, i, argc);
