@@ -192,6 +192,21 @@ void Target::ParseOptions(char *argv[], int i, int argc)
 				throw std::runtime_error("Invalid Pixellation/Resolution parameter override on Command Line");
 			}
 		}
+		if ((strcmp(argv[j], "--mag") == 0) && (j < argc - 1))
+		{
+			try
+			{
+				this->mag = atof(argv[j+1]);
+				printf("Magnitude overridden from default value target config file.  Now: %f\n", this->mag);
+
+				// Now, init the flux.
+				this->InitFlux();
+			}
+			catch(...)
+			{
+				throw std::runtime_error("Magnitude parameter override on Command Line");
+			}
+		}
 	}
 }
 
