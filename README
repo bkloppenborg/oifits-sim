@@ -91,6 +91,7 @@ All parameters that can be overriden are mentioned below.  See documentation for
 
     Target:
         --res double
+        --mag double
         
 ###############
 Bug Reporting and Feature Requests

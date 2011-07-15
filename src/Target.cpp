@@ -174,7 +174,7 @@ void Target::ImportFile(string filename, string comment_chars)
 // This function permits a few target parameters to be overridden via. command line arguments
 void Target::ParseOptions(char *argv[], int i, int argc)
 {
-	// We only permit the resolution of the image to be overridden here.
+	// Permit a few things to be overridden via. command line:
 	for(int j = i; j < argc; j++)
 	{
 		// TODO: Figure out how to break out if we find an option with  "^-[a-z]"

@@ -146,7 +146,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
     
     unsigned int j = 1;  // A counter for the number of observations.  Only used in error messages below.
     // Iterate over the lines in the file
-    for(unsigned int k = 0; i < lines.size(); k++)
+    for(unsigned int k = i+1; k < lines.size(); k++)
     {
         // First split the line and strip out white space
         results.clear();
