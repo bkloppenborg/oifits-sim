@@ -78,9 +78,6 @@ vector <Observation*> Obs_HA::MakeObservations(Array * array, double start, doub
 /// Reads in a file that consists of lines of hour angles with or without comments.
 vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string > lines, int i)
 {
-	// TODO
-	// TODO Redo this function, it won't work with the new file definition!
-	// TODO
     vector <Observation*> observations;
 	vector <string> results;
     
@@ -98,7 +95,6 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
         	{
 
                 ha = atof(results[1].c_str());
-                printf("HA: %f", ha);
 
                 // Make a new observation with all of the stations included.
                 observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
@@ -165,7 +161,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
                 excluded_baselines = "";
                 bExclude = true;
                 
-                // Step back one in "i" so at we may revisit this line
+                // Step back one in "k" so at we may revisit this line
                 k--;
             }
             else if(bHourAngle && !(bStations))
@@ -210,6 +206,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
         
         if(bHourAngle && bStations && (bExclude || k == lines.size() - 1))
         {
+                printf("HA: %f", hour_angle);
             // Push the observation on to the list
             observations.push_back(new Obs_HA(array, hour_angle, stations, excluded_baselines) );
             

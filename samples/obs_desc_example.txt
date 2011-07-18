@@ -9,7 +9,7 @@ type = 1
 # The remainder of the file consists of a series of blocks describing the observations
 # there are three commands:
 hour_angle = -1.234
-telescopes = S1,E1,E2,W1,W2
+telescopes = S1,S2,E1,E2,W1,W2
 
 hour_angle = -0.51
 telescopes = S1,E1,E2,W1,W2
