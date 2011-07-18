@@ -88,6 +88,7 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
     double ha;
     for(unsigned int j = i+1; j < lines.size(); j++)
     {
+        results.clear();
         StringSplit(lines[j], "=", results);
         StripWhitespace(results);
 
@@ -97,6 +98,7 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
         	{
 
                 ha = atof(results[1].c_str());
+                printf("HA: %f", ha);
 
                 // Make a new observation with all of the stations included.
                 observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
