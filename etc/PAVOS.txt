@@ -1,0 +1,18 @@
+# Instrument file describing PAVO@SUSI
+
+name = PAVOS
+int_trans = 1.0
+vis = 0.90
+n_pix_fringe = 32
+n_pix_photometry = 0
+flux_frac_photometry = 0.0
+flux_frac_fringes = 1.0
+throughput_photometry = 0.021
+throughput_fringes = 0.021
+n_splits = 0
+read_noise = 20 
+quantum_efficiency = 0.70
+v2_cal_err = 0.001
+phase_cal_err = 0.80
+incoh_int_time = 100
+

@@ -1,0 +1,21 @@
+# File describing the characteristics of 
+# Sydney University Stellar Interferometer (SUSI)
+
+name = SUSI
+lat = -30.322273888889
+lon = 149.548224972222
+alt = 210.0
+coord = 1
+throughput = 0.02
+wind_speed = 13
+r0 = 0.065
+
+# SUSI configuration (last updated 2010/10/03)
+S1  0   0.0          0.0        0.0       1.0  0.14
+S2  1  -0.000792    -4.997297   0.008046  1.0  0.14
+S3  2  -0.001261   -24.994068   0.045190  1.0  0.14
+S4  3   0.002581  -105.000399   0.184646  1.0  0.14
+N1  4   0.002281     4.997701  -0.007854  1.0  0.14
+N3  6   0.005409    14.998239  -0.025706  1.0  0.14
+N4  7   0.000358    54.996267  -0.096034  1.0  0.14
+
