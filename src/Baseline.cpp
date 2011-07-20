@@ -18,7 +18,7 @@ Baseline::Baseline()
     this->indicies[1] = 0;
 }
 
-/// \todo Stop using NEU coordinates here, switch to station.x, station.y, and station.z.
+/// Computes the XYZ position of a baseline composed of two stations
 Baseline::Baseline(Station * station1, Station * station2)
 {
     // Now calculate the xyz coordinates:

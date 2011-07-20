@@ -206,7 +206,6 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
         
         if(bHourAngle && bStations && (bExclude || k == lines.size() - 1))
         {
-                printf("HA: %f", hour_angle);
             // Push the observation on to the list
             observations.push_back(new Obs_HA(array, hour_angle, stations, excluded_baselines) );
             

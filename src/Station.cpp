@@ -74,7 +74,12 @@ void    Station::ComputeXYZ(double phi)
     // Convert (North, East, Up) to (x,y,z) as defined by the APIS++ standards
     // see:    http://aips2.nrao.edu/docs/glossary
     // for more information.
-    // the xyz array is ordered (x, y, z)
+    
+    // Parameters:
+    //  phi is the array latitude
+    // Output:
+    // xyz (class variable) is ordered (x, y, z)
+    
     this->xyz[0] = -sin(phi) * NEU[0] + cos(phi) * NEU[2];
     this->xyz[1] = NEU[1];
     this->xyz[2] = cos(phi) * NEU[0] + sin(phi) * NEU[2];

@@ -140,14 +140,14 @@ void Array::ImportFile(string filename, string comment_chars)
         {
         	try
         	{
-                coord_sys = atoi(lines[4].c_str());
+                coord_sys = atoi(results[1].c_str());
                 if(coord_sys == 0)
                 {
-                    //cout << "Telescope Coordinate system specified in XYZ." << endl;
+                    cout << "Array Coordinate system specified in XYZ." << endl;
                     xyz_coords = true;
                 }
-//                else
-//                    cout << "Telescope Coordinate system specified in (North, East, Up)." << endl;
+                else
+                    cout << "Array Coordinate system specified in (North, East, Up)." << endl;
 
         		n_params += 1;
         	}
@@ -201,7 +201,7 @@ void Array::ImportFile(string filename, string comment_chars)
 
 	// Do some quick error checking on the file format.  First, make sure we've got all of the parameters:
 	if(n_params != max_params)
-		throw std::runtime_error("Parameters are missing from the array definition file");
+		throw std::runtime_error("Parameters are missing from the array definition file.");
 
 	// Now double-check that there are at least two telescopes in this array
 	// This is represented by at least two lines remaining in the file.
