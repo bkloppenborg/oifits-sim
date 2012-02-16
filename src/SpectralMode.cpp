@@ -127,7 +127,9 @@ oi_wavelength SpectralMode::GetOIWavelength(void)
 	wave.eff_wave = (float *) malloc(this->nchannels * sizeof(float));
 	wave.eff_band = (float *) malloc(this->nchannels * sizeof(float));
 	wave.revision = 1;
-	strncpy(wave.insname, this->spec_mode.c_str(), this->spec_mode.length());
+	for(int i=0; i<FLEN_VALUE;i++)
+	   wave.insname[i]='\0';
+	strncpy(wave.insname, this->spec_mode.c_str(), this->spec_mode.size());
 	// Now copy the wavelengths over:
 	for (int i = 0; i < wave.nwave; i++)
 	{
