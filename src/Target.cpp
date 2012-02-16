@@ -308,8 +308,10 @@ oi_target Target::GetOITarget(void)
 {
     // Init local vars:
 	target * targ = (target*) malloc(1 * sizeof(target));
-	string empty = "NULL";
-
+    // Default values following
+    string veltyp_str = "LSR     ";
+    string veldef_str = "OPTICAL ";
+    string spectyp_str = "Unknown         ";
 	string targ_name = "Simulated " + this->GetName();
 
 	// TARGETS
@@ -324,8 +326,8 @@ oi_target Target::GetOITarget(void)
 	targ->ra_err = 0.0;
 	targ->dec_err = 0.0;
 	targ->sysvel = 0.0;
-	strncpy(targ->veltyp, empty.c_str(), empty.size());
-	strncpy(targ->veldef, empty.c_str(), empty.size());
+	strncpy(targ->veltyp, veltyp_str.c_str(), veltyp_str.size());
+	strncpy(targ->veldef, veldef_str.c_str(), veldef_str.size());
 	targ->pmra = 0.0;
 	targ->pmdec = 0.0;
 	targ->pmra_err = 0.0;
@@ -334,7 +336,7 @@ oi_target Target::GetOITarget(void)
 	targ->para_err = 0.0;
 
 	/// \bug Spectral type output here always has some junk after it.  Not sure why though.
-	strncpy(targ->spectyp, empty.c_str(), empty.size());
+	strncpy(targ->spectyp, spectyp_str.c_str(), spectyp_str.size());
 
 	oi_target oi_targ;
 	oi_targ.revision = 1;

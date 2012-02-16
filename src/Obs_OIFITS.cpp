@@ -103,10 +103,10 @@ oi_vis2 Obs_OIFITS::GetVis2(Array * array, Combiner * combiner, SpectralMode * s
                 v2_err = input_record.vis2err[j];
 
                 // Simulate the visibility based on the source.
-                output->vis2data[j] = baseline->GetVis2(*target, uv); // + v2_err * Rangauss(random_seed);
+                output->vis2data[j] = baseline->GetVis2(*target, uv) + v2_err * Rangauss(random_seed);
                 // Copy the error from the input file.
                 output->vis2err[j] = v2_err;
-    			output->flag[j] = FALSE;
+    		output->flag[j] = FALSE;
     			
             }
             
