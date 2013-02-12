@@ -1,0 +1,4 @@
+oifits-sim
+==========
+
+OIFITS simulator
