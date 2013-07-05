@@ -13,23 +13,13 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 find_package(GLIB2 REQUIRED)
 include_directories(${GLIB2_INCLUDE_DIRS})
-set(LIBS ${LIBS} ${GLIB2_LIBRARIES})
-
 find_package(CFITSIO REQUIRED)
 include_directories(${CFITSIO_INCLUDE_DIRS})
-set(LIBS ${LIBS} ${CFITSIO_LIBRARIES})
-
 find_package(FFTW REQUIRED)
-include_directories(${FFTW_INCLUDE_DIRS})
-set(LIBS ${LIBS} ${FFTW_LIBRARIES})
-
-include_directories(../lib/textio)
-link_directories(. ../lib/textio)
-set(LIBS ${LIBS} textio)
 
 include_directories(../lib/oifitslib)
-link_directories(. ../lib/oifitslib)
-set(LIBS ${LIBS} oifits)
+include_directories(${FFTW_INCLUDE_DIRS})
+include_directories(../lib/textio/src)
 
 file(GLOB_RECURSE CPP_SOURCE . *.cpp)
 file(GLOB_RECURSE C_SOURCE . *.c)
@@ -38,6 +28,5 @@ add_executable(oifits-sim ${CPP_SOURCE} ${C_SOURCE})
 
 #SET_TARGET_PROPERTIES(oifits-sim PROPERTIES LINKER_LANGUAGE CPP)
 
-target_link_libraries(oifits-sim ${LIBS})
-
+target_link_libraries(oifits-sim textio oifits ${CFITSIO_LIBRARIES} ${FFTW_LIBRARIES} ${GLIB2_LIBRARIES})
 

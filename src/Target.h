@@ -9,7 +9,7 @@
 #define TARGET_H_
 
 #include <string>
-#include "ReadTextFile.h"
+#include "textio.hpp"
 #include "Matrix.h"
 
 // Header files for other libraries

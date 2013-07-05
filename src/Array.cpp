@@ -19,7 +19,7 @@
 #include "Baseline.h"
 //#include "Simulator.h"  // Required for constants, like PI.
 #include "Triplet.h"
-#include "ReadTextFile.h"
+#include "textio.hpp"
 #include "Common.h"
 
 Array::Array()

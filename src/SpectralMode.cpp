@@ -9,7 +9,7 @@
 
 #include "SpectralMode.h"
 #include "Common.h"
-#include "ReadTextFile.h"
+#include "textio.hpp"
 
 using std::cout;
 using std::string;

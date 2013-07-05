@@ -8,7 +8,7 @@
 #include <string>
 #include <stdexcept>
 
-#include "ReadTextFile.h"
+#include "textio.hpp"
 
 using std::vector;
 using std::string;

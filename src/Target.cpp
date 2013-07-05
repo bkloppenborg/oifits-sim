@@ -16,7 +16,7 @@
 #include <cstdlib>
 #include <locale>
 
-#include "ReadTextFile.h"
+#include "textio.hpp"
 
 Target::Target()
 {
