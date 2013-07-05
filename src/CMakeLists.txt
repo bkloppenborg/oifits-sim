@@ -30,3 +30,5 @@ add_executable(oifits-sim ${CPP_SOURCE} ${C_SOURCE})
 
 target_link_libraries(oifits-sim textio oifits ${CFITSIO_LIBRARIES} ${FFTW_LIBRARIES} ${GLIB2_LIBRARIES})
 
+file(GLOB CONFIG_FILES ${CMAKE_SOURCE_DIR}/etc/*)
+file(COPY ${CONFIG_FILES} DESTINATION ${EXECUTABLE_OUTPUT_PATH}/etc/)
