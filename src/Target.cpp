@@ -48,7 +48,8 @@ void Target::ImportFile(string filename, string comment_chars)
 	{
 		// Clear out the results, split the string and strip whitespace
         results.clear();
-        StringSplit(lines[i], "=", results);
+//        StringSplit(lines[i], string("="), results);
+        results = SplitString(lines[i], '=');
         StripWhitespace(results);
 
         // Now we parse the file by keyword

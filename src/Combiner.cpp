@@ -49,7 +49,7 @@ void Combiner::ImportFile(string filename, string comment_chars)
 	{
 		// Clear out the results, split the string and strip whitespace
         results.clear();
-        StringSplit(lines[line_number], "=", results);
+        results = SplitString(lines[line_number], '=');
         StripWhitespace(results);
 
 

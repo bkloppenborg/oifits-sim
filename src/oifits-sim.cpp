@@ -81,9 +81,10 @@ int main(int argc, char *argv[])
 
 	int n_params = 0;
 
-
     if(argc == 1)
         PrintHelp();
+
+    cout << "Here" << endl;
 
 	for (int i = 1; i < argc; i++)
 	{
@@ -237,6 +238,8 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
     oi_t3 t3table;
     Observation * observation;
     int n_observations = observations.size();
+
+    cout << "N Observations: " << observations.size() << endl;
 
 	for(unsigned int i = n_observations; i > 0; i--)
 	{

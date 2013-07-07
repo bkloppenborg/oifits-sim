@@ -86,7 +86,7 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
     for(unsigned int j = i+1; j < lines.size(); j++)
     {
         results.clear();
-        StringSplit(lines[j], "=", results);
+        results = SplitString(lines[i], '=');
         StripWhitespace(results);
 
         if(results[0] == "hour_angle")
@@ -148,7 +148,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
     {
         // First split the line and strip out white space
         results.clear();
-        StringSplit(lines[k], "=", results);
+        results = SplitString(lines[k], '=');
         StripWhitespace(results);
         
         if(results[0] == "hour_angle")

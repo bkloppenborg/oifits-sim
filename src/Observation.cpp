@@ -37,7 +37,7 @@ vector<Station*> Observation::FindStations(string telescopes)
     vector<string> station_names;
 
     // First extract the names of the telescopes from the CSV string, "telescopes"
-    StringSplit(telescopes, ",", station_names);
+    station_names = SplitString(telescopes, ',');
     StripWhitespace(station_names);
     
     // Now query the array for the station objects.
@@ -79,7 +79,7 @@ vector<Baseline*> Observation::FindBaselines(vector <Station*> stations, string 
     }
     
     // Now parse out the baselines that should be excluded.
-    StringSplit(exclude_baselines, ",", excluded_baselines);
+    excluded_baselines = SplitString(exclude_baselines, ',');
     StripWhitespace(excluded_baselines);
     
     // Remove the excluded baseline names from the hash
@@ -134,7 +134,7 @@ vector<Triplet*>    Observation::FindTriplets(vector<Station*> stations, string 
     }
     
     // Now parse out the baselines that should be excluded.
-    StringSplit(exclude_baselines, ",", excluded_baselines);
+    excluded_baselines = SplitString(exclude_baselines, ',');
     StripWhitespace(excluded_baselines);
     
     // Now query for all of the remaining baselines and add them to the output "baselines"
@@ -302,7 +302,7 @@ vector<Observation*> Observation::ImportFile(Array * array, string filename, str
 	{
 		// Clear out the results, split the string and strip whitespace
         results.clear();
-        StringSplit(lines[i], "=", results);
+        results = SplitString(lines[i], '=');
         StripWhitespace(results);
 
         if(results[0] == "type")
