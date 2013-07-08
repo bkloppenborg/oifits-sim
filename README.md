@@ -49,7 +49,7 @@ the OIFITS file.  If it fails, it will prompt you for more information.
 
 For example, we can use the simulator to emulate CHARA-MIRC's observations of the 2010-10 model image of epsilon Aurigae via:
 
-    oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -o 2010-10_simulated.oifits -d ../samples/2010-10-eps_Aur-all-avg5.oifits -a CHARA -c MIRC -m LOW_H
+    oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -o 2010-10_simulated.oifits -d ../samples/2010-10-eps_Aur-all-avg5.oifits -a CHARA -c MIRC -m LowH
 
 ## Simulating potential observations (for observation planning / proposals)
 
