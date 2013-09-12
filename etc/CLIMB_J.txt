@@ -1,0 +1,5 @@
+# Definition file for CLIMB's J-band filter
+combiner = CLIMB
+
+mode = J
+1.2862e-6 0.2780e-6

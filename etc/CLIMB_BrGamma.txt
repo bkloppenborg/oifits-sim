@@ -1,0 +1,7 @@
+# File describing CLIMB's Brackett Gamma filter
+
+combiner = CLIMB
+mode = BrGamma
+
+2.1638e-6 0.0216e-6
+

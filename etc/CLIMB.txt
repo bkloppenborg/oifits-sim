@@ -1,0 +1,51 @@
+# This file describes the CLIMB (1 or 2) beam combiner at CHARA
+
+# The name of the instrument (ideally matching the filename)
+name = CLIMB
+
+# The optical transmission for the beam combiner, excluding detector QE
+# and flux lost due to optical coupling problems (i.e. fibers)
+# Theo indicates the throuput through all of CHARA is ~8%
+# implying a minimal loss in CLIMB
+int_trans = 0.90
+
+# Typical instrumental visibility (i.e. for an unresolved source)
+vis = 0.5
+
+# The number of pixels used to sample fringes
+n_pix_fringe = 3
+
+# The number of pixels used for photometric sampling
+n_pix_photometry = 0
+
+# The next two parameters define the quantity of light used for 
+# photometry and fringe sampling.  Acceptable values 0 < x <= 1.0
+# ideally adding up to 1 in a fiber-fed combiner.  Include any losses
+# due to transmission in these factors.
+flux_frac_photometry = 0.0
+flux_frac_fringes = 1.0
+
+# The next two parameters define the througput on the photometric and 
+# fringe sampling arms of the combiner.  Acceptable values 0 < x <= 1.0
+throughput_photometry = 0.0
+throughput_fringes = 1.0
+
+# The number of splits in the combiner:
+n_splits = 2
+
+# Detector readout noise in electrons
+# Theo says the read noise is 3-9, depending on the read out mode
+read_noise = 6
+
+# Detector quantum efficiency
+quantum_efficiency = 0.60
+
+# Typical fractional calibration error on squared visibility
+# Theo says 5-10%, depending on seeing
+v2_cal_err = 0.05
+
+# Typical calibration error on closure phase in units of degrees
+phase_cal_err = 5
+
+# Typical integration time.
+incoh_int_time = 2

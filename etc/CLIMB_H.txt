@@ -1,0 +1,6 @@
+# Definition for CLIMB's H-band filter
+combiner = CLIMB
+
+mode = H
+
+1.6731e-6 0.2854e-6

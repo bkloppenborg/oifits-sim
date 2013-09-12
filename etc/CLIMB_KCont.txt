@@ -1,0 +1,7 @@
+# This is a template file for a spectral mode of a combiner.
+
+combiner = CLIMB
+
+mode = KCont
+
+2.0894e-6 0.0235e-6

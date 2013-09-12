@@ -1,0 +1,4 @@
+# File describing CLIMB's K' (K-prime, basically K-band) filter:
+combiner = CLIMB
+mode = KPrime
+2.1329e-6 0.3489e-6
