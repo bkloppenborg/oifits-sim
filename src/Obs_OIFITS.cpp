@@ -106,7 +106,12 @@ oi_vis2 Obs_OIFITS::GetVis2(Array * array, Combiner * combiner, SpectralMode * s
                 output->vis2data[j] = baseline->GetVis2(*target, uv) + v2_err * Rangauss(random_seed);
                 // Copy the error from the input file.
                 output->vis2err[j] = v2_err;
-    		output->flag[j] = FALSE;
+
+                // Because of how we handle the uncertainties, the v2 could be negative. Flag it bad if it is negative.
+                if(output->vis2data[j] < 0)
+                	output->flag[j] = TRUE;
+                else
+                	output->flag[j] = FALSE;
     			
             }
             
