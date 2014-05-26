@@ -119,3 +119,22 @@ void free_oi_t3(oi_t3 *pT3)
   }
   free(pT3->record);
 }
+
+/**
+ * Free dynamically-allocated storage within oi_t4 struct.
+ *
+ *   @param pT3  pointer to data struct, see exchange.h
+ */
+void free_oi_t4(oi_t4 *pT4)
+{
+  int i;
+
+  for(i=0; i<pT4->numrec; i++) {
+    free(pT4->record[i].t4amp);
+    free(pT4->record[i].t4amperr);
+    free(pT4->record[i].t4phi);
+    free(pT4->record[i].t4phierr);
+    free(pT4->record[i].flag);
+  }
+  free(pT4->record);
+}

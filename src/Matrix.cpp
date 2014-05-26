@@ -274,18 +274,10 @@ void Interp2d(Matrix < double >&dataIn, Matrix < double >&dataOut,
             iy0 = (int)(intY0 - nyIn * floor(intY0 / nyIn));
             iy1 = (int)(intY1 - nyIn * floor(intY1 / nyIn));
 
-            dataOut[ix][iy] = fracX * (fracY * dataIn[ix1][iy1] + (1.0 - fracY)
-                                       * dataIn[ix1][iy0]) + (1.0 -
-                                                              fracX) * (fracY *
-                                                                        dataIn
-                                                                        [ix0]
-                                                                        [iy1] +
-                                                                        (1.0 -
-                                                                         fracY)
-                                                                        *
-                                                                        dataIn
-                                                                        [ix0]
-                                                                        [iy0]);
+            dataOut[ix][iy] = fracX * (fracY * dataIn[ix1][iy1] 
+                           + (1.0 - fracY) * dataIn[ix1][iy0]) 
+                           + (1.0 - fracX) * (fracY * dataIn[ix0][iy1] +
+                                        (1.0 - fracY) * dataIn[ix0][iy0]);
         }
     }
 
@@ -558,5 +550,6 @@ void FFT(Matrix < Complex > &min, Matrix < Complex > &mout, int direction, int d
         }
     }
     fftw_free(out);
+
 }
 

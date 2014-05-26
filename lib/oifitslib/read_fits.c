@@ -772,3 +772,121 @@ STATUS read_next_oi_t3(fitsfile *fptr, oi_t3 *pT3, STATUS *pStatus)
   }
   return *pStatus;
 }
+
+/**
+ * Read next OI_T4 fits binary table (unofficial extension)
+ *
+ *   @param fptr     see cfitsio documentation
+ *   @param pT4      ptr to data struct, see exchange.h
+ *   @param pStatus  pointer to status variable
+ *
+ *   @return On error, returns non-zero cfitsio error code (also assigned to
+ *           *pStatus). Contents of data struct are undefined
+ */
+STATUS read_next_oi_t4(fitsfile *fptr, oi_t4 *pT4, STATUS *pStatus)
+{
+  const char function[] = "read_next_oi_t4";
+  char comment[FLEN_COMMENT];
+  char nullchar = 0;
+  int nullint = 0;
+  double nulldouble = 0.0;
+  const int revision = 1;
+  int irow, colnum, anynull;
+  long repeat;
+
+  if (*pStatus) return *pStatus; /* error flag set - do nothing */
+
+  next_named_hdu(fptr, "OI_T4", pStatus);
+  if (*pStatus == END_OF_FILE)
+    return *pStatus;
+  else if (*pStatus)
+    goto except;
+
+  /* Read table */
+  fits_read_key(fptr, TINT, "OI_REVN", &pT4->revision, comment, pStatus);
+  if (pT4->revision != revision) {
+    printf("WARNING! Expecting value %d for OI_REVN keyword in OI_T4 table. Got %d\n", revision, pT4->revision);
+  }
+  fits_read_key(fptr, TSTRING, "DATE-OBS", pT4->date_obs, comment, pStatus);
+  fits_read_key(fptr, TSTRING, "ARRNAME", pT4->arrname, comment, pStatus);
+  if (*pStatus == KEY_NO_EXIST) { /* ARRNAME is optional */
+    pT4->arrname[0] = '\0';
+    *pStatus = 0;
+  }
+  fits_read_key(fptr, TSTRING, "INSNAME", pT4->insname, comment, pStatus);
+  /* get number of rows & allocate storage */
+  fits_get_num_rows(fptr, &pT4->numrec, pStatus);
+  pT4->record = malloc(pT4->numrec*sizeof(oi_t4_record));
+  /* get value for nwave */
+  /* format specifies same repeat count for T4 columns */
+  fits_get_colnum(fptr, CASEINSEN, "T4AMP", &colnum, pStatus);
+  fits_get_coltype(fptr, colnum, NULL, &repeat, NULL, pStatus);
+  pT4->nwave = repeat;
+  /* read rows */
+  for (irow=1; irow<=pT4->numrec; irow++) {
+    fits_get_colnum(fptr, CASEINSEN, "TARGET_ID", &colnum, pStatus);
+    fits_read_col(fptr, TINT, colnum, irow, 1, 1, &nullint,
+		  &pT4->record[irow-1].target_id, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "TIME", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].time, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "MJD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].mjd, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "INT_TIME", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].int_time, &anynull, pStatus);
+    pT4->record[irow-1].t4amp = malloc(pT4->nwave*sizeof(DATA));
+    pT4->record[irow-1].t4amperr = malloc(pT4->nwave*sizeof(DATA));
+    pT4->record[irow-1].t4phi = malloc(pT4->nwave*sizeof(DATA));
+    pT4->record[irow-1].t4phierr = malloc(pT4->nwave*sizeof(DATA));
+    pT4->record[irow-1].flag = malloc(pT4->nwave*sizeof(char));
+    fits_get_colnum(fptr, CASEINSEN, "T4AMP", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, pT4->nwave,
+		  &nulldouble, pT4->record[irow-1].t4amp, &anynull,
+		  pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "T4AMPERR", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, pT4->nwave,
+		  &nulldouble, pT4->record[irow-1].t4amperr, &anynull,
+		  pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "T4PHI", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, pT4->nwave,
+		  &nulldouble, pT4->record[irow-1].t4phi, &anynull,
+		  pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "T4PHIERR", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, pT4->nwave,
+		  &nulldouble, pT4->record[irow-1].t4phierr, &anynull,
+		  pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "U1COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1,
+		  &nulldouble, &pT4->record[irow-1].u1coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "V1COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].v1coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "U2COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].u2coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "V2COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].v2coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "U3COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].u2coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "V3COORD", &colnum, pStatus);
+    fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
+		  &pT4->record[irow-1].v2coord, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "STA_INDEX", &colnum, pStatus);
+    fits_read_col(fptr, TINT, colnum, irow, 1, 3, &nullint,
+		  pT4->record[irow-1].sta_index, &anynull, pStatus);
+    fits_get_colnum(fptr, CASEINSEN, "FLAG", &colnum, pStatus);
+    fits_read_col(fptr, TLOGICAL, colnum, irow, 1, pT4->nwave, &nullchar,
+		  pT4->record[irow-1].flag, &anynull, pStatus);
+  }
+
+ except:
+  if (*pStatus && !oi_hush_errors) {
+    fprintf(stderr, "CFITSIO error in %s:\n", function);
+    fits_report_error(stderr, *pStatus);
+  }
+  return *pStatus;
+}

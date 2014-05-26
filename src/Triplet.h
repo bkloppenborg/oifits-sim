@@ -13,8 +13,8 @@
 
 using namespace std;
 
-typedef std::tr1::unordered_map<std::string, complex<double> > BisHash;
-typedef std::tr1::unordered_map<std::string, double> BisErrHash;
+typedef std::tr1::unordered_map<std::string, complex<double> > T3Hash;
+typedef std::tr1::unordered_map<std::string, double> T3ErrHash;
 
 class Station;
 class Array;
@@ -29,35 +29,35 @@ class Triplet
     Baseline    *   mBaselines[3]; 
     string name;
     
-    BisHash     mBisValues; // Stores computed bispectrum values
-    BisErrHash  mBisErrors; // Stores computed/stored bispectrum error values.
+    T3Hash     mT3Values; // Stores computed bispectrum values
+    T3ErrHash  mT3Errors; // Stores computed/stored bispectrum error values.
 
   public:
     Triplet();
     Triplet(Array * array, Station * station1, Station * station2, Station * station3);
 
   private:    
-//    complex<double> ComputeBisError(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    complex<double> ComputeBis(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+//    complex<double> ComputeT3Error(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    complex<double> ComputeT3(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     string  GetHashKey(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
     
   public:
     string  GetName(void);
     bool    ContainsBaseline(string bl_name);
     
-    complex<double> GetBispectra(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    complex<double> GetBispectra(Target & target, double hour_angle, double wavenumber);
+    complex<double> GetT3(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    complex<double> GetT3(Target & target, double hour_angle, double wavenumber);
     
-    double  GetBisAmp(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    double  GetBisAmpErr(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    double  GetBisPhi(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
-    double  GetBisPhiErr(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetT3Amp(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetT3AmpErr(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetT3Phi(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
+    double  GetT3PhiErr(Target & target, UVPoint uv_ab, UVPoint uv_bc, UVPoint uv_ac);
 
     // Wrapper functions for the UV-coordinate taking versions.
-    double  GetBisAmp(Target & target, double hour_angle, double wavenumber);
-    double  GetBisAmpErr(Target & target, double hour_angle, double wavenumber);
-    double  GetBisPhi(Target & target, double hour_angle, double wavenumber);
-    double  GetBisPhiErr(Target & target, double hour_angle, double wavenumber);
+    double  GetT3Amp(Target & target, double hour_angle, double wavenumber);
+    double  GetT3AmpErr(Target & target, double hour_angle, double wavenumber);
+    double  GetT3Phi(Target & target, double hour_angle, double wavenumber);
+    double  GetT3PhiErr(Target & target, double hour_angle, double wavenumber);
 
         
     int     GetStationID(int station_num);

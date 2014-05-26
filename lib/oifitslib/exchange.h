@@ -211,30 +211,54 @@ typedef struct {
   oi_t3_record *record;
 } oi_t3;
 
+/** Complex quad closure record. Corresponds to one row of an OI_T4 FITS table. */
+typedef struct {
+  int target_id;
+  double time;
+  double mjd;
+  double int_time;
+  DATA *t4amp, *t4amperr;
+  DATA *t4phi, *t4phierr;
+  double u1coord, v1coord, u2coord, v2coord, u3coord, v3coord  ;
+  int sta_index[4];
+  BOOL *flag;
+} oi_t4_record;
+
+/** Data for OI_T4 FITS table */
+typedef struct {
+  int revision;
+  char date_obs[FLEN_VALUE];
+  char arrname[FLEN_VALUE]; /**< empty string "" means not specified */
+  char insname[FLEN_VALUE];
+  long numrec;
+  int nwave;
+  oi_t4_record *record;
+} oi_t4;
+
+
+
+
+
 
 /*
  * Function prototypes
  */
 
 /* Functions from write_fits.c */
-STATUS write_oi_array(fitsfile *fptr, oi_array array, int extver,
-                      STATUS *pStatus);
+STATUS write_oi_array(fitsfile *fptr, oi_array array, int extver, STATUS *pStatus);
 STATUS write_oi_target(fitsfile *fptr, oi_target targets, STATUS *pStatus);
-STATUS write_oi_wavelength(fitsfile *fptr, oi_wavelength wave, int extver, 
-                           STATUS *pStatus);
+STATUS write_oi_wavelength(fitsfile *fptr, oi_wavelength wave, int extver, STATUS *pStatus);
 STATUS write_oi_vis(fitsfile *fptr, oi_vis vis, int extver, STATUS *pStatus);
-STATUS write_oi_vis2(fitsfile *fptr, oi_vis2 vis2, int extver,
-                     STATUS *pStatus);
+STATUS write_oi_vis2(fitsfile *fptr, oi_vis2 vis2, int extver, STATUS *pStatus);
 STATUS write_oi_t3(fitsfile *fptr, oi_t3 t3, int extver, STATUS *pStatus);
+STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus);
+
 /* Functions from read_fits.c */
 STATUS read_oi_target(fitsfile *fptr, oi_target *pTargets, STATUS *pStatus);
-STATUS read_oi_array(fitsfile *fptr, char *arrname, oi_array *pArray,
-                     STATUS *pStatus);
+STATUS read_oi_array(fitsfile *fptr, char *arrname, oi_array *pArray, STATUS *pStatus);
 STATUS read_next_oi_array(fitsfile *fptr, oi_array *pArray, STATUS *pStatus);
-STATUS read_oi_wavelength(fitsfile *fptr, char *insname, oi_wavelength *pWave,
-                          STATUS *pStatus);
-STATUS read_next_oi_wavelength(fitsfile *fptr, oi_wavelength *pWave,
-                               STATUS *pStatus);
+STATUS read_oi_wavelength(fitsfile *fptr, char *insname, oi_wavelength *pWave, STATUS *pStatus);
+STATUS read_next_oi_wavelength(fitsfile *fptr, oi_wavelength *pWave, STATUS *pStatus);
 STATUS read_next_oi_vis(fitsfile *fptr, oi_vis *pVis, STATUS *pStatus);
 STATUS read_next_oi_vis2(fitsfile *fptr, oi_vis2 *pVis2, STATUS *pStatus);
 STATUS read_next_oi_t3(fitsfile *fptr, oi_t3 *pT3, STATUS *pStatus);
@@ -245,6 +269,7 @@ void free_oi_wavelength(oi_wavelength *pWave);
 void free_oi_vis(oi_vis *pVis);
 void free_oi_vis2(oi_vis2 *pVis2);
 void free_oi_t3(oi_t3 *pT3);
+void free_oi_t4(oi_t4 *pT4);
 
 #endif /* #ifndef EXCHANGE_H */
 

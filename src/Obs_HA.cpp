@@ -354,7 +354,7 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		for(int j = 0; j < nwave; j++)
 		{
 			wavenumber = spec_mode->mean_wavenumber[j];
-		    bis = mTriplets[i]->GetBispectra(*target, this->mHA, wavenumber);
+		    bis = mTriplets[i]->GetT3(*target, this->mHA, wavenumber);
 		    phi_err = noisemodel->GetT3PhaseVar(array, combiner, spec_mode, target, mTriplets[i], uv_AB, uv_BC, j);
 
 			// assume circular noise cloud

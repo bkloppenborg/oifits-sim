@@ -23,6 +23,7 @@
 Observation::Observation()
 {
     mbHasTriplets = false;
+    mbHasQuadruplets = false;
 }
 
 Observation::~Observation()
@@ -171,6 +172,92 @@ vector<Triplet*>    Observation::FindTriplets(vector<Station*> stations, string 
     
     return triplets;
 }   
+
+
+vector<Quadruplet*>    Observation::FindQuadruplets(vector<Station*> stations, string exclude_baselines)
+{
+    vector<Quadruplet*> quadruplets;
+    vector<string> excluded_baselines;
+    string sta1_name;
+    string sta2_name;
+    string sta3_name;
+    string sta4_name;
+    string quad_name;
+    string bl_name;
+    
+    TNameHash quad_names;
+    
+    // Start by first computing all of the names of all of the possible quadruplets
+    int num_stations = stations.size();
+    int i, j, k, l;
+
+    for(i = 0; i < num_stations - 3; i++)
+    {
+        sta1_name = stations[i]->GetName();
+        
+        for(j = i + 1; j < num_stations - 2; j++)
+        {
+            sta2_name = stations[j]->GetName();
+           
+            for(k = j + 1; k < num_stations - 1 ; k++)
+            {
+                sta3_name = stations[k]->GetName();
+
+		for(l = k + 1; l < num_stations; l++)
+		  {
+		    sta4_name = stations[l]->GetName();
+		    
+		    quad_name = sta1_name + "-" + sta2_name + "-" + sta3_name + "-" + sta4_name;
+                
+		    // Insert the quadruplet name into the hash.
+		    quad_names.insert( TNameHash::value_type(quad_name, quad_name) );
+		  }
+            }
+        }
+    }
+    
+    // Now parse out the baselines that should be excluded.
+    excluded_baselines = SplitString(exclude_baselines, ',');
+    StripWhitespace(excluded_baselines);
+    
+    // Now query for all of the remaining baselines and add them to the output "baselines"
+    for (TNameHash::iterator it = quad_names.begin(); it != quad_names.end(); ++it)
+    {
+        quad_name = it->second;
+        
+        for(unsigned int j = 0; j < excluded_baselines.size(); j++)
+        {
+            bl_name = excluded_baselines[j];
+            
+            if(this->mArray->GetQuadruplet(quad_name)->ContainsBaseline(bl_name))
+            {   
+                // The excluded baseline is contained in this quadruplet, remove it from the hash
+                quad_names.erase(it);
+                
+                // Useful text if you want to see what quadruplets are removed.
+                //printf("Excluding quadruplet %s due to baseline %s \n", quad_name.c_str(), bl_name.c_str());
+                
+                // Now that we have found a match, invalidate the loop over baselines (index j)
+                // so that we inspect the next quadruplet.
+                j = excluded_baselines.size();
+            }
+        
+        }
+    } 
+    
+    // Now grab the quadruplets from the array and put them into the quadruplets variable.
+    for (TNameHash::iterator it = quad_names.begin(); it != quad_names.end(); ++it)
+    {
+        quad_name = it->second;  
+        quadruplets.push_back( this->mArray->GetQuadruplet(quad_name) );
+    }  
+    
+    return quadruplets;
+}   
+
+
+
+
 
 
 int Observation::GetNumStations(void)
@@ -335,4 +422,10 @@ vector<Observation*> Observation::ImportFile(Array * array, string filename, str
 bool    Observation::HasTriplets(void)
 {
     return this->mbHasTriplets;
+}
+
+// A simple function to see if the observation has quadruplets.
+bool    Observation::HasQuadruplets(void)
+{
+    return this->mbHasQuadruplets;
 }

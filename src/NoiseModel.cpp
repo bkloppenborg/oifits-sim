@@ -46,7 +46,7 @@ double NoiseModel::IntegrationTime(double median_wl, double r0, double wind_spee
 	// First compute the seeing at the current wavelength.
 	double r0lambda = r0 * pow( median_wl / 5e-7 , 6.0 / 5.0);
 
-	// formula taken from Bridget O'Donovan's Phd Theis
+	// formula taken from Bridget O'Donovan's Phd Thesis
 	// see equation (1.23)
 	return 0.314 * r0lambda / wind_speed;
 }

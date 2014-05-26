@@ -74,3 +74,19 @@ void Sort(int &a, int &b, int &c)
         Swap(&b,&c);
 }
 
+void Sort(int &a, int &b, int &c, int &d) 
+{
+    if (a > b) 
+        Swap(&a,&b);
+    if (a > c) 
+        Swap(&a,&c);
+    if (a > d) 
+        Swap(&a,&d);
+    if (b > c) 
+        Swap(&b,&c);
+    if (b > d) 
+        Swap(&b,&d);
+    if (c > d) 
+        Swap(&c,&d);
+
+}

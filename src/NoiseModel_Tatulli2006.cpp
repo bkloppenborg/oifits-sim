@@ -69,7 +69,7 @@ double NoiseModel_Tatulli2006::GetT3PhaseVar(Array * array, Combiner * combiner,
 	double v_ij = bl1->GetVis2(*target, uv1);
 	double v_jk = bl2->GetVis2(*target, uv2);
 	double v_ik = bl3->GetVis2(*target, uv3);
-	double t3amp = triplet->GetBisAmp(*target, uv1, uv2, uv3);
+	double t3amp = triplet->GetT3Amp(*target, uv1, uv2, uv3);
 
 	double n_photons = this->NumPhotons(array, target, combiner, spec_mode, wavelength_num);
 	double c_photons = n_photons * combiner->GetFringeFluxFrac() * combiner->GetFringeThroughput() / combiner->GetNumSplits();

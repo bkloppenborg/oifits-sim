@@ -236,6 +236,7 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
     // Now compute the vis2 records and t3s:
     oi_vis2 vis2table;
     oi_t3 t3table;
+    oi_t4 t4table;
     Observation * observation;
     int n_observations = observations.size();
 
@@ -267,6 +268,13 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
 			t3table = observation->GetT3(array, combiner, spec, target, noisemodel, random_seed);
 			write_oi_t3(fptr, t3table, 1, &status);
 		}
+
+		if(observation->HasQuadruplets())
+		{
+			t4table = observation->GetT4(array, combiner, spec, target, noisemodel, random_seed);
+			write_oi_t4(fptr, t4table, 1, &status);
+		}
+
 
 		// All done with this observation object.  Pop it off the vector and free memory.
 		observations.pop_back();

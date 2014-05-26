@@ -30,6 +30,7 @@ class SpectralMode;
 class UVPoint;
 class Station;
 class Triplet;
+class Quadruplet;
 
 using namespace std;
 typedef std::tr1::unordered_map<string, string> BLNameHash;
@@ -49,16 +50,20 @@ class Observation
     Array * mArray;
     double  mJD;
     bool    mbHasTriplets;
+    bool    mbHasQuadruplets;
     
     ObsType mObsType;
     
-    vector<Station*>    mStations;
-    vector<Baseline*>   mBaselines;
-    vector<Triplet*>    mTriplets;
+    vector<Station*>       mStations;
+    vector<Baseline*>      mBaselines;
+    vector<Triplet*>       mTriplets;
+    vector<Quadruplet*>    mQuadruplets;
     
-    vector<Station*>     FindStations(string telescopes);
-    vector<Baseline*>    FindBaselines(vector<Station*> stations, string exclude_baselines);
-    vector<Triplet*>     FindTriplets(vector<Station*> stations, string exclude_baselines);  
+    vector<Station*>       FindStations(string telescopes);
+    vector<Baseline*>      FindBaselines(vector<Station*> stations, string exclude_baselines);
+    vector<Triplet*>       FindTriplets(vector<Station*> stations, string exclude_baselines);  
+    vector<Quadruplet*>    FindQuadruplets(vector<Station*> stations, string exclude_baselines);  
+
 
   public:
     Observation(void);
@@ -76,11 +81,13 @@ class Observation
 
     virtual oi_vis2 GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
     virtual oi_t3   GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
+    virtual oi_t4   GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
 
     int         GetNumStations(void);
     Station *   GetStation(int sta_index);
     bool HasTriplets(void);
-    
+    bool HasQuadruplets(void);
+
     ObsType     GetObsType(void);
   
 };

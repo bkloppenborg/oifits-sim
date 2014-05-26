@@ -70,6 +70,7 @@ vector<string> ReadFile(string filename, string comment_chars, string error_mess
 void Swap(int *a, int *b);
 void Sort(int &a, int &b);
 void Sort(int &a, int &b, int &c);
+void Sort(int &a, int &b, int &c, int &d);
 
 #endif // #ifndef SIMULATOR_H
 

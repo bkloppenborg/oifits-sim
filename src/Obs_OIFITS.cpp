@@ -241,7 +241,7 @@ oi_t3   Obs_OIFITS::GetT3(Array * array, Combiner * combiner, SpectralMode * spe
                 phi_err = input_record.t3phierr[j];
 
                 // Compute the bispectra
-                bis = triplet->GetBispectra(*target, uv1, uv2, uv3);
+                bis = triplet->GetT3(*target, uv1, uv2, uv3);
 
                 // Simulate the bispectrum's amplitude based on the source image
                 output->t3amp[j] = abs(bis) + amp_err * Rangauss(random_seed);

@@ -366,6 +366,27 @@ Triplet *   Array::GetTriplet(int sta1, int sta2, int sta3)
     return GetTriplet(sta1name + '-' + sta2name + '-' + sta3name);
 }
 
+Quadruplet *   Array::GetQuadruplet(string quadruplet_name)
+{
+    return this->quad_hash[quadruplet_name];
+}
+
+Quadruplet *   Array::GetQuadruplet(int sta1, int sta2, int sta3, int sta4)
+{
+    // Enforce sta1 < sta2 < sta3 < sta4
+    Sort(sta1, sta2, sta3, sta4);
+
+    string sta1name = GetStation(sta1)->GetName();
+    string sta2name = GetStation(sta2)->GetName();
+    string sta3name = GetStation(sta3)->GetName();
+    string sta4name = GetStation(sta4)->GetName();
+    
+    return GetQuadruplet(sta1name + '-' + sta2name + '-' + sta3name +  '-' + sta4name);
+}
+
+
+
+
 /// Converts this object to a valid OIFITSLIB OI_ARRAY struct.
 oi_array    Array::GetOIArray(void)
 {	
