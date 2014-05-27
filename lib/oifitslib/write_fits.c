@@ -549,7 +549,7 @@ STATUS write_oi_t3(fitsfile *fptr, oi_t3 t3, int extver, STATUS *pStatus)
 STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
 {
   const char function[] = "write_oi_t4";
-  const int tfields = 14;
+  const int tfields = 16;
   char *ttype[] = {"TARGET_ID", "TIME", "MJD", "INT_TIME",
 		   "T4AMP", "T4AMPERR", "T4PHI", "T4PHIERR",
 		   "U1COORD", "V1COORD", "U2COORD", "V2COORD", "U3COORD", "V3COORD", 
@@ -601,10 +601,10 @@ STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
       fits_write_col(fptr, TDOUBLE, 10, irow, 1, 1, &t4.record[irow-1].v1coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 11, irow, 1, 1, &t4.record[irow-1].u2coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 12, irow, 1, 1, &t4.record[irow-1].v2coord,  pStatus);
-      fits_write_col(fptr, TDOUBLE, 11, irow, 1, 1, &t4.record[irow-1].u3coord,  pStatus);
-      fits_write_col(fptr, TDOUBLE, 12, irow, 1, 1, &t4.record[irow-1].v3coord,  pStatus);
-      fits_write_col(fptr, TINT, 13, irow, 1, 3, t4.record[irow-1].sta_index,  pStatus);
-      fits_write_col(fptr, TLOGICAL, 14, irow, 1, t4.nwave,  t4.record[irow-1].flag, pStatus);
+      fits_write_col(fptr, TDOUBLE, 13, irow, 1, 1, &t4.record[irow-1].u3coord,  pStatus);
+      fits_write_col(fptr, TDOUBLE, 14, irow, 1, 1, &t4.record[irow-1].v3coord,  pStatus);
+      fits_write_col(fptr, TINT, 15, irow, 1, 4, t4.record[irow-1].sta_index,  pStatus);
+      fits_write_col(fptr, TLOGICAL, 16, irow, 1, t4.nwave,  t4.record[irow-1].flag, pStatus);
     }
   if (*pStatus && !oi_hush_errors) {
     fprintf(stderr, "CFITSIO error in %s:\n", function);

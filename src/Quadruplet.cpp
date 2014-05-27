@@ -242,12 +242,12 @@ vector<Quadruplet> ComputeQuadruplets(Array * array, vector<Station> & stations)
         {
             for(int k = j + 1; k < num_stations - 1; k++)
             {	      
-	      for(int l = k + 1; l < num_stations ; l++)
-               {
-		 quadruplets.push_back( Quadruplet(array, &stations[i], &stations[j], &stations[k], &stations[l] ) );
-	       }
-	    }
-	}
+				for(int l = k + 1; l < num_stations ; l++)
+				{
+					quadruplets.push_back( Quadruplet(array, &stations[i], &stations[j], &stations[k], &stations[l] ) );
+				}
+            }
+        }
     }
     
     return quadruplets;

@@ -262,6 +262,8 @@ STATUS read_next_oi_wavelength(fitsfile *fptr, oi_wavelength *pWave, STATUS *pSt
 STATUS read_next_oi_vis(fitsfile *fptr, oi_vis *pVis, STATUS *pStatus);
 STATUS read_next_oi_vis2(fitsfile *fptr, oi_vis2 *pVis2, STATUS *pStatus);
 STATUS read_next_oi_t3(fitsfile *fptr, oi_t3 *pT3, STATUS *pStatus);
+STATUS read_next_oi_t4(fitsfile *fptr, oi_t4 *pT4, STATUS *pStatus);
+
 /* Functions from free_fits.c */
 void free_oi_array(oi_array *pArray);
 void free_oi_target(oi_target *pTargets);

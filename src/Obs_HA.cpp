@@ -25,11 +25,11 @@ Obs_HA::Obs_HA(Array * array, double hour_angle, string telescopes, string exclu
     this->mStations = this->FindStations(telescopes);
     this->mBaselines = this->FindBaselines(mStations, exclude_baselines);  
     this->mTriplets = this->FindTriplets(mStations, exclude_baselines);
+    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
     
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
 
-    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
     if(mQuadruplets.size() > 0)
         this->mbHasQuadruplets = true;
 }
@@ -47,11 +47,11 @@ Obs_HA::Obs_HA(Array * array, double MJD, double time, string telescopes, string
     this->mStations = this->FindStations(telescopes);
     this->mBaselines = this->FindBaselines(mStations, exclude_baselines); 
     this->mTriplets = this->FindTriplets(mStations, exclude_baselines);  
+    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
     
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
 
-    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
     if(mQuadruplets.size() > 0)
         this->mbHasQuadruplets = true;
 }

@@ -168,11 +168,13 @@ void init_oi_fits(oi_fits *pOi)
   pOi->numVis = 0;
   pOi->numVis2 = 0;
   pOi->numT3 = 0;
+  pOi->numT4 = 0;
   pOi->arrayList = NULL;
   pOi->wavelengthList = NULL;
   pOi->visList = NULL;
   pOi->vis2List = NULL;
   pOi->t3List = NULL;
+  pOi->t4List = NULL;
   pOi->arrayHash = 
     g_hash_table_new_full(g_str_hash, g_str_equal, NULL, NULL);
   pOi->wavelengthHash =
@@ -230,6 +232,9 @@ STATUS write_oi_fits(const char *filename, oi_fits oi, STATUS *pStatus)
 		write_oi_vis2, extver, pStatus);
   WRITE_OI_LIST(fptr, oi.t3List, oi_t3, link,
 		write_oi_t3, extver, pStatus);
+  WRITE_OI_LIST(fptr, oi.t4List, oi_t4, link,
+		write_oi_t4, extver, pStatus);
+
   
   fits_close_file(fptr, pStatus);
 
@@ -261,6 +266,7 @@ STATUS read_oi_fits(const char *filename, oi_fits *pOi, STATUS *pStatus)
   oi_vis *pVis;
   oi_vis2 *pVis2;
   oi_t3 *pT3;
+  oi_t4 *pT4;
 
   if (*pStatus) return *pStatus; /* error flag set - do nothing */
 
@@ -277,6 +283,7 @@ STATUS read_oi_fits(const char *filename, oi_fits *pOi, STATUS *pStatus)
   pOi->visList = NULL;
   pOi->vis2List = NULL;
   pOi->t3List = NULL;
+  pOi->t4List = NULL;
 
   /* Read compulsory OI_TARGET table */
   read_oi_target(fptr, &pOi->targets, pStatus);
@@ -537,6 +544,9 @@ const char *format_oi_fits_summary(const oi_fits *pOi)
   FORMAT_OI_LIST_SUMMARY(pGStr, pOi->vis2List, oi_vis2, link);
   g_string_append_printf(pGStr, "  %d OI_T3 tables:\n", pOi->numT3);
   FORMAT_OI_LIST_SUMMARY(pGStr, pOi->t3List, oi_t3, link);
+  g_string_append_printf(pGStr, "  %d OI_T4 tables:\n", pOi->numT4);
+  FORMAT_OI_LIST_SUMMARY(pGStr, pOi->t4List, oi_t4, link);
+
 
   return pGStr->str;
 }

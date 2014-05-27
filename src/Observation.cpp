@@ -203,15 +203,15 @@ vector<Quadruplet*>    Observation::FindQuadruplets(vector<Station*> stations, s
             {
                 sta3_name = stations[k]->GetName();
 
-		for(l = k + 1; l < num_stations; l++)
-		  {
-		    sta4_name = stations[l]->GetName();
-		    
-		    quad_name = sta1_name + "-" + sta2_name + "-" + sta3_name + "-" + sta4_name;
-                
-		    // Insert the quadruplet name into the hash.
-		    quad_names.insert( TNameHash::value_type(quad_name, quad_name) );
-		  }
+				for(l = k + 1; l < num_stations; l++)
+				{
+					sta4_name = stations[l]->GetName();
+
+					quad_name = sta1_name + "-" + sta2_name + "-" + sta3_name + "-" + sta4_name;
+
+					// Insert the quadruplet name into the hash.
+					quad_names.insert( TNameHash::value_type(quad_name, quad_name) );
+				}
             }
         }
     }

@@ -73,12 +73,14 @@ typedef struct {
   int numVis;                /**< Length of visList */
   int numVis2;               /**< Length of vis2List */
   int numT3;                 /**< Length of t3List */
+  int numT4;                 /**< Length of t4List */
   oi_target targets;         /**< oi_target struct */
   GList *arrayList;          /**< Linked list of oi_array structs */
   GList *wavelengthList;     /**< Linked list of oi_wavelength structs */
   GList *visList;            /**< Linked list of oi_vis structs */
   GList *vis2List;           /**< Linked list of oi_vis2 structs */
   GList *t3List;             /**< Linked list of oi_t3 structs */
+  GList *t4List;             /**< Linked list of oi_t4 structs */
   GHashTable *arrayHash;     /**< Hash table of oi_array, indexed by ARRNAME */
   GHashTable *wavelengthHash; /**< Hash table of oi_wavelength, 
 				   indexed by INSNAME */

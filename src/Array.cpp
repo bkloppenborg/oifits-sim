@@ -19,6 +19,7 @@
 #include "Baseline.h"
 //#include "Simulator.h"  // Required for constants, like PI.
 #include "Triplet.h"
+#include "Quadruplet.h"
 #include "textio.hpp"
 #include "Common.h"
 
@@ -243,6 +244,9 @@ void Array::ImportFile(string filename, string comment_chars)
     this->bl_hash = ComputeBaselineHash(this->baselines);
     this->triplets = ComputeTriplets(this, stations);
     this->tri_hash = ComputeTripletHash(this->triplets);
+    this->quadruplets = ComputeQuadruplets(this, stations);
+    this->quad_hash = ComputeQuadrupletHash(this->quadruplets);
+
 }
 
 // This function permits a few target parameters to be overridden via. command line arguments
