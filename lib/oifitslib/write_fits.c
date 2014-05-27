@@ -587,7 +587,7 @@ STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
   fits_write_key(fptr, TINT, "EXTVER", &extver, "ID number of this OI_T4", pStatus);
 
   /* Write columns */
-  for(irow=1; irow<=t4.numrec; irow++) 
+  for(irow=1; irow <=t4.numrec; irow++)
     {
       fits_write_col(fptr, TINT, 1, irow, 1, 1, &t4.record[irow-1].target_id, pStatus);
       fits_write_col(fptr, TDOUBLE, 2, irow, 1, 1, &t4.record[irow-1].time, pStatus);
@@ -603,7 +603,7 @@ STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
       fits_write_col(fptr, TDOUBLE, 12, irow, 1, 1, &t4.record[irow-1].v2coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 13, irow, 1, 1, &t4.record[irow-1].u3coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 14, irow, 1, 1, &t4.record[irow-1].v3coord,  pStatus);
-      fits_write_col(fptr, TINT, 15, irow, 1, 4, t4.record[irow-1].sta_index,  pStatus);
+      fits_write_col(fptr, TINT, 15, irow, 1, 3, t4.record[irow-1].sta_index,  pStatus);
       fits_write_col(fptr, TLOGICAL, 16, irow, 1, t4.nwave,  t4.record[irow-1].flag, pStatus);
     }
   if (*pStatus && !oi_hush_errors) {
