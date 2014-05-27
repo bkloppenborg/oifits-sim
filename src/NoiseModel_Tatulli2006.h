@@ -30,7 +30,10 @@ public:
 
 public:
 	double GetVis2Var(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Baseline * baseline, UVPoint uv, int wavelength_num);
+
 	double GetT3PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Triplet * triplet, UVPoint uv1, UVPoint uv2, int wavelength_num);
+
+	double GetT4PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Quadruplet * quadruplet, UVPoint uv1, UVPoint uv2, UVPoint uv3, int wavelength_num);
 
 private:
 	double CoherentFlux(Array * array, Combiner * combiner, double n_photons, double vis2);

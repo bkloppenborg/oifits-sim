@@ -32,7 +32,10 @@ public:
 	double NumPhotons(Array * array, Target * target, Combiner * combiner, SpectralMode * spec_mode, int wavelength_num);
 
 	virtual double GetVis2Var(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Baseline * baseline, UVPoint uv, int wavelength_num) = 0;
+
 	virtual double GetT3PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Triplet * triplet, UVPoint uv1, UVPoint uv2, int wavelength_num) = 0;
+
+	virtual double GetT4PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Quadruplet * quadruplet, UVPoint uv1, UVPoint uv2, UVPoint uv3, int wavelength_num) = 0;
 };
 
 #endif /* NOISEMODEL_H_ */

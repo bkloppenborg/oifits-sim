@@ -7,13 +7,13 @@
 
 #include "NoiseModel.h"
 
-
 #include "Array.h"
 #include "Target.h"
 #include "Combiner.h"
 #include "SpectralMode.h"
 #include "Baseline.h"
 #include "Triplet.h"
+#include "Quadruplet.h"
 #include "Common.h"
 
 

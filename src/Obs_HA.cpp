@@ -28,6 +28,10 @@ Obs_HA::Obs_HA(Array * array, double hour_angle, string telescopes, string exclu
     
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
+
+    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
+    if(mQuadruplets.size() > 0)
+        this->mbHasQuadruplets = true;
 }
 
 /// Construct an Observation object from the MJD, time, and included/excluded telescopes.
@@ -46,6 +50,10 @@ Obs_HA::Obs_HA(Array * array, double MJD, double time, string telescopes, string
     
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
+
+    this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
+    if(mQuadruplets.size() > 0)
+        this->mbHasQuadruplets = true;
 }
 
 
@@ -371,6 +379,88 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
 	}
 		
 	return t3;
+}
+
+/// Create a t4 table for this observation.
+oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed)
+{
+    oi_t4 t4;
+    int nQuadruplets = this->mQuadruplets.size();
+    int nwave = spec_mode->mean_wavenumber.size();
+    string arrname = array->GetArrayName();
+    string ins_name = spec_mode->spec_mode;
+    complex<double> quad_clos;
+    double phi_err;
+    double wavenumber;
+    
+    UVPoint uv_AB;
+    UVPoint uv_CD;
+    UVPoint uv_AD;
+    
+	t4.record = (oi_t4_record *) malloc(nQuadruplets * sizeof(oi_t4_record));
+	for (int i = 0; i < nQuadruplets; i++)
+	{
+		t4.record[i].t4amp = (double *) malloc(nwave * sizeof(double));
+		t4.record[i].t4amperr = (double *) malloc(nwave * sizeof(double));
+		t4.record[i].t4phi = (double *) malloc(nwave * sizeof(double));
+		t4.record[i].t4phierr = (double *) malloc(nwave * sizeof(double));
+		t4.record[i].flag = (char *) malloc(nwave * sizeof(char));
+	}
+	t4.revision = 1;
+	/// \bug Observation date is set to 0000-00-00 by default
+	strncpy(t4.date_obs, "0000-00-00", FLEN_VALUE);
+	strncpy(t4.arrname, arrname.c_str(), FLEN_VALUE);
+	strncpy(t4.insname, ins_name.c_str(), FLEN_VALUE);
+	t4.numrec = nQuadruplets;
+	t4.nwave = nwave;
+	
+	// Now copy the data into t4 records:
+	for (int i = 0; i < nQuadruplets; i++)
+	{
+		t4.record[i].target_id = target->GetTargetID();
+		/// \bug Time is set to zero by default.
+		t4.record[i].time = 0.0;
+		t4.record[i].mjd = this->mJD;
+		/// \bug Integration time set to 10 seconds by default.
+		t4.record[i].int_time = 10;
+		
+		// Get the UV coordinates for the AB and BC baselines
+		uv_AB = mQuadruplets[i]->GetBaseline(0)->UVcoords(this->mHA, target->declination);
+		uv_CD = mQuadruplets[i]->GetBaseline(1)->UVcoords(this->mHA, target->declination);
+		uv_AD = mQuadruplets[i]->GetBaseline(2)->UVcoords(this->mHA, target->declination);
+		
+		t4.record[i].u1coord = uv_AB.u;
+		t4.record[i].v1coord = uv_AB.v;
+		t4.record[i].u2coord = uv_CD.u;
+		t4.record[i].v2coord = uv_CD.v;
+		t4.record[i].u3coord = uv_AD.u;
+		t4.record[i].v3coord = uv_AD.v;
+
+		t4.record[i].sta_index[0] = mQuadruplets[i]->GetStationID(0);
+		t4.record[i].sta_index[1] = mQuadruplets[i]->GetStationID(1);
+		t4.record[i].sta_index[2] = mQuadruplets[i]->GetStationID(2);
+		t4.record[i].sta_index[3] = mQuadruplets[i]->GetStationID(3);
+		
+		for(int j = 0; j < nwave; j++)
+		{
+		  wavenumber = spec_mode->mean_wavenumber[j];
+		  quad_clos = mQuadruplets[i]->GetT4(*target, this->mHA, wavenumber);
+		  phi_err = noisemodel->GetT4PhaseVar(array, combiner, spec_mode, target, mQuadruplets[i], uv_AB, uv_CD, uv_AD, j);
+
+		  // assume circular noise cloud
+		  
+		  // First save the amplitudes
+		  t4.record[i].t4amp[j] = abs(quad_clos);
+		  t4.record[i].t4amperr[j] = sqrt(abs(quad_clos) * abs(quad_clos) * phi_err * phi_err);
+		  // Now save the phases.  Remember, the phase is in degrees rather than radians.
+		  t4.record[i].t4phi[j] = (arg(quad_clos) + phi_err * Rangauss(random_seed)) * 180 / PI;
+		  t4.record[i].t4phierr[j] = phi_err * 180 / PI;
+		  t4.record[i].flag[j] = FALSE;
+		}
+		
+	}
+		
+	return t4;
 }
 
 double Obs_HA::GetHA(double targ_ra)

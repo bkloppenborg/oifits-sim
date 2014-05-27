@@ -25,7 +25,7 @@ Quadruplet::Quadruplet(Array * array, Station * station1, Station * station2, St
     string baseline;
     baseline = station1->GetName() + '-' + station2->GetName();    // ab
     mBaselines[0] = array->GetBaseline(baseline);
-    baseline = station2->GetName() + '-' + station3->GetName();    // bc
+    baseline = station2->GetName() + '-' + station3->GetName();    // cd
     mBaselines[1] = array->GetBaseline(baseline);
     baseline = station1->GetName() + '-' + station4->GetName();    // ad
     mBaselines[2] = array->GetBaseline(baseline);

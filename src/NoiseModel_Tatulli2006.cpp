@@ -102,6 +102,12 @@ double NoiseModel_Tatulli2006::GetT3PhaseVar(Array * array, Combiner * combiner,
 	return sqrt(error2);
 }
 
+// Compute the error for the quad closure -- TBD implement something good here !
+double NoiseModel_Tatulli2006::GetT4PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Quadruplet * quadruplet, 
+UVPoint uv1, UVPoint uv2, UVPoint uv3, int wavelength_num)
+{
+	return 5.;
+}
 
 // Computes the photometric flux
 double NoiseModel_Tatulli2006::VarPhotometricFlux(Combiner * combiner, double n_photons)
@@ -136,9 +142,9 @@ double NoiseModel_Tatulli2006::VarCoherentFlux(Array * array, Combiner * combine
 	// (1) photon noise
 	double temp = 2 * nph3 * vis2 / nt2 + 4 * nph2 * vis2 / nt2 + nph2 + n_photons;
 	// (2) detector noise
-	temp += npi2 * rn4 + 3* npi * rn4;
+	temp += npi2 * rn4 + 3. * npi * rn4;
 	// (3) coupled terms
-	temp += 2 * npi * rn2 * n_photons + 2 * npi * rn2 * nph2 * vis2 / nt2;
+	temp += 2.* npi * rn2 * n_photons + 2.* npi * rn2 * nph2 * vis2 / nt2;
 
 	return temp;
 }
@@ -153,7 +159,7 @@ double NoiseModel_Tatulli2006::ComputeT3PhVar(int nt[7], double nph[7], double v
 	            - (2 * t3amp * (v_ij + v_jk + v_ik)) * nt[1] / nph[1];
 
 	// Now multiply by the factored out term:
-	temp *= 1 / (2 * t3amp * t3amp);
+	temp *= 1. / (2. * t3amp * t3amp);
 
 	if(temp < 0)
 		printf("whoops.\n");
@@ -170,7 +176,7 @@ double NoiseModel_Tatulli2006::ComputeT3DetVar(int nt[7], double nph[7], double 
 	            + (v_ij + v_jk + v_ik) * (3*npix[1]*rn[4] + npix[2]*rn[4]) * nt[4]/nph[4]
 	            + (v_ij * v_jk + v_ij * v_ik + v_jk*v_ik)*npix[1]*rn[2] * nt[2]/nph[2];
 
-	temp *= 1 / (2 * t3amp * t3amp);
+	temp *= 1. / (2. * t3amp * t3amp);
 
 	return temp;
 }
