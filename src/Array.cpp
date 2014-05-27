@@ -417,12 +417,17 @@ oi_array    Array::GetOIArray(void)
 
 	array.nelement = nstations;
 	Station * station;
+	string station_name;
 	for (int i = 0; i < nstations; i++)
 	{
 	    station = this->GetStation(i);
 		strncpy(array.elem[i].tel_name, "Fake Telescope", 16);
+
+		station_name = station->GetName();
+		station_name.resize(16);
+
 		/// \bug The station names often have gibberish characters.  Something to do with this line.
-		strncpy(array.elem[i].sta_name, station->GetName().c_str(), station->GetName().size());
+		strncpy(array.elem[i].sta_name, station->GetName().c_str(), 16);
 		array.elem[i].sta_index = station->GetIndex();
 		array.elem[i].diameter = station->diameter;
 		array.elem[i].staxyz[0] = station->xyz[0];
