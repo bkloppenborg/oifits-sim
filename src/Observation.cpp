@@ -24,6 +24,7 @@ Observation::Observation()
 {
     mbHasTriplets = false;
     mbHasQuadruplets = false;
+    mJD = 0;
 }
 
 Observation::~Observation()
