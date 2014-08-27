@@ -110,3 +110,12 @@ All parameters that can be overriden are mentioned below.  See documentation for
 # Bug Reporting and Feature Requests
 
 Please use the [issue tracker on GitHub](https://github.com/bkloppenborg/oifits-sim/issues)
+
+
+# Licensing and acknowledgements
+
+`oifits-sim` is free software, distributed under the GNU Lesser General Public License (Version 3).
+
+If you use this software as part of a scientific publication, please cite the following work:
+
+Kloppenborg, B.; Baron, F. (2012) "oifits-sim: an OIFITS-simulator" (Version X). Available from https://github.com/bkloppenborg/oifits-sim.
