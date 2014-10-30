@@ -6,8 +6,8 @@ type = 0
 # The remainder of the file consists of a lines of hour angles
 # at which the observations (with all telescopes in the array)
 # were conducted.
-hour_angle = -1
-hour_angle = 0
+hour_angle = -1.0
+hour_angle = 0.1
 hour_angle = 1.234
 
 

@@ -20,13 +20,13 @@ Obs_HA::Obs_HA(Array * array, double hour_angle, string telescopes, string exclu
     this->mArray = array;
     this->mHA = hour_angle;
     this->mComputeHA = false;
-    
+
     // Now Make the baselines
     this->mStations = this->FindStations(telescopes);
-    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);  
+    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);
     this->mTriplets = this->FindTriplets(mStations, exclude_baselines);
     this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
-    
+
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
 
@@ -42,13 +42,13 @@ Obs_HA::Obs_HA(Array * array, double MJD, double time, string telescopes, string
     // Compute the (full) Julian date from the Modified Julian Date (MJD)
     this->mJD = MJD + time / 24 + 2400000.5;
     this->mComputeHA = true;
-    
+
     // Now Make the baselines
     this->mStations = this->FindStations(telescopes);
-    this->mBaselines = this->FindBaselines(mStations, exclude_baselines); 
-    this->mTriplets = this->FindTriplets(mStations, exclude_baselines);  
+    this->mBaselines = this->FindBaselines(mStations, exclude_baselines);
+    this->mTriplets = this->FindTriplets(mStations, exclude_baselines);
     this->mQuadruplets = this->FindQuadruplets(mStations, exclude_baselines);
-    
+
     if(mTriplets.size() > 0)
         this->mbHasTriplets = true;
 
@@ -88,7 +88,7 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
 {
     vector <Observation*> observations;
 	vector <string> results;
-    
+
     // Now parse the file, make the observations
     double ha;
     for(unsigned int j = i+1; j < lines.size(); j++)
@@ -117,7 +117,7 @@ vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string 
         	printf("Warning, detected non-keyword, %s, in observation definition file.  Ignoring\n", results[0].c_str());
         }
     }
-    
+
     return observations;
 }
 
@@ -139,17 +139,17 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
     // init local vars
     vector <Observation*> observations;
     vector<string> results;
-    
+
     // local vars for an observation
     double hour_angle = 0;
     string stations = "";
     string excluded_baselines = "";
-    
+
     // Flags to keep track of whether or not we have the corresponding data
     bool bStations = false;
     bool bHourAngle = false;
     bool bExclude = false;
-    
+
     unsigned int j = 1;  // A counter for the number of observations.  Only used in error messages below.
     // Iterate over the lines in the file
     for(unsigned int k = i+1; k < lines.size(); k++)
@@ -158,7 +158,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
         results.clear();
         results = SplitString(lines[k], '=');
         StripWhitespace(results);
-        
+
         if(results[0] == "hour_angle")
         {
             // We allow for the "exclude" parameter to be omitted.  If we have already found
@@ -168,7 +168,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
                 // Set the excluded stations to be blank, mark it as found so we will write out an observation
                 excluded_baselines = "";
                 bExclude = true;
-                
+
                 // Step back one in "k" so at we may revisit this line
                 k--;
             }
@@ -197,7 +197,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
 
             if(results[1].size() < 2)
                 throw std::runtime_error("Two few telescopes specified in observation entry " + j);
-            
+
             stations = results[1];
             bStations = true;
         }
@@ -211,22 +211,22 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
             // This is an unknown type, thrown an exception.
             throw std::runtime_error("Unknown parameter specified in observation block " + j);
         }
-        
+
         if(bHourAngle && bStations && (bExclude || k == lines.size() - 1))
         {
             // Push the observation on to the list
             observations.push_back(new Obs_HA(array, hour_angle, stations, excluded_baselines) );
-            
+
             // Increment the observation block counter, j
             j++;
-            
+
             // Reset the station, hour angle, and exclude flags.
             bStations = false;
             bHourAngle = false;
             bExclude = false;
         }
     }
-    
+
     return observations;
 }
 
@@ -243,13 +243,13 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
     string arrname = array->GetArrayName();
     string ins_name = spec_mode->spec_mode;
     double wavenumber = 0;
-    
+
     double ra = target->right_ascension;
     double dec = target->declination;
     UVPoint uv;
     double v2;
     double v2_err;
-    
+
     // Allocate room for the vis2 records and their data.
 	vis2.record = (oi_vis2_record *) malloc(npow * sizeof(oi_vis2_record));
 	for (int i = 0; i < npow; i++)
@@ -258,12 +258,12 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
 		vis2.record[i].vis2err = (double *) malloc(nwave * sizeof(double));
 		vis2.record[i].flag = (char *) malloc(nwave * sizeof(char));
 	}
-	
+
 	vis2.revision = 1;
-	/// \bug The observation date is set to all zeros by default.  
+	/// \bug The observation date is set to all zeros by default.
 	/// This is to ensure the user knows this is simulated data, but may not be compliant
 	/// with the OIFITS format, or good "note taking"
-	strncpy(vis2.date_obs, "0000-00-00", 11);
+	strncpy(vis2.date_obs, "2014-01-01", 11);
 	strncpy(vis2.arrname, arrname.c_str(), FLEN_VALUE);
 	strncpy(vis2.insname, ins_name.c_str(), FLEN_VALUE);
 	vis2.numrec = npow;
@@ -271,19 +271,19 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
 	for (int i = 0; i < npow; i++)
 	{
 		vis2.record[i].target_id = target->GetTargetID();
-		/// \bug The time is set to zero by default 
+		/// \bug The time is set to zero by default
 		vis2.record[i].time = 0.0;
 		vis2.record[i].mjd = this->mJD;
 		/// \bug The integration time is set to 10 seconds by default.
 		vis2.record[i].int_time = 10;
-		
+
 		// Compute the UV coordinates and record the station positions:
 		uv = this->mBaselines[i]->UVcoords(this->GetHA(ra), dec);
 		vis2.record[i].ucoord = uv.u;
 		vis2.record[i].vcoord = uv.v;
 		vis2.record[i].sta_index[0] = this->mBaselines[i]->GetStationID(0);
 		vis2.record[i].sta_index[1] = this->mBaselines[i]->GetStationID(1);
-		
+
 		// Now compute the individual visibilities and uncertainties
 		for (iwave = 0; iwave < nwave; iwave++)
 		{
@@ -300,7 +300,7 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
 			vis2.record[i].flag[iwave] = FALSE;
 		}
 	}
-	
+
 	return vis2;
 }
 
@@ -315,10 +315,10 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
     complex<double> bis;
     double phi_err;
     double wavenumber;
-    
+
     UVPoint uv_AB;
     UVPoint uv_BC;
-    
+
 	t3.record = (oi_t3_record *) malloc(nTriplets * sizeof(oi_t3_record));
 	for (int i = 0; i < nTriplets; i++)
 	{
@@ -329,28 +329,27 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		t3.record[i].flag = (char *) malloc(nwave * sizeof(char));
 	}
 	t3.revision = 1;
-	/// \bug Observation date is set to 0000-00-00 by default
-	strncpy(t3.date_obs, "0000-00-00", FLEN_VALUE);
+	strncpy(t3.date_obs, "2014-01-01", FLEN_VALUE);
 	strncpy(t3.arrname, arrname.c_str(), FLEN_VALUE);
 	strncpy(t3.insname, ins_name.c_str(), FLEN_VALUE);
 	t3.numrec = nTriplets;
 	t3.nwave = nwave;
-	
+
 	// Now copy the data into t3 records:
 	for (int i = 0; i < nTriplets; i++)
 	{
-	   
+
 		t3.record[i].target_id = target->GetTargetID();
 		/// \bug Time is set to zero by default.
 		t3.record[i].time = 0.0;
 		t3.record[i].mjd = this->mJD;
 		/// \bug Integration time set to 10 seconds by default.
 		t3.record[i].int_time = 10;
-		
+
 		// Get the UV coordinates for the AB and BC baselines
 		uv_AB = mTriplets[i]->GetBaseline(0)->UVcoords(this->mHA, target->declination);
 		uv_BC = mTriplets[i]->GetBaseline(1)->UVcoords(this->mHA, target->declination);
-		
+
 		t3.record[i].u1coord = uv_AB.u;
 		t3.record[i].v1coord = uv_AB.v;
 		t3.record[i].u2coord = uv_BC.u;
@@ -358,7 +357,7 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		t3.record[i].sta_index[0] = mTriplets[i]->GetStationID(0);
 		t3.record[i].sta_index[1] = mTriplets[i]->GetStationID(1);
 		t3.record[i].sta_index[2] = mTriplets[i]->GetStationID(2);
-		
+
 		for(int j = 0; j < nwave; j++)
 		{
 			wavenumber = spec_mode->mean_wavenumber[j];
@@ -375,9 +374,9 @@ oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mo
 			t3.record[i].t3phierr[j] = phi_err * 180 / PI;
 			t3.record[i].flag[j] = FALSE;
 		}
-		
+
 	}
-		
+
 	return t3;
 }
 
@@ -392,11 +391,11 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
     complex<double> quad_clos;
     double phi_err;
     double wavenumber;
-    
+
     UVPoint uv_AB;
     UVPoint uv_CD;
     UVPoint uv_AD;
-    
+
 	t4.record = (oi_t4_record *) malloc(nQuadruplets * sizeof(oi_t4_record));
 	for (int i = 0; i < nQuadruplets; i++)
 	{
@@ -408,12 +407,12 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 	}
 	t4.revision = 1;
 	/// \bug Observation date is set to 0000-00-00 by default
-	strncpy(t4.date_obs, "0000-00-00", FLEN_VALUE);
+	strncpy(t4.date_obs, "2014-01-01", FLEN_VALUE);
 	strncpy(t4.arrname, arrname.c_str(), FLEN_VALUE);
 	strncpy(t4.insname, ins_name.c_str(), FLEN_VALUE);
 	t4.numrec = nQuadruplets;
 	t4.nwave = nwave;
-	
+
 	// Now copy the data into t4 records:
 	for (int i = 0; i < nQuadruplets; i++)
 	{
@@ -423,12 +422,12 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		t4.record[i].mjd = this->mJD;
 		/// \bug Integration time set to 10 seconds by default.
 		t4.record[i].int_time = 10;
-		
+
 		// Get the UV coordinates for the AB and BC baselines
 		uv_AB = mQuadruplets[i]->GetBaseline(0)->UVcoords(this->mHA, target->declination);
 		uv_CD = mQuadruplets[i]->GetBaseline(1)->UVcoords(this->mHA, target->declination);
 		uv_AD = mQuadruplets[i]->GetBaseline(2)->UVcoords(this->mHA, target->declination);
-		
+
 		t4.record[i].u1coord = uv_AB.u;
 		t4.record[i].v1coord = uv_AB.v;
 		t4.record[i].u2coord = uv_CD.u;
@@ -440,7 +439,7 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		t4.record[i].sta_index[1] = mQuadruplets[i]->GetStationID(1);
 		t4.record[i].sta_index[2] = mQuadruplets[i]->GetStationID(2);
 		t4.record[i].sta_index[3] = mQuadruplets[i]->GetStationID(3);
-		
+
 		for(int j = 0; j < nwave; j++)
 		{
 		  wavenumber = spec_mode->mean_wavenumber[j];
@@ -448,7 +447,7 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		  phi_err = noisemodel->GetT4PhaseVar(array, combiner, spec_mode, target, mQuadruplets[i], uv_AB, uv_CD, uv_AD, j);
 
 		  // assume circular noise cloud
-		  
+
 		  // First save the amplitudes
 		  t4.record[i].t4amp[j] = abs(quad_clos);
 		  t4.record[i].t4amperr[j] = sqrt(abs(quad_clos) * abs(quad_clos) * phi_err * phi_err);
@@ -457,9 +456,9 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 		  t4.record[i].t4phierr[j] = phi_err * 180 / PI;
 		  t4.record[i].flag[j] = FALSE;
 		}
-		
+
 	}
-		
+
 	return t4;
 }
 
@@ -468,7 +467,7 @@ double Obs_HA::GetHA(double targ_ra)
     // If the hour angle is already specified, just reutrn it directly.
     if(!this->mComputeHA)
         return this->mHA;
-    
+
     double lst = this->GetLocalSiderealTime(this->mJD, 0, 0, this->mArray->GetLongitude());
     return lst - targ_ra * 12.0/PI;
 }
@@ -476,17 +475,17 @@ double Obs_HA::GetHA(double targ_ra)
 double Obs_HA::GetLocalSiderealTime(double jd_high, double jd_low, double ee, double array_long)
 {
     double lst = this->GetSiderealTime(jd_high, jd_low, ee) + array_long * 12 / PI;
-    
+
 	if(lst < 0)
         lst += 24;
-        
+
     return lst;
 }
 
 // Get the Sidereal time as a double given the High and Low Julian Date
 double  Obs_HA::GetSiderealTime(double jd_high, double jd_low, double ee)
 {
-	// Code slightly modified from Naval Observatory Vector Astrometry Subroutines 
+	// Code slightly modified from Naval Observatory Vector Astrometry Subroutines
 	// (C Language Version 2.0)
 	const double T0 = 2451545.00000000;
 	double t_hi = 0;
