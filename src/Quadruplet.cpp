@@ -21,7 +21,7 @@ Quadruplet::Quadruplet(Array * array, Station * station1, Station * station2, St
     mStations[1] = station2;
     mStations[2] = station3;
     mStations[3] = station4;
-    
+
     string baseline;
     baseline = station1->GetName() + '-' + station2->GetName();    // ab
     mBaselines[0] = array->GetBaseline(baseline);
@@ -31,11 +31,11 @@ Quadruplet::Quadruplet(Array * array, Station * station1, Station * station2, St
     mBaselines[2] = array->GetBaseline(baseline);
     baseline = station2->GetName() + '-' + station3->GetName();    // bc instead of cb, to keep alphabetical order
     mBaselines[3] = array->GetBaseline(baseline);
-    
+
     this->name = station1->GetName() + "-" + station2->GetName() + "-" + station3->GetName() + "-" + station4->GetName();
-    
+
     // A useful comment if you wish to see all quadruplets created.
-    printf("Constructed %s from %s %s %s %s\n", this->name.c_str(), mBaselines[0]->GetName().c_str(),  mBaselines[1]->GetName().c_str(),  mBaselines[2]->GetName().c_str(),  mBaselines[3]->GetName().c_str());
+    //printf("Constructed %s from %s %s %s %s\n", this->name.c_str(), mBaselines[0]->GetName().c_str(),  mBaselines[1]->GetName().c_str(),  mBaselines[2]->GetName().c_str(),  mBaselines[3]->GetName().c_str());
 }
 
 /// Returns the name of this quadruplet as the names of the stations separated by hyphens, e.g.:
@@ -56,10 +56,10 @@ complex<double> Quadruplet::ComputeT4(Target & target, UVPoint uv_ab, UVPoint uv
     // Get the visibilities on the baselines AB, CD, AD, BC
     complex<double> AB = mBaselines[0]->GetVisibility(target, uv_ab);
     complex<double> CD = mBaselines[1]->GetVisibility(target, uv_cd);
-    complex<double> AD = mBaselines[2]->GetVisibility(target, uv_ad); 
-    complex<double> BC = mBaselines[3]->GetVisibility(target, uv_bc); 
-    
-    // Now compute the complex quad closure 
+    complex<double> AD = mBaselines[2]->GetVisibility(target, uv_ad);
+    complex<double> BC = mBaselines[3]->GetVisibility(target, uv_bc);
+
+    // Now compute the complex quad closure
     return ( AB * BC ) / ( AD * conj(BC) );
 }
 
@@ -105,7 +105,7 @@ double  Quadruplet::GetT4AmpErr(Target & target, UVPoint uv_ab, UVPoint uv_cd, U
     /// \bug Returns 0.001 by default
     return 0.001;
 }
-   
+
 
 // Wrapper function for the UV-coordinate taking versions.
 double  Quadruplet::GetT4AmpErr(Target & target, double hour_angle, double wavenumber)
@@ -119,7 +119,7 @@ double  Quadruplet::GetT4AmpErr(Target & target, double hour_angle, double waven
     uv_ad.Scale(wavenumber);
     UVPoint uv_bc = mBaselines[3]->UVcoords(hour_angle, target.declination);
     uv_bc.Scale(wavenumber);
-    
+
      return GetT4AmpErr(target, uv_ab, uv_cd, uv_ad, uv_bc );
 }
 
@@ -127,7 +127,7 @@ double  Quadruplet::GetT4AmpErr(Target & target, double hour_angle, double waven
 // Wrapper function for the UV-coordinate taking versions.
 double  Quadruplet::GetT4Phi(Target & target, double hour_angle, double wavenumber)
 {
-  
+
     UVPoint uv_ab = mBaselines[0]->UVcoords(hour_angle, target.declination);
     uv_ab.Scale(wavenumber);
     UVPoint uv_cd = mBaselines[1]->UVcoords(hour_angle, target.declination);
@@ -136,7 +136,7 @@ double  Quadruplet::GetT4Phi(Target & target, double hour_angle, double wavenumb
     uv_ad.Scale(wavenumber);
     UVPoint uv_bc = mBaselines[3]->UVcoords(hour_angle, target.declination);
     uv_bc.Scale(wavenumber);
-    
+
     return GetT4Phi(target,  uv_ab, uv_cd, uv_ad, uv_bc );
 }
 
@@ -159,7 +159,7 @@ double  Quadruplet::GetT4PhiErr(Target & target, double hour_angle, double waven
     uv_ad.Scale(wavenumber);
     UVPoint uv_bc = mBaselines[3]->UVcoords(hour_angle, target.declination);
     uv_bc.Scale(wavenumber);
-    
+
     return GetT4PhiErr(target,  uv_ab, uv_cd, uv_ad, uv_bc );
 }
 
@@ -167,14 +167,14 @@ double  Quadruplet::GetT4PhiErr(Target & target, UVPoint uv_ab, UVPoint uv_cd, U
 {
     /// \bug Returns 0.001 by default.
     return 0.001;
-}   
-    
+}
+
 // Computes the quad closures from the three baselines in this quadruplet.
 complex<double> Quadruplet::GetT4(Target & target, UVPoint uv_ab, UVPoint uv_cd, UVPoint uv_ad, UVPoint uv_bc)
 {
   string hash_key = GetHashKey(target,  uv_ab, uv_cd, uv_ad, uv_bc);
   complex <double> t4(0.0, 0.0);
-  
+
   // First try looking up the value in the hash table
   if(mT4Values.find(hash_key) != mT4Values.end())
     {
@@ -186,7 +186,7 @@ complex<double> Quadruplet::GetT4(Target & target, UVPoint uv_ab, UVPoint uv_cd,
       t4 = ComputeT4(target, uv_ab, uv_cd, uv_ad, uv_bc);
       mT4Values[hash_key] = t4;
     }
-  
+
     return t4;
 }
 
@@ -201,17 +201,17 @@ complex<double> Quadruplet::GetT4(Target & target, double hour_angle, double wav
     UVPoint uv_bc = mBaselines[3]->UVcoords(hour_angle, target.declination);
     uv_bc.Scale(wavenumber);
 
-    return GetT4(target, uv_ab, uv_cd, uv_ad, uv_bc); 
+    return GetT4(target, uv_ab, uv_cd, uv_ad, uv_bc);
 }
 
 // Computes a hash key from the source, hour angle, and wavenumber.
 string  Quadruplet::GetHashKey(Target & target, UVPoint uv_ab, UVPoint uv_cd, UVPoint uv_ad, UVPoint uv_bc)
 {
-    /// \todo It may be necessary for the doubles coming into this function to be cast into some 
+    /// \todo It may be necessary for the doubles coming into this function to be cast into some
     /// finite floating point format.
-    
+
     /// \todo This function is in common with the Baseline class, need to factor this code.
-    
+
     std::ostringstream sstream;
     sstream << target.GetName() << "-" << uv_ab.HashString() << '-' << uv_cd.HashString() << '-' << uv_ad.HashString() <<  '-' << uv_bc.HashString();
     std::string str = sstream.str();
@@ -241,7 +241,7 @@ vector<Quadruplet> ComputeQuadruplets(Array * array, vector<Station> & stations)
         for(int j = i + 1; j < num_stations - 2; j++)
         {
             for(int k = j + 1; k < num_stations - 1; k++)
-            {	      
+            {
 				for(int l = k + 1; l < num_stations ; l++)
 				{
 					quadruplets.push_back( Quadruplet(array, &stations[i], &stations[j], &stations[k], &stations[l] ) );
@@ -249,18 +249,18 @@ vector<Quadruplet> ComputeQuadruplets(Array * array, vector<Station> & stations)
             }
         }
     }
-    
+
     return quadruplets;
 }
 
 QuadrupletHash ComputeQuadrupletHash(vector<Quadruplet> & quadruplets)
 {
     QuadrupletHash hash;
-    
+
     for(unsigned int i = 0; i < quadruplets.size(); i++)
     {
         hash.insert(QuadrupletHash::value_type(quadruplets[i].GetName(), &quadruplets[i]) );
     }
-    
+
     return hash;
 }

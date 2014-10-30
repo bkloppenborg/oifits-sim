@@ -163,10 +163,10 @@ STATUS write_oi_target(fitsfile *fptr, oi_target targets, STATUS *pStatus)
 		   "RA_ERR", "DEC_ERR", "SYSVEL", "VELTYP",
 		   "VELDEF", "PMRA", "PMDEC", "PMRA_ERR", "PMDEC_ERR",
 		   "PARALLAX", "PARA_ERR", "SPECTYP"};
-  char *tform[] = {"I", "16A", "D", "D", "E",
-		   "D", "D", "D", "8A",
-		   "8A", "D", "D", "D", "D",
-		   "E", "E", "16A"};
+  char *tform[] = {"1I", "16A", "1D", "1D", "1E",
+		   "1D", "1D", "1D", "8A",
+		   "8A", "1D", "1D", "1D", "1D",
+		   "1E", "1E", "16A"};
   char *tunit[] = {"\0", "\0", "deg", "deg", "yr",
 		   "deg", "deg", "m/s", "\0",
 		   "\0", "deg/yr", "deg/yr", "deg/yr", "deg/yr",

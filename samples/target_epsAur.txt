@@ -1,7 +1,7 @@
 # A file describing the characteristics of epsilon Aurigae
 # Created by BKK on 2011-04-08 after new file definitions were created.
 
-name = eps Aur (simulated)
+name = eps Aur
 res = 0.05
 mag = 1.702
 band = H

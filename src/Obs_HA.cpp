@@ -305,7 +305,7 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
 }
 
 /// Create an OIFITS-compliant t3 table for this observation.
-oi_t3   Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed)
+oi_t3  Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed)
 {
     oi_t3 t3;
     int nTriplets = this->mTriplets.size();

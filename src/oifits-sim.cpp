@@ -7,7 +7,7 @@
 #include "oifits-sim.h"
 
 #include <string>
-#include <iostream> 
+#include <iostream>
 #include <cstdio>
 #include <stdexcept>
 
@@ -55,7 +55,7 @@ void PrintHelp()
 	"Note: Some of the parameters also have double-dash overrides that \n"
 	"immediately follow other parameters that change default/averaged values \n"
 	"that are found in configuration files.  See the documentation for details.";
-	
+
 	cout << usage << "\n";
 }
 
@@ -92,16 +92,16 @@ int main(int argc, char *argv[])
 		if(strcmp(argv[i], "-h") == 0)
 		{
 			PrintHelp();
-		}	
-	
+		}
+
 		// We need to know some information about the target:
 		if ((strcmp(argv[i], "-t") == 0) && (i < argc - 1))
 		{
 			target.ImportFile(string(argv[i+1]), comment_chars);
 			target.ParseFileOptions(argv, i+2, argc);
 			n_params += 1;
-		}		
-			
+		}
+
 		// And the image file we're going to use for the simulation:
 		if ((strcmp(argv[i], "-i") == 0) && (i < argc - 1))
 		{
@@ -252,13 +252,15 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
 		if(type == HOUR_ANGLE || type == DESCRIPTIVE)
 		{
 			Obs_HA * observation = dynamic_cast<Obs_HA *>(observation);
+		//printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
+
 		}
 		else    //(type == OIFITS)
 		{
 			Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation);
 		}
 
-		//printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
+
 
 		vis2table = observation->GetVis2(array, combiner, spec, target, noisemodel, random_seed);
 		write_oi_vis2(fptr, vis2table, 1, &status);
