@@ -237,7 +237,7 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
     oi_vis2 vis2table;
     oi_t3 t3table;
     oi_t4 t4table;
-    Observation * observation;
+    Observation* observation;
     int n_observations = observations.size();
 
     cout << "N Observations: " << observations.size() << endl;
@@ -259,8 +259,6 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
 		{
 			Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation);
 		}
-
-
 
 		vis2table = observation->GetVis2(array, combiner, spec, target, noisemodel, random_seed);
 		write_oi_vis2(fptr, vis2table, 1, &status);
