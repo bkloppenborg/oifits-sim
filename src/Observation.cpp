@@ -377,52 +377,62 @@ vector <Observation*> Observation::ParseCommandLineObs(Array * array, char *argv
 /// Reads in an properly formatted observation file in a formats defined by file_type:
 ///     0: A list of hour angles (in decimal hours)
 ///     1: A descriptive list of the observation (see ReadObservation_Descriptive() for more info)
+/// Note: the type keyword has to be the first keyword in the file
 vector<Observation*> Observation::ImportFile(Array * array, string filename, string comment_chars)
 {
-	// First determine the type of observation and fork it off to the
-    vector < string > lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
-	vector <string> results;
-
-	int obs_type = -1;
-	unsigned int i = 0;
-
-	for(i = 0; i < lines.size(); i++)
-	{
-		// Clear out the results, split the string and strip whitespace
-        results.clear();
-        results = SplitString(lines[i], '=');
-        StripWhitespace(results);
-
+  // First determine the type of observation and fork it off to the
+  vector <string> lines = ReadFile(filename, comment_chars, "Cannot Open Observation Definition File");
+  vector <string> results;
+  
+  int obs_type = -1;
+  unsigned int i = 0;
+ 
+ // we now have the meaningful lines (=stripped from comments)
+  for(i = 0; i < lines.size(); i++)
+    {
+  
+      cout << "Observation::ImportFile " << lines[i] << "\n";
+      // Clear out the results, split the string and strip whitespace
+      results.clear();
+      results = SplitString(lines[i], '=');
+      StripWhitespace(results);
+      
         if(results[0] == "type")
-        {
-        	try
-        	{
-        		obs_type = atoi(results[1].c_str());
-        		break;
+	  {
+	    try
+	      {
+		obs_type = atoi(results[1].c_str());
+		break;
+	      }
+	    catch(...)
+	      {
+		throw std::runtime_error("Invalid observation type field in observation file.");
         	}
-        	catch(...)
-        	{
-        		throw std::runtime_error("Invalid observation type field in observation file.");
-        	}
-        }
-	}
-
-	// This function only reads in two types of observations
-    if(obs_type == HOUR_ANGLE)
-        return Obs_HA::ReadObservation_HA(array, lines, i);
+	  }
+    }
+  
+  // This function only reads in two types of observations
+  if(obs_type == HOUR_ANGLE)
+    {
+      cout << "Observation type = HA"<< endl;
+     return Obs_HA::ReadObservation_HA(array, lines, i+1);
+    }
     else if (obs_type == DESCRIPTIVE)
-        return Obs_HA::ReadObservation_Descriptive(array, lines, i);
+      {
+	cout << "Observation type = descriptive"<< endl;
+	return Obs_HA::ReadObservation_Descriptive(array, lines, i+1);  
+      }
     else
     {
-        /// \exception runtime_error Invalid Observation File format Specifier
-        throw std::runtime_error("Invalid Observation type field in observation file.");
+      /// \exception runtime_error Invalid Observation File format Specifier
+      throw std::runtime_error("Invalid Observation type field in observation file.");
     }
 }
 
 // A simple function to see if the observation has triplets.
 bool    Observation::HasTriplets(void)
 {
-    return this->mbHasTriplets;
+  return this->mbHasTriplets;
 }
 
 // A simple function to see if the observation has quadruplets.

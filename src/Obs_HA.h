@@ -18,8 +18,7 @@ class Obs_HA : public Observation
     Obs_HA(Array * array, double hour_angle, string telescopes, string exclude_baselines);
     Obs_HA(Array * array, double mjd, double time, string telescopes, string exclude_baselines);
   
-    static vector <Observation*> MakeObservations(Array * array, double start, double stop, double every, string telescopes);
-    
+    static vector <Observation*> MakeObservations(Array * array, double start, double stop, double every, string telescopes);    
     static vector <Observation*> ReadObservation_HA(Array * array, vector < string > lines, int i);
     static vector <Observation*> ReadObservation_Descriptive(Array * array, vector < string > lines, int i);
 

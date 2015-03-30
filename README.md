@@ -68,6 +68,7 @@ Note: see the shortcut section below as arrays, combiners, and spectral modes ma
 abbreviated.
 
 Example of Hour Angle usage:
+
     oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -o 2010-10_simulated.oifits -a CHARA -obs ../samples/obs_ha_example.txt -c MIRC -m LowH
 
 # Shortcuts

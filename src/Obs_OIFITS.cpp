@@ -291,6 +291,13 @@ oi_t3  Obs_OIFITS::GetT3(Array * array, Combiner * combiner, SpectralMode * spec
 	    t3_data.pop_back();
 	}
 
-    // Note, this memory object contains pointers and should be freed the OIFITSLIB free_oi_t3.
+    // Note, this memory object contains pointers and should be freed by the OIFITSLIB free_oi_t3.
     return *outt3;
+}
+
+oi_t4  Obs_OIFITS::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed)
+{
+  oi_t4* dummy;
+  return *dummy;
+
 }
