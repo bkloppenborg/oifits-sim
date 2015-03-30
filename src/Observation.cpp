@@ -415,12 +415,12 @@ vector<Observation*> Observation::ImportFile(Array * array, string filename, str
   if(obs_type == HOUR_ANGLE)
     {
       cout << "Observation type = HA"<< endl;
-     return Obs_HA::ReadObservation_HA(array, lines, i+1);
+     return Obs_HA::ReadObservation_HA(array, lines, i);
     }
     else if (obs_type == DESCRIPTIVE)
       {
 	cout << "Observation type = descriptive"<< endl;
-	return Obs_HA::ReadObservation_Descriptive(array, lines, i+1);  
+	return Obs_HA::ReadObservation_Descriptive(array, lines, i);  
       }
     else
     {

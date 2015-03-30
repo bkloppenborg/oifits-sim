@@ -84,14 +84,14 @@ vector <Observation*> Obs_HA::MakeObservations(Array * array, double start, doub
 }
 
 /// Reads in a file that consists of lines of hour angles with or without comments.
-vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string > lines, int firstline)
+vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string > lines, int i)
 {
     vector <Observation*> observations;
     vector <string> results;
 
     // Now parse the file, make the observations
     double ha;
-    for(unsigned int j = firstline; j < lines.size(); j++)
+    for(unsigned int j = i+1; j < lines.size(); j++)
     {
       results.clear();
       results = SplitString(lines[j], '=');       
