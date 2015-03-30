@@ -391,7 +391,6 @@ vector<Observation*> Observation::ImportFile(Array * array, string filename, str
   for(i = 0; i < lines.size(); i++)
     {
   
-      cout << "Observation::ImportFile " << lines[i] << "\n";
       // Clear out the results, split the string and strip whitespace
       results.clear();
       results = SplitString(lines[i], '=');
