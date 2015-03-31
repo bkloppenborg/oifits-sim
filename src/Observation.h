@@ -71,17 +71,17 @@ class Observation
     
     //static vector <Observation*> ReadObservations(Array * array, string filename, string comment_chars);
 
-    static vector <Observation*> ParseCommandLine(Array * array, char *argv[], int i, int argc, string comment_chars);
-  private:
+   static vector <Observation*> ParseCommandLine(Array * array, char *argv[], int i, int argc, string comment_chars);
 
+  private:
     static vector <Observation*> ParseCommandLineObs(Array * array, char *argv[], int i, int argc);
     static vector <Observation*> ImportFile(Array * array, string filename, string comment_chars);
   
   public:
 
-    virtual oi_vis2 GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
-    virtual oi_t3   GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
-    virtual oi_t4   GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) {};
+    virtual oi_vis2 GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) =0 ;
+    virtual oi_t3   GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) =0 ;
+    virtual oi_t4   GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, NoiseModel * noisemodel, Rand_t random_seed) =0;
 
     int         GetNumStations(void);
     Station *   GetStation(int sta_index);

@@ -47,7 +47,7 @@ but in the present version this wasn't possible.
 The simulator attempts to find information about the array, combiner and spectral mode from
 the OIFITS file.  If it fails, it will prompt you for more information.
 
-For example, we can use the simulator to emulate CHARA-MIRC's observations of the 2010-10 model image of epsilon Aurigae via:
+For example (running from the bin directory), we can emulate CHARA-MIRC's observations of the 2010-10 model image of epsilon Aurigae via:
 
     oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -o 2010-10_simulated.oifits -d ../samples/2010-10-eps_Aur-all-avg5.oifits -a CHARA -c MIRC -m LowH
 
@@ -64,8 +64,12 @@ combiner, spectral mode, and observations:
 
     oifits-sim -t target_file.txt -i image_file.fits -o output.oifits -a array -c combiner -m spectral_mode -obs observations
       
-Note, see the shortcut section below as arrays, combiners, and spectral modes may be
+Note: see the shortcut section below as arrays, combiners, and spectral modes may be
 abbreviated.
+
+Example of Hour Angle usage:
+
+    oifits-sim -t ../samples/target_epsAur.txt -i ../samples/2010-10.fits -o 2010-10_simulated.oifits -a CHARA -obs ../samples/obs_ha_example.txt -c MIRC -m LowH
 
 # Shortcuts
 

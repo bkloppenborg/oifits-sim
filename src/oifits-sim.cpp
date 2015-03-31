@@ -74,7 +74,7 @@ int main(int argc, char *argv[])
 	Array array;
 	Combiner combiner;
 	SpectralMode spec_mode;
-	vector <Observation*> observations;
+	vector <Observation*> observation_list;
 
 	// TODO: For now we only have one noise model, so we load it by default
 	NoiseModel * noisemodel = new NoiseModel_Tatulli2006();
@@ -130,12 +130,12 @@ int main(int argc, char *argv[])
 
 		// ################
 		// (1) we use an existing OIFITS data file.  Really this has everything
-		// need to run the simulation, but I don't want to write a module to parse
+		// needed to run the simulation, but I don't want to write a module to parse
 		// the OIFITS array and wavelength tables.  So, we'll just require
 		// that the array and spectral mode be specified too.
 		if ((strcmp(argv[i], "-d") == 0) && (i < argc - 1))
 		{
-			observations = Obs_OIFITS::ReadObservation_OIFITS(string(argv[i+1]));
+			observation_list = Obs_OIFITS::ReadObservation_OIFITS(string(argv[i+1]));
 			n_params += 1;
 		}
 
@@ -171,19 +171,19 @@ int main(int argc, char *argv[])
 
 		}
 
-		// Now for observations
+		// Now for observation_list
 		if ((strcmp(argv[i], "-obs") == 0) && (i < argc - 1))
 		{
 			// First ensure that the array has been defined.  If not, quit.
 			if(array.GetArrayName() == "")
 			{
-				cout << "The array, -a, must be specified before the observations, -obs.\n";
+				cout << "The array, -a, must be specified before the observation list, -obs.\n";
 				exit(0);
 			}
 
 			// Observations are a little funny.  We permit both files and command line options.
 			// Just pass things off to the observation class so it can decide what to do:
-			observations = Observation::ParseCommandLine(&array, argv, i, argc, comment_chars);
+			observation_list = Observation::ParseCommandLine(&array, argv, i, argc, comment_chars);
 			n_params += 1;
 		}
 	}
@@ -191,7 +191,7 @@ int main(int argc, char *argv[])
 	// Check that all parameters were specified
 	// TODO: Better checking here should be implemented
 	if(n_params == 7)
-		run_sim(&target, &array, &combiner, &spec_mode, noisemodel, observations, output_fname);
+		run_sim(&target, &array, &combiner, &spec_mode, noisemodel, observation_list, output_fname);
 	else
 		cout << "Something is missing on the command line, quitting!" << endl;
 
@@ -201,7 +201,7 @@ int main(int argc, char *argv[])
 	return 0;
 }
 
-void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode * spec, NoiseModel * noisemodel, vector<Observation*> observations, string output_filename)
+void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode * spec, NoiseModel * noisemodel, vector<Observation*> observation_list, string output_filename)
 {
 	// Pull up the random number generator.
 	static Rand_t random_seed;
@@ -237,30 +237,28 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
     oi_vis2 vis2table;
     oi_t3 t3table;
     oi_t4 t4table;
-    Observation * observation;
-    int n_observations = observations.size();
+    Observation* observation;
+    int n_observations = observation_list.size();
 
-    cout << "N Observations: " << observations.size() << endl;
+    cout << "N Observations: " << observation_list.size() << endl;
 
 	for(unsigned int i = n_observations; i > 0; i--)
 	{
-		observation = observations.back();
-		// First look up the type of observation
-		ObsType type = observation->GetObsType();
+	  observation = observation_list.back();
+	  // First look up the type of observation
+	  ObsType type = observation->GetObsType();
 
-		// Do a dymamic cast to get the subclass object back
-		if(type == HOUR_ANGLE || type == DESCRIPTIVE)
-		{
-			Obs_HA * observation = dynamic_cast<Obs_HA *>(observation);
-		//printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
-
-		}
-		else    //(type == OIFITS)
-		{
-			Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation);
-		}
-
-
+	  // Do a dymamic cast to get the subclass object back
+	  if(type == HOUR_ANGLE || type == DESCRIPTIVE)
+	    {
+	      Obs_HA * observation = dynamic_cast<Obs_HA *>(observation_list.back());
+	      //printf("Simulating Observation at HA %f \n", observation->GetHA(target->right_ascension));
+	      
+	    }
+	  else    //(type == OIFITS)
+	    {
+	      Obs_OIFITS * observation = dynamic_cast<Obs_OIFITS *>(observation_list.back());
+	    }
 
 		vis2table = observation->GetVis2(array, combiner, spec, target, noisemodel, random_seed);
 		write_oi_vis2(fptr, vis2table, 1, &status);
@@ -279,7 +277,7 @@ void run_sim(Target * target, Array * array, Combiner * combiner, SpectralMode *
 
 
 		// All done with this observation object.  Pop it off the vector and free memory.
-		observations.pop_back();
+		observation_list.pop_back();
 		delete observation;
 
 		cout << "Completed Observation " << (n_observations - i + 1) << endl;

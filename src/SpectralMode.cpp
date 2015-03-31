@@ -124,6 +124,7 @@ oi_wavelength SpectralMode::GetOIWavelength(void)
 {
 	oi_wavelength wave;
 	wave.nwave = this->nchannels;
+	// TBD: check if should use malloc or new depending on matching free/delete 
 	wave.eff_wave = (float *) malloc(this->nchannels * sizeof(float));
 	wave.eff_band = (float *) malloc(this->nchannels * sizeof(float));
 	wave.revision = 1;

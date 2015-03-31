@@ -8,8 +8,8 @@ set(CMAKE_BUILD_TYPE DEBUG)
 
 #set(CMAKE_CXX_FLAGS "-Wall -pedantic")
 
-set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+#set(CMAKE_CXX_FLAGS_DEBUG "-O0 -g")
+set(CMAKE_CXX_FLAGS_DEBUG "-O2")
 
 find_package(GLIB2 REQUIRED)
 include_directories(${GLIB2_INCLUDE_DIRS})

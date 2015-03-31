@@ -87,37 +87,36 @@ vector <Observation*> Obs_HA::MakeObservations(Array * array, double start, doub
 vector <Observation*> Obs_HA::ReadObservation_HA(Array * array, vector < string > lines, int i)
 {
     vector <Observation*> observations;
-	vector <string> results;
+    vector <string> results;
 
     // Now parse the file, make the observations
     double ha;
     for(unsigned int j = i+1; j < lines.size(); j++)
     {
-        results.clear();
-        results = SplitString(lines[i], '=');
-        StripWhitespace(results);
-
-        if(results[0] == "hour_angle")
+      results.clear();
+      results = SplitString(lines[j], '=');       
+      StripWhitespace(results);
+      if(results[0] == "hour_angle")
         {
-        	try
-        	{
-
-                ha = atof(results[1].c_str());
-
-                // Make a new observation with all of the stations included.
-                observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
-        	}
-        	catch(...)
-        	{
-        		throw std::runtime_error("Invalid observation type field in observation file.");
-        	}
+	  try
+	    {
+	      
+	      ha = atof(results[1].c_str());
+	      
+	      // Make a new observation with all of the stations included.
+	      observations.push_back(new Obs_HA(array, ha, array->GetAllStationNames(), "") );
+	    }
+	  catch(...)
+	    {
+	      throw std::runtime_error("Invalid observation type field in observation file.");
+	    }
         }
-        else
+      else
         {
-        	printf("Warning, detected non-keyword, %s, in observation definition file.  Ignoring\n", results[0].c_str());
+	  printf("Warning, detected non-keyword, %s, in observation definition file.  Ignoring\n", results[0].c_str());
         }
     }
-
+    
     return observations;
 }
 
@@ -177,7 +176,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
                 /// \todo Perhaps issue a warning, but keep going?
                 // We've found another an additional hour angle, but no stations.
                 // The file is not formatted correctly
-                throw std::runtime_error("Found an 'hour_angle' specifier without stations in observation block " + j);
+                throw std::runtime_error("Found an 'hour_angle' specifier without stations in observation block " + std::to_string(j));
             }
             else
             {
@@ -188,7 +187,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
                 }
                 catch (const std::exception&)
                 {
-                    throw std::runtime_error("Hour angle specification is not numeric in observation block " + j);
+                    throw std::runtime_error("Hour angle specification is not numeric in observation block " + std::to_string(j));
                 }
             }
         }
@@ -196,7 +195,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
         {
 
             if(results[1].size() < 2)
-                throw std::runtime_error("Two few telescopes specified in observation entry " + j);
+                throw std::runtime_error("Two few telescopes specified in observation entry " + std::to_string(j));
 
             stations = results[1];
             bStations = true;
@@ -209,7 +208,7 @@ vector <Observation*> Obs_HA::ReadObservation_Descriptive(Array * array, vector 
         else
         {
             // This is an unknown type, thrown an exception.
-            throw std::runtime_error("Unknown parameter specified in observation block " + j);
+            throw std::runtime_error("Unknown parameter specified in observation block " + std::to_string(j));
         }
 
         if(bHourAngle && bStations && (bExclude || k == lines.size() - 1))
