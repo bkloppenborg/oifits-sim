@@ -3,23 +3,27 @@ oifits-sim
 
 OIFITS Simulator
 
-(c) Brian Kloppenborg, Fabien Baron (2011)
+(c) Brian Kloppenborg, Fabien Baron (2015)
 
-# Description:
-The OIFITS simulator is a tool to assist in observation planning or in reconstructed
-image artifact analysis.  The program has the ability to either (1) simulate the data
-from an interferometer given a list of observational hour angles and a FITS image
-of what the source looks like, or (2) copy the UV coverage of an existing observation 
-and simulate the data given a FITS image of the source.
+# Description: The OIFITS simulator is a tool to assist in observation
+planning or in reconstructed image artifact analysis.  The program has
+the ability to either (1) simulate the data from an interferometer
+given a list of observational hour angles and a FITS image of what the
+source looks like, or (2) copy the UV coverage of an existing
+observation and simulate the data given a FITS image of the source.
 
-This software is losely based on the MROI simulator written by F. Baron.
+This software was originally based on the MROI simulator written by
+Fabien Baron but does not include all its capabilities yet (but it
+includes new ones).
+
+Current work is being done to improve usefulness for PFI.
 
 # Installation instructions
 
 To check out and build the current stable version of this software do:
 
 ```
-git clone https://github.com/bkloppenborg/oifits-sim.git
+git clone https://github.com/fabienbaron/oifits-sim.git
 cd oifits-sim
 git submodule init
 git submodule update
@@ -113,7 +117,7 @@ All parameters that can be overriden are mentioned below.  See documentation for
         
 # Bug Reporting and Feature Requests
 
-Please use the [issue tracker on GitHub](https://github.com/bkloppenborg/oifits-sim/issues)
+Please use the [issue tracker on GitHub](https://github.com/fabienbaron/oifits-sim/issues)
 
 
 # Licensing and acknowledgements
@@ -122,4 +126,4 @@ Please use the [issue tracker on GitHub](https://github.com/bkloppenborg/oifits-
 
 If you use this software as part of a scientific publication, please cite the following work:
 
-Kloppenborg, B.; Baron, F. (2012) "oifits-sim: an OIFITS-simulator" (Version X). Available from https://github.com/bkloppenborg/oifits-sim.
+Kloppenborg, B.; Baron, F. (2012) "oifits-sim: an OIFITS-simulator" (Version 2). Available from https://github.com/fabiebaron/oifits-sim.
