@@ -12,11 +12,11 @@ given a list of observational hour angles and a FITS image of what the
 source looks like, or (2) copy the UV coverage of an existing
 observation and simulate the data given a FITS image of the source.
 
-This software was originally based on the MROI simulator written by
-Fabien Baron but does not include all its capabilities yet (but it
-includes new ones).
+OIFITS-SIM is developped by Brian Kloppenborg. Originally based on the
+MROI simulator written by Fabien Baron, it does not include all its
+capabilities yet (though it brings new ones).
 
-Current work is being done to improve usefulness for PFI.
+This repository contains Fabien Baron's own version of OIFITS-SIM, developped for PFI.
 
 # Installation instructions
 
