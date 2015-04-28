@@ -557,7 +557,7 @@ STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
   const char *tformTpl[] = {"I", "D", "D", "D",
 			    "?D", "?D", "?D", "?D",
 			    "1D", "1D", "1D", "1D",  "1D", "1D", 
-			    "3I", "?L"};
+			    "4I", "?L"};
   char **tform;
   char *tunit[] = {"\0", "s", "day", "s",
 		   "\0", "\0", "deg", "deg",
@@ -603,7 +603,7 @@ STATUS write_oi_t4(fitsfile *fptr, oi_t4 t4, int extver, STATUS *pStatus)
       fits_write_col(fptr, TDOUBLE, 12, irow, 1, 1, &t4.record[irow-1].v2coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 13, irow, 1, 1, &t4.record[irow-1].u3coord,  pStatus);
       fits_write_col(fptr, TDOUBLE, 14, irow, 1, 1, &t4.record[irow-1].v3coord,  pStatus);
-      fits_write_col(fptr, TINT, 15, irow, 1, 3, t4.record[irow-1].sta_index,  pStatus);
+      fits_write_col(fptr, TINT, 15, irow, 1, 4, t4.record[irow-1].sta_index,  pStatus);
       fits_write_col(fptr, TLOGICAL, 16, irow, 1, t4.nwave,  t4.record[irow-1].flag, pStatus);
     }
   if (*pStatus && !oi_hush_errors) {
