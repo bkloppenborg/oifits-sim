@@ -7,15 +7,15 @@ OIFITS Simulator
 
 # Description:
 The OIFITS SIMulator is a tool to assist in observation
-planning or in reconstructed image artifact analysis.  The program has
+planning or in reconstructed image artefact analysis.  The program has
 the ability to either (1) simulate the data from an interferometer
 given a list of observational hour angles and a FITS image of what the
 source looks like, or (2) copy the UV coverage of an existing
 observation and simulate the data given a FITS image of the source.
 
-OIFITS-SIM is developped by Brian Kloppenborg and licensed under the GPLv3. Originally based on the MROI simulator written by Fabien Baron, it does not include all its capabilities yet (though it does bring new ones).
+OIFITS-SIM is developed by Brian Kloppenborg and licensed under the GPLv3. Originally based on the MROI simulator written by Fabien Baron, it does not include all its capabilities yet (though it does bring new ones).
 
-This repository contains Fabien Baron's own version of OIFITS-SIM, developped for PFI.
+This repository contains Fabien Baron's own version of OIFITS-SIM, developed for PFI.
 
 # Installation instructions
 
@@ -39,7 +39,7 @@ The simulator operates in two primary modes:
 
 In this mode the program will simulate observations from the interferometer and COPY the
 uncertainty estimates from an existing data file.  This mode is useful if you are exploring
-artifacts in existing images as you can sample a model image and reconstruct the resulting 
+artefacts in existing images as you can sample a model image and reconstruct the resulting 
 OIFITS file.  To use this mode the user needs to specify the target, target image, output 
 file, input OIFITS file, array, combiner, and spectral mode of the combiner.  In future versions
 the last three parameters will be determined (in as much as possible) from the OIFITS file
@@ -78,7 +78,7 @@ Example of Hour Angle usage:
 
 For the definitions of arrays, combiners, and spectral modes the software will automatically
 search the files in oifits-sim/etc for the presence of a similarly named file.  Parameters in
-these files can be overwidden (although they may not necessairly be used) on the command line
+these files can be overridden (although they may not necessarily be used) on the command line
 via -parameter_name=value.
 
 Currently implemented arrays:
@@ -104,7 +104,7 @@ Conversely the following will do nothing as the --r0 parameter will be ignored.
 
     oifits-sim -a CHARA -t foo.txt ... --r0 0.031
 
-All parameters that can be overriden are mentioned below.  See documentation for more details.
+All parameters that can be overridden are mentioned below.  See documentation for more details.
 
     Array:
         --r0 double
