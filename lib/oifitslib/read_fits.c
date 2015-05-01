@@ -876,7 +876,7 @@ STATUS read_next_oi_t4(fitsfile *fptr, oi_t4 *pT4, STATUS *pStatus)
     fits_read_col(fptr, TDOUBLE, colnum, irow, 1, 1, &nulldouble,
 		  &pT4->record[irow-1].v2coord, &anynull, pStatus);
     fits_get_colnum(fptr, CASEINSEN, "STA_INDEX", &colnum, pStatus);
-    fits_read_col(fptr, TINT, colnum, irow, 1, 3, &nullint,
+    fits_read_col(fptr, TINT, colnum, irow, 1, 4, &nullint,
 		  pT4->record[irow-1].sta_index, &anynull, pStatus);
     fits_get_colnum(fptr, CASEINSEN, "FLAG", &colnum, pStatus);
     fits_read_col(fptr, TLOGICAL, colnum, irow, 1, pT4->nwave, &nullchar,

@@ -410,9 +410,9 @@ oi_array    Array::GetOIArray(void)
 	strncpy(array.arrname, arrname.c_str(), FLEN_VALUE);
 	strncpy(array.frame, "GEOCENTRIC", FLEN_VALUE);
 
-	wgs84_to_geoc(latitude * PI / 180, altitude, &GeocLat, &GeocRadius);
-	array.arrayx = GeocRadius * cos(GeocLat) * cos(this->longitude * PI / 180);
-	array.arrayy = GeocRadius * cos(GeocLat) * sin(this->longitude * PI / 180);
+	wgs84_to_geoc(latitude, altitude, &GeocLat, &GeocRadius);
+	array.arrayx = GeocRadius * cos(GeocLat) * cos(this->longitude);
+	array.arrayy = GeocRadius * cos(GeocLat) * sin(this->longitude);
 	array.arrayz = GeocRadius * sin(GeocLat);
 
 	array.nelement = nstations;
