@@ -270,8 +270,8 @@ oi_vis2 Obs_HA::GetVis2(Array * array, Combiner * combiner, SpectralMode * spec_
 	for (int i = 0; i < npow; i++)
 	{
 		vis2.record[i].target_id = target->GetTargetID();
-		/// \bug The time is set to zero by default
-		vis2.record[i].time = 0.0;
+		/// \bug The time is set to the HA in sec (for consistency with vis_sim)
+		vis2.record[i].time = this->GetHA(ra) * 3600.;
 		vis2.record[i].mjd = this->mJD;
 		/// \bug The integration time is set to 10 seconds by default.
 		vis2.record[i].int_time = 10;
@@ -339,8 +339,8 @@ oi_t3  Obs_HA::GetT3(Array * array, Combiner * combiner, SpectralMode * spec_mod
 	{
 
 		t3.record[i].target_id = target->GetTargetID();
-		/// \bug Time is set to zero by default.
-		t3.record[i].time = 0.0;
+		/// \bug The time is set to the HA in sec (for consistency with vis_sim)
+		t3.record[i].time = this->mHA * 3600.;
 		t3.record[i].mjd = this->mJD;
 		/// \bug Integration time set to 10 seconds by default.
 		t3.record[i].int_time = 10;
@@ -416,8 +416,8 @@ oi_t4   Obs_HA::GetT4(Array * array, Combiner * combiner, SpectralMode * spec_mo
 	for (int i = 0; i < nQuadruplets; i++)
 	{
 		t4.record[i].target_id = target->GetTargetID();
-		/// \bug Time is set to zero by default.
-		t4.record[i].time = 0.0;
+		/// \bug The time is set to the HA in sec (for consistency with vis_sim)
+		t4.record[i].time = this->mHA * 3600.;
 		t4.record[i].mjd = this->mJD;
 		/// \bug Integration time set to 10 seconds by default.
 		t4.record[i].int_time = 10;
