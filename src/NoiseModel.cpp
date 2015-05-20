@@ -68,7 +68,7 @@ double NoiseModel::NumPhotons(Array * array, Target * target, Combiner * combine
 
 	// TODO: Modify this function to permit different gains / sizes of telescopes.
 
-	double integration = IntegrationTime(median_wavelenth, array->Get_r0(), array->GetWindSpeed());
+	double integration = 2. * IntegrationTime(median_wavelenth, array->Get_r0(), array->GetWindSpeed());
 
 	// TODO: right now we assume all stations are the same diameter. We will need to
 	// change this if we permit unequal telescopes.
