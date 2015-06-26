@@ -453,11 +453,10 @@ void fits2mat(const char *fname, Matrix < double >&m)
     if (status == 0)
         fits_close_file(fptr, &status);
 
-    // Flipped the x-axis so images wouldn't be transposed as they are read into memory. BKK
     m.setsize(naxes[0], naxes[1]);
      for (int ii = 0; ii < naxes[0]; ii++)
         for (int jj = 0; jj < naxes[1]; jj++)
-            m[naxes[0] - ii- 1][jj] = ptrimg[ii + jj * naxes[0]];
+            m[ ii ][ jj ] = ptrimg[ ii + jj * naxes[ 0 ] ];
     free(ptrimg);
 
     // Report any errors
