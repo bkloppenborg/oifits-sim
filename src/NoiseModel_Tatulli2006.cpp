@@ -123,7 +123,7 @@ double NoiseModel_Tatulli2006::VarPhotometricFlux(Combiner * combiner, double n_
 double NoiseModel_Tatulli2006::CoherentFlux(Array * array, Combiner * combiner, double n_photons, double vis2)
 {
 	return n_photons * n_photons * vis2 / pow(array->GetNumStations(), 2) +
-        n_photons + combiner->GetNumFringePixels() * combiner->read_noise;
+        n_photons + combiner->GetNumFringePixels() * pow(combiner->read_noise, 2);
 }
 
 double NoiseModel_Tatulli2006::VarCoherentFlux(Array * array, Combiner * combiner, double n_photons, double vis2)
