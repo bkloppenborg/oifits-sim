@@ -3,6 +3,10 @@
  *
  *  Created on: Apr 12, 2011
  *      Author: fbaron (via. MROI simulator, rewritten for class by bkloppenborg)
+ *
+ *  Equations implemented from t
+ *  "SNR Squared visibilieis and closure phase, summary of equations in use"
+ *  by Tatulli et al. 2006 (VSI Memo VSI-SYS-001)
  */
 
 #include "NoiseModel_Tatulli2006.h"
@@ -103,7 +107,7 @@ double NoiseModel_Tatulli2006::GetT3PhaseVar(Array * array, Combiner * combiner,
 }
 
 // Compute the error for the quad closure -- TBD implement something good here !
-double NoiseModel_Tatulli2006::GetT4PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Quadruplet * quadruplet, 
+double NoiseModel_Tatulli2006::GetT4PhaseVar(Array * array, Combiner * combiner, SpectralMode * spec_mode, Target * target, Quadruplet * quadruplet,
 UVPoint uv1, UVPoint uv2, UVPoint uv3, int wavelength_num)
 {
 	return 5.;
@@ -118,7 +122,8 @@ double NoiseModel_Tatulli2006::VarPhotometricFlux(Combiner * combiner, double n_
 
 double NoiseModel_Tatulli2006::CoherentFlux(Array * array, Combiner * combiner, double n_photons, double vis2)
 {
-	return n_photons * n_photons * vis2 / array->GetNumStations() + n_photons + combiner->GetNumFringePixels() * combiner->read_noise;
+	return n_photons * n_photons * vis2 / pow(array->GetNumStations(), 2) +
+        n_photons + combiner->GetNumFringePixels() * combiner->read_noise;
 }
 
 double NoiseModel_Tatulli2006::VarCoherentFlux(Array * array, Combiner * combiner, double n_photons, double vis2)
